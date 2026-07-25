@@ -130,6 +130,7 @@ input,select,textarea{font-family:inherit;font-size:1rem}
 .hero-fold p{font-size:.85rem;opacity:.75;line-height:1.5;margin-bottom:1rem}
 .hero-fold .btn{background:rgba(255,255,255,.2);border:1px solid rgba(255,255,255,.3);color:#fff;font-size:.82rem}
 .hero-fold .btn:hover{background:rgba(255,255,255,.35)}
+.fold-bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:none;border-radius:var(--radius)}
 .hero-stats{display:flex;gap:2rem;flex-wrap:wrap;justify-content:center;text-align:center;background:rgba(0,0,0,.1);border-radius:var(--radius);padding:1.25rem 2rem}
 .stat{text-align:center}
 .stat-num{font-size:1.5rem;font-weight:800;display:block}
@@ -436,7 +437,8 @@ input,select,textarea{font-family:inherit;font-size:1rem}
 .section-cat{position:absolute;opacity:.06;pointer-events:none}
 .paw-trail{position:absolute;opacity:.06;pointer-events:none}
 .wwd-card .card-cat{width:48px;height:48px;margin-bottom:.75rem}
-.help-action-card .card-icon{width:56px;height:56px;margin:0 auto .75rem}
+.help-action-card .card-icon{width:80px;height:80px;margin:0 auto 1rem}
+.help-action-card .card-photo{width:100%;height:160px;object-fit:cover;border-radius:var(--radius-sm);margin-bottom:1rem}
 .product-cat{position:absolute;bottom:8px;right:8px;width:40px;opacity:.3}
 
 /* Animations */
@@ -454,6 +456,12 @@ html,body{overflow-x:hidden;max-width:100vw}
 img,video,svg,iframe{max-width:100%;height:auto}
 .btn{min-height:44px}
 
+/* Back to Top */
+.back-to-top{position:fixed;bottom:2rem;right:2rem;width:48px;height:48px;border-radius:50%;background:var(--pri);color:#fff;display:grid;place-items:center;box-shadow:0 4px 16px rgba(0,0,0,.2);opacity:0;visibility:hidden;transform:translateY(12px);transition:all .3s;z-index:90;cursor:pointer}
+.back-to-top.visible{opacity:1;visibility:visible;transform:translateY(0)}
+.back-to-top:hover{background:var(--pri-h);transform:translateY(-2px);box-shadow:0 6px 20px rgba(0,0,0,.3)}
+.back-to-top svg{width:20px;height:20px;stroke:currentColor;fill:none;stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round}
+
 /* Mobile Sticky Bottom Bar */
 .mobile-bottom-bar{position:fixed;bottom:0;left:0;right:0;z-index:100;display:none;background:var(--surface);padding:10px 16px;gap:10px;border-top:1px solid var(--mist);box-shadow:0 -4px 20px rgba(0,0,0,.1);transition:opacity .3s}
 .mobile-bottom-bar .btn{flex:1;text-align:center;justify-content:center;font-size:.9rem;font-weight:700;min-height:48px;border-radius:var(--radius-pill)}
@@ -468,6 +476,7 @@ img,video,svg,iframe{max-width:100%;height:auto}
   .nav-toggle{display:flex;order:2}
   .cart-toggle{order:1;margin-left:auto}
   .mobile-bottom-bar{display:flex}
+  .back-to-top{display:none}
   body{padding-bottom:72px}
   .hero{min-height:auto;padding:5rem 0 2rem;background:var(--ground);color:var(--ink);justify-content:flex-start}
   .hero h1,.hero-subtitle,.hero-eyebrow{text-shadow:none}
@@ -480,10 +489,29 @@ img,video,svg,iframe{max-width:100%;height:auto}
   .hero-eyebrow{color:var(--pri)}
   .hero-eyebrow::before{background:var(--pri)}
   .hero-news{background:rgba(0,0,0,.05);backdrop-filter:none;-webkit-backdrop-filter:none;color:var(--ink)}
-  .hero-fold{background:var(--surface);border:1px solid var(--mist);color:var(--ink)!important;backdrop-filter:none;-webkit-backdrop-filter:none}
-  .hero-fold .fold-cat{filter:brightness(0) sepia(1) hue-rotate(340deg) saturate(.3);opacity:.15}
-  .hero-fold .btn{background:var(--pri);color:#fff;border-color:var(--pri)}
-  .hero-fold:hover{background:var(--surface)}
+  .fold-bg{display:block}
+  .hero-fold{background:none;border:none;color:#fff!important;backdrop-filter:none;-webkit-backdrop-filter:none;min-height:180px}
+  .hero-fold::after{content:'';position:absolute;inset:0;background:linear-gradient(0deg,rgba(0,0,0,.7) 0%,rgba(0,0,0,.3) 50%,rgba(0,0,0,.1) 100%);border-radius:var(--radius);pointer-events:none}
+  .hero-fold .fold-cat{display:none}
+  .hero-fold h3,.hero-fold p,.hero-fold .btn{position:relative;z-index:2}
+  .hero-fold .btn{background:rgba(255,255,255,.25);color:#fff;border:1px solid rgba(255,255,255,.4);pointer-events:auto}
+  .hero-fold:hover{background:none}
+  .mission{background:var(--ground);color:var(--ink)}
+  .mission-stat{color:var(--pri)}
+  .mission-label{color:var(--ink)}
+  .mission-text{color:var(--stone)}
+  .mission-divider{background:var(--mist)}
+  #help{background:var(--surface);color:var(--ink)}
+  .help-action-card{background:var(--surface);border:2px solid var(--mist);color:var(--ink);box-shadow:0 2px 8px rgba(0,0,0,.06)}
+  .help-action-card h3{color:var(--pri)}
+  .help-action-card p{color:var(--stone)}
+  .help-action-card .card-icon{width:80px;height:80px;margin:0 auto 1rem}
+  .help-action-card .btn{background:var(--pri);color:#fff}
+  .petsmart{background:var(--surface);border:2px solid var(--mist);color:var(--ink)}
+  .petsmart .big{color:var(--pri)}
+  .petsmart-badge{background:rgba(0,0,0,.04);backdrop-filter:none}
+  .petsmart-badge .label{color:var(--stone)}
+  .petsmart-text p{opacity:1;color:var(--stone)}
   .hero-stats{background:rgba(0,0,0,.03)}
   .scroll-hint{color:rgba(0,0,0,.3)}
   .scroll-arrow{background:linear-gradient(to bottom,rgba(0,0,0,.25),transparent)}
@@ -591,6 +619,7 @@ img,video,svg,iframe{max-width:100%;height:auto}
     <div class="hero-folds">
       <!-- Fold 1: Adopt -->
       <div class="hero-fold" style="color:#fff">
+        <img class="fold-bg" src="https://d8j0ntlcm91z4.cloudfront.net/user_3681BqEuWywySamoBS6St7ib1O7/hf_20260725_085347_aaa3abfd-cb05-4eb2-ac0b-9ad49fcaf4e4_min.webp" alt="" loading="lazy">
         <svg class="fold-cat" viewBox="0 0 140 140" aria-hidden="true">
           <ellipse cx="70" cy="95" rx="38" ry="40" fill="rgba(255,255,255,.2)"/>
           <circle cx="70" cy="52" r="30" fill="rgba(255,255,255,.25)"/>
@@ -629,6 +658,7 @@ img,video,svg,iframe{max-width:100%;height:auto}
 
       <!-- Fold 2: Donate -->
       <div class="hero-fold" style="color:#fff">
+        <img class="fold-bg" src="https://d8j0ntlcm91z4.cloudfront.net/user_3681BqEuWywySamoBS6St7ib1O7/hf_20260725_085323_ae286697-0edb-40a1-bef5-af5cb543d95f_min.webp" alt="" loading="lazy">
         <svg class="fold-cat" viewBox="0 0 140 140" aria-hidden="true">
           <ellipse cx="70" cy="95" rx="38" ry="40" fill="rgba(255,255,255,.2)"/>
           <circle cx="70" cy="52" r="30" fill="rgba(255,255,255,.25)"/>
@@ -666,6 +696,7 @@ img,video,svg,iframe{max-width:100%;height:auto}
 
       <!-- Fold 3: Events -->
       <div class="hero-fold" style="color:#fff">
+        <img class="fold-bg" src="https://d8j0ntlcm91z4.cloudfront.net/user_3681BqEuWywySamoBS6St7ib1O7/hf_20260725_085338_b4874ae5-9e31-4527-80d8-56eb432024f7_min.webp" alt="" loading="lazy">
         <svg class="fold-cat" viewBox="0 0 140 140" aria-hidden="true">
           <ellipse cx="70" cy="95" rx="38" ry="40" fill="rgba(255,255,255,.2)"/>
           <circle cx="70" cy="52" r="30" fill="rgba(255,255,255,.25)"/>
@@ -850,8 +881,8 @@ img,video,svg,iframe{max-width:100%;height:auto}
       <p style="font-size:.72rem;color:var(--stone);margin-top:.75rem;text-align:center">Employer matching may be available &middot; Ask us about sponsoring a cat</p>
     </div>
     <div class="help-actions reveal">
-      <div class="help-action-card"><svg class="card-icon" viewBox="0 0 80 80" width="56" height="56" aria-hidden="true"><circle cx="40" cy="48" r="26" fill="var(--teal)" opacity=".12"/><circle cx="40" cy="28" r="16" fill="var(--teal)" opacity=".15"/><polygon points="28,22 20,5 34,17" fill="var(--teal)" opacity=".2"/><polygon points="52,22 60,5 46,17" fill="var(--teal)" opacity=".2"/><circle cx="34" cy="26" r="3" fill="var(--teal)" opacity=".35"/><circle cx="46" cy="26" r="3" fill="var(--teal)" opacity=".35"/><path d="M32 36 Q40 42 48 36" fill="none" stroke="var(--teal)" stroke-width="1.5" opacity=".25"/><circle cx="58" cy="60" r="8" fill="var(--pri)" opacity=".15"/><path d="M55 60 L58 63 L63 56" fill="none" stroke="var(--pri)" stroke-width="2" opacity=".3" stroke-linecap="round"/></svg><h3>Foster a Cat</h3><p>Open your home temporarily. We provide everything &mdash; food, litter, vet care, supplies. You provide the love.</p><a href="#apply" class="btn btn--teal btn--sm btn--pill">Apply to Foster</a></div>
-      <div class="help-action-card"><svg class="card-icon" viewBox="0 0 80 80" width="56" height="56" aria-hidden="true"><circle cx="40" cy="48" r="26" fill="var(--gold)" opacity=".12"/><circle cx="40" cy="28" r="16" fill="var(--gold)" opacity=".15"/><polygon points="28,22 20,5 34,17" fill="var(--gold)" opacity=".2"/><polygon points="52,22 60,5 46,17" fill="var(--gold)" opacity=".2"/><circle cx="34" cy="26" r="3" fill="var(--gold)" opacity=".35"/><circle cx="46" cy="26" r="3" fill="var(--gold)" opacity=".35"/><ellipse cx="34" cy="60" rx="8" ry="5" fill="var(--gold)" opacity=".1"/><circle cx="28" cy="52" r="3" fill="var(--gold)" opacity=".1"/><circle cx="40" cy="52" r="3" fill="var(--gold)" opacity=".1"/><circle cx="25" cy="57" r="2.5" fill="var(--gold)" opacity=".1"/><circle cx="37" cy="57" r="2.5" fill="var(--gold)" opacity=".1"/></svg><h3>Volunteer</h3><p>Drive cats to FCCO clinics, help at adoption events, photograph fosters. Flexible hours, huge impact.</p><a href="mailto:catsmeowcatrescue@gmail.com?subject=Volunteer" class="btn btn--ghost btn--sm btn--pill">Get Involved</a></div>
+      <div class="help-action-card"><img class="card-photo" src="https://d8j0ntlcm91z4.cloudfront.net/user_3681BqEuWywySamoBS6St7ib1O7/hf_20260725_085331_1e3fb5ac-573a-46bd-a926-cf2f48cdc8f1_min.webp" alt="Tuxedo cat lounging on windowsill" loading="lazy"><h3>Foster a Cat</h3><p>Open your home temporarily. We provide everything &mdash; food, litter, vet care, supplies. You provide the love.</p><a href="#apply" class="btn btn--pri btn--sm btn--pill">Apply to Foster</a></div>
+      <div class="help-action-card"><img class="card-photo" src="https://d8j0ntlcm91z4.cloudfront.net/user_3681BqEuWywySamoBS6St7ib1O7/hf_20260725_085334_f9765c90-9a09-467d-9d59-c0ab41799a18_min.webp" alt="Senior gray cat with amber eyes" loading="lazy"><h3>Volunteer</h3><p>Drive cats to FCCO clinics, help at adoption events, photograph fosters. Flexible hours, huge impact.</p><a href="mailto:catsmeowcatrescue@gmail.com?subject=Volunteer" class="btn btn--pri btn--sm btn--pill">Get Involved</a></div>
     </div>
   </div>
 </section>
@@ -1050,6 +1081,9 @@ img,video,svg,iframe{max-width:100%;height:auto}
   </div>
 </div>
 <div class="cart-toast" id="cart-toast"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg><span id="toast-text">Added to cart</span></div>
+
+<!-- Back to Top -->
+<button class="back-to-top" id="back-to-top" aria-label="Back to top" onclick="window.scrollTo({top:0,behavior:'smooth'})"><svg viewBox="0 0 24 24"><polyline points="18 15 12 9 6 15"/></svg></button>
 
 <div class="product-detail-overlay" id="product-detail">
   <div class="product-detail">
@@ -1313,6 +1347,7 @@ window.addEventListener('scroll',function(){
   document.getElementById('site-header').classList.toggle('scrolled',window.scrollY>30);
   var bar=document.getElementById('mobile-bottom-bar');
   if(bar){var footer=document.querySelector('.site-footer');if(footer){var ft=footer.getBoundingClientRect().top;bar.style.opacity=ft<window.innerHeight?'0':'1';bar.style.pointerEvents=ft<window.innerHeight?'none':'auto'}}
+  var btt=document.getElementById('back-to-top');if(btt){btt.classList.toggle('visible',window.scrollY>600)}
 },{passive:true});
 
 /* ── Scroll reveal ── */
