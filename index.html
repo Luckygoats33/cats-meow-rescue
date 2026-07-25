@@ -260,8 +260,7 @@ input,select,textarea{font-family:inherit;font-size:1rem}
 .cal-day.has-event{cursor:pointer;font-weight:600}
 .cal-day.has-event:hover{background:rgba(196,41,28,.08)}
 .event-dot{width:5px;height:5px;border-radius:50%;background:var(--pri);position:absolute;bottom:4px}
-.cal-bubble{position:absolute;bottom:calc(100% + 8px);left:50%;transform:translateX(-50%);background:var(--surface);border:1px solid var(--mist);border-radius:var(--radius);padding:1rem 1.25rem;min-width:220px;max-width:280px;box-shadow:0 8px 24px rgba(0,0,0,.12);z-index:50;text-align:left;animation:bubbleIn .2s ease}
-.cal-bubble::after{content:'';position:absolute;top:100%;left:50%;transform:translateX(-50%);border:8px solid transparent;border-top-color:var(--surface)}
+.cal-bubble{position:fixed;background:var(--surface);border:1px solid var(--mist);border-radius:var(--radius);padding:1rem 1.25rem;min-width:240px;max-width:300px;box-shadow:0 8px 24px rgba(0,0,0,.15);z-index:250;text-align:left;animation:bubbleIn .2s ease}
 .cal-bubble h4{font-size:.9rem;color:var(--pri);margin-bottom:.25rem}
 .cal-bubble .bubble-date{font-size:.72rem;color:var(--stone);font-weight:600;text-transform:uppercase;letter-spacing:.05em;display:block;margin-bottom:.4rem}
 .cal-bubble .bubble-loc{font-size:.78rem;font-weight:600;color:var(--ink);margin-bottom:.25rem}
@@ -1413,8 +1412,15 @@ document.getElementById('cal-grid').addEventListener('click',function(e){
   var bubble=document.createElement('div');
   bubble.className='cal-bubble';
   bubble.innerHTML='<button class="bubble-close" aria-label="Close">&times;</button><span class="bubble-date">'+dateStr+'</span><h4>'+ev.title+'</h4><div class="bubble-loc">'+ev.loc+'</div><p>'+ev.desc+'</p>';
-  day.style.position='relative';
-  day.appendChild(bubble);
+  document.body.appendChild(bubble);
+  var rect=day.getBoundingClientRect();
+  var bw=bubble.offsetWidth;var bh=bubble.offsetHeight;
+  var left=rect.left+rect.width/2-bw/2;
+  var top=rect.top-bh-8;
+  if(top<8){top=rect.bottom+8}
+  if(left<8)left=8;
+  if(left+bw>window.innerWidth-8)left=window.innerWidth-bw-8;
+  bubble.style.left=left+'px';bubble.style.top=top+'px';
   bubble.querySelector('.bubble-close').addEventListener('click',function(ev){ev.stopPropagation();bubble.remove()});
 });
 document.addEventListener('click',function(e){
@@ -1737,7 +1743,7 @@ function playYarnKittyAnimation(){
   var isMobile=window.innerWidth<=960;
   var ballSize=isMobile?50:100;
   var catImg=new Image();
-  catImg.src='https://d8j0ntlcm91z4.cloudfront.net/user_3681BqEuWywySamoBS6St7ib1O7/hf_20260725_231505_33d0b104-1b4d-4433-83c2-3b0d7f31c262_min.webp';
+  catImg.src='https://d8j0ntlcm91z4.cloudfront.net/user_3681BqEuWywySamoBS6St7ib1O7/hf_20260725_233143_95068757-9134-437d-8511-9e445fa601bc_min.png';
   catImg.alt='Playful kitty chasing yarn';
   var ballSvg='<svg viewBox="0 0 40 40" width="'+ballSize+'" height="'+ballSize+'"><circle cx="20" cy="20" r="18" fill="#B22222"/><circle cx="20" cy="20" r="18" fill="none" stroke="#8B1A1A" stroke-width="1"/><path d="M8 14 Q20 8 32 14" fill="none" stroke="#D43030" stroke-width="2"/><path d="M6 22 Q20 28 34 22" fill="none" stroke="#D43030" stroke-width="2"/><path d="M14 6 Q8 20 14 34" fill="none" stroke="#D43030" stroke-width="1.5"/><path d="M26 6 Q32 20 26 34" fill="none" stroke="#D43030" stroke-width="1.5"/><circle cx="20" cy="20" r="18" fill="none" stroke="#E8B830" stroke-width="1.5" stroke-dasharray="4 6" opacity=".6"/></svg>';
   var kitty=document.createElement('div');
