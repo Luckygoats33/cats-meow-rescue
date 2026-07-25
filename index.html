@@ -1,3 +1,5 @@
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Cat's Meow Cat Rescue — Milwaukie, Oregon</title>
 <style>
 :root{
@@ -64,7 +66,7 @@ input,select,textarea{font-family:inherit;font-size:1rem}
 .logo{display:flex;align-items:center;gap:.5rem;font-weight:800;font-size:1.05rem;flex-shrink:0;color:#F0EDE7}
 .logo-img{height:44px;width:auto}
 .main-nav{display:flex;gap:1.25rem;margin-left:auto}
-.main-nav a{font-size:.82rem;font-weight:500;color:rgba(240,237,231,.6);transition:color .2s;letter-spacing:.03em;text-transform:uppercase}
+.main-nav a{font-size:.82rem;font-weight:500;color:#fff;transition:color .2s;letter-spacing:.03em;text-transform:uppercase}
 .main-nav a:hover{color:#F0EDE7}
 .header-cta{margin-left:.5rem}
 .nav-toggle{display:none;flex-direction:column;gap:4px;padding:6px;margin-left:auto;z-index:110}
@@ -225,9 +227,12 @@ input,select,textarea{font-family:inherit;font-size:1rem}
 .shop-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:1.25rem}
 .product-card{background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.15);border-radius:var(--radius);overflow:hidden;transition:transform .2s,box-shadow .2s}
 .product-card:hover{transform:translateY(-3px);box-shadow:0 8px 24px rgba(0,0,0,.3)}
-.product-img{height:200px;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:.5rem;color:#fff;font-weight:800;position:relative}
-.product-img .design-text{font-size:1.3rem;text-shadow:0 2px 8px rgba(0,0,0,.2)}
-.product-img .design-sub{font-size:.75rem;opacity:.8;font-weight:600;text-transform:uppercase;letter-spacing:.1em}
+.product-img{height:220px;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:.5rem;color:#fff;font-weight:800;position:relative;overflow:hidden}
+.product-img img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0}
+.product-img .design-overlay{position:absolute;inset:0;z-index:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.5rem}
+.product-img .design-text{font-size:1.3rem;text-shadow:0 2px 8px rgba(0,0,0,.5);z-index:2;position:relative}
+.product-img .design-sub{font-size:.75rem;opacity:.9;font-weight:600;text-transform:uppercase;letter-spacing:.1em;z-index:2;position:relative;text-shadow:0 1px 4px rgba(0,0,0,.5)}
+.design-overlay{background:linear-gradient(0deg,rgba(0,0,0,.5) 0%,rgba(0,0,0,.2) 50%,rgba(0,0,0,.35) 100%)}
 .product-body{padding:1.25rem}
 .product-body h3{font-size:1rem;margin-bottom:.2rem;color:#fff}
 .product-price{font-size:1.1rem;font-weight:800;color:#FFDD44;display:block;margin-bottom:.75rem}
@@ -312,7 +317,7 @@ input,select,textarea{font-family:inherit;font-size:1rem}
 .product-detail-overlay.is-open{opacity:1;visibility:visible}
 .product-detail{background:var(--surface);border-radius:var(--radius);max-width:32rem;width:calc(100% - 2rem);overflow:hidden;transform:scale(.9);transition:transform .3s}
 .product-detail-overlay.is-open .product-detail{transform:scale(1)}
-.pd-image{height:240px;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:.5rem;color:#fff;font-weight:800;position:relative}
+.pd-image{height:280px;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:.5rem;color:#fff;font-weight:800;position:relative;overflow:hidden}
 .pd-image .design-text{font-size:2rem;text-shadow:0 2px 12px rgba(0,0,0,.2)}
 .pd-image .design-sub{font-size:.85rem;opacity:.8;text-transform:uppercase;letter-spacing:.1em}
 .pd-body{padding:1.75rem}
@@ -364,22 +369,38 @@ input,select,textarea{font-family:inherit;font-size:1rem}
   .help-grid{grid-template-columns:1fr}
   .help-actions{grid-template-columns:1fr 1fr}
   .events-layout{grid-template-columns:1fr}
+  .shop-grid{grid-template-columns:repeat(auto-fill,minmax(200px,1fr))}
   .footer-grid{grid-template-columns:1fr 1fr;gap:1.5rem}
   .petsmart{flex-direction:column;text-align:center}
+  .product-detail{max-width:calc(100% - 1rem)}
 }
 @media(max-width:640px){
   .wwd-grid{grid-template-columns:1fr}
   .filter-bar{flex-direction:column;gap:.75rem}
-  .cats-grid{grid-template-columns:repeat(auto-fill,minmax(160px,1fr))}
+  .cats-grid{grid-template-columns:repeat(auto-fill,minmax(140px,1fr))}
   .cat-photo{height:140px}
   .help-actions{grid-template-columns:1fr}
   .shop-grid{grid-template-columns:1fr 1fr}
+  .product-img{height:180px}
   .hero-stats{gap:1.25rem}
   .hero-actions{flex-direction:column}
   .nl-form{flex-direction:column}
   .field-row{grid-template-columns:1fr}
   .footer-grid{grid-template-columns:1fr}
   .footer-bottom{flex-direction:column;text-align:center}
+  .heading-xl{font-size:clamp(2rem,8vw,3rem)}
+  .hero-subtitle{font-size:.95rem}
+  .btn{padding:.7rem 1.25rem;font-size:.85rem;min-height:44px}
+  .btn--sm{min-height:40px;padding:.5rem 1rem}
+  .shop-tab{padding:.5rem 1rem;font-size:.8rem;min-height:40px}
+  .size-btn{width:2.5rem;height:2.5rem;font-size:.75rem}
+  .mobile-nav nav a{font-size:1.2rem;padding:.5rem 0;min-height:44px;display:flex;align-items:center}
+  .petsmart-badge .big{font-size:2rem}
+}
+@media(max-width:380px){
+  .shop-grid{grid-template-columns:1fr}
+  .product-img{height:200px}
+  .cats-grid{grid-template-columns:1fr 1fr}
 }
 </style>
 
@@ -974,18 +995,19 @@ document.addEventListener('click',function(e){
 });
 
 /* ── Shop ── */
+var HF='https://d8j0ntlcm91z4.cloudfront.net/user_3681BqEuWywySamoBS6St7ib1O7/';
 var PRODUCTS=[
-{name:"Classic Logo Tee",type:"tees",price:22,grad:"linear-gradient(135deg,#C4291C,#A31F15)",design:"Cat's Meow",sub:"Classic Tee",sizes:true},
-{name:"Rescue Squad Tee",type:"tees",price:25,grad:"linear-gradient(135deg,#D4A017,#B8890F)",design:"Rescue Squad",sub:"Premium Tee",sizes:true},
-{name:"Adopt Don't Shop Tee",type:"tees",price:22,grad:"linear-gradient(135deg,#2E7D32,#1B5E20)",design:"Adopt Don't Shop",sub:"Unisex Tee",sizes:true},
-{name:"PNW Cat Lover Tee",type:"tees",price:28,grad:"linear-gradient(135deg,#8B2500,#C4291C)",design:"PNW Cat Lover",sub:"Limited Edition",sizes:true},
-{name:"Oregon Coast Crew",type:"sweats",price:45,grad:"linear-gradient(135deg,#6A1B9A,#9C27B0)",design:"Oregon Coast",sub:"Purple Crewneck",sizes:true},
-{name:"Cat's Meow Hoodie",type:"sweats",price:52,grad:"linear-gradient(135deg,#1E293B,#334155)",design:"Cat's Meow",sub:"Pullover Hoodie",sizes:true},
-{name:"Paw Print Sticker",type:"stickers",price:3,grad:"linear-gradient(135deg,#D4A017,#E8B830)",design:"Paw Print",sub:"Vinyl Sticker"},
-{name:"Logo Sticker",type:"stickers",price:4,grad:"linear-gradient(135deg,#C4291C,#E04A3E)",design:"Logo",sub:"Die-Cut Sticker"},
-{name:"Adopt Don't Shop Sticker",type:"stickers",price:5,grad:"linear-gradient(135deg,#D4A017,#C4291C)",design:"Adopt Don't Shop",sub:"Bumper Sticker"},
-{name:"Logo Magnet",type:"magnets",price:6,grad:"linear-gradient(135deg,#C4291C,#D4A017)",design:"Cat's Meow",sub:"Fridge Magnet"},
-{name:"My Cat Runs This House",type:"magnets",price:8,grad:"linear-gradient(135deg,#D4A017,#E8B830)",design:"My Cat Runs\nThis House",sub:"Magnet"}
+{name:"Classic Logo Tee",type:"tees",price:22,grad:"linear-gradient(135deg,#C4291C,#A31F15)",design:"Cat's Meow",sub:"Classic Tee",sizes:true,img:HF+'hf_20260725_085341_7e89e41a-d960-444d-84b3-f461b6514bde_min.webp'},
+{name:"Rescue Squad Tee",type:"tees",price:25,grad:"linear-gradient(135deg,#D4A017,#B8890F)",design:"Rescue Squad",sub:"Premium Tee",sizes:true,img:HF+'hf_20260725_085341_771b6170-c84d-4ecf-a227-5fa203f34941_min.webp'},
+{name:"Adopt Don't Shop Tee",type:"tees",price:22,grad:"linear-gradient(135deg,#2E7D32,#1B5E20)",design:"Adopt Don't Shop",sub:"Unisex Tee",sizes:true,img:HF+'hf_20260725_085338_b4874ae5-9e31-4527-80d8-56eb432024f7_min.webp'},
+{name:"PNW Cat Lover Tee",type:"tees",price:28,grad:"linear-gradient(135deg,#8B2500,#C4291C)",design:"PNW Cat Lover",sub:"Limited Edition",sizes:true,img:HF+'hf_20260725_085338_00618bb3-0d85-4b4f-967a-9a7a9972c65d_min.webp'},
+{name:"Oregon Coast Crew",type:"sweats",price:45,grad:"linear-gradient(135deg,#6A1B9A,#9C27B0)",design:"Oregon Coast",sub:"Purple Crewneck",sizes:true,img:HF+'hf_20260725_085344_9636756b-cc7a-4ae5-a2f2-f85d45310df2_min.webp'},
+{name:"Cat's Meow Hoodie",type:"sweats",price:52,grad:"linear-gradient(135deg,#1E293B,#334155)",design:"Cat's Meow",sub:"Pullover Hoodie",sizes:true,img:HF+'hf_20260725_085344_037063d3-54d0-44b1-a3f2-6d164e607d2b_min.webp'},
+{name:"Paw Print Sticker",type:"stickers",price:3,grad:"linear-gradient(135deg,#D4A017,#E8B830)",design:"Paw Print",sub:"Vinyl Sticker",img:HF+'hf_20260725_085323_ae286697-0edb-40a1-bef5-af5cb543d95f_min.webp'},
+{name:"Logo Sticker",type:"stickers",price:4,grad:"linear-gradient(135deg,#C4291C,#E04A3E)",design:"Logo",sub:"Die-Cut Sticker",img:HF+'hf_20260725_085323_7abbc0bf-3d32-4345-a303-eb4a6fc008af_min.webp'},
+{name:"Adopt Don't Shop Sticker",type:"stickers",price:5,grad:"linear-gradient(135deg,#D4A017,#C4291C)",design:"Adopt Don't Shop",sub:"Bumper Sticker",img:HF+'hf_20260725_085331_1e3fb5ac-573a-46bd-a926-cf2f48cdc8f1_min.webp'},
+{name:"Logo Magnet",type:"magnets",price:6,grad:"linear-gradient(135deg,#C4291C,#D4A017)",design:"Cat's Meow",sub:"Fridge Magnet",img:HF+'hf_20260725_085347_aaa3abfd-cb05-4eb2-ac0b-9ad49fcaf4e4_min.webp'},
+{name:"My Cat Runs This House",type:"magnets",price:8,grad:"linear-gradient(135deg,#D4A017,#E8B830)",design:"My Cat Runs\nThis House",sub:"Magnet",img:HF+'hf_20260725_085347_d9ace1c8-058f-4ced-96c3-e7fd640d31df_min.webp'}
 ];
 var shopFilter='all';
 function renderShop(){
@@ -993,7 +1015,8 @@ function renderShop(){
   document.getElementById('shop-grid').innerHTML=items.map(function(p){
     var sizeHtml='';
     if(p.sizes)sizeHtml='<div class="size-selector">'+['S','M','L','XL','2XL','3XL'].map(function(s,i){return '<button class="size-btn'+(i===2?' active':'')+'" type="button">'+s+'</button>'}).join('')+'</div>';
-    return '<div class="product-card" data-product-idx="'+PRODUCTS.indexOf(p)+'" style="cursor:pointer"><div class="product-img" style="background:'+p.grad+'"><span class="design-text">'+p.design.replace('\n','<br>')+'</span><span class="design-sub">'+p.sub+'</span><svg class="product-cat" viewBox="0 0 60 60" fill="rgba(255,255,255,.35)" aria-hidden="true"><ellipse cx="30" cy="40" rx="16" ry="18"/><circle cx="30" cy="20" r="12"/><polygon points="21,16 15,2 27,12"/><polygon points="39,16 45,2 33,12"/></svg></div><div class="product-body"><h3>'+p.name+'</h3><span class="product-price">$'+p.price+'</span>'+sizeHtml+'<button class="btn btn--pri btn--sm btn--pill" style="width:100%;justify-content:center">View Details</button></div></div>';
+    var imgHtml=p.img?'<img src="'+p.img+'" alt="'+p.name+'" loading="lazy">':'';
+    return '<div class="product-card" data-product-idx="'+PRODUCTS.indexOf(p)+'" style="cursor:pointer"><div class="product-img" style="background:'+p.grad+'">'+imgHtml+'<div class="design-overlay"><span class="design-text">'+p.design.replace('\n','<br>')+'</span><span class="design-sub">'+p.sub+'</span></div></div><div class="product-body"><h3>'+p.name+'</h3><span class="product-price">$'+p.price+'</span>'+sizeHtml+'<button class="btn btn--pri btn--sm btn--pill" style="width:100%;justify-content:center">View Details</button></div></div>';
   }).join('');
 }
 document.getElementById('shop-tabs').addEventListener('click',function(e){
@@ -1101,8 +1124,10 @@ var DESCS={
   magnets:'Heavy-duty fridge magnet that reminds you every day: rescue cats are the best cats.'
 };
 function openProduct(p){
-  document.getElementById('pd-image').style.background=p.grad;
-  document.getElementById('pd-image').innerHTML='<span class="design-text">'+p.design.replace('\n','<br>')+'</span><span class="design-sub">'+p.sub+'</span><svg class="product-cat" viewBox="0 0 60 60" fill="rgba(255,255,255,.35)" style="position:absolute;bottom:8px;right:8px;width:40px"><ellipse cx="30" cy="40" rx="16" ry="18"/><circle cx="30" cy="20" r="12"/><polygon points="21,16 15,2 27,12"/><polygon points="39,16 45,2 33,12"/></svg>';
+  var pdImg=document.getElementById('pd-image');
+  pdImg.style.background=p.grad;
+  var pdImgHtml=p.img?'<img src="'+p.img+'" alt="'+p.name+'" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0">':'';
+  pdImg.innerHTML=pdImgHtml+'<div class="design-overlay"><span class="design-text">'+p.design.replace('\n','<br>')+'</span><span class="design-sub">'+p.sub+'</span></div>';
   document.getElementById('pd-name').textContent=p.name;
   document.getElementById('pd-price').textContent='$'+p.price;
   document.getElementById('pd-desc').textContent=DESCS[p.type]||'Show your support for Cat\'s Meow Cat Rescue!';
