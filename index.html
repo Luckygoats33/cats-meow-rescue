@@ -98,10 +98,11 @@ input,select,textarea{font-family:inherit;font-size:1rem}
 
 /* Hero */
 .hero{min-height:100vh;padding:6rem 0 3rem;position:relative;overflow:hidden;display:flex;flex-direction:column;justify-content:flex-end;
-  background:#120A04;color:#fff}
+  background:#3A1A08;color:#fff}
+.hero h1,.hero-subtitle,.hero-eyebrow{text-shadow:0 2px 16px rgba(0,0,0,.5),0 1px 3px rgba(0,0,0,.3)}
 .hero-video{position:absolute;inset:0;z-index:0}
 .hero-video video{width:100%;height:100%;object-fit:cover}
-.hero-overlay{position:absolute;inset:0;z-index:1;background:linear-gradient(180deg,rgba(18,10,4,.3) 0%,rgba(18,10,4,0) 25%,rgba(18,10,4,0) 50%,rgba(18,10,4,.55) 75%,rgba(18,10,4,.85) 100%)}
+.hero-overlay{position:absolute;inset:0;z-index:1;background:linear-gradient(180deg,rgba(18,10,4,.2) 0%,rgba(18,10,4,0) 20%,rgba(18,10,4,0) 55%,rgba(18,10,4,.4) 78%,rgba(18,10,4,.7) 100%)}
 .hero::before,.hero::after{content:'';position:absolute;border-radius:50%;filter:blur(120px);opacity:.2;pointer-events:none}
 .hero::before{width:500px;height:500px;background:#D4A017;top:-100px;right:-60px;animation:heroBlob 25s ease-in-out infinite}
 .hero::after{width:400px;height:400px;background:#B22222;bottom:-80px;left:-40px;animation:heroBlob 25s ease-in-out infinite reverse}
@@ -114,12 +115,13 @@ input,select,textarea{font-family:inherit;font-size:1rem}
 .hero h1{margin-bottom:.5rem}
 .hero-subtitle{font-size:clamp(1rem,1.3vw,1.15rem);opacity:.8;max-width:36rem;margin-bottom:2.5rem;line-height:1.7}
 .hero-folds{display:grid;grid-template-columns:repeat(3,1fr);gap:1.25rem;margin-bottom:2.5rem}
-.hero-fold{background:rgba(255,255,255,.1);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border:1px solid rgba(255,255,255,.15);border-radius:var(--radius);padding:1.75rem 1.5rem;text-align:center;cursor:pointer;transition:all .35s ease;position:relative;overflow:hidden}
-.hero-fold:hover{background:rgba(255,255,255,.18);transform:translateY(-6px);box-shadow:0 20px 50px rgba(0,0,0,.15)}
-.hero-fold:hover .fold-cat{transform:scale(1.08)}
-.hero-fold:hover .cat-eye-lid{animation:catBlink .3s ease}
-.hero-fold:hover .cat-tail{animation:tailWag .6s ease infinite}
-.hero-fold:hover .fold-paws{opacity:1;transform:translateY(0)}
+.hero-fold{background:rgba(255,255,255,.1);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border:1px solid rgba(255,255,255,.15);border-radius:var(--radius);padding:1.75rem 1.5rem;text-align:center;cursor:default;transition:all .35s ease;position:relative;overflow:hidden;pointer-events:none}
+.hero-fold .btn{pointer-events:auto;cursor:pointer}
+.hero-fold:hover{background:rgba(255,255,255,.18)}
+.hero-fold:hover .fold-cat{transform:none}
+.hero-fold:hover .cat-eye-lid{animation:none}
+.hero-fold:hover .cat-tail{animation:none}
+.hero-fold:hover .fold-paws{opacity:0}
 .fold-cat{width:120px;height:120px;margin:0 auto 1rem;transition:transform .35s ease}
 .fold-paws{position:absolute;bottom:8px;left:50%;transform:translateX(-50%) translateY(8px);opacity:0;transition:all .4s ease .1s;display:flex;gap:6px}
 .fold-paws svg{width:18px;height:18px}
@@ -166,10 +168,8 @@ input,select,textarea{font-family:inherit;font-size:1rem}
 
 /* Fur Babies Gallery */
 .fur-gallery{display:grid;grid-template-columns:repeat(4,1fr);gap:1rem;margin-top:2rem}
-.fur-card{border-radius:var(--radius);overflow:hidden;position:relative;aspect-ratio:3/4;cursor:pointer;transition:transform .3s,box-shadow .3s}
-.fur-card:hover{transform:translateY(-4px);box-shadow:0 12px 32px rgba(0,0,0,.15)}
-.fur-card img{width:100%;height:100%;object-fit:cover;transition:transform .4s}
-.fur-card:hover img{transform:scale(1.05)}
+.fur-card{border-radius:var(--radius);overflow:hidden;position:relative;aspect-ratio:3/4;cursor:default;pointer-events:none}
+.fur-card img{width:100%;height:100%;object-fit:cover}
 .fur-card .fur-name{position:absolute;bottom:0;left:0;right:0;padding:1.5rem 1rem .75rem;background:linear-gradient(transparent,rgba(0,0,0,.7));color:#fff;font-weight:700;font-size:.95rem}
 .fur-card .fur-tag{position:absolute;top:.75rem;left:.75rem;background:var(--pri);color:#fff;font-size:.65rem;font-weight:700;text-transform:uppercase;letter-spacing:.08em;padding:.25rem .6rem;border-radius:var(--radius-pill)}
 @media(max-width:960px){.fur-gallery{grid-template-columns:repeat(2,1fr)}}
@@ -332,7 +332,7 @@ input,select,textarea{font-family:inherit;font-size:1rem}
 .order-success p{font-size:.9rem;color:var(--stone);line-height:1.6;margin-bottom:1rem}
 
 /* Toast */
-.cart-toast{position:fixed;bottom:2rem;left:50%;transform:translateX(-50%) translateY(120%);background:var(--ink);color:var(--ground);padding:.75rem 1.5rem;border-radius:var(--radius-pill);font-size:.85rem;font-weight:600;z-index:300;box-shadow:0 8px 24px rgba(0,0,0,.2);transition:transform .35s cubic-bezier(.4,0,.2,1);display:flex;align-items:center;gap:.5rem}
+.cart-toast{position:fixed;bottom:5.5rem;left:50%;transform:translateX(-50%) translateY(120%);background:var(--ink);color:var(--ground);padding:.75rem 1.5rem;border-radius:var(--radius-pill);font-size:.85rem;font-weight:600;z-index:300;box-shadow:0 8px 24px rgba(0,0,0,.2);transition:transform .35s cubic-bezier(.4,0,.2,1);display:flex;align-items:center;gap:.5rem}
 .cart-toast.show{transform:translateX(-50%) translateY(0)}
 .cart-toast svg{width:18px;height:18px;stroke:currentColor;fill:none;stroke-width:2}
 
@@ -459,13 +459,17 @@ img,video,svg,iframe{max-width:100%;height:auto}
 
 /* Responsive — Tablet (max 960px) */
 @media(max-width:960px){
+  .site-header{background:#fff!important;border-bottom:1px solid #E8DDD2!important}
+  .site-header .logo,.main-nav a,.nav-toggle span{color:#2D1810}
+  .nav-toggle span{background:#2D1810!important}
+  .cart-toggle svg{stroke:#2D1810!important}
   .main-nav,.header-cta{display:none}
   .nav-toggle{display:flex}
   .mobile-bottom-bar{display:flex}
   body{padding-bottom:72px}
   .hero{min-height:85vh;padding:5rem 0 3rem}
   .hero-video video{object-position:center 30%}
-  .hero-overlay{background:linear-gradient(180deg,rgba(18,10,4,.25) 0%,rgba(18,10,4,0) 20%,rgba(18,10,4,0) 55%,rgba(18,10,4,.5) 78%,rgba(18,10,4,.8) 100%)}
+  .hero-overlay{background:linear-gradient(180deg,rgba(18,10,4,.15) 0%,rgba(18,10,4,0) 20%,rgba(18,10,4,0) 60%,rgba(18,10,4,.35) 80%,rgba(18,10,4,.65) 100%)}
   .hero-folds{grid-template-columns:1fr}
   .fold-cat{width:80px;height:80px}
   .mission-inner{grid-template-columns:1fr;gap:1.5rem}
@@ -563,13 +567,13 @@ img,video,svg,iframe{max-width:100%;height:auto}
     <div>
       <div class="hero-eyebrow">Portland, Oregon &middot; 501(c)(3) Nonprofit</div>
       <h1 class="heading-xl">Meet Your Next<br>Best Friend</h1>
-      <p class="hero-subtitle">A foster-based, all-volunteer rescue finding forever homes for 220+ cats and kittens across the Portland metro area.</p>
+      <p class="hero-subtitle">A foster-based, all-volunteer rescue. 388+ cats rescued to date across the Portland metro area.</p>
       <div class="hero-news" style="margin-bottom:0"><span class="news-badge">Upcoming</span> Summer Jamboree Aug 15 &middot; Bingo Night Oct 17</div>
     </div>
 
     <div class="hero-folds">
       <!-- Fold 1: Adopt -->
-      <a href="#cats" class="hero-fold" style="text-decoration:none;color:#fff">
+      <div class="hero-fold" style="color:#fff">
         <svg class="fold-cat" viewBox="0 0 140 140" aria-hidden="true">
           <ellipse cx="70" cy="95" rx="38" ry="40" fill="rgba(255,255,255,.2)"/>
           <circle cx="70" cy="52" r="30" fill="rgba(255,255,255,.25)"/>
@@ -601,13 +605,13 @@ img,video,svg,iframe{max-width:100%;height:auto}
           <circle cx="70" cy="75" r="1.5" fill="rgba(255,255,255,.1)" style="animation:purr 2s ease-in-out infinite"/>
         </svg>
         <h3>Meet Your BFF</h3>
-        <p>220+ adorable cats &amp; kittens waiting for their forever home. Find your perfect match!</p>
+        <p>Adorable cats &amp; kittens waiting for their forever home. Find your perfect match!</p>
         <span class="btn btn--pill">Browse Cats</span>
         <div class="fold-paws"><svg viewBox="0 0 60 50" fill="#fff"><ellipse cx="30" cy="35" rx="14" ry="12"/><circle cx="15" cy="18" r="7"/><circle cx="45" cy="18" r="7"/><circle cx="8" cy="30" r="6"/><circle cx="52" cy="30" r="6"/></svg><svg viewBox="0 0 60 50" fill="#fff" style="transform:rotate(-15deg)"><ellipse cx="30" cy="35" rx="14" ry="12"/><circle cx="15" cy="18" r="7"/><circle cx="45" cy="18" r="7"/><circle cx="8" cy="30" r="6"/><circle cx="52" cy="30" r="6"/></svg></div>
-      </a>
+      </div>
 
       <!-- Fold 2: Donate -->
-      <a href="#help" class="hero-fold" style="text-decoration:none;color:#fff">
+      <div class="hero-fold" style="color:#fff">
         <svg class="fold-cat" viewBox="0 0 140 140" aria-hidden="true">
           <ellipse cx="70" cy="95" rx="38" ry="40" fill="rgba(255,255,255,.2)"/>
           <circle cx="70" cy="52" r="30" fill="rgba(255,255,255,.25)"/>
@@ -641,10 +645,10 @@ img,video,svg,iframe{max-width:100%;height:auto}
         <p>Every dollar goes directly to medical care, food, and shelter for cats in need. Tax-deductible!</p>
         <span class="btn btn--pill">Donate Now</span>
         <div class="fold-paws"><svg viewBox="0 0 60 50" fill="#fff"><ellipse cx="30" cy="35" rx="14" ry="12"/><circle cx="15" cy="18" r="7"/><circle cx="45" cy="18" r="7"/><circle cx="8" cy="30" r="6"/><circle cx="52" cy="30" r="6"/></svg><svg viewBox="0 0 60 50" fill="#fff" style="transform:rotate(12deg)"><ellipse cx="30" cy="35" rx="14" ry="12"/><circle cx="15" cy="18" r="7"/><circle cx="45" cy="18" r="7"/><circle cx="8" cy="30" r="6"/><circle cx="52" cy="30" r="6"/></svg></div>
-      </a>
+      </div>
 
       <!-- Fold 3: Events -->
-      <a href="#events" class="hero-fold" style="text-decoration:none;color:#fff">
+      <div class="hero-fold" style="color:#fff">
         <svg class="fold-cat" viewBox="0 0 140 140" aria-hidden="true">
           <ellipse cx="70" cy="95" rx="38" ry="40" fill="rgba(255,255,255,.2)"/>
           <circle cx="70" cy="52" r="30" fill="rgba(255,255,255,.25)"/>
@@ -681,7 +685,7 @@ img,video,svg,iframe{max-width:100%;height:auto}
         <p>Summer Jamboree, Bingo Night, adoption events &amp; more. Bring the family!</p>
         <span class="btn btn--pill">See Events</span>
         <div class="fold-paws"><svg viewBox="0 0 60 50" fill="#fff"><ellipse cx="30" cy="35" rx="14" ry="12"/><circle cx="15" cy="18" r="7"/><circle cx="45" cy="18" r="7"/><circle cx="8" cy="30" r="6"/><circle cx="52" cy="30" r="6"/></svg><svg viewBox="0 0 60 50" fill="#fff" style="transform:rotate(-10deg)"><ellipse cx="30" cy="35" rx="14" ry="12"/><circle cx="15" cy="18" r="7"/><circle cx="45" cy="18" r="7"/><circle cx="8" cy="30" r="6"/><circle cx="52" cy="30" r="6"/></svg></div>
-      </a>
+      </div>
     </div>
 
   </div>
@@ -692,8 +696,8 @@ img,video,svg,iframe{max-width:100%;height:auto}
 <section class="mission">
   <div class="mission-inner">
     <div class="mission-block">
-      <div class="mission-stat">220+</div>
-      <div class="mission-label">Cats in Our Care</div>
+      <div class="mission-stat">388+</div>
+      <div class="mission-label">Cats Rescued to Date</div>
       <p class="mission-text">From kittens to golden seniors, every cat lives in a real foster home with a dedicated family — never in a cage.</p>
     </div>
     <div class="mission-divider"></div>
@@ -750,9 +754,9 @@ img,video,svg,iframe{max-width:100%;height:auto}
 <!-- Fur Babies Gallery -->
 <section class="section" style="background:var(--ground)">
   <div class="container">
-    <span class="kicker reveal">Our Fur Babies</span>
-    <h2 class="heading-lg reveal">Cats Looking for Love</h2>
-    <p class="body-lg reveal" style="max-width:32rem;margin-top:.5rem">Every one of these faces has a story. Some were found on the streets, others surrendered. All of them deserve a warm lap and a forever home.</p>
+    <span class="kicker reveal">Adopted Cats This Year</span>
+    <h2 class="heading-lg reveal">388+ Cats Rescued to Date</h2>
+    <p class="body-lg reveal" style="max-width:32rem;margin-top:.5rem">Every one of these faces found their forever home through Cat's Meow. From the streets to warm laps — these are our happy endings.</p>
     <div class="fur-gallery reveal">
       <div class="fur-card">
         <span class="fur-tag">Kitten</span>
