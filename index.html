@@ -1,6 +1,17 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Cat's Meow Cat Rescue — Milwaukie, Oregon</title>
+<title>Cat's Meow Cat Rescue — Milwaukie, Oregon | Adopt a Cat Today</title>
+<meta name="description" content="Cat's Meow Cat Rescue is a 501(c)(3) nonprofit in Milwaukie & Gladstone, Oregon. Adopt cats and kittens, donate, volunteer, or shop rescue merch. Every cat deserves a loving home.">
+<meta name="keywords" content="cat rescue, cat adoption, Milwaukie Oregon, Gladstone Oregon, adopt a cat, kitten adoption, 501c3 nonprofit, cat shelter, rescue cats Portland, PetSmart charities partner">
+<meta property="og:title" content="Cat's Meow Cat Rescue — Milwaukie, Oregon">
+<meta property="og:description" content="Adopt your next best friend. 501(c)(3) cat rescue in Milwaukie & Gladstone, Oregon. 31 cats and kittens available now.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://luckygoats33.github.io/cats-meow-rescue/">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="canonical" href="https://luckygoats33.github.io/cats-meow-rescue/">
+<meta name="robots" content="index, follow">
+<meta name="theme-color" content="#B22222">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"NonprofitOrganization","name":"Cat's Meow Cat Rescue","description":"501(c)(3) cat rescue in Milwaukie & Gladstone, Oregon. Adopt cats and kittens, donate, volunteer, or shop rescue merch.","url":"https://luckygoats33.github.io/cats-meow-rescue/","email":"catsmeowcatrescue@gmail.com","areaServed":{"@type":"City","name":"Milwaukie, Oregon"},"nonprofitStatus":"501c3","sameAs":["https://www.petfinder.com/member/us/or/gladstone/cats-meow-cat-rescue-or393/"]}</script>
 <style>
 :root{
   --pri:#B22222;--pri-h:#8B1A1A;--pri-l:#D43030;
@@ -69,24 +80,28 @@ input,select,textarea{font-family:inherit;font-size:1rem}
 .main-nav a{font-size:.82rem;font-weight:600;color:var(--header-ink);transition:color .2s;letter-spacing:.03em;text-transform:uppercase}
 .main-nav a:hover{color:var(--pri)}
 .header-cta{margin-left:.5rem}
-.nav-toggle{display:none;flex-direction:column;gap:4px;padding:10px;margin-left:auto;z-index:110;width:48px;height:48px;justify-content:center;align-items:center}
-.nav-toggle span{display:block;width:22px;height:2px;background:var(--header-ink);border-radius:2px;transition:all .3s}
-.nav-toggle.is-open span:nth-child(1){transform:rotate(45deg) translate(4px,4px)}
-.nav-toggle.is-open span:nth-child(2){opacity:0}
-.nav-toggle.is-open span:nth-child(3){transform:rotate(-45deg) translate(4px,-4px)}
-.mobile-nav{position:fixed;inset:0;background:#fff;z-index:95;display:flex;flex-direction:column;align-items:center;justify-content:center;opacity:0;visibility:hidden;transition:all .3s}
-.mobile-nav.is-open{opacity:1;visibility:visible}
-.mobile-nav nav{display:flex;flex-direction:column;align-items:center;gap:.5rem;width:100%;max-width:320px}
-.mobile-nav nav a{font-size:1.1rem;font-weight:600;color:#2D1810;padding:14px 0;min-height:48px;display:flex;align-items:center;width:100%;justify-content:center;border-bottom:1px solid #E8DDD2}
+.nav-toggle{display:none;flex-direction:column;gap:5px;padding:10px;margin-left:auto;z-index:110;width:48px;height:48px;justify-content:center;align-items:center}
+.nav-toggle span{display:block;height:2px;background:var(--header-ink);border-radius:2px;transition:all .35s cubic-bezier(.4,0,.2,1)}
+.nav-toggle span:nth-child(1){width:24px}
+.nav-toggle span:nth-child(2){width:18px;margin-left:auto}
+.nav-toggle span:nth-child(3){width:22px}
+.nav-toggle.is-open span:nth-child(1){width:22px;transform:rotate(45deg) translate(5px,5px)}
+.nav-toggle.is-open span:nth-child(2){opacity:0;width:0}
+.nav-toggle.is-open span:nth-child(3){width:22px;transform:rotate(-45deg) translate(5px,-5px)}
+.mobile-nav{position:fixed;inset:0;background:var(--surface);z-index:95;display:flex;flex-direction:column;align-items:center;justify-content:center;opacity:0;visibility:hidden;transition:all .35s cubic-bezier(.4,0,.2,1);transform:translateY(-12px)}
+.mobile-nav.is-open{opacity:1;visibility:visible;transform:translateY(0)}
+.mobile-nav nav{display:flex;flex-direction:column;align-items:center;gap:0;width:100%;max-width:320px}
+.mobile-nav nav a{font-family:var(--serif);font-size:1.4rem;font-weight:700;color:var(--ink);padding:18px 0;min-height:52px;display:flex;align-items:center;width:100%;justify-content:center;border-bottom:1px solid var(--mist);letter-spacing:-.01em;transition:color .2s}
 .mobile-nav nav a:last-child{border-bottom:none}
-.mobile-nav .btn--rose{margin-top:1rem;width:100%;justify-content:center;min-height:48px;font-size:1rem}
+.mobile-nav nav a:hover,.mobile-nav nav a:active{color:var(--pri)}
+.mobile-nav .btn--rose{margin-top:1.5rem;width:100%;justify-content:center;min-height:52px;font-size:1.05rem;border-radius:var(--radius-pill)}
 
 /* Hero */
 .hero{min-height:100vh;padding:6rem 0 3rem;position:relative;overflow:hidden;display:flex;flex-direction:column;justify-content:flex-end;
   background:#120A04;color:#fff}
 .hero-video{position:absolute;inset:0;z-index:0}
 .hero-video video{width:100%;height:100%;object-fit:cover}
-.hero-overlay{position:absolute;inset:0;z-index:1;background:linear-gradient(180deg,rgba(18,10,4,.4) 0%,rgba(18,10,4,0) 30%,rgba(18,10,4,0) 45%,rgba(18,10,4,.7) 75%,rgba(18,10,4,.9) 100%)}
+.hero-overlay{position:absolute;inset:0;z-index:1;background:linear-gradient(180deg,rgba(18,10,4,.3) 0%,rgba(18,10,4,0) 25%,rgba(18,10,4,0) 50%,rgba(18,10,4,.55) 75%,rgba(18,10,4,.85) 100%)}
 .hero::before,.hero::after{content:'';position:absolute;border-radius:50%;filter:blur(120px);opacity:.2;pointer-events:none}
 .hero::before{width:500px;height:500px;background:#D4A017;top:-100px;right:-60px;animation:heroBlob 25s ease-in-out infinite}
 .hero::after{width:400px;height:400px;background:#B22222;bottom:-80px;left:-40px;animation:heroBlob 25s ease-in-out infinite reverse}
@@ -438,11 +453,19 @@ html,body{overflow-x:hidden;max-width:100vw}
 img,video,svg,iframe{max-width:100%;height:auto}
 .btn{min-height:44px}
 
+/* Mobile Sticky Bottom Bar */
+.mobile-bottom-bar{position:fixed;bottom:0;left:0;right:0;z-index:100;display:none;background:var(--surface);padding:10px 16px;gap:10px;border-top:1px solid var(--mist);box-shadow:0 -4px 20px rgba(0,0,0,.1);transition:opacity .3s}
+.mobile-bottom-bar .btn{flex:1;text-align:center;justify-content:center;font-size:.9rem;font-weight:700;min-height:48px;border-radius:var(--radius-pill)}
+
 /* Responsive — Tablet (max 960px) */
 @media(max-width:960px){
   .main-nav,.header-cta{display:none}
   .nav-toggle{display:flex}
-  .hero{min-height:auto;padding:5rem 0 3rem}
+  .mobile-bottom-bar{display:flex}
+  body{padding-bottom:72px}
+  .hero{min-height:85vh;padding:5rem 0 3rem}
+  .hero-video video{object-position:center 30%}
+  .hero-overlay{background:linear-gradient(180deg,rgba(18,10,4,.25) 0%,rgba(18,10,4,0) 20%,rgba(18,10,4,0) 55%,rgba(18,10,4,.5) 78%,rgba(18,10,4,.8) 100%)}
   .hero-folds{grid-template-columns:1fr}
   .fold-cat{width:80px;height:80px}
   .mission-inner{grid-template-columns:1fr;gap:1.5rem}
@@ -1032,6 +1055,12 @@ img,video,svg,iframe{max-width:100%;height:auto}
   </div>
 </footer>
 
+<!-- Mobile Sticky Bottom Bar -->
+<div class="mobile-bottom-bar" id="mobile-bottom-bar">
+  <a href="#cats" class="btn btn--pri">Adopt a Cat</a>
+  <a href="#help" class="btn btn--gold">Donate</a>
+</div>
+
 <script>
 (function(){
 /* ── Cat Data ── */
@@ -1244,7 +1273,11 @@ mob.querySelectorAll('a').forEach(function(a){a.addEventListener('click',functio
 })});
 
 /* ── Header scroll ── */
-window.addEventListener('scroll',function(){document.getElementById('site-header').classList.toggle('scrolled',window.scrollY>30)},{passive:true});
+window.addEventListener('scroll',function(){
+  document.getElementById('site-header').classList.toggle('scrolled',window.scrollY>30);
+  var bar=document.getElementById('mobile-bottom-bar');
+  if(bar){var footer=document.querySelector('.site-footer');if(footer){var ft=footer.getBoundingClientRect().top;bar.style.opacity=ft<window.innerHeight?'0':'1';bar.style.pointerEvents=ft<window.innerHeight?'none':'auto'}}
+},{passive:true});
 
 /* ── Scroll reveal ── */
 if('IntersectionObserver' in window){
