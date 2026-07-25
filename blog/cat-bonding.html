@@ -35,6 +35,8 @@ img{max-width:100%;height:auto;display:block}
 .main-nav a{font-size:.82rem;font-weight:600;color:var(--ink);transition:color .2s;letter-spacing:.03em;text-transform:uppercase;text-decoration:none}
 .main-nav a:hover{color:var(--pri)}
 .header-cta{margin-left:.5rem}
+.cart-toggle{position:relative;width:44px;height:44px;display:grid;place-items:center;flex-shrink:0;text-decoration:none}
+.cart-toggle svg{width:22px;height:22px;stroke:var(--ink);fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
 .btn-nav{display:inline-flex;align-items:center;gap:.5rem;padding:.45rem 1rem;border-radius:999px;font-weight:600;font-size:.8rem;transition:all .2s;white-space:nowrap;text-decoration:none}
 .btn-nav--rose{background:var(--pri);color:#fff}.btn-nav--rose:hover{background:var(--pri-h)}
 button{font-family:inherit;cursor:pointer;border:none;background:none;color:inherit}
@@ -115,6 +117,7 @@ button{font-family:inherit;cursor:pointer;border:none;background:none;color:inhe
     </a>
     <nav class="main-nav"><a href="../index.html#cats">Adopt</a><div class="nav-dropdown"><a href="../index.html#help">Get Involved</a><div class="nav-dropdown-menu"><a href="../index.html#help">Donate</a><a href="../index.html#apply">Foster a Cat</a><a href="../index.html#apply">Volunteer</a><a href="../index.html#events">Events</a></div></div><a href="../index.html#shop">Shop</a><div class="nav-dropdown"><a href="../blog.html">Blog</a><div class="nav-dropdown-menu"><a href="../blog.html">All Posts</a><a href="../blog.html#adoption-tips">Adoption Tips</a><a href="../blog.html#cat-health">Cat Health</a><a href="../blog.html#cat-behavior">Cat Behavior</a><a href="../blog.html#fostering">Fostering</a><a href="../blog.html#community">Community</a><a href="../blog.html#cat-care">Cat Care</a></div></div><a href="../faq.html">FAQ</a><a href="../index.html#contact-us">Contact</a></nav>
     <a href="../index.html#help" class="btn-nav btn-nav--rose header-cta">Donate</a>
+    <a href="../index.html#shop" class="cart-toggle" aria-label="Shop"><svg viewBox="0 0 24 24"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/></svg></a>
     <button class="nav-toggle" id="nav-toggle" aria-label="Open menu" aria-expanded="false"><span></span><span></span><span></span></button>
   </div>
 </header>
