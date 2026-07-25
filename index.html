@@ -657,6 +657,43 @@ img,video,svg,iframe{max-width:100%;height:auto}
   .heading-xl{font-size:clamp(1.8rem,9vw,2.4rem)}
   .hero-fold p{font-size:.8rem}
 }
+
+/* Paw Print Cursor Trail */
+.paw-trail{position:fixed;pointer-events:none;z-index:9999;width:18px;height:18px;opacity:.5;animation:pawFade 1s ease forwards}
+.paw-trail svg{width:100%;height:100%}
+@keyframes pawFade{0%{opacity:.5;transform:scale(1) rotate(var(--paw-rot,0deg))}100%{opacity:0;transform:scale(.4) rotate(var(--paw-rot,0deg)) translateY(8px)}}
+@media(max-width:960px){.paw-trail{display:none}}
+
+/* Confetti Celebration */
+.confetti-stage{position:fixed;inset:0;z-index:300;pointer-events:none;overflow:hidden}
+.confetti-piece{position:absolute;top:-20px;width:12px;height:12px;animation:confettiFall var(--fall-dur,3s) var(--fall-delay,0s) ease-out forwards}
+@keyframes confettiFall{0%{transform:translateY(0) rotate(0deg) scale(1);opacity:1}80%{opacity:1}100%{transform:translateY(100vh) rotate(var(--spin,720deg)) scale(.5);opacity:0}}
+.confetti-piece.paw svg{width:12px;height:12px}
+.confetti-piece.heart{font-size:14px;line-height:1}
+
+/* Purrfect Match Quiz */
+.quiz-section{background:linear-gradient(135deg,#FFF0E6 0%,#FFE8F0 50%,#F0E8FF 100%)}
+.quiz-wrap{max-width:600px;margin:0 auto;text-align:center}
+.quiz-card{background:var(--surface);border-radius:var(--radius);padding:2.5rem 2rem;box-shadow:0 4px 20px rgba(0,0,0,.06);position:relative;overflow:hidden}
+.quiz-progress{display:flex;gap:6px;justify-content:center;margin-bottom:2rem}
+.quiz-dot{width:10px;height:10px;border-radius:50%;background:var(--mist);transition:all .3s}
+.quiz-dot.active{background:var(--pri);transform:scale(1.3)}
+.quiz-dot.done{background:var(--gold)}
+.quiz-q{font-size:1.15rem;font-weight:700;color:var(--ink);margin-bottom:.5rem}
+.quiz-sub{font-size:.82rem;color:var(--stone);margin-bottom:1.5rem}
+.quiz-options{display:flex;flex-direction:column;gap:.6rem}
+.quiz-opt{display:flex;align-items:center;gap:.75rem;padding:.85rem 1.25rem;border:2px solid var(--mist);border-radius:var(--radius-sm);cursor:pointer;transition:all .2s;font-weight:500;font-size:.9rem;text-align:left}
+.quiz-opt:hover{border-color:var(--pri);background:rgba(178,34,34,.04)}
+.quiz-opt.selected{border-color:var(--pri);background:rgba(178,34,34,.08)}
+.quiz-opt-emoji{font-size:1.4rem;flex-shrink:0}
+.quiz-nav{display:flex;justify-content:space-between;margin-top:1.5rem}
+.quiz-result{text-align:center}
+.quiz-result-emoji{font-size:3.5rem;margin-bottom:.75rem;display:block}
+.quiz-result-type{font-size:1.6rem;font-weight:800;color:var(--pri);margin-bottom:.25rem}
+.quiz-result-desc{font-size:.9rem;color:var(--stone);line-height:1.6;max-width:28rem;margin:0 auto 1.5rem}
+.quiz-result-cats{display:flex;gap:.75rem;justify-content:center;flex-wrap:wrap;margin-bottom:1.5rem}
+.quiz-result-tag{padding:.35rem .85rem;border-radius:var(--radius-pill);font-size:.75rem;font-weight:600;background:rgba(178,34,34,.08);color:var(--pri)}
+.quiz-restart{font-size:.82rem;color:var(--stone);cursor:pointer;text-decoration:underline;border:none;background:none;margin-top:.5rem}
 </style>
 </head>
 <body>
@@ -860,6 +897,23 @@ img,video,svg,iframe{max-width:100%;height:auto}
     </div>
   </div>
 </section>
+
+<!-- Purrfect Match Quiz -->
+<section class="section quiz-section" id="quiz">
+  <div class="container">
+    <div class="quiz-wrap reveal">
+      <span class="kicker">Find Your Purrfect Match</span>
+      <h2 class="heading-lg" style="margin-bottom:1.5rem">What Kind of Cat Is Right for You?</h2>
+      <div class="quiz-card" id="quiz-card">
+        <div class="quiz-progress" id="quiz-progress"></div>
+        <div id="quiz-content"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Paw Divider -->
+<div class="paw-divider" aria-hidden="true"><svg viewBox="0 0 60 50" width="22" height="18" fill="var(--gold)" style="opacity:.2;transform:rotate(20deg)"><ellipse cx="30" cy="35" rx="14" ry="12"/><circle cx="15" cy="18" r="7"/><circle cx="45" cy="18" r="7"/><circle cx="8" cy="30" r="6"/><circle cx="52" cy="30" r="6"/></svg><svg viewBox="0 0 60 50" width="28" height="24" fill="var(--pri)" style="opacity:.25"><ellipse cx="30" cy="35" rx="14" ry="12"/><circle cx="15" cy="18" r="7"/><circle cx="45" cy="18" r="7"/><circle cx="8" cy="30" r="6"/><circle cx="52" cy="30" r="6"/></svg><svg viewBox="0 0 60 50" width="24" height="20" fill="var(--gold)" style="opacity:.2;transform:rotate(-12deg)"><ellipse cx="30" cy="35" rx="14" ry="12"/><circle cx="15" cy="18" r="7"/><circle cx="45" cy="18" r="7"/><circle cx="8" cy="30" r="6"/><circle cx="52" cy="30" r="6"/></svg></div>
 
 <!-- Meet Your Next Best Friend -->
 <section class="section" id="cats" style="background:var(--surface)">
@@ -1498,6 +1552,7 @@ document.getElementById('adopt-form').addEventListener('click',function(e){
       currentStep=4;
       steps[currentStep].classList.add('active');
       document.getElementById('app-progress').style.display='none';
+      launchConfetti();
       return;
     }
     steps[currentStep].classList.remove('active');
@@ -1801,6 +1856,132 @@ if(furGal){
     else{furGal.scrollBy({left:scrollAmt(),behavior:'smooth'})}
   },4000)});
 }
+
+/* ── Paw Print Cursor Trail ── */
+(function(){
+  if(window.innerWidth<=960)return;
+  var pawSvg='<svg viewBox="0 0 60 50" fill="var(--pri)"><ellipse cx="30" cy="35" rx="14" ry="12"/><circle cx="15" cy="18" r="7"/><circle cx="45" cy="18" r="7"/><circle cx="8" cy="30" r="6"/><circle cx="52" cy="30" r="6"/></svg>';
+  var lastX=0,lastY=0,step=0;
+  document.addEventListener('mousemove',function(e){
+    var dx=e.clientX-lastX,dy=e.clientY-lastY;
+    if(Math.abs(dx)+Math.abs(dy)<40)return;
+    lastX=e.clientX;lastY=e.clientY;step++;
+    var paw=document.createElement('div');
+    paw.className='paw-trail';
+    paw.innerHTML=pawSvg;
+    paw.style.left=(e.clientX-9)+'px';
+    paw.style.top=(e.clientY-9)+'px';
+    paw.style.setProperty('--paw-rot',(step%2===0?'-15':'15')+'deg');
+    document.body.appendChild(paw);
+    setTimeout(function(){paw.remove()},1000);
+  });
+})();
+
+/* ── Confetti Celebration ── */
+function launchConfetti(){
+  var stage=document.createElement('div');
+  stage.className='confetti-stage';
+  var colors=['#B22222','#D4A017','#FF6B81','#45B7D1','#96CEB4','#F9CA24','#E85D5D'];
+  var pawSvg='<svg viewBox="0 0 60 50"><ellipse cx="30" cy="35" rx="14" ry="12"/><circle cx="15" cy="18" r="7"/><circle cx="45" cy="18" r="7"/><circle cx="8" cy="30" r="6"/><circle cx="52" cy="30" r="6"/></svg>';
+  for(var i=0;i<60;i++){
+    var p=document.createElement('div');
+    p.className='confetti-piece';
+    var isPaw=Math.random()<0.3;
+    var isHeart=!isPaw&&Math.random()<0.3;
+    if(isPaw){
+      p.classList.add('paw');
+      p.innerHTML=pawSvg;
+      p.querySelector('svg').style.fill=colors[i%colors.length];
+    }else if(isHeart){
+      p.classList.add('heart');
+      p.textContent=Math.random()<0.5?'❤️':'🐾';
+    }else{
+      p.style.background=colors[i%colors.length];
+      p.style.borderRadius=Math.random()<0.5?'50%':'2px';
+      p.style.width=(8+Math.random()*8)+'px';
+      p.style.height=(8+Math.random()*8)+'px';
+    }
+    p.style.left=Math.random()*100+'%';
+    p.style.setProperty('--fall-dur',(2+Math.random()*2)+'s');
+    p.style.setProperty('--fall-delay',(Math.random()*0.8)+'s');
+    p.style.setProperty('--spin',(360+Math.random()*720)+'deg');
+    stage.appendChild(p);
+  }
+  document.body.appendChild(stage);
+  setTimeout(function(){stage.remove()},5000);
+}
+
+/* ── Purrfect Match Quiz ── */
+var QUIZ_QS=[
+  {q:'What does your ideal weekend look like?',sub:'This helps us match your energy level',opts:[
+    {emoji:'🛋️',text:'Netflix and naps on the couch',trait:'chill'},
+    {emoji:'🎮',text:'Active and playful — games, projects, fun',trait:'playful'},
+    {emoji:'🧘',text:'A mix of cozy and adventurous',trait:'balanced'},
+    {emoji:'🌟',text:'Socializing with friends and family',trait:'social'}
+  ]},
+  {q:'How much cat experience do you have?',sub:'No wrong answer — all levels are welcome!',opts:[
+    {emoji:'🌱',text:'First-time cat parent — excited to learn!',trait:'gentle'},
+    {emoji:'🐱',text:'Had cats as a kid / roommate had one',trait:'balanced'},
+    {emoji:'⭐',text:'Experienced cat lover with years under my belt',trait:'independent'},
+    {emoji:'🏆',text:'Certified crazy cat person — bring it on',trait:'special'}
+  ]},
+  {q:'Your living space is best described as:',sub:'We want every cat to feel at home',opts:[
+    {emoji:'🏠',text:'Cozy apartment — perfect for lap cats',trait:'chill'},
+    {emoji:'🏡',text:'House with room to roam',trait:'playful'},
+    {emoji:'👨‍👩‍👧‍👦',text:'Busy household with kids / pets',trait:'social'},
+    {emoji:'🌿',text:'Quiet retreat — just me and my zen',trait:'gentle'}
+  ]},
+  {q:'What personality wins your heart?',sub:'Think about the vibe you want at home',opts:[
+    {emoji:'🥰',text:'Sweet & snuggly — a total velcro cat',trait:'gentle'},
+    {emoji:'🦁',text:'Bold & confident — runs the house',trait:'independent'},
+    {emoji:'🤹',text:'Silly & goofy — makes me laugh every day',trait:'playful'},
+    {emoji:'🤔',text:'Shy at first but deeply loyal once bonded',trait:'special'}
+  ]},
+  {q:'How do you feel about a cat with special needs?',sub:'FIV+, seniors, medical — these cats need love too',opts:[
+    {emoji:'💖',text:'Absolutely — they deserve the most love',trait:'special'},
+    {emoji:'🤝',text:'Open to it if the fit is right',trait:'balanced'},
+    {emoji:'🙏',text:'I’d rather start with a healthy cat',trait:'gentle'},
+    {emoji:'💪',text:'I’m experienced and ready for the challenge',trait:'special'}
+  ]}
+];
+var QUIZ_RESULTS={
+  gentle:{emoji:'😻',type:'The Gentle Soul',desc:'You’re a natural nurturer who’d be perfect with a sweet, calm cat who loves quiet companionship. Look for cats described as “sweet,” “affectionate,” or “lay cat.” First-timers and seniors are a great match for you!',tags:['Lap cats','Seniors','Calm kittens','Bonded pairs']},
+  playful:{emoji:'😺',type:'The Adventure Buddy',desc:'You want a cat with personality and energy! Look for “playful,” “curious,” or “mischievous” cats who’ll keep you entertained. Younger cats and active adults are your speed.',tags:['Young cats','Active kittens','Curious explorers','Toy fanatics']},
+  balanced:{emoji:'😼',type:'The Perfect Balance',desc:'You’re flexible and easygoing — which means almost any cat could be your match! You’d thrive with a well-adjusted adult who’s social but also independent. The “goldilocks” cat.',tags:['Adult cats','Easygoing','Social but independent','Any age']},
+  social:{emoji:'😸',type:'The Social Butterfly',desc:'You want a cat who’s part of the family action! Look for outgoing, confident cats who love people and aren’t fazed by noise or activity. Great with kids and other pets.',tags:['Kid-friendly','Dog-friendly','Outgoing','Confident']},
+  independent:{emoji:'😼',type:'The Cool Cat Companion',desc:'You appreciate a cat with attitude and independence. You’d be great with a confident cat who has opinions and doesn’t need constant attention — but still shows love on their own terms.',tags:['Independent','Confident adults','Sassy cats','Low maintenance']},
+  special:{emoji:'🧡',type:'The Hero Adopter',desc:'You have a huge heart and the patience to match. You’d be an amazing home for a cat who needs a little extra — FIV+ cats, seniors, shy cats, or those with medical needs. These cats give the deepest love.',tags:['FIV+ cats','Seniors','Shy cats','Medical needs']}
+};
+var quizStep=0,quizAnswers=[];
+function renderQuiz(){
+  var el=document.getElementById('quiz-content');
+  var prog=document.getElementById('quiz-progress');
+  if(quizStep>=QUIZ_QS.length){
+    var counts={};
+    quizAnswers.forEach(function(t){counts[t]=(counts[t]||0)+1});
+    var best=Object.keys(counts).sort(function(a,b){return counts[b]-counts[a]})[0];
+    var r=QUIZ_RESULTS[best];
+    prog.style.display='none';
+    el.innerHTML='<div class="quiz-result"><span class="quiz-result-emoji">'+r.emoji+'</span><div class="quiz-result-type">'+r.type+'</div><p class="quiz-result-desc">'+r.desc+'</p><div class="quiz-result-cats">'+r.tags.map(function(t){return '<span class="quiz-result-tag">'+t+'</span>'}).join('')+'</div><a href="#cats" class="btn btn--pri btn--pill">Browse Matching Cats</a><br><button class="quiz-restart" onclick="quizStep=0;quizAnswers=[];renderQuiz()">Retake Quiz</button></div>';
+    return;
+  }
+  var q=QUIZ_QS[quizStep];
+  prog.style.display='flex';
+  prog.innerHTML=QUIZ_QS.map(function(_,i){
+    return '<div class="quiz-dot'+(i<quizStep?' done':'')+(i===quizStep?' active':'')+'"></div>';
+  }).join('');
+  el.innerHTML='<div class="quiz-q">'+q.q+'</div><p class="quiz-sub">'+q.sub+'</p><div class="quiz-options">'+q.opts.map(function(o,i){
+    return '<div class="quiz-opt" data-idx="'+i+'" data-trait="'+o.trait+'"><span class="quiz-opt-emoji">'+o.emoji+'</span>'+o.text+'</div>';
+  }).join('')+'</div>';
+}
+document.addEventListener('click',function(e){
+  var opt=e.target.closest('.quiz-opt');
+  if(!opt)return;
+  opt.classList.add('selected');
+  quizAnswers.push(opt.dataset.trait);
+  setTimeout(function(){quizStep++;renderQuiz()},350);
+});
+renderQuiz();
 
 /* ── Init ── */
 renderCats(CATS,8);
