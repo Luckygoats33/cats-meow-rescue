@@ -255,6 +255,72 @@ input,select,textarea{font-family:inherit;font-size:1rem}
 .size-btn.active{background:var(--ink);color:var(--ground);border-color:var(--ink)}
 .size-btn:hover:not(.active){border-color:var(--pri)}
 
+/* Cart Icon */
+.cart-toggle{position:relative;width:44px;height:44px;display:grid;place-items:center;margin-left:.25rem;flex-shrink:0}
+.cart-toggle svg{width:22px;height:22px;stroke:var(--header-ink);fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.cart-badge{position:absolute;top:4px;right:2px;background:var(--pri);color:#fff;font-size:.6rem;font-weight:800;width:18px;height:18px;border-radius:50%;display:grid;place-items:center;line-height:1;opacity:0;transform:scale(0);transition:all .25s}
+.cart-badge.has-items{opacity:1;transform:scale(1)}
+
+/* Cart Drawer */
+.cart-overlay{position:fixed;inset:0;background:rgba(0,0,0,.45);backdrop-filter:blur(3px);z-index:210;opacity:0;visibility:hidden;transition:all .3s}
+.cart-overlay.is-open{opacity:1;visibility:visible}
+.cart-drawer{position:fixed;top:0;right:0;bottom:0;width:min(26rem,100vw);background:var(--surface);z-index:211;transform:translateX(100%);transition:transform .35s cubic-bezier(.4,0,.2,1);display:flex;flex-direction:column}
+.cart-overlay.is-open .cart-drawer{transform:translateX(0)}
+.cart-drawer-head{display:flex;align-items:center;justify-content:space-between;padding:1.25rem 1.5rem;border-bottom:1px solid var(--mist)}
+.cart-drawer-head h3{font-family:var(--serif);font-size:1.3rem;font-weight:700}
+.cart-drawer-close{width:36px;height:36px;display:grid;place-items:center;font-size:1.5rem;border-radius:50%;transition:background .15s}
+.cart-drawer-close:hover{background:var(--mist)}
+.cart-items{flex:1;overflow-y:auto;padding:1rem 1.5rem}
+.cart-empty{text-align:center;padding:3rem 1rem;color:var(--stone)}
+.cart-empty svg{width:64px;height:64px;stroke:var(--mist);fill:none;stroke-width:1.2;margin:0 auto 1rem}
+.cart-item{display:flex;gap:1rem;padding:1rem 0;border-bottom:1px solid var(--mist)}
+.cart-item:last-child{border-bottom:none}
+.cart-item-img{width:72px;height:72px;border-radius:var(--radius-sm);overflow:hidden;flex-shrink:0;position:relative}
+.cart-item-img img{width:100%;height:100%;object-fit:cover}
+.cart-item-img .ci-overlay{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:2px;color:#fff;font-weight:700;font-size:.6rem;text-transform:uppercase;letter-spacing:.05em;text-shadow:0 1px 3px rgba(0,0,0,.5)}
+.cart-item-info{flex:1;min-width:0}
+.cart-item-name{font-size:.9rem;font-weight:600;margin-bottom:.15rem;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.cart-item-meta{font-size:.75rem;color:var(--stone);margin-bottom:.5rem}
+.cart-item-controls{display:flex;align-items:center;gap:.75rem}
+.qty-control{display:flex;align-items:center;border:1.5px solid var(--mist);border-radius:var(--radius-sm);overflow:hidden}
+.qty-btn{width:28px;height:28px;display:grid;place-items:center;font-size:1rem;transition:background .15s;font-weight:600}
+.qty-btn:hover{background:var(--mist)}
+.qty-val{width:28px;text-align:center;font-size:.8rem;font-weight:600}
+.cart-item-price{font-size:.9rem;font-weight:700;color:var(--pri);margin-left:auto}
+.cart-item-remove{font-size:.7rem;color:var(--stone);text-decoration:underline;cursor:pointer;transition:color .15s}
+.cart-item-remove:hover{color:var(--pri)}
+.cart-footer{border-top:2px solid var(--mist);padding:1.25rem 1.5rem}
+.cart-subtotal{display:flex;justify-content:space-between;margin-bottom:.35rem;font-size:.85rem;color:var(--stone)}
+.cart-total{display:flex;justify-content:space-between;font-size:1.15rem;font-weight:800;margin-bottom:1rem}
+.cart-total .total-amt{color:var(--pri)}
+.cart-note{font-size:.72rem;color:var(--stone);text-align:center;margin-bottom:.75rem;line-height:1.5}
+
+/* Checkout */
+.checkout-view{display:none}
+.cart-drawer.checkout-mode .cart-items,.cart-drawer.checkout-mode .cart-footer{display:none}
+.cart-drawer.checkout-mode .checkout-view{display:flex;flex-direction:column;flex:1;overflow-y:auto;padding:1.5rem}
+.checkout-view h4{font-family:var(--serif);font-size:1.1rem;font-weight:700;margin-bottom:1rem}
+.checkout-field{margin-bottom:.85rem}
+.checkout-field label{display:block;font-size:.75rem;font-weight:600;text-transform:uppercase;letter-spacing:.06em;color:var(--stone);margin-bottom:.3rem}
+.checkout-field input,.checkout-field select,.checkout-field textarea{width:100%;padding:.6rem .75rem;border:1.5px solid var(--mist);border-radius:var(--radius-sm);font-size:.9rem;background:var(--surface);color:var(--ink);transition:border-color .2s}
+.checkout-field input:focus,.checkout-field select:focus,.checkout-field textarea:focus{outline:none;border-color:var(--pri)}
+.checkout-row{display:flex;gap:.75rem}
+.checkout-row .checkout-field{flex:1}
+.checkout-summary{background:var(--ground);border-radius:var(--radius-sm);padding:1rem;margin:1rem 0}
+.checkout-summary-line{display:flex;justify-content:space-between;font-size:.82rem;margin-bottom:.3rem;color:var(--stone)}
+.checkout-summary-total{display:flex;justify-content:space-between;font-size:1rem;font-weight:800;padding-top:.5rem;border-top:1px solid var(--mist);margin-top:.5rem}
+.checkout-back{font-size:.8rem;text-decoration:underline;cursor:pointer;color:var(--stone);margin-bottom:1rem;display:inline-block}
+.checkout-back:hover{color:var(--pri)}
+.order-success{text-align:center;padding:2rem 1rem}
+.order-success svg{width:64px;height:64px;stroke:#2E7D32;fill:none;stroke-width:1.5;margin:0 auto 1rem}
+.order-success h4{font-family:var(--serif);font-size:1.3rem;margin-bottom:.5rem}
+.order-success p{font-size:.9rem;color:var(--stone);line-height:1.6;margin-bottom:1rem}
+
+/* Toast */
+.cart-toast{position:fixed;bottom:2rem;left:50%;transform:translateX(-50%) translateY(120%);background:var(--ink);color:var(--ground);padding:.75rem 1.5rem;border-radius:var(--radius-pill);font-size:.85rem;font-weight:600;z-index:300;box-shadow:0 8px 24px rgba(0,0,0,.2);transition:transform .35s cubic-bezier(.4,0,.2,1);display:flex;align-items:center;gap:.5rem}
+.cart-toast.show{transform:translateX(-50%) translateY(0)}
+.cart-toast svg{width:18px;height:18px;stroke:currentColor;fill:none;stroke-width:2}
+
 /* PetSmart */
 .petsmart{background:linear-gradient(135deg,#B22222,#D43030);color:#fff;border-radius:var(--radius);padding:clamp(2rem,4vw,3.5rem);display:flex;align-items:center;gap:2rem;flex-wrap:wrap}
 .petsmart-text{flex:1;min-width:280px}
@@ -450,6 +516,7 @@ img,video,svg,iframe{max-width:100%;height:auto}
     </a>
     <nav class="main-nav"><a href="#cats">Adopt</a><a href="#help">Donate</a><a href="#events">Events</a><a href="#shop">Shop</a><a href="#apply">Apply</a></nav>
     <a href="#help" class="btn btn--rose btn--sm btn--pill header-cta">Donate</a>
+    <button class="cart-toggle" id="cart-toggle" aria-label="Shopping cart"><svg viewBox="0 0 24 24"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/></svg><span class="cart-badge" id="cart-badge">0</span></button>
     <button class="nav-toggle" id="nav-toggle" aria-label="Open menu" aria-expanded="false"><span></span><span></span><span></span></button>
   </div>
 </header>
@@ -883,6 +950,48 @@ img,video,svg,iframe{max-width:100%;height:auto}
 </div>
 
 <!-- Product Detail Overlay -->
+<!-- Cart Drawer -->
+<div class="cart-overlay" id="cart-overlay">
+  <div class="cart-drawer" id="cart-drawer">
+    <div class="cart-drawer-head">
+      <h3>Your Cart (<span id="cart-count">0</span>)</h3>
+      <button class="cart-drawer-close" id="cart-close" aria-label="Close cart">&times;</button>
+    </div>
+    <div class="cart-items" id="cart-items"></div>
+    <div class="cart-footer" id="cart-footer" style="display:none">
+      <div class="cart-subtotal"><span>Subtotal</span><span id="cart-subtotal">$0</span></div>
+      <div class="cart-total"><span>Total</span><span class="total-amt" id="cart-total">$0</span></div>
+      <div class="cart-note">100% of proceeds support Cat's Meow Cat Rescue</div>
+      <button class="btn btn--pri btn--lg btn--pill" id="cart-checkout-btn" style="width:100%;justify-content:center">Checkout</button>
+      <button class="btn btn--outline btn--sm btn--pill" id="cart-clear" style="width:100%;justify-content:center;margin-top:.5rem">Clear Cart</button>
+    </div>
+    <div class="checkout-view" id="checkout-view">
+      <span class="checkout-back" id="checkout-back">&larr; Back to cart</span>
+      <h4>Checkout</h4>
+      <div class="checkout-field"><label>Full Name</label><input type="text" id="co-name" placeholder="Jane Smith" required></div>
+      <div class="checkout-field"><label>Email</label><input type="email" id="co-email" placeholder="jane@email.com" required></div>
+      <div class="checkout-field"><label>Phone</label><input type="tel" id="co-phone" placeholder="(503) 555-0123"></div>
+      <div class="checkout-field"><label>Street Address</label><input type="text" id="co-address" placeholder="123 Main St"></div>
+      <div class="checkout-row">
+        <div class="checkout-field"><label>City</label><input type="text" id="co-city" placeholder="Milwaukie"></div>
+        <div class="checkout-field" style="max-width:5rem"><label>State</label><input type="text" id="co-state" value="OR" maxlength="2"></div>
+        <div class="checkout-field" style="max-width:6rem"><label>ZIP</label><input type="text" id="co-zip" placeholder="97222" maxlength="10"></div>
+      </div>
+      <div class="checkout-field"><label>Order Notes (optional)</label><textarea id="co-notes" rows="2" placeholder="Any special requests..."></textarea></div>
+      <div class="checkout-summary" id="checkout-summary"></div>
+      <button class="btn btn--pri btn--lg btn--pill" id="checkout-submit" style="width:100%;justify-content:center">Place Order</button>
+      <div class="cart-note" style="margin-top:.75rem">You'll receive a confirmation email with payment instructions (Venmo, PayPal, or check).</div>
+    </div>
+    <div class="order-success" id="order-success" style="display:none">
+      <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M9 12l2 2 4-4"/></svg>
+      <h4>Order Submitted!</h4>
+      <p>Thank you for supporting Cat's Meow Cat Rescue! We've sent your order details to <strong>catsmeowcatrescue@gmail.com</strong>. You'll receive a confirmation email with payment instructions shortly.</p>
+      <button class="btn btn--pri btn--pill" onclick="closeCart()">Continue Shopping</button>
+    </div>
+  </div>
+</div>
+<div class="cart-toast" id="cart-toast"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg><span id="toast-text">Added to cart</span></div>
+
 <div class="product-detail-overlay" id="product-detail">
   <div class="product-detail">
     <button class="modal-close" id="product-close" aria-label="Close" style="z-index:5;color:#fff">&times;</button>
@@ -892,9 +1001,10 @@ img,video,svg,iframe{max-width:100%;height:auto}
       <span class="pd-price" id="pd-price"></span>
       <p class="pd-desc" id="pd-desc"></p>
       <div class="pd-sizes" id="pd-sizes"></div>
+      <div class="pd-qty" style="display:flex;align-items:center;gap:1rem;margin-bottom:1rem"><label style="font-size:.75rem;font-weight:600;text-transform:uppercase;letter-spacing:.06em;color:var(--stone)">Qty</label><div class="qty-control"><button class="qty-btn" onclick="var v=document.getElementById('pd-qty-val');v.textContent=Math.max(1,+v.textContent-1)">−</button><span class="qty-val" id="pd-qty-val">1</span><button class="qty-btn" onclick="var v=document.getElementById('pd-qty-val');v.textContent=Math.min(10,+v.textContent+1)">+</button></div></div>
       <div class="pd-actions">
-        <a id="pd-order" href="#" class="btn btn--pri btn--lg btn--pill" style="flex:1;justify-content:center">Order Now</a>
-        <button class="btn btn--outline btn--lg btn--pill" onclick="document.getElementById('product-detail').classList.remove('is-open')">Close</button>
+        <button id="pd-add-cart" class="btn btn--pri btn--lg btn--pill" style="flex:1;justify-content:center">Add to Cart</button>
+        <button class="btn btn--outline btn--lg btn--pill" onclick="document.getElementById('product-detail').classList.remove('is-open');document.body.style.overflow=''">Close</button>
       </div>
     </div>
   </div>
@@ -1054,10 +1164,11 @@ var shopFilter='all';
 function renderShop(){
   var items=shopFilter==='all'?PRODUCTS:PRODUCTS.filter(function(p){return p.type===shopFilter});
   document.getElementById('shop-grid').innerHTML=items.map(function(p){
+    var idx=PRODUCTS.indexOf(p);
     var sizeHtml='';
-    if(p.sizes)sizeHtml='<div class="size-selector">'+['S','M','L','XL','2XL','3XL'].map(function(s,i){return '<button class="size-btn'+(i===2?' active':'')+'" type="button">'+s+'</button>'}).join('')+'</div>';
+    if(p.sizes)sizeHtml='<div class="size-selector">'+['S','M','L','XL','2XL','3XL'].map(function(s,i){return '<button class="size-btn'+(i===2?' active':'')+'" type="button" data-size="'+s+'">'+s+'</button>'}).join('')+'</div>';
     var imgHtml=p.img?'<img src="'+p.img+'" alt="'+p.name+'" loading="lazy">':'';
-    return '<div class="product-card" data-product-idx="'+PRODUCTS.indexOf(p)+'" style="cursor:pointer"><div class="product-img" style="background:'+p.grad+'">'+imgHtml+'<div class="design-overlay"><span class="design-text">'+p.design.replace('\n','<br>')+'</span><span class="design-sub">'+p.sub+'</span></div></div><div class="product-body"><h3>'+p.name+'</h3><span class="product-price">$'+p.price+'</span>'+sizeHtml+'<button class="btn btn--pri btn--sm btn--pill" style="width:100%;justify-content:center">View Details</button></div></div>';
+    return '<div class="product-card" data-product-idx="'+idx+'"><div class="product-img" style="background:'+p.grad+';cursor:pointer" onclick="openProduct(PRODUCTS['+idx+'])">'+imgHtml+'<div class="design-overlay"><span class="design-text">'+p.design.replace('\n','<br>')+'</span><span class="design-sub">'+p.sub+'</span></div></div><div class="product-body"><h3>'+p.name+'</h3><span class="product-price">$'+p.price+'</span>'+sizeHtml+'<button class="btn btn--pri btn--sm btn--pill add-to-cart-btn" data-idx="'+idx+'" style="width:100%;justify-content:center"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" style="margin-right:4px"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/></svg>Add to Cart</button></div></div>';
   }).join('');
 }
 document.getElementById('shop-tabs').addEventListener('click',function(e){
@@ -1069,8 +1180,16 @@ document.getElementById('shop-tabs').addEventListener('click',function(e){
 document.addEventListener('click',function(e){
   var sb=e.target.closest('.size-btn');
   if(sb){sb.parentElement.querySelectorAll('.size-btn').forEach(function(b){b.classList.remove('active')});sb.classList.add('active')}
-  var pc=e.target.closest('.product-card[data-product-idx]');
-  if(pc){openProduct(PRODUCTS[parseInt(pc.dataset.productIdx)])}
+  var atcBtn=e.target.closest('.add-to-cart-btn');
+  if(atcBtn){
+    e.stopPropagation();
+    var idx=parseInt(atcBtn.dataset.idx);
+    var card=atcBtn.closest('.product-card');
+    var sizeBtn=card.querySelector('.size-btn.active');
+    var size=sizeBtn?sizeBtn.dataset.size:null;
+    addToCart(PRODUCTS[idx],size,1);
+    return;
+  }
 });
 
 /* ── Application Form ── */
@@ -1158,6 +1277,7 @@ document.querySelectorAll('a[href="#help"],a[href="mailto:catsmeowcatrescue@gmai
 
 /* ── Product Detail ── */
 var pdOverlay=document.getElementById('product-detail');
+var currentPdProduct=null;
 var DESCS={
   tees:'Premium comfort tee made for cat lovers. Pre-shrunk cotton blend, relaxed fit. Wear your love for rescue cats everywhere you go.',
   sweats:'Cozy crewneck or hoodie for those chilly Oregon mornings. Fleece-lined, unisex sizing, built to last.',
@@ -1165,6 +1285,7 @@ var DESCS={
   magnets:'Heavy-duty fridge magnet that reminds you every day: rescue cats are the best cats.'
 };
 function openProduct(p){
+  currentPdProduct=p;
   var pdImg=document.getElementById('pd-image');
   pdImg.style.background=p.grad;
   var pdImgHtml=p.img?'<img src="'+p.img+'" alt="'+p.name+'" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0">':'';
@@ -1172,14 +1293,139 @@ function openProduct(p){
   document.getElementById('pd-name').textContent=p.name;
   document.getElementById('pd-price').textContent='$'+p.price;
   document.getElementById('pd-desc').textContent=DESCS[p.type]||'Show your support for Cat\'s Meow Cat Rescue!';
+  document.getElementById('pd-qty-val').textContent='1';
   var szWrap=document.getElementById('pd-sizes');
-  if(p.sizes){szWrap.style.display='';szWrap.innerHTML='<label>Select Size</label><div class="pd-size-grid">'+['S','M','L','XL','2XL','3XL'].map(function(s,i){return '<button class="pd-size-btn'+(i===2?' active':'')+'" type="button">'+s+'</button>'}).join('')+'</div>'}else{szWrap.style.display='none'}
-  document.getElementById('pd-order').href='mailto:catsmeowcatrescue@gmail.com?subject=Order: '+encodeURIComponent(p.name);
+  if(p.sizes){szWrap.style.display='';szWrap.innerHTML='<label>Select Size</label><div class="pd-size-grid">'+['S','M','L','XL','2XL','3XL'].map(function(s,i){return '<button class="pd-size-btn'+(i===2?' active':'')+'" type="button" data-size="'+s+'">'+s+'</button>'}).join('')+'</div>'}else{szWrap.style.display='none'}
   pdOverlay.classList.add('is-open');document.body.style.overflow='hidden';
 }
 document.getElementById('product-close').addEventListener('click',function(){pdOverlay.classList.remove('is-open');document.body.style.overflow=''});
 pdOverlay.addEventListener('click',function(e){if(e.target===pdOverlay){pdOverlay.classList.remove('is-open');document.body.style.overflow=''}});
 document.addEventListener('click',function(e){var sb=e.target.closest('.pd-size-btn');if(sb){sb.parentElement.querySelectorAll('.pd-size-btn').forEach(function(b){b.classList.remove('active')});sb.classList.add('active')}});
+document.getElementById('pd-add-cart').addEventListener('click',function(){
+  if(!currentPdProduct)return;
+  var sizeBtn=document.querySelector('.pd-size-btn.active');
+  var size=sizeBtn?sizeBtn.dataset.size:null;
+  var qty=parseInt(document.getElementById('pd-qty-val').textContent)||1;
+  addToCart(currentPdProduct,size,qty);
+  pdOverlay.classList.remove('is-open');document.body.style.overflow='';
+});
+
+/* ── Shopping Cart ── */
+var cart=JSON.parse(localStorage.getItem('cmcr_cart')||'[]');
+
+function saveCart(){localStorage.setItem('cmcr_cart',JSON.stringify(cart))}
+
+function updateCartBadge(){
+  var total=cart.reduce(function(s,i){return s+i.qty},0);
+  var badge=document.getElementById('cart-badge');
+  badge.textContent=total;
+  badge.classList.toggle('has-items',total>0);
+  document.getElementById('cart-count').textContent=total;
+}
+
+function showToast(text){
+  var t=document.getElementById('cart-toast');
+  document.getElementById('toast-text').textContent=text;
+  t.classList.add('show');
+  clearTimeout(t._timer);
+  t._timer=setTimeout(function(){t.classList.remove('show')},2200);
+}
+
+function addToCart(product,size,qty){
+  var existing=cart.find(function(i){return i.name===product.name&&i.size===size});
+  if(existing){existing.qty=Math.min(10,existing.qty+qty)}
+  else{cart.push({name:product.name,type:product.type,price:product.price,size:size,qty:qty,img:product.img||'',grad:product.grad,design:product.design,sub:product.sub})}
+  saveCart();updateCartBadge();renderCartItems();
+  showToast(product.name+' added to cart');
+}
+
+function removeFromCart(idx){
+  cart.splice(idx,1);saveCart();updateCartBadge();renderCartItems();
+}
+
+function updateQty(idx,delta){
+  cart[idx].qty=Math.max(1,Math.min(10,cart[idx].qty+delta));
+  saveCart();updateCartBadge();renderCartItems();
+}
+
+function getCartTotal(){return cart.reduce(function(s,i){return s+i.price*i.qty},0)}
+
+function renderCartItems(){
+  var wrap=document.getElementById('cart-items');
+  var footer=document.getElementById('cart-footer');
+  if(!cart.length){
+    wrap.innerHTML='<div class="cart-empty"><svg viewBox="0 0 24 24"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/></svg><p>Your cart is empty</p><p style="font-size:.8rem;margin-top:.5rem">Browse our shop to support Cat\'s Meow!</p></div>';
+    footer.style.display='none';return;
+  }
+  wrap.innerHTML=cart.map(function(item,i){
+    var imgHtml=item.img?'<img src="'+item.img+'" alt="'+item.name+'" loading="lazy">':'';
+    var sizeStr=item.size?'Size: '+item.size:'';
+    return '<div class="cart-item"><div class="cart-item-img" style="background:'+item.grad+'">'+imgHtml+'<div class="ci-overlay"><span>'+item.design+'</span></div></div><div class="cart-item-info"><div class="cart-item-name">'+item.name+'</div><div class="cart-item-meta">'+sizeStr+'</div><div class="cart-item-controls"><div class="qty-control"><button class="qty-btn" onclick="updateQty('+i+',-1)">−</button><span class="qty-val">'+item.qty+'</span><button class="qty-btn" onclick="updateQty('+i+',1)">+</button></div><span class="cart-item-price">$'+(item.price*item.qty)+'</span></div><span class="cart-item-remove" onclick="removeFromCart('+i+')">Remove</span></div></div>';
+  }).join('');
+  var total=getCartTotal();
+  document.getElementById('cart-subtotal').textContent='$'+total;
+  document.getElementById('cart-total').textContent='$'+total;
+  footer.style.display='';
+}
+
+function openCart(){
+  var drawer=document.getElementById('cart-drawer');
+  drawer.classList.remove('checkout-mode');
+  document.getElementById('order-success').style.display='none';
+  document.getElementById('checkout-view').style.display='';
+  document.getElementById('cart-items').style.display='';
+  document.getElementById('cart-footer').style.display='';
+  renderCartItems();
+  document.getElementById('cart-overlay').classList.add('is-open');
+  document.body.style.overflow='hidden';
+}
+
+function closeCart(){
+  document.getElementById('cart-overlay').classList.remove('is-open');
+  document.getElementById('cart-drawer').classList.remove('checkout-mode');
+  document.body.style.overflow='';
+}
+
+document.getElementById('cart-toggle').addEventListener('click',openCart);
+document.getElementById('cart-close').addEventListener('click',closeCart);
+document.getElementById('cart-overlay').addEventListener('click',function(e){if(e.target===this)closeCart()});
+
+document.getElementById('cart-clear').addEventListener('click',function(){
+  cart=[];saveCart();updateCartBadge();renderCartItems();showToast('Cart cleared');
+});
+
+document.getElementById('cart-checkout-btn').addEventListener('click',function(){
+  document.getElementById('cart-drawer').classList.add('checkout-mode');
+  var summary=document.getElementById('checkout-summary');
+  var html=cart.map(function(i){return '<div class="checkout-summary-line"><span>'+i.name+(i.size?' ('+i.size+')':'')+ ' x'+i.qty+'</span><span>$'+(i.price*i.qty)+'</span></div>'}).join('');
+  html+='<div class="checkout-summary-total"><span>Total</span><span>$'+getCartTotal()+'</span></div>';
+  summary.innerHTML=html;
+});
+
+document.getElementById('checkout-back').addEventListener('click',function(){
+  document.getElementById('cart-drawer').classList.remove('checkout-mode');
+});
+
+document.getElementById('checkout-submit').addEventListener('click',function(){
+  var name=document.getElementById('co-name').value.trim();
+  var email=document.getElementById('co-email').value.trim();
+  if(!name||!email){showToast('Please fill in name and email');return}
+  var phone=document.getElementById('co-phone').value.trim();
+  var address=document.getElementById('co-address').value.trim();
+  var city=document.getElementById('co-city').value.trim();
+  var state=document.getElementById('co-state').value.trim();
+  var zip=document.getElementById('co-zip').value.trim();
+  var notes=document.getElementById('co-notes').value.trim();
+  var orderLines=cart.map(function(i){return i.name+(i.size?' ('+i.size+')':'')+' x'+i.qty+' — $'+(i.price*i.qty)}).join('\n');
+  var body='NEW ORDER from Cat\'s Meow Shop\n\n'+'Customer: '+name+'\nEmail: '+email+(phone?'\nPhone: '+phone:'')+(address?'\nShip to: '+address+', '+city+', '+state+' '+zip:'')+'\n\nItems:\n'+orderLines+'\n\nTotal: $'+getCartTotal()+(notes?'\n\nNotes: '+notes:'');
+  var mailto='mailto:catsmeowcatrescue@gmail.com?subject='+encodeURIComponent('Shop Order from '+name)+'&body='+encodeURIComponent(body);
+  window.open(mailto,'_blank');
+  document.getElementById('checkout-view').style.display='none';
+  document.getElementById('order-success').style.display='';
+  cart=[];saveCart();updateCartBadge();
+});
+
+updateCartBadge();
 
 /* ── Floating Hero Paws ── */
 (function(){
@@ -1192,6 +1438,15 @@ document.addEventListener('click',function(e){var sb=e.target.closest('.pd-size-
     container.appendChild(paw);
   }
 })();
+
+/* ── Expose globals for onclick handlers ── */
+window.PRODUCTS=PRODUCTS;
+window.openProduct=openProduct;
+window.addToCart=addToCart;
+window.removeFromCart=removeFromCart;
+window.updateQty=updateQty;
+window.openCart=openCart;
+window.closeCart=closeCart;
 
 /* ── Init ── */
 renderCats(CATS);
