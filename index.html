@@ -715,7 +715,7 @@ img,video,svg,iframe{max-width:100%;height:auto}
           <path class="cat-tail" d="M100 85 Q130 70 125 100 Q122 115 112 108" fill="rgba(255,255,255,.18)" stroke="none" style="transform-origin:100px 85px"/>
           <circle cx="70" cy="75" r="1.5" fill="rgba(255,255,255,.1)" style="animation:purr 2s ease-in-out infinite"/>
         </svg>
-        <h3>Meet Your BFF</h3>
+        <h2 class="heading-md" style="font-size:1.35rem">Meet Your BFF</h2>
         <p>Adorable cats &amp; kittens waiting for their forever home. Find your perfect match!</p>
         <span class="btn btn--pill">Browse Cats</span>
         <div class="fold-paws"><svg viewBox="0 0 60 50" fill="#fff"><ellipse cx="30" cy="35" rx="14" ry="12"/><circle cx="15" cy="18" r="7"/><circle cx="45" cy="18" r="7"/><circle cx="8" cy="30" r="6"/><circle cx="52" cy="30" r="6"/></svg><svg viewBox="0 0 60 50" fill="#fff" style="transform:rotate(-15deg)"><ellipse cx="30" cy="35" rx="14" ry="12"/><circle cx="15" cy="18" r="7"/><circle cx="45" cy="18" r="7"/><circle cx="8" cy="30" r="6"/><circle cx="52" cy="30" r="6"/></svg></div>
@@ -753,7 +753,7 @@ img,video,svg,iframe{max-width:100%;height:auto}
           <path d="M55 85 C55 78 65 75 70 82 C75 75 85 78 85 85 C85 95 70 105 70 105 C70 105 55 95 55 85Z" fill="rgba(255,100,100,.25)"/>
           <path class="cat-tail" d="M100 85 Q125 60 120 95 Q118 108 108 102" fill="rgba(255,255,255,.18)" stroke="none" style="transform-origin:100px 85px"/>
         </svg>
-        <h3>Help the Kitties</h3>
+        <h2 class="heading-md" style="font-size:1.35rem">Help the Kitties</h2>
         <p>Every dollar goes directly to medical care, food, and shelter for cats in need. Tax-deductible!</p>
         <span class="btn btn--pill">Donate Now</span>
         <div class="fold-paws"><svg viewBox="0 0 60 50" fill="#fff"><ellipse cx="30" cy="35" rx="14" ry="12"/><circle cx="15" cy="18" r="7"/><circle cx="45" cy="18" r="7"/><circle cx="8" cy="30" r="6"/><circle cx="52" cy="30" r="6"/></svg><svg viewBox="0 0 60 50" fill="#fff" style="transform:rotate(12deg)"><ellipse cx="30" cy="35" rx="14" ry="12"/><circle cx="15" cy="18" r="7"/><circle cx="45" cy="18" r="7"/><circle cx="8" cy="30" r="6"/><circle cx="52" cy="30" r="6"/></svg></div>
@@ -794,7 +794,7 @@ img,video,svg,iframe{max-width:100%;height:auto}
           <ellipse cx="30" cy="118" rx="10" ry="6" fill="rgba(255,255,255,.12)"/>
           <path class="cat-tail" d="M100 85 Q135 75 128 105 Q125 118 115 110" fill="rgba(255,255,255,.18)" stroke="none" style="transform-origin:100px 85px"/>
         </svg>
-        <h3>Join the Fun</h3>
+        <h2 class="heading-md" style="font-size:1.35rem">Join the Fun</h2>
         <p>Summer Jamboree, Bingo Night, adoption events &amp; more. Bring the family!</p>
         <span class="btn btn--pill">See Events</span>
         <div class="fold-paws"><svg viewBox="0 0 60 50" fill="#fff"><ellipse cx="30" cy="35" rx="14" ry="12"/><circle cx="15" cy="18" r="7"/><circle cx="45" cy="18" r="7"/><circle cx="8" cy="30" r="6"/><circle cx="52" cy="30" r="6"/></svg><svg viewBox="0 0 60 50" fill="#fff" style="transform:rotate(-10deg)"><ellipse cx="30" cy="35" rx="14" ry="12"/><circle cx="15" cy="18" r="7"/><circle cx="45" cy="18" r="7"/><circle cx="8" cy="30" r="6"/><circle cx="52" cy="30" r="6"/></svg></div>
@@ -1039,30 +1039,30 @@ img,video,svg,iframe{max-width:100%;height:auto}
       <form id="adopt-form" onsubmit="return false">
         <div class="form-step active" data-step="0">
           <h3>About You</h3><span class="step-sub">Let's start with the basics</span>
-          <div class="field"><label>Full Name</label><input type="text" id="f-name" required autocomplete="name" placeholder="Your name"></div>
-          <div class="field-row"><div class="field"><label>Email</label><input type="email" id="f-email" required autocomplete="email" placeholder="you@email.com" inputmode="email"></div><div class="field"><label>Phone</label><input type="tel" id="f-phone" required autocomplete="tel" placeholder="(503) 555-0123" inputmode="tel"></div></div>
-          <div class="field"><label>City &amp; Zip</label><input type="text" id="f-city" placeholder="Milwaukie, OR 97268"></div>
+          <div class="field"><label for="f-name">Full Name</label><input type="text" id="f-name" required autocomplete="name" placeholder="Your name"></div>
+          <div class="field-row"><div class="field"><label for="f-email">Email</label><input type="email" id="f-email" required autocomplete="email" placeholder="you@email.com" inputmode="email"></div><div class="field"><label for="f-phone">Phone</label><input type="tel" id="f-phone" required autocomplete="tel" placeholder="(503) 555-0123" inputmode="tel"></div></div>
+          <div class="field"><label for="f-city">City &amp; Zip</label><input type="text" id="f-city" placeholder="Milwaukie, OR 97268"></div>
           <div class="form-actions"><span></span><button type="button" class="btn btn--pri btn--pill btn-next">Next Step</button></div>
         </div>
         <div class="form-step" data-step="1">
           <h3>Your Home</h3><span class="step-sub">Tell us about your living situation</span>
-          <div class="field-row"><div class="field"><label>Housing</label><select id="f-housing"><option value="">Select...</option><option>Own my home</option><option>Rent - landlord allows cats</option><option>Rent - need to check</option></select></div><div class="field"><label>Other Pets?</label><select id="f-pets"><option value="">Select...</option><option>No other pets</option><option>Dog(s)</option><option>Cat(s)</option><option>Dogs &amp; cats</option><option>Other</option></select></div></div>
-          <div class="field-row"><div class="field"><label>Adults in Home</label><input type="number" id="f-adults" min="1" max="10" placeholder="1"></div><div class="field"><label>Children (Ages)</label><input type="text" id="f-kids" placeholder="None, or ages"></div></div>
-          <div class="field"><label>Indoor only?</label><select id="f-indoor"><option>Yes - strictly indoor</option><option>Indoor with enclosed catio</option><option>Indoor/outdoor</option></select></div>
+          <div class="field-row"><div class="field"><label for="f-housing">Housing</label><select id="f-housing"><option value="">Select...</option><option>Own my home</option><option>Rent - landlord allows cats</option><option>Rent - need to check</option></select></div><div class="field"><label for="f-pets">Other Pets?</label><select id="f-pets"><option value="">Select...</option><option>No other pets</option><option>Dog(s)</option><option>Cat(s)</option><option>Dogs &amp; cats</option><option>Other</option></select></div></div>
+          <div class="field-row"><div class="field"><label for="f-adults">Adults in Home</label><input type="number" id="f-adults" min="1" max="10" placeholder="1"></div><div class="field"><label for="f-kids">Children (Ages)</label><input type="text" id="f-kids" placeholder="None, or ages"></div></div>
+          <div class="field"><label for="f-indoor">Indoor only?</label><select id="f-indoor"><option>Yes - strictly indoor</option><option>Indoor with enclosed catio</option><option>Indoor/outdoor</option></select></div>
           <div class="form-actions"><button type="button" class="btn btn--outline btn--pill btn-prev">Back</button><button type="button" class="btn btn--pri btn--pill btn-next">Next Step</button></div>
         </div>
         <div class="form-step" data-step="2">
           <h3>Your Dream Cat</h3><span class="step-sub">Help us match you with the perfect companion</span>
-          <div class="field-row"><div class="field"><label>Preferred Age</label><select id="f-age"><option>Any age</option><option>Kitten (under 1 year)</option><option>Young (1-7 years)</option><option>Adult (7-14 years)</option><option>Senior (15+ years)</option></select></div><div class="field"><label>Preferred Gender</label><select id="f-gender"><option>No preference</option><option>Male</option><option>Female</option></select></div></div>
-          <div class="field"><label>Vibe Check</label><select id="f-vibe"><option>Open to any personality</option><option>Total Sweetheart - calm, cuddly, chill</option><option>Has Opinions - independent, sassy, confident</option><option>Certified Gremlin - chaotic, playful, wild</option></select></div>
-          <div class="field"><label>Specific Cat in Mind?</label><input type="text" id="f-specific" placeholder="Name from Petfinder, or leave blank"></div>
+          <div class="field-row"><div class="field"><label for="f-age">Preferred Age</label><select id="f-age"><option>Any age</option><option>Kitten (under 1 year)</option><option>Young (1-7 years)</option><option>Adult (7-14 years)</option><option>Senior (15+ years)</option></select></div><div class="field"><label for="f-gender">Preferred Gender</label><select id="f-gender"><option>No preference</option><option>Male</option><option>Female</option></select></div></div>
+          <div class="field"><label for="f-vibe">Vibe Check</label><select id="f-vibe"><option>Open to any personality</option><option>Total Sweetheart - calm, cuddly, chill</option><option>Has Opinions - independent, sassy, confident</option><option>Certified Gremlin - chaotic, playful, wild</option></select></div>
+          <div class="field"><label for="f-specific">Specific Cat in Mind?</label><input type="text" id="f-specific" placeholder="Name from Petfinder, or leave blank"></div>
           <div class="form-actions"><button type="button" class="btn btn--outline btn--pill btn-prev">Back</button><button type="button" class="btn btn--pri btn--pill btn-next">Next Step</button></div>
         </div>
         <div class="form-step" data-step="3">
           <h3>Almost There</h3><span class="step-sub">A few more things and you're done</span>
-          <div class="field"><label>Previous Cat Experience</label><select id="f-exp"><option value="">Select...</option><option>First-time cat owner</option><option>Have owned cats before</option><option>Currently have cats</option><option>Experienced with special needs</option></select></div>
-          <div class="field"><label>Vet Name / Clinic (if applicable)</label><input type="text" id="f-vet" placeholder="Your vet's name or clinic"></div>
-          <div class="field"><label>Why Do You Want to Adopt?</label><textarea id="f-why" placeholder="Tell us about yourself and what you're looking for in a companion..."></textarea></div>
+          <div class="field"><label for="f-exp">Previous Cat Experience</label><select id="f-exp"><option value="">Select...</option><option>First-time cat owner</option><option>Have owned cats before</option><option>Currently have cats</option><option>Experienced with special needs</option></select></div>
+          <div class="field"><label for="f-vet">Vet Name / Clinic (if applicable)</label><input type="text" id="f-vet" placeholder="Your vet's name or clinic"></div>
+          <div class="field"><label for="f-why">Why Do You Want to Adopt?</label><textarea id="f-why" placeholder="Tell us about yourself and what you're looking for in a companion..."></textarea></div>
           <div class="form-actions"><button type="button" class="btn btn--outline btn--pill btn-prev">Back</button><button type="button" class="btn btn--pri btn--pill btn-next" id="btn-submit">Submit Application</button></div>
         </div>
         <div class="form-step" data-step="4">
@@ -1167,7 +1167,7 @@ img,video,svg,iframe{max-width:100%;height:auto}
       <button class="donate-amt active" data-amt="50">$50</button>
       <button class="donate-amt" data-amt="100">$100</button>
     </div>
-    <div class="field" style="margin-bottom:1rem"><label>Or enter your own amount</label><input type="text" id="custom-amount" placeholder="$___" inputmode="numeric"></div>
+    <div class="field" style="margin-bottom:1rem"><label for="custom-amount">Or enter your own amount</label><input type="text" id="custom-amount" placeholder="$___" inputmode="numeric"></div>
     <div class="field"><label>Dedicate to a fund (optional)</label><select><option>Where it's needed most</option><option>Medical Emergency Fund</option><option>Spay/Neuter Fund</option><option>General Operations</option><option>Winter Shelter Project</option></select></div>
     <a href="https://www.facebook.com/catsmeowcatrescue/" target="_blank" rel="noopener" class="btn btn--pri btn--lg btn--pill" style="width:100%;justify-content:center;margin-top:1rem">Donate via Facebook</a>
     <div style="display:flex;gap:.5rem;margin-top:.75rem">
@@ -1197,16 +1197,16 @@ img,video,svg,iframe{max-width:100%;height:auto}
     <div class="checkout-view" id="checkout-view">
       <span class="checkout-back" id="checkout-back">&larr; Back to cart</span>
       <h4>Checkout</h4>
-      <div class="checkout-field"><label>Full Name</label><input type="text" id="co-name" placeholder="Jane Smith" required></div>
-      <div class="checkout-field"><label>Email</label><input type="email" id="co-email" placeholder="jane@email.com" required></div>
-      <div class="checkout-field"><label>Phone</label><input type="tel" id="co-phone" placeholder="(503) 555-0123"></div>
-      <div class="checkout-field"><label>Street Address</label><input type="text" id="co-address" placeholder="123 Main St"></div>
+      <div class="checkout-field"><label for="co-name">Full Name</label><input type="text" id="co-name" placeholder="Jane Smith" required></div>
+      <div class="checkout-field"><label for="co-email">Email</label><input type="email" id="co-email" placeholder="jane@email.com" required></div>
+      <div class="checkout-field"><label for="co-phone">Phone</label><input type="tel" id="co-phone" placeholder="(503) 555-0123"></div>
+      <div class="checkout-field"><label for="co-address">Street Address</label><input type="text" id="co-address" placeholder="123 Main St"></div>
       <div class="checkout-row">
-        <div class="checkout-field"><label>City</label><input type="text" id="co-city" placeholder="Milwaukie"></div>
-        <div class="checkout-field" style="max-width:5rem"><label>State</label><input type="text" id="co-state" value="OR" maxlength="2"></div>
-        <div class="checkout-field" style="max-width:6rem"><label>ZIP</label><input type="text" id="co-zip" placeholder="97222" maxlength="10"></div>
+        <div class="checkout-field"><label for="co-city">City</label><input type="text" id="co-city" placeholder="Milwaukie"></div>
+        <div class="checkout-field" style="max-width:5rem"><label for="co-state">State</label><input type="text" id="co-state" value="OR" maxlength="2"></div>
+        <div class="checkout-field" style="max-width:6rem"><label for="co-zip">ZIP</label><input type="text" id="co-zip" placeholder="97222" maxlength="10"></div>
       </div>
-      <div class="checkout-field"><label>Order Notes (optional)</label><textarea id="co-notes" rows="2" placeholder="Any special requests..."></textarea></div>
+      <div class="checkout-field"><label for="co-notes">Order Notes (optional)</label><textarea id="co-notes" rows="2" placeholder="Any special requests..."></textarea></div>
       <div class="checkout-summary" id="checkout-summary"></div>
       <button class="btn btn--pri btn--lg btn--pill" id="checkout-submit" style="width:100%;justify-content:center">Place Order</button>
       <div class="cart-note" style="margin-top:.75rem">You'll receive a confirmation email with payment instructions (Venmo, PayPal, or check).</div>
