@@ -177,8 +177,9 @@ input,select,textarea{font-family:inherit;font-size:1rem}
 .cats-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:1.25rem}
 .cat-card{background:var(--surface);border:1px solid var(--mist);border-radius:var(--radius);overflow:hidden;transition:transform .2s,box-shadow .2s}
 .cat-card:hover{transform:translateY(-4px);box-shadow:0 12px 28px rgba(0,0,0,.08)}
-.cat-photo{height:200px;display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden}
-.cat-face{width:100%;height:100%}
+.cat-photo{height:220px;position:relative;overflow:hidden}
+.cat-photo img{width:100%;height:100%;object-fit:cover;transition:transform .4s}
+.cat-card:hover .cat-photo img{transform:scale(1.05)}
 .cat-info{padding:1.25rem}
 .cat-info h3{font-size:1.05rem;margin-bottom:.25rem}
 .cat-details{font-size:.78rem;color:var(--stone);display:block;margin-bottom:.5rem}
@@ -642,17 +643,16 @@ img,video,svg,iframe{max-width:100%;height:auto}
   <div class="container">
     <div class="cats-header reveal">
       <div><span class="kicker">Meet Your Next Best Friend</span><h2 class="heading-lg">Adoptable Cats &amp; Kittens</h2></div>
-      <div class="cats-count">Showing <strong id="cats-showing">24</strong> of <strong>220+</strong> cats</div>
+      <div class="cats-count">Showing <strong id="cats-showing">31</strong> cats &middot; Live from Petfinder</div>
     </div>
     <div class="filter-bar reveal" id="filter-bar">
-      <div class="filter-group"><span class="filter-label">Age</span><div class="filter-pills"><button class="pill active" data-group="age" data-value="all">All</button><button class="pill" data-group="age" data-value="kitten">Kitten &lt;1yr</button><button class="pill" data-group="age" data-value="young">Young 1-7</button><button class="pill" data-group="age" data-value="senior">Adult 7-14</button><button class="pill" data-group="age" data-value="golden">Senior 15+</button></div></div>
+      <div class="filter-group"><span class="filter-label">Age</span><div class="filter-pills"><button class="pill active" data-group="age" data-value="all">All</button><button class="pill" data-group="age" data-value="kitten">Kitten</button><button class="pill" data-group="age" data-value="young">Young</button><button class="pill" data-group="age" data-value="adult">Adult</button><button class="pill" data-group="age" data-value="senior">Senior</button></div></div>
       <div class="filter-group"><span class="filter-label">Gender</span><div class="filter-pills"><button class="pill active" data-group="gender" data-value="all">All</button><button class="pill" data-group="gender" data-value="M">Male</button><button class="pill" data-group="gender" data-value="F">Female</button></div></div>
-      <div class="filter-group"><span class="filter-label">Coat</span><div class="filter-pills"><button class="pill active" data-group="coat" data-value="all">All</button><button class="pill" data-group="coat" data-value="short">Short Hair</button><button class="pill" data-group="coat" data-value="long">Long Hair</button></div></div>
-      <div class="filter-group"><span class="filter-label">Vibe</span><div class="filter-pills"><button class="pill active" data-group="personality" data-value="all">All Vibes</button><button class="pill" data-group="personality" data-value="sweet">Total Sweetheart</button><button class="pill" data-group="personality" data-value="sassy">Has Opinions</button><button class="pill" data-group="personality" data-value="chaotic">Certified Gremlin</button></div></div>
+      <div class="filter-group"><span class="filter-label">Coat</span><div class="filter-pills"><button class="pill active" data-group="coat" data-value="all">All</button><button class="pill" data-group="coat" data-value="short">Short</button><button class="pill" data-group="coat" data-value="medium">Medium</button><button class="pill" data-group="coat" data-value="long">Long</button></div></div>
     </div>
     <div class="cats-grid" id="cats-grid"></div>
     <div class="cats-more reveal">
-      <a href="https://www.petfinder.com/member/us/or/gladstone/cats-meow-cat-rescue-or393/" target="_blank" rel="noopener" class="btn btn--pri btn--lg btn--pill">View All 220+ Cats on Petfinder</a>
+      <a href="https://www.petfinder.com/member/us/or/gladstone/cats-meow-cat-rescue-or393/" target="_blank" rel="noopener" class="btn btn--pri btn--lg btn--pill">View All Cats on Petfinder</a>
     </div>
   </div>
 </section>
@@ -925,101 +925,54 @@ img,video,svg,iframe{max-width:100%;height:auto}
 <script>
 (function(){
 /* ── Cat Data ── */
+var PF='https://dbw3zep4prcju.cloudfront.net/animal/';
 var CATS=[
-{name:"Luna",age:.8,grp:"kitten",gender:"F",coat:"short",vibe:"sweet",color:"Black",desc:"Loves lap time and window watching",hex:"#2D3748"},
-{name:"Mochi",age:.5,grp:"kitten",gender:"M",coat:"short",vibe:"chaotic",color:"Orange Tabby",desc:"Zoom master, curtain climber, snack thief",hex:"#ED8936"},
-{name:"Shadow",age:8,grp:"senior",gender:"M",coat:"long",vibe:"sweet",color:"Gray",desc:"Gentle giant who just wants chin scratches",hex:"#718096"},
-{name:"Pickles",age:3,grp:"young",gender:"F",coat:"short",vibe:"sassy",color:"Calico",desc:"She'll tell you when dinner is late",hex:"#E2725B"},
-{name:"Biscuit",age:2,grp:"young",gender:"M",coat:"short",vibe:"sweet",color:"Orange Tabby",desc:"Makes biscuits on every soft surface",hex:"#DD9A3E"},
-{name:"Cleo",age:5,grp:"young",gender:"F",coat:"long",vibe:"sassy",color:"Tortoiseshell",desc:"Queen of the household, no exceptions",hex:"#8B6F47"},
-{name:"Thunder",age:.4,grp:"kitten",gender:"M",coat:"short",vibe:"chaotic",color:"Gray",desc:"Named for the sound he makes at 3AM",hex:"#5A6878"},
-{name:"Noodle",age:4,grp:"young",gender:"F",coat:"long",vibe:"sweet",color:"White",desc:"Floppy, flexible, and extremely cuddly",hex:"#B8C4CE"},
-{name:"Ziggy",age:16,grp:"golden",gender:"M",coat:"short",vibe:"sassy",color:"Tuxedo",desc:"Senior gentleman with strong opinions",hex:"#2D3748"},
-{name:"Pepper",age:.3,grp:"kitten",gender:"F",coat:"short",vibe:"chaotic",color:"Black",desc:"Tiny but mighty — will fight your toes",hex:"#1A202C"},
-{name:"Gizmo",age:6,grp:"young",gender:"M",coat:"short",vibe:"chaotic",color:"Brown Tabby",desc:"Opens doors, drawers, and your heart",hex:"#7B6245"},
-{name:"Olive",age:2,grp:"young",gender:"F",coat:"short",vibe:"sweet",color:"Gray",desc:"Shy at first, best friend for life",hex:"#6B8068"},
-{name:"Waffles",age:1,grp:"young",gender:"M",coat:"long",vibe:"sweet",color:"Orange Tabby",desc:"Stack of fluff, heart of gold",hex:"#D4843A"},
-{name:"Stormy",age:9,grp:"senior",gender:"F",coat:"long",vibe:"sassy",color:"Gray",desc:"Elegant, mysterious, judges you silently",hex:"#5C6B7A"},
-{name:"Bean",age:.6,grp:"kitten",gender:"M",coat:"short",vibe:"chaotic",color:"Tuxedo",desc:"Toe bean collector and chaos coordinator",hex:"#2C3E50"},
-{name:"Maple",age:3,grp:"young",gender:"F",coat:"short",vibe:"sweet",color:"Calico",desc:"Sweet as syrup, loves morning cuddles",hex:"#C0785A"},
-{name:"Ghost",age:7,grp:"young",gender:"M",coat:"long",vibe:"sassy",color:"White",desc:"Appears and disappears at will",hex:"#A0AEC0"},
-{name:"Peaches",age:15,grp:"golden",gender:"F",coat:"short",vibe:"sweet",color:"Orange Tabby",desc:"Golden girl who loves sunny spots",hex:"#E8965A"},
-{name:"Jinx",age:2,grp:"young",gender:"M",coat:"short",vibe:"chaotic",color:"Black",desc:"Knocks things off tables. No regrets.",hex:"#1A1A2E"},
-{name:"Toffee",age:4,grp:"young",gender:"F",coat:"long",vibe:"sweet",color:"Brown Tabby",desc:"Melts into your lap like warm caramel",hex:"#8B7355"},
-{name:"Smokey",age:11,grp:"senior",gender:"M",coat:"short",vibe:"sassy",color:"Gray",desc:"Distinguished gentleman, selective cuddler",hex:"#616E7C"},
-{name:"Mittens",age:.5,grp:"kitten",gender:"F",coat:"short",vibe:"sweet",color:"Calico",desc:"White paws, big eyes, even bigger heart",hex:"#D4816B"},
-{name:"Rex",age:5,grp:"young",gender:"M",coat:"short",vibe:"chaotic",color:"Orange Tabby",desc:"Thinks he's a dog. Fetches. Eats fast.",hex:"#C07030"},
-{name:"Willow",age:17,grp:"golden",gender:"F",coat:"long",vibe:"sweet",color:"Gray",desc:"The wisest cat you'll ever meet",hex:"#8899AA"}
+{name:"Gash",grp:"young",gender:"M",coat:"short",breed:"Tabby & DSH",img:PF+"a72f65a1-358e-4b59-894c-2beb9e405859/image/05678d70-022c-4681-89bf-46ca6916d7ac.jpeg",link:"https://www.petfinder.com/cat/gash-a72f65a1-358e-4b59-894c-2beb9e405859/or/gladstone/cats-meow-cat-rescue-or393/details/"},
+{name:"Ash",grp:"young",gender:"F",coat:"short",breed:"Tuxedo & DSH",img:PF+"f05ca8b0-5423-43e3-9fbc-10294a06b4dd/image/76b89393-3066-42d8-a329-5579243815df.jpeg",link:"https://www.petfinder.com/cat/ash-f05ca8b0-5423-43e3-9fbc-10294a06b4dd/or/gladstone/cats-meow-cat-rescue-or393/details/"},
+{name:"Vinegar",grp:"young",gender:"F",coat:"short",breed:"Tortoiseshell & DSH",img:PF+"3f868386-a167-41c0-b62a-7bc7c47b70d8/image/497eafda-574a-4d58-bded-fa19eefbb88a.jpeg",link:"https://www.petfinder.com/cat/vinegar-3f868386-a167-41c0-b62a-7bc7c47b70d8/or/gladstone/cats-meow-cat-rescue-or393/details/"},
+{name:"Chuck",grp:"adult",gender:"M",coat:"short",breed:"Tabby & DSH",img:PF+"226113cb-1970-4b1f-92a9-1c95b7218631/image/bf7988a3-73fa-4144-9ec9-780652fbafb6.jpg",link:"https://www.petfinder.com/cat/chuck-226113cb-1970-4b1f-92a9-1c95b7218631/or/gladstone/cats-meow-cat-rescue-or393/details/"},
+{name:"Sassy",grp:"kitten",gender:"F",coat:"short",breed:"DSH",img:PF+"9a82ced3-4d92-4ebe-90a0-c97a25f98cc5/image/e2dedfd0-11e1-492c-8302-2c02d843f765.jpg",link:"https://www.petfinder.com/cat/sassy-9a82ced3-4d92-4ebe-90a0-c97a25f98cc5/or/gladstone/cats-meow-cat-rescue-or393/details/"},
+{name:"Maisey",grp:"young",gender:"F",coat:"short",breed:"Tabby & DSH",img:PF+"523f02f8-e8e2-447e-8893-0b01d4f131a0/image/9c82d4e2-4144-414f-bf67-8a2f939febef.jpg",link:"https://www.petfinder.com/cat/maisey-523f02f8-e8e2-447e-8893-0b01d4f131a0/or/gladstone/cats-meow-cat-rescue-or393/details/"},
+{name:"Nova",grp:"kitten",gender:"F",coat:"short",breed:"Tuxedo & DSH",img:PF+"742c47ae-dc36-4e34-8710-8f04875005a0/image/5dc476a3-30c0-4ac7-974c-9b9acffdae7e.jpg",link:"https://www.petfinder.com/cat/nova-742c47ae-dc36-4e34-8710-8f04875005a0/or/gladstone/cats-meow-cat-rescue-or393/details/"},
+{name:"Freyja",grp:"young",gender:"F",coat:"long",breed:"Tabby & DLH",img:PF+"57b59a1f-30b2-4849-860e-14071a256f33/image/cd63c228-1cac-4060-ad35-e46b610c1f44.jpg",link:"https://www.petfinder.com/cat/freyja-57b59a1f-30b2-4849-860e-14071a256f33/or/gladstone/cats-meow-cat-rescue-or393/details/"},
+{name:"Ms Kitty",grp:"senior",gender:"F",coat:"short",breed:"Tuxedo & DSH",img:PF+"45031514-6d30-4f26-9d98-31ff35707c77/image/d2596669-9adf-4a34-873c-fdf05de739d5.jpg",link:"https://www.petfinder.com/cat/madame-meowzers-aka-ms-kitty-45031514-6d30-4f26-9d98-31ff35707c77/or/gladstone/cats-meow-cat-rescue-or393/details/"},
+{name:"Twix",grp:"kitten",gender:"M",coat:"medium",breed:"Tabby & DMH",img:PF+"008c724a-30ca-497b-8aa0-7e3d1e1d724a/image/51e960e9-f2e3-46ce-8c15-9de8b4ec096e.jpg",link:"https://www.petfinder.com/cat/twix-008c724a-30ca-497b-8aa0-7e3d1e1d724a/or/gladstone/cats-meow-cat-rescue-or393/details/"},
+{name:"Italia",grp:"young",gender:"M",coat:"short",breed:"Tabby & DSH",img:PF+"6c3eb092-e8cf-4ff7-a608-232a4be5a441/image/299048b2-3521-48df-8297-11f94f02e1b5.jpg",link:"https://www.petfinder.com/cat/italia-6c3eb092-e8cf-4ff7-a608-232a4be5a441/or/gladstone/cats-meow-cat-rescue-or393/details/"},
+{name:"Pibbs",grp:"adult",gender:"F",coat:"short",breed:"DSH & Tabby",img:PF+"b5fe521e-27e8-451e-b796-f1a5a6c63256/image/e3a79c2f-5606-462e-9f6f-6e4b591a5059.jpeg",link:"https://www.petfinder.com/cat/pibbs-b5fe521e-27e8-451e-b796-f1a5a6c63256/or/gladstone/cats-meow-cat-rescue-or393/details/"},
+{name:"Murphy",grp:"adult",gender:"M",coat:"medium",breed:"Tabby & DMH",img:PF+"80d58c15-f7b2-4603-b6f1-cfb67a88c9e8/image/041ef9ce-6c99-4db5-b2a5-72550eae7d4f.jpg",link:"https://www.petfinder.com/cat/murphy-80d58c15-f7b2-4603-b6f1-cfb67a88c9e8/or/gladstone/cats-meow-cat-rescue-or393/details/"},
+{name:"Sage Derby",grp:"young",gender:"F",coat:"short",breed:"Tortoiseshell & DSH",img:PF+"7d3219a3-4c40-4947-82ef-72d8978b5336/image/aa7f295f-27c1-4249-bed5-ffa38b844d44.jpg",link:"https://www.petfinder.com/cat/sage-derby-7d3219a3-4c40-4947-82ef-72d8978b5336/or/gladstone/cats-meow-cat-rescue-or393/details/"},
+{name:"Tucker",grp:"kitten",gender:"M",coat:"short",breed:"Tabby & DSH",img:PF+"52d6076c-62e1-4f6f-80f4-bca81d13102f/image/a672bf8d-8fc1-43c1-a2c1-3ea87ec6356d.jpg",link:"https://www.petfinder.com/cat/tucker-52d6076c-62e1-4f6f-80f4-bca81d13102f/or/gladstone/cats-meow-cat-rescue-or393/details/"},
+{name:"Snape",grp:"young",gender:"M",coat:"long",breed:"DLH",img:PF+"93152927-5189-4139-9b07-1b0e6360bde6/image/38be71ca-d51b-4f32-a87c-6d225b7e9635.jpg",link:"https://www.petfinder.com/cat/snape-93152927-5189-4139-9b07-1b0e6360bde6/or/gladstone/cats-meow-cat-rescue-or393/details/"},
+{name:"Winnie",grp:"adult",gender:"F",coat:"short",breed:"Tabby & DSH",img:PF+"79727281-e508-4726-a1c7-490dbf6523dc/image/8f68ac57-99eb-497f-80b7-bb3f983046e1.jpg",link:"https://www.petfinder.com/cat/winnie-79727281-e508-4726-a1c7-490dbf6523dc/or/gladstone/cats-meow-cat-rescue-or393/details/"},
+{name:"Biscuit",grp:"kitten",gender:"F",coat:"short",breed:"Tabby & DSH",img:PF+"7802fc2e-3846-4df1-9df5-8825961b3b5b/image/dafa02c6-fdc1-4ff8-ad54-0fb9a56359ea.jpg",link:"https://www.petfinder.com/cat/biscuit-7802fc2e-3846-4df1-9df5-8825961b3b5b/or/gladstone/cats-meow-cat-rescue-or393/details/"},
+{name:"Sauvie",grp:"adult",gender:"F",coat:"short",breed:"DSH",img:PF+"845fec14-2d23-4122-adc4-bc1224d6a9b4/image/1fcc7527-8694-482a-b37a-254efd48b46d.jpg",link:"https://www.petfinder.com/cat/sauvie-845fec14-2d23-4122-adc4-bc1224d6a9b4/or/gladstone/cats-meow-cat-rescue-or393/details/"},
+{name:"Eclipse",grp:"young",gender:"F",coat:"short",breed:"DSH",img:PF+"83e2a932-1259-4a38-bec9-edc0c1bda209/image/aa387c23-aff9-49df-8953-ea5378de5a11.jpg",link:"https://www.petfinder.com/cat/eclipse-83e2a932-1259-4a38-bec9-edc0c1bda209/or/gladstone/cats-meow-cat-rescue-or393/details/"},
+{name:"Grubby",grp:"kitten",gender:"M",coat:"short",breed:"Tabby & DSH",img:PF+"34425bea-bf00-42a1-9e00-f4f293dc5b1d/image/5ebb0f63-5c71-4d6c-b773-4fa68105802e.jpg",link:"https://www.petfinder.com/cat/grubby-34425bea-bf00-42a1-9e00-f4f293dc5b1d/or/gladstone/cats-meow-cat-rescue-or393/details/"},
+{name:"Rockwell",grp:"kitten",gender:"M",coat:"short",breed:"DSH",img:PF+"abb51cc1-a2eb-44ff-a457-c3ff2057f84e/image/b2ed2f99-d642-41a3-b202-2bb627fc3167.jpg",link:"https://www.petfinder.com/cat/rockwell-abb51cc1-a2eb-44ff-a457-c3ff2057f84e/or/gladstone/cats-meow-cat-rescue-or393/details/"},
+{name:"Smudge",grp:"adult",gender:"M",coat:"short",breed:"DSH",img:PF+"6bc6bdb6-8cb7-4f0c-aea3-b99a11f71079/image/4ae3b46d-44a6-4155-a945-f336079d5e07.jpeg",link:"https://www.petfinder.com/cat/smudge-6bc6bdb6-8cb7-4f0c-aea3-b99a11f71079/or/gladstone/cats-meow-cat-rescue-or393/details/"},
+{name:"Maxine",grp:"young",gender:"F",coat:"short",breed:"DSH & Tabby",img:PF+"7ad95cbc-ebb4-469f-bc6e-a182f3758795/image/aaf0f072-ba58-4550-8462-a30b59757a1b.jpeg",link:"https://www.petfinder.com/cat/maxine-7ad95cbc-ebb4-469f-bc6e-a182f3758795/or/gladstone/cats-meow-cat-rescue-or393/details/"},
+{name:"Mimolette",grp:"kitten",gender:"F",coat:"short",breed:"Tortoiseshell & DSH",img:PF+"c86f5e98-120a-4a2e-9829-4433803bd3f8/image/157f62a7-9654-4832-9677-541249991342.jpg",link:"https://www.petfinder.com/cat/mimolette-c86f5e98-120a-4a2e-9829-4433803bd3f8/or/gladstone/cats-meow-cat-rescue-or393/details/"},
+{name:"Tonya",grp:"adult",gender:"F",coat:"short",breed:"Tabby & DSH",img:PF+"f63f13fb-bdf7-4fa1-83dc-b5063cf6ef9e/image/0f9fa78e-9796-4df8-96e8-dd7ff015c506.jpg",link:"https://www.petfinder.com/cat/tonya-f63f13fb-bdf7-4fa1-83dc-b5063cf6ef9e/or/gladstone/cats-meow-cat-rescue-or393/details/"},
+{name:"Truffle",grp:"kitten",gender:"M",coat:"long",breed:"DLH",img:PF+"0fc3c943-74f5-4c4d-bd12-aa7a59e9de44/image/cbd9e3c1-a155-44d3-86e1-ba1e32139a3c.jpg",link:"https://www.petfinder.com/cat/truffle-0fc3c943-74f5-4c4d-bd12-aa7a59e9de44/or/gladstone/cats-meow-cat-rescue-or393/details/"},
+{name:"Snowy",grp:"young",gender:"F",coat:"short",breed:"Siamese & DSH",img:PF+"ee458d6e-1222-48be-be67-3f3ca981213b/image/90b7ec28-28b3-4421-a547-32b8269d5f28.jpeg",link:"https://www.petfinder.com/cat/snowy-ee458d6e-1222-48be-be67-3f3ca981213b/or/gladstone/cats-meow-cat-rescue-or393/details/"},
+{name:"Emmie",grp:"adult",gender:"F",coat:"short",breed:"Tabby & DSH",img:PF+"5020655f-da8d-47e4-836c-7efd61f93751/image/933bb6ac-8bc5-4d09-9da6-a7154e582823.jpg",link:"https://www.petfinder.com/cat/emmie-5020655f-da8d-47e4-836c-7efd61f93751/or/gladstone/cats-meow-cat-rescue-or393/details/"},
+{name:"River Rock",grp:"young",gender:"M",coat:"short",breed:"DSH",img:PF+"34b8f8fd-b0bb-4ca2-885f-69f106bb22cc/image/7a98d522-2c5e-417a-8888-c21a6d3e0e52.jpg",link:"https://www.petfinder.com/cat/river-rock-34b8f8fd-b0bb-4ca2-885f-69f106bb22cc/or/gladstone/cats-meow-cat-rescue-or393/details/"},
+{name:"Hope",grp:"young",gender:"F",coat:"long",breed:"DLH",img:PF+"b86376f6-64f9-4f85-88e6-efbd00a24e3d/image/fd6223bf-ad13-4e19-a7fb-674d47cfdc9a.jpg",link:"https://www.petfinder.com/cat/hope-b86376f6-64f9-4f85-88e6-efbd00a24e3d/or/gladstone/cats-meow-cat-rescue-or393/details/"}
 ];
-
-var BADGE={sweet:{l:"Total Sweetheart",c:"#D4A017"},sassy:{l:"Has Opinions",c:"#B22222"},chaotic:{l:"Certified Gremlin",c:"#E06820"}};
-
-function catFaceSVG(c,i){
-  var bg=c.hex;
-  var light='rgba(255,255,255,';
-  var dark='rgba(0,0,0,';
-  var isBlack=c.color.indexOf('Black')>-1;
-  var isWhite=c.color.indexOf('White')>-1;
-  var isOrange=c.color.indexOf('Orange')>-1;
-  var isCalico=c.color.indexOf('Calico')>-1;
-  var isTabby=c.color.indexOf('Tabby')>-1;
-  var isTux=c.color.indexOf('Tuxedo')>-1;
-  var fur=isBlack?light+'.12)':isWhite?dark+'.06)':light+'.15)';
-  var eyeL=isBlack?'#4ADE80':isOrange?'#FBBF24':isWhite?'#60A5FA':isCalico?'#34D399':'#A78BFA';
-  var earTilt=((i%5)-2)*3;
-  var mouthY=c.vibe==='sweet'?'Q100 148 115 138':c.vibe==='sassy'?'Q100 132 115 138':'Q100 142 115 130';
-  var pawPrint='<g opacity=".08"><ellipse cx="160" cy="170" rx="10" ry="8"/><circle cx="150" cy="158" r="4"/><circle cx="170" cy="158" r="4"/><circle cx="146" cy="165" r="3.5"/><circle cx="174" cy="165" r="3.5"/></g>';
-  var stripes='';
-  if(isTabby){stripes='<path d="M70 55 Q80 50 90 55" fill="none" stroke="'+dark+'.08)" stroke-width="3"/><path d="M110 55 Q120 50 130 55" fill="none" stroke="'+dark+'.08)" stroke-width="3"/><path d="M85 45 Q95 38 105 45" fill="none" stroke="'+dark+'.06)" stroke-width="2.5"/>';}
-  var calicoPatch='';
-  if(isCalico){calicoPatch='<circle cx="70" cy="90" r="25" fill="#E8965A" opacity=".3"/><circle cx="135" cy="75" r="20" fill="#1A1A2E" opacity=".15"/>';}
-  var tuxChest='';
-  if(isTux){tuxChest='<ellipse cx="100" cy="155" rx="25" ry="30" fill="#fff" opacity=".25"/>';}
-  var whiskerL=c.vibe==='chaotic'?-8:0;
-  return '<svg class="cat-face" viewBox="0 0 200 200" preserveAspectRatio="xMidYMid slice">'
-    +'<rect width="200" height="200" fill="'+bg+'"/>'
-    +calicoPatch
-    +'<ellipse cx="100" cy="140" rx="60" ry="55" fill="'+fur+'"/>'
-    +tuxChest
-    +'<circle cx="100" cy="85" r="45" fill="'+fur+'"/>'
-    +'<polygon points="65,65 50,'+(20+earTilt)+' 85,55" fill="'+fur+'"/>'
-    +'<polygon points="135,65 150,'+(20-earTilt)+' 115,55" fill="'+fur+'"/>'
-    +'<polygon points="68,63 55,'+(28+earTilt)+' 82,56" fill="rgba(200,100,100,.12)"/>'
-    +'<polygon points="132,63 145,'+(28-earTilt)+' 118,56" fill="rgba(200,100,100,.12)"/>'
-    +stripes
-    +'<ellipse cx="80" cy="82" rx="12" ry="'+(c.vibe==='sassy'?'10':'13')+'" fill="'+dark+'.08)"/>'
-    +'<ellipse cx="120" cy="82" rx="12" ry="'+(c.vibe==='sassy'?'10':'13')+'" fill="'+dark+'.08)"/>'
-    +'<circle cx="80" cy="80" r="'+(c.age<1?'7':'5.5')+'" fill="'+eyeL+'"/>'
-    +'<circle cx="120" cy="80" r="'+(c.age<1?'7':'5.5')+'" fill="'+eyeL+'"/>'
-    +'<circle cx="82" cy="78" r="2.5" fill="#fff" opacity=".9"/>'
-    +'<circle cx="122" cy="78" r="2.5" fill="#fff" opacity=".9"/>'
-    +'<circle cx="80" cy="81" r="'+(c.vibe==='sassy'?'2':'3')+'" fill="'+dark+'.5)"/>'
-    +'<circle cx="120" cy="81" r="'+(c.vibe==='sassy'?'2':'3')+'" fill="'+dark+'.5)"/>'
-    +'<ellipse cx="100" cy="98" rx="5" ry="3.5" fill="rgba(200,120,120,.25)"/>'
-    +'<path d="M85 105 '+mouthY+'" fill="none" stroke="'+dark+'.1)" stroke-width="2" stroke-linecap="round"/>'
-    +'<line x1="60" y1="'+(92+whiskerL)+'" x2="25" y2="'+(88+whiskerL)+'" stroke="'+light+'.2)" stroke-width="1.5"/>'
-    +'<line x1="60" y1="'+(98+whiskerL)+'" x2="22" y2="'+(102+whiskerL)+'" stroke="'+light+'.2)" stroke-width="1.5"/>'
-    +'<line x1="60" y1="104" x2="28" y2="112" stroke="'+light+'.15)" stroke-width="1.5"/>'
-    +'<line x1="140" y1="'+(92+whiskerL)+'" x2="175" y2="'+(88+whiskerL)+'" stroke="'+light+'.2)" stroke-width="1.5"/>'
-    +'<line x1="140" y1="'+(98+whiskerL)+'" x2="178" y2="'+(102+whiskerL)+'" stroke="'+light+'.2)" stroke-width="1.5"/>'
-    +'<line x1="140" y1="104" x2="172" y2="112" stroke="'+light+'.15)" stroke-width="1.5"/>'
-    +pawPrint
-    +'</svg>';
-}
 
 function renderCats(list){
   var g=document.getElementById('cats-grid');
   if(!list.length){g.innerHTML='<div class="no-cats">No cats match your filters. Try adjusting your search!</div>';document.getElementById('cats-showing').textContent='0';return}
-  g.innerHTML=list.map(function(c,i){
-    var b=BADGE[c.vibe];
-    var ageStr=c.age<1?(Math.round(c.age*12)+'mo'):(c.age+'yr');
-    return '<div class="cat-card"><div class="cat-photo">'+catFaceSVG(c,i)+'</div><div class="cat-info"><h3>'+c.name+'</h3><span class="cat-details">'+ageStr+' · '+(c.gender==='M'?'Male':'Female')+' · '+c.coat+' hair · '+c.color+'</span><span class="cat-badge" style="background:'+b.c+'">'+b.l+'</span><p>'+c.desc+'</p><a href="https://www.petfinder.com/member/us/or/gladstone/cats-meow-cat-rescue-or393/" target="_blank" rel="noopener" class="btn btn--pri btn--sm btn--pill">Meet '+c.name+'</a></div></div>';
+  g.innerHTML=list.map(function(c){
+    var ageLbl=c.grp.charAt(0).toUpperCase()+c.grp.slice(1);
+    var genderLbl=c.gender==='M'?'Male':'Female';
+    return '<div class="cat-card"><div class="cat-photo"><img src="'+c.img+'" alt="'+c.name+'" loading="lazy"></div><div class="cat-info"><h3>'+c.name+'</h3><span class="cat-details">'+ageLbl+' · '+genderLbl+' · '+c.breed+'</span><a href="'+c.link+'" target="_blank" rel="noopener" class="btn btn--pri btn--sm btn--pill">Meet '+c.name+'</a></div></div>';
   }).join('');
   document.getElementById('cats-showing').textContent=list.length;
 }
 
 /* ── Filters ── */
-var filters={age:'all',gender:'all',coat:'all',personality:'all'};
+var filters={age:'all',gender:'all',coat:'all'};
 document.getElementById('filter-bar').addEventListener('click',function(e){
   var pill=e.target.closest('.pill');if(!pill)return;
   var grp=pill.dataset.group,val=pill.dataset.value;
@@ -1029,7 +982,6 @@ document.getElementById('filter-bar').addEventListener('click',function(e){
     if(filters.age!=='all'&&c.grp!==filters.age)return false;
     if(filters.gender!=='all'&&c.gender!==filters.gender)return false;
     if(filters.coat!=='all'&&c.coat!==filters.coat)return false;
-    if(filters.personality!=='all'&&c.vibe!==filters.personality)return false;
     return true;
   });
   renderCats(filtered);
