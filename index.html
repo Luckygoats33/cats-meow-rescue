@@ -1651,10 +1651,15 @@ document.querySelectorAll('.donate-amounts').forEach(function(wrap){wrap.addEven
   btn.classList.add('active');
   document.getElementById('custom-amount').value='';
 })});
-document.querySelectorAll('a[href="#help"],a[data-donate-trigger],a[href="mailto:catsmeowcatrescue@gmail.com?subject=Donation"]').forEach(function(a){
-  if(a.closest('.site-footer')||a.closest('.form-success'))return;
-  a.addEventListener('click',function(e){e.preventDefault();e.stopPropagation();openDonate();return false});
-});
+function attachDonateTriggers(){
+  document.querySelectorAll('a[href="#help"],a[data-donate-trigger],a[href="mailto:catsmeowcatrescue@gmail.com?subject=Donation"]').forEach(function(a){
+    if(a.closest('.site-footer')||a.closest('.form-success')||a._donateAttached)return;
+    a._donateAttached=true;
+    a.addEventListener('click',function(e){e.preventDefault();e.stopPropagation();openDonate();return false});
+  });
+}
+attachDonateTriggers();
+window.addEventListener('DOMContentLoaded',attachDonateTriggers);
 
 /* ── Product Detail ── */
 var pdOverlay=document.getElementById('product-detail');
@@ -1768,12 +1773,15 @@ function closeCart(){
   document.body.style.overflow='';
 }
 
-document.getElementById('cart-toggle').addEventListener('click',openCart);
 document.getElementById('cart-close').addEventListener('click',closeCart);
 document.getElementById('cart-overlay').addEventListener('click',function(e){if(e.target===this)closeCart()});
 
 document.getElementById('cart-clear').addEventListener('click',function(){
   cart=[];saveCart();updateCartBadge();renderCartItems();showToast('Cart cleared');
+});
+window.addEventListener('DOMContentLoaded',function(){
+  var ct=document.getElementById('cart-toggle');
+  if(ct) ct.addEventListener('click',openCart);
 });
 
 document.getElementById('cart-checkout-btn').addEventListener('click',function(){

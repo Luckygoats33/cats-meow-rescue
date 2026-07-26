@@ -306,11 +306,14 @@ function closeCart(){
   document.getElementById('cart-overlay').classList.remove('is-open');
   document.body.style.overflow='';
 }
-document.getElementById('cart-toggle').addEventListener('click',openCart);
 document.getElementById('cart-close').addEventListener('click',closeCart);
 document.getElementById('cart-overlay').addEventListener('click',function(e){if(e.target===this)closeCart()});
 document.getElementById('cart-clear').addEventListener('click',function(){cart=[];renderCart();closeCart()});
 renderCart();
+window.addEventListener('DOMContentLoaded',function(){
+  var ct=document.getElementById('cart-toggle');
+  if(ct) ct.addEventListener('click',openCart);
+});
 
 
 </script>
