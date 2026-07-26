@@ -77,10 +77,84 @@
     </div>
     <div class="cart-items" id="cart-items"></div>
     <div class="cart-footer" id="cart-footer" style="display:none">
-      <div class="cart-total"><span>Total</span><span id="cart-total">$0</span></div>
+      <div class="cart-total"><span>Total</span><span id="cart-total" class="total-amt">$0</span></div>
       <div class="cart-note">100% of proceeds support Cat's Meow Cat Rescue</div>
-      <a href="mailto:catsmeowcatrescue@gmail.com?subject=Merch%20Order" class="btn btn--pri btn--lg btn--pill" style="width:100%;justify-content:center">Email Us to Order</a>
+      <button class="btn btn--pri btn--lg btn--pill" style="width:100%;justify-content:center" id="checkout-btn">Checkout</button>
       <button class="btn btn--outline btn--sm btn--pill" id="cart-clear" style="width:100%;justify-content:center;margin-top:.5rem">Clear Cart</button>
+    </div>
+
+    <div class="checkout-view" id="checkout-view">
+      <span class="checkout-back" id="checkout-back">&larr; Back to Cart</span>
+      <h4>Checkout</h4>
+
+      <div class="checkout-field">
+        <label for="co-name">Full Name *</label>
+        <input type="text" id="co-name" required placeholder="Jane Smith">
+      </div>
+      <div class="checkout-field">
+        <label for="co-email">Email *</label>
+        <input type="email" id="co-email" required placeholder="you@example.com">
+      </div>
+      <div class="checkout-field">
+        <label for="co-phone">Phone</label>
+        <input type="tel" id="co-phone" placeholder="(503) 555-1234">
+      </div>
+
+      <h4 style="margin-top:.75rem">Shipping Address</h4>
+      <div class="checkout-field">
+        <label for="co-street">Street Address *</label>
+        <input type="text" id="co-street" required placeholder="123 Main St">
+      </div>
+      <div class="checkout-row">
+        <div class="checkout-field">
+          <label for="co-city">City *</label>
+          <input type="text" id="co-city" required placeholder="Portland">
+        </div>
+        <div class="checkout-field" style="max-width:5rem">
+          <label for="co-state">State *</label>
+          <input type="text" id="co-state" required placeholder="OR" maxlength="2">
+        </div>
+        <div class="checkout-field" style="max-width:6rem">
+          <label for="co-zip">ZIP *</label>
+          <input type="text" id="co-zip" required placeholder="97222" maxlength="10">
+        </div>
+      </div>
+
+      <h4 style="margin-top:.75rem">Payment Method</h4>
+      <div class="checkout-field">
+        <label style="display:flex;align-items:center;gap:.5rem;font-size:.9rem;text-transform:none;letter-spacing:0;color:var(--ink);cursor:pointer;padding:.4rem 0">
+          <input type="radio" name="payment" value="venmo" checked style="accent-color:var(--pri)"> Venmo (@CatsMeowCatRescue)
+        </label>
+        <label style="display:flex;align-items:center;gap:.5rem;font-size:.9rem;text-transform:none;letter-spacing:0;color:var(--ink);cursor:pointer;padding:.4rem 0">
+          <input type="radio" name="payment" value="paypal" style="accent-color:var(--pri)"> PayPal (catsmeowcatrescue@gmail.com)
+        </label>
+        <label style="display:flex;align-items:center;gap:.5rem;font-size:.9rem;text-transform:none;letter-spacing:0;color:var(--ink);cursor:pointer;padding:.4rem 0">
+          <input type="radio" name="payment" value="check" style="accent-color:var(--pri)"> Check by Mail
+        </label>
+        <label style="display:flex;align-items:center;gap:.5rem;font-size:.9rem;text-transform:none;letter-spacing:0;color:var(--ink);cursor:pointer;padding:.4rem 0">
+          <input type="radio" name="payment" value="pickup" style="accent-color:var(--pri)"> Pay at Pickup (Milwaukie/Gladstone)
+        </label>
+      </div>
+
+      <div class="checkout-summary" id="checkout-summary"></div>
+
+      <button class="btn btn--pri btn--lg btn--pill" style="width:100%;justify-content:center;margin-top:.5rem" id="place-order-btn">
+        <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+        Place Order
+      </button>
+      <p style="font-size:.7rem;color:var(--stone);text-align:center;margin-top:.75rem;line-height:1.5">
+        Your order will be confirmed via email. Payment instructions will be provided based on your selected method.
+      </p>
+    </div>
+
+    <div class="checkout-view" id="order-success" style="display:none">
+      <div class="order-success">
+        <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M9 12l2 2 4-4"/></svg>
+        <h4>Order Placed!</h4>
+        <p id="success-message">Thank you for your order! We'll send a confirmation email shortly.</p>
+        <div id="payment-instructions" style="background:var(--ground);border-radius:var(--radius-sm);padding:1rem;text-align:left;margin-bottom:1rem"></div>
+        <button class="btn btn--pri btn--pill" onclick="closeCart();resetCheckout();" style="margin-top:.5rem">Continue Shopping</button>
+      </div>
     </div>
   </div>
 </div>
@@ -134,6 +208,11 @@ function addToCart(idx){
   renderCart();openCart();
 }
 function removeFromCart(i){cart.splice(i,1);renderCart()}
+function updateQty(i,delta){
+  cart[i].qty+=delta;
+  if(cart[i].qty<1)cart.splice(i,1);
+  renderCart();
+}
 function renderCart(){
   var el=document.getElementById('cart-items');
   var badge=document.getElementById('cart-badge');
@@ -150,7 +229,7 @@ function renderCart(){
   footer.style.display='';
   document.getElementById('cart-total').textContent='$'+total;
   el.innerHTML=cart.map(function(c,i){
-    return '<div class="cart-item"><div class="cart-item-info"><h4>'+c.name+'</h4>'+(c.size?'<span class="cart-item-detail">Size: '+c.size+'</span>':'')+'<span class="cart-item-detail">Qty: '+c.qty+'</span><div class="cart-item-price">$'+(c.price*c.qty)+'</div></div><button class="cart-item-remove" onclick="removeFromCart('+i+')">Remove</button></div>';
+    return '<div class="cart-item"><div class="cart-item-info"><h4 class="cart-item-name">'+c.name+'</h4>'+(c.size?'<span class="cart-item-meta">Size: '+c.size+'</span>':'')+'<div class="cart-item-controls"><button onclick="updateQty('+i+',-1)" class="btn btn--outline" style="padding:.2rem .5rem;font-size:.75rem;min-width:28px">−</button><span style="font-weight:600;font-size:.85rem;min-width:1.5rem;text-align:center">'+c.qty+'</span><button onclick="updateQty('+i+',1)" class="btn btn--outline" style="padding:.2rem .5rem;font-size:.75rem;min-width:28px">+</button><span class="cart-item-price">$'+(c.price*c.qty)+'</span></div></div><button class="cart-item-remove" onclick="removeFromCart('+i+')">Remove</button></div>';
   }).join('');
 }
 function openCart(){
@@ -160,10 +239,109 @@ function openCart(){
 function closeCart(){
   document.getElementById('cart-overlay').classList.remove('is-open');
   document.body.style.overflow='';
+  resetCheckout();
 }
+function resetCheckout(){
+  document.getElementById('cart-drawer').classList.remove('checkout-mode');
+  document.getElementById('checkout-view').style.display='';
+  document.getElementById('order-success').style.display='none';
+}
+
 document.getElementById('cart-close').addEventListener('click',closeCart);
 document.getElementById('cart-overlay').addEventListener('click',function(e){if(e.target===this)closeCart()});
 document.getElementById('cart-clear').addEventListener('click',function(){cart=[];renderCart();closeCart()});
+
+document.getElementById('checkout-btn').addEventListener('click',function(){
+  document.getElementById('cart-drawer').classList.add('checkout-mode');
+  renderCheckoutSummary();
+});
+
+document.getElementById('checkout-back').addEventListener('click',function(){
+  document.getElementById('cart-drawer').classList.remove('checkout-mode');
+});
+
+function renderCheckoutSummary(){
+  var total=0;
+  var html=cart.map(function(c){
+    var line=c.price*c.qty;total+=line;
+    return '<div class="checkout-summary-line"><span>'+c.name+(c.size?' ('+c.size+')':'')+(c.qty>1?' x'+c.qty:'')+'</span><span>$'+line+'</span></div>';
+  }).join('');
+  html+='<div class="checkout-summary-total"><span>Total</span><span style="color:var(--pri)">$'+total+'</span></div>';
+  document.getElementById('checkout-summary').innerHTML=html;
+}
+
+document.getElementById('place-order-btn').addEventListener('click',function(){
+  var name=document.getElementById('co-name').value.trim();
+  var email=document.getElementById('co-email').value.trim();
+  var phone=document.getElementById('co-phone').value.trim();
+  var street=document.getElementById('co-street').value.trim();
+  var city=document.getElementById('co-city').value.trim();
+  var state=document.getElementById('co-state').value.trim();
+  var zip=document.getElementById('co-zip').value.trim();
+  var payment=document.querySelector('input[name="payment"]:checked').value;
+
+  if(!name||!email||!street||!city||!state||!zip){
+    var missing=[];
+    if(!name)missing.push('Name');if(!email)missing.push('Email');
+    if(!street)missing.push('Street');if(!city)missing.push('City');
+    if(!state)missing.push('State');if(!zip)missing.push('ZIP');
+    var firstEmpty=document.getElementById('co-'+(!name?'name':!email?'email':!street?'street':!city?'city':!state?'state':'zip'));
+    if(firstEmpty)firstEmpty.focus();
+    return;
+  }
+
+  var total=0;
+  var itemLines=cart.map(function(c){
+    var line=c.price*c.qty;total+=line;
+    return c.name+(c.size?' (Size: '+c.size+')':'')+(c.qty>1?' x'+c.qty:'')+' — $'+line;
+  });
+
+  var paymentLabels={venmo:'Venmo',paypal:'PayPal',check:'Check by Mail',pickup:'Pay at Pickup'};
+
+  var body='NEW MERCH ORDER\n'
+    +'========================\n\n'
+    +'Customer: '+name+'\n'
+    +'Email: '+email+'\n'
+    +(phone?'Phone: '+phone+'\n':'')
+    +'\nShip To:\n'+street+'\n'+city+', '+state+' '+zip+'\n'
+    +'\nPayment: '+paymentLabels[payment]+'\n'
+    +'\nItems:\n'+itemLines.join('\n')
+    +'\n\nTotal: $'+total;
+
+  var mailLink='mailto:catsmeowcatrescue@gmail.com?subject='
+    +encodeURIComponent('Merch Order — '+name+' — $'+total)
+    +'&body='+encodeURIComponent(body);
+
+  window.open(mailLink,'_self');
+
+  var payHtml='';
+  if(payment==='venmo'){
+    payHtml='<p style="font-size:.85rem;margin-bottom:.5rem"><strong>Send $'+total+' via Venmo:</strong></p>'
+      +'<p style="font-size:.9rem;margin-bottom:.5rem">@CatsMeowCatRescue</p>'
+      +'<p style="font-size:.75rem;color:var(--stone)">Include your name in the Venmo note so we can match your payment to your order.</p>';
+  } else if(payment==='paypal'){
+    payHtml='<p style="font-size:.85rem;margin-bottom:.5rem"><strong>Send $'+total+' via PayPal to:</strong></p>'
+      +'<p style="font-size:.9rem;margin-bottom:.5rem">catsmeowcatrescue@gmail.com</p>'
+      +'<p style="font-size:.75rem;color:var(--stone)">Select "Friends & Family" to avoid fees. Include your name in the note.</p>';
+  } else if(payment==='check'){
+    payHtml='<p style="font-size:.85rem;margin-bottom:.5rem"><strong>Mail a check for $'+total+' to:</strong></p>'
+      +'<p style="font-size:.9rem;line-height:1.6">Cat\'s Meow Cat Rescue<br>PO Box 68222<br>Milwaukie, OR 97268</p>'
+      +'<p style="font-size:.75rem;color:var(--stone);margin-top:.5rem">Make check payable to "Cat\'s Meow Cat Rescue." Your order ships once payment is received.</p>';
+  } else {
+    payHtml='<p style="font-size:.85rem;margin-bottom:.5rem"><strong>Pay $'+total+' at pickup</strong></p>'
+      +'<p style="font-size:.75rem;color:var(--stone)">We\'ll email you pickup details and coordinate a time in the Milwaukie/Gladstone area. Cash, Venmo, or PayPal accepted at pickup.</p>';
+  }
+
+  document.getElementById('payment-instructions').innerHTML=payHtml;
+  document.getElementById('success-message').textContent='Thank you, '+name.split(' ')[0]+'! Your order confirmation email is on its way.';
+
+  document.getElementById('checkout-view').style.display='none';
+  document.getElementById('order-success').style.display='flex';
+
+  cart=[];
+  renderCart();
+});
+
 renderCart();
 window.addEventListener('DOMContentLoaded',function(){
   var ct=document.getElementById('cart-toggle');

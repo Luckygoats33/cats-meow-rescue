@@ -147,6 +147,7 @@ input,select,textarea{font-family:inherit;font-size:1rem}
 .checkout-summary-total{display:flex;justify-content:space-between;font-size:1rem;font-weight:800;padding-top:.5rem;border-top:1px solid var(--mist);margin-top:.5rem}
 .checkout-back{font-size:.8rem;text-decoration:underline;cursor:pointer;color:var(--stone);margin-bottom:1rem;display:inline-block}
 .checkout-back:hover{color:var(--pri)}
+.checkout-field input:invalid:not(:placeholder-shown){border-color:#D32F2F}
 .order-success{text-align:center;padding:2rem 1rem}
 .order-success svg{width:64px;height:64px;stroke:#2E7D32;fill:none;stroke-width:1.5;margin:0 auto 1rem}
 .order-success h4{font-family:var(--serif);font-size:1.3rem;margin-bottom:.5rem}
