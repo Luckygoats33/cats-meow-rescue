@@ -110,8 +110,8 @@ button{font-family:inherit;cursor:pointer;border:none;background:none}
 .mobile-bottom-bar{position:fixed;bottom:0;left:0;right:0;z-index:100;display:none;background:#fff;padding:10px 16px;gap:10px;border-top:1px solid #E8DDD2;box-shadow:0 -4px 20px rgba(0,0,0,.1)}
 .mobile-bottom-bar .btn{flex:1;text-align:center;justify-content:center;font-size:.9rem;font-weight:700;min-height:48px;border-radius:999px;display:inline-flex;align-items:center}
 @media(max-width:960px){.mobile-bottom-bar{display:flex}}
-.btn--pri{background:#B22222;color:#fff;border:none}
-.btn--gold{background:#D4A017;color:#fff;border:none}
+.btn--pri{background:var(--pri);color:#fff;border:none}.btn--pri:hover{background:var(--pri-h)}
+.btn--gold{background:var(--gold);color:#fff;border:none}.btn--gold:hover{background:var(--gold-h)}
 
 @media(prefers-color-scheme:dark){:root{--ground:#120A04;--surface:#1E1410;--ink:#F5EDE7;--stone:#A09080;--mist:#2E2018;--header-bg:#1E1410;--header-border:#2E2018;--header-ink:#F5EDE7}.site-header{background:var(--header-bg);border-color:var(--header-border)}.site-footer{background:#231e1a;color:#f0e8e0}.footer-bottom{border-color:rgba(255,255,255,.1);color:var(--stone)}.product-card{background:var(--surface);border-color:var(--mist)}.product-body h3{color:var(--ink)}.size-select{background:var(--surface);color:var(--ink);border-color:var(--mist)}.shop-tab{border-color:var(--mist);color:var(--ink)}.mobile-bottom-bar{background:var(--surface);border-color:var(--mist)}.footer-social a{background:rgba(255,255,255,.08);color:var(--ink)}.footer-col h4{color:var(--ink)}.footer-col a{color:var(--stone)}}
 :root[data-theme="dark"]{--ground:#120A04;--surface:#1E1410;--ink:#F5EDE7;--stone:#A09080;--mist:#2E2018;--header-bg:#1E1410;--header-border:#2E2018;--header-ink:#F5EDE7}
@@ -131,6 +131,13 @@ button{font-family:inherit;cursor:pointer;border:none;background:none}
 .mobile-nav::before{content:'';position:absolute;bottom:5%;right:5%;width:200px;height:200px;background:url('logo-cats.png') no-repeat center/contain;opacity:.06;pointer-events:none;z-index:0}
 .mobile-nav nav{position:relative;z-index:1}
 .mobile-nav .btn--rose,.mobile-nav .mobile-donate{background:var(--pri)!important;color:#fff!important;font-size:1.1rem!important;font-weight:800!important;text-transform:uppercase!important;letter-spacing:.06em!important;padding:.9rem 2rem!important;min-height:56px!important}
+
+.btn--lg{padding:.9rem 2rem;font-size:1rem;border-radius:var(--radius)}
+:root[data-theme="light"] .site-footer{background:#F5EDE5;color:#2D1810}
+:root[data-theme="light"] .footer-bottom{border-color:rgba(0,0,0,.06);color:var(--stone)}
+:root[data-theme="light"] .footer-social a{border-color:rgba(0,0,0,.12);color:var(--ink)}
+:root[data-theme="light"] .footer-col h4{color:var(--ink)}
+:root[data-theme="light"] .footer-col a{color:var(--stone)}
 </style>
 </head>
 <body>

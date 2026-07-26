@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Page Not Found — Cat's Meow Cat Rescue</title>
+<meta name="robots" content="noindex">
+<meta name="theme-color" content="#B22222">
+<link rel="icon" href="favicon.ico" sizes="any">
+<link rel="icon" type="image/png" sizes="32x32" href="logo-cats-32.png">
+<link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Montserrat:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400&display=swap" rel="stylesheet">
+<style>
+:root{
+  --pri:#B22222;--pri-h:#8B1A1A;
+  --gold:#D4A017;
+  --ground:#FFF9F2;--surface:#FFFFFF;--ink:#2D1810;--stone:#746758;--mist:#E8DDD2;
+  --serif:'Fredoka',system-ui,sans-serif;
+  --sans:'Montserrat',system-ui,-apple-system,sans-serif;
+  --radius:14px;--radius-pill:999px;
+}
+@media(prefers-color-scheme:dark){:root{
+  --ground:#120A04;--surface:#1E1410;--ink:#F5EDE7;--stone:#A09080;--mist:#2E2018;
+}}
+:root[data-theme="dark"]{
+  --ground:#120A04;--surface:#1E1410;--ink:#F5EDE7;--stone:#A09080;--mist:#2E2018;
+}
+:root[data-theme="light"]{
+  --ground:#FFF9F2;--surface:#FFFFFF;--ink:#2D1810;--stone:#746758;--mist:#E8DDD2;
+}
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+body{font-family:var(--sans);color:var(--ink);background:var(--ground);min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:2rem}
+.error-page{max-width:32rem}
+.error-page img{width:120px;height:auto;margin:0 auto 2rem}
+.error-page h1{font-family:var(--serif);font-size:clamp(2rem,5vw,3rem);font-weight:700;margin-bottom:.5rem;color:var(--pri)}
+.error-page .code{font-size:5rem;font-weight:800;font-family:var(--serif);color:var(--mist);line-height:1;margin-bottom:1rem}
+.error-page p{color:var(--stone);font-size:1rem;line-height:1.7;margin-bottom:2rem}
+.btn{display:inline-block;padding:.7rem 1.5rem;border-radius:var(--radius-pill);font-weight:700;font-size:.85rem;text-decoration:none;transition:all .2s}
+.btn--pri{background:var(--pri);color:#fff}.btn--pri:hover{background:var(--pri-h)}
+.btn--outline{border:1.5px solid var(--mist);color:var(--ink);margin-left:.5rem}.btn--outline:hover{border-color:var(--pri);color:var(--pri)}
+.links{display:flex;gap:.5rem;justify-content:center;flex-wrap:wrap}
+</style>
+</head>
+<body>
+<div class="error-page">
+  <img src="logo-cats-128.png" alt="Cat's Meow Cat Rescue">
+  <div class="code">404</div>
+  <h1>This cat wandered off!</h1>
+  <p>The page you're looking for doesn't exist or has been moved. But there are plenty of cats waiting to meet you.</p>
+  <div class="links">
+    <a href="index.html" class="btn btn--pri">Go Home</a>
+    <a href="index.html#cats" class="btn btn--outline">Meet Our Cats</a>
+    <a href="blog.html" class="btn btn--outline">Read Our Blog</a>
+  </div>
+</div>
+</body>
+</html>

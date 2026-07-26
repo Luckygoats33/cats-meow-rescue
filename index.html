@@ -41,7 +41,7 @@
 @media(prefers-color-scheme:dark){:root{
   --ground:#120A04;--surface:#1E1410;--ink:#F5EDE7;--stone:#A09080;--mist:#2E2018;
   --header-bg:#1A0A04;--header-ink:#F5EDE7;--header-border:rgba(255,255,255,.1);
-}}
+}.site-footer{background:#1E1410;color:#F5EDE7}.footer-bottom{border-color:rgba(255,255,255,.1);color:var(--stone)}.footer-social a{border-color:rgba(255,255,255,.1);color:var(--ink)}.footer-col h4{color:var(--ink)}.footer-col a{color:var(--stone)}}
 :root[data-theme="dark"]{
   --ground:#120A04;--surface:#1E1410;--ink:#F5EDE7;--stone:#A09080;--mist:#2E2018;
   --header-bg:#1A0A04;--header-ink:#F5EDE7;--header-border:rgba(255,255,255,.1);
@@ -767,6 +767,17 @@ img,video,svg,iframe{max-width:100%;height:auto}
 .mobile-nav::before{content:'';position:absolute;bottom:5%;right:5%;width:200px;height:200px;background:url('logo-cats.png') no-repeat center/contain;opacity:.06;pointer-events:none;z-index:0}
 .mobile-nav nav{position:relative;z-index:1}
 .mobile-nav .btn--rose,.mobile-nav .mobile-donate{background:var(--pri)!important;color:#fff!important;font-size:1.1rem!important;font-weight:800!important;text-transform:uppercase!important;letter-spacing:.06em!important;padding:.9rem 2rem!important;min-height:56px!important}
+
+:root[data-theme="dark"] .site-footer{background:#1E1410;color:#F5EDE7}
+:root[data-theme="dark"] .footer-bottom{border-color:rgba(255,255,255,.1);color:var(--stone)}
+:root[data-theme="dark"] .footer-social a{border-color:rgba(255,255,255,.1);color:var(--ink)}
+:root[data-theme="dark"] .footer-col h4{color:var(--ink)}
+:root[data-theme="dark"] .footer-col a{color:var(--stone)}
+:root[data-theme="light"] .site-footer{background:#F5EDE5;color:#2D1810}
+:root[data-theme="light"] .footer-bottom{border-color:rgba(0,0,0,.06);color:var(--stone)}
+:root[data-theme="light"] .footer-social a{border-color:rgba(0,0,0,.12);color:var(--ink)}
+:root[data-theme="light"] .footer-col h4{color:var(--ink)}
+:root[data-theme="light"] .footer-col a{color:var(--stone)}
 </style>
 </head>
 <body>
