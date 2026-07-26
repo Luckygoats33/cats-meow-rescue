@@ -58,7 +58,18 @@ a{text-decoration:none;color:inherit}
 .nav-dropdown-menu a:hover{background:var(--ground);color:var(--pri)!important}
 @media(max-width:960px){
   .main-nav,.header-cta{display:none}
-  .nav-toggle{display:flex}
+  .nav-toggle{display:flex;order:2}
+  .cart-toggle{order:1;margin-left:auto}
+  .site-header{background:#fff!important;border-bottom:1px solid #E8DDD2!important}
+  .site-header .logo{color:#2D1810}
+  .nav-toggle span{background:#2D1810!important}
+  .cart-toggle svg{stroke:#2D1810!important}
+  body{padding-bottom:72px}
+  .footer-grid{grid-template-columns:1fr 1fr;gap:1.5rem}
+}
+@media(max-width:640px){
+  .footer-grid{grid-template-columns:1fr}
+  .footer-bottom{flex-direction:column;text-align:center}
 }
 
 .shop-hero{background:linear-gradient(135deg,var(--pri),#D43030);color:#fff;padding:clamp(2.5rem,5vw,4rem) clamp(1rem,4vw,3rem);text-align:center}

@@ -239,9 +239,19 @@ button{font-family:inherit;cursor:pointer;border:none;background:none;color:inhe
 .container{width:min(76rem,calc(100% - 2rem));margin:0 auto}
 
 @media(max-width:960px){
-  .main-nav,.header-cta{display:none
-  .cart-toggle{order:1;margin-left:auto}}
+  .main-nav,.header-cta{display:none}
   .nav-toggle{display:flex;order:2}
+  .cart-toggle{order:1;margin-left:auto}
+  .site-header{background:#fff!important;border-bottom:1px solid #E8DDD2!important}
+  .site-header .logo{color:#2D1810}
+  .nav-toggle span{background:#2D1810!important}
+  .cart-toggle svg{stroke:#2D1810!important}
+  body{padding-bottom:72px}
+  .footer-grid{grid-template-columns:1fr 1fr;gap:1.5rem}
+}
+@media(max-width:640px){
+  .footer-grid{grid-template-columns:1fr}
+  .footer-bottom{flex-direction:column;text-align:center}
 }
 
 /* Responsive */
