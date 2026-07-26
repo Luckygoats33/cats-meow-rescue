@@ -286,8 +286,8 @@ function renderCart(){
   var footer=document.getElementById('cart-footer');
   var total=0;var qty=0;
   cart.forEach(function(c){total+=c.price*c.qty;qty+=c.qty});
-  badge.textContent=qty;badge.classList.toggle('has-items',qty>0);
-  count.textContent=qty;
+  if(badge){badge.textContent=qty;badge.classList.toggle('has-items',qty>0)}
+  if(count)count.textContent=qty;
   if(!cart.length){
     el.innerHTML='<div class="cart-empty"><p>Your cart is empty</p><p style="font-size:.8rem;margin-top:.5rem">Browse our merch above!</p></div>';
     footer.style.display='none';return;

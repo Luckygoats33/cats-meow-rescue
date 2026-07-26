@@ -1704,9 +1704,8 @@ function saveCart(){localStorage.setItem('cmcr_cart',JSON.stringify(cart))}
 function updateCartBadge(){
   var total=cart.reduce(function(s,i){return s+i.qty},0);
   var badge=document.getElementById('cart-badge');
-  badge.textContent=total;
-  badge.classList.toggle('has-items',total>0);
-  document.getElementById('cart-count').textContent=total;
+  if(badge){badge.textContent=total;badge.classList.toggle('has-items',total>0)}
+  var cc=document.getElementById('cart-count');if(cc)cc.textContent=total;
 }
 
 function showToast(text){
