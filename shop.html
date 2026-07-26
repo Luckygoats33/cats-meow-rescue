@@ -56,6 +56,13 @@ a{text-decoration:none;color:inherit}
 .nav-dropdown:hover .nav-dropdown-menu{opacity:1;visibility:visible}
 .nav-dropdown-menu a{display:block;padding:.5rem 1.25rem;font-size:.8rem;font-weight:500;color:var(--ink)!important;text-transform:none!important;letter-spacing:0!important;transition:background .15s,color .15s}
 .nav-dropdown-menu a:hover{background:var(--ground);color:var(--pri)!important}
+/* Force light theme on mobile */
+@media(max-width:960px) and (prefers-color-scheme:dark){
+  :root{--ground:#FFF9F2;--surface:#FFFFFF;--ink:#2D1810;--stone:#746758;--mist:#E8DDD2;--header-bg:#fff;--header-ink:#2D1810;--header-border:#E8DDD2}
+}
+@media(max-width:960px){
+  :root[data-theme="dark"]{--ground:#FFF9F2;--surface:#FFFFFF;--ink:#2D1810;--stone:#746758;--mist:#E8DDD2;--header-bg:#fff;--header-ink:#2D1810;--header-border:#E8DDD2}
+}
 @media(max-width:960px){
   .main-nav,.header-cta{display:none}
   .nav-toggle{display:flex;order:2}
@@ -149,6 +156,13 @@ button{font-family:inherit;cursor:pointer;border:none;background:none}
 :root[data-theme="light"] .footer-social a{border-color:rgba(0,0,0,.12);color:var(--ink)}
 :root[data-theme="light"] .footer-col h4{color:var(--ink)}
 :root[data-theme="light"] .footer-col a{color:var(--stone)}
+@media(max-width:960px){
+  .site-footer{background:#F5EDE5!important;color:#2D1810!important}
+  .footer-bottom{border-color:rgba(0,0,0,.06)!important;color:var(--stone)!important}
+  .footer-col h4{color:#2D1810!important}
+  .footer-col a{color:#746758!important}
+  .mobile-bottom-bar{background:#fff!important;border-top:1px solid #E8DDD2!important}
+}
 </style>
 </head>
 <body>

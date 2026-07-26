@@ -111,6 +111,13 @@ button{font-family:inherit;cursor:pointer;border:none;background:none;color:inhe
 .site-footer{background:#F5EDE5;color:#2D1810;padding:2.5rem clamp(1rem,4vw,3rem) 1.5rem}
 .footer-links a:hover{opacity:1}
 
+/* Force light theme on mobile */
+@media(max-width:960px) and (prefers-color-scheme:dark){
+  :root{--ground:#FFF9F2;--surface:#FFFFFF;--ink:#2D1810;--stone:#746758;--mist:#E8DDD2;--header-bg:#fff;--header-ink:#2D1810;--header-border:#E8DDD2}
+}
+@media(max-width:960px){
+  :root[data-theme="dark"]{--ground:#FFF9F2;--surface:#FFFFFF;--ink:#2D1810;--stone:#746758;--mist:#E8DDD2;--header-bg:#fff;--header-ink:#2D1810;--header-border:#E8DDD2}
+}
 @media(max-width:960px){
   .main-nav,.header-cta{display:none}
   .nav-toggle{display:flex;order:2}
@@ -170,6 +177,13 @@ button{font-family:inherit;cursor:pointer;border:none;background:none;color:inhe
 :root[data-theme="light"] .footer-social a{border-color:rgba(0,0,0,.12);color:var(--ink)}
 :root[data-theme="light"] .footer-col h4{color:var(--ink)}
 :root[data-theme="light"] .footer-col a{color:var(--stone)}
+@media(max-width:960px){
+  .site-footer{background:#F5EDE5!important;color:#2D1810!important}
+  .footer-bottom{border-color:rgba(0,0,0,.06)!important;color:var(--stone)!important}
+  .footer-col h4{color:#2D1810!important}
+  .footer-col a{color:#746758!important}
+  .mobile-bottom-bar{background:#fff!important;border-top:1px solid #E8DDD2!important}
+}
 </style>
 </head>
 <body>
