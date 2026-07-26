@@ -122,8 +122,10 @@ input,select,textarea{font-family:inherit;font-size:1rem}
   background:#3A1A08;color:#fff}
 .hero h1,.hero-subtitle,.hero-eyebrow{text-shadow:0 2px 16px rgba(0,0,0,.5),0 1px 3px rgba(0,0,0,.3)}
 .hero-video{position:absolute;inset:0;z-index:0}
-.hero-video video{width:100%;height:100%;object-fit:cover}
-.hero-video .mobile-video{display:none}
+.hero-video video{width:100%;height:100%;object-fit:cover;position:absolute;inset:0}
+.hero-video .desktop-video{z-index:2;transition:opacity 1.5s ease}
+.hero-video .desktop-video.fade-out{opacity:0}
+.hero-video .mobile-video{z-index:1}
 .hero-overlay{position:absolute;inset:0;z-index:1;background:linear-gradient(180deg,rgba(18,10,4,.2) 0%,rgba(18,10,4,0) 20%,rgba(18,10,4,0) 55%,rgba(18,10,4,.4) 78%,rgba(18,10,4,.7) 100%)}
 .hero::before,.hero::after{content:'';position:absolute;border-radius:50%;filter:blur(120px);opacity:.2;pointer-events:none}
 .hero::before{width:500px;height:500px;background:#D4A017;top:-100px;right:-60px;animation:heroBlob 25s ease-in-out infinite}
@@ -571,9 +573,8 @@ img,video,svg,iframe{max-width:100%;height:auto}
   .hero{min-height:auto;padding:0 0 2rem;background:var(--ground);color:var(--ink);justify-content:flex-start}
   .hero h1,.hero-subtitle,.hero-eyebrow{text-shadow:none}
   .hero-video{position:relative;inset:auto;width:100%;margin:0 0 1rem;height:40vh;border-radius:0;overflow:hidden;order:-1}
-  .hero-video .desktop-video{display:block;position:absolute;inset:0;z-index:2;transition:opacity 1.5s ease}
-  .hero-video .desktop-video.fade-out{opacity:0}
-  .hero-video .mobile-video{display:block;position:absolute;inset:0;z-index:1}
+  .hero-video .desktop-video{display:block}
+  .hero-video .mobile-video{display:block}
   .hero-overlay{display:none}
   .hero::before,.hero::after{display:none}
   .hero-paws{display:none}
@@ -2153,7 +2154,6 @@ renderShop(6);
 </script>
 <script>
 (function(){
-  if(window.innerWidth>960)return;
   var dv=document.querySelector('.hero-video .desktop-video');
   if(!dv)return;
   dv.loop=false;
