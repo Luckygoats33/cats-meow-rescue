@@ -23,6 +23,8 @@
   --serif:'Fredoka',system-ui,sans-serif;
   --sans:'Montserrat',system-ui,-apple-system,sans-serif;
   --radius:14px;--radius-sm:10px;--radius-pill:999px;
+
+  --header-bg:#fff;--header-ink:#2D1810;--header-border:#E8DDD2;
 }
 @media(prefers-color-scheme:dark){:root{
   --ground:#120A04;--surface:#1E1410;--ink:#F5EDE7;--stone:#A09080;--mist:#2E2018;
@@ -38,13 +40,13 @@
 }
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
 html{scroll-behavior:smooth;font-size:16px}
-body{font-family:var(--sans);color:var(--ink);background:var(--ground);line-height:1.6;-webkit-font-smoothing:antialiased}
+body{padding-top:3.75rem;font-family:var(--sans);overflow-x:hidden;color:var(--ink);background:var(--ground);line-height:1.6;-webkit-font-smoothing:antialiased}
 a{color:inherit;text-decoration:none}
 img{max-width:100%;height:auto;display:block}
 
-.site-header{position:sticky;top:0;z-index:100;background:var(--header-bg,#fff);border-bottom:1px solid var(--header-border,var(--mist));padding:0 clamp(1rem,4vw,3rem);transition:box-shadow .3s}
+.site-header{position:fixed;top:0;left:0;right:0;z-index:100;background:var(--header-bg,#fff);border-bottom:1px solid var(--header-border,var(--mist));transition:box-shadow .3s}
 .site-header.scrolled{box-shadow:0 1px 12px rgba(0,0,0,.08)}
-.header-inner{max-width:76rem;margin:0 auto;display:flex;align-items:center;height:3.75rem;gap:1.5rem}
+.header-inner{width:min(76rem,calc(100% - 2rem));margin:0 auto;display:flex;align-items:center;height:3.75rem;gap:1.5rem}
 .logo{display:flex;align-items:center;gap:.5rem;font-weight:800;font-size:1.05rem;flex-shrink:0;text-decoration:none;color:var(--header-ink,var(--ink))}
 .logo-img{height:44px;width:auto}
 .main-nav{display:flex;gap:1.25rem;margin-left:auto}
@@ -68,7 +70,10 @@ button{font-family:inherit;cursor:pointer;border:none;background:none;color:inhe
 .mobile-nav nav a{font-family:var(--serif);font-size:1.4rem;font-weight:700;color:var(--ink);padding:18px 0;min-height:52px;display:flex;align-items:center;width:100%;justify-content:center;border-bottom:1px solid var(--mist);letter-spacing:-.01em;transition:color .2s;text-decoration:none}
 .mobile-nav nav a:last-child{border-bottom:none}
 .mobile-nav nav a:hover,.mobile-nav nav a:active{color:var(--pri)}
-.mobile-nav .btn--rose{margin-top:1.5rem;width:100%;justify-content:center;min-height:52px;font-size:1.05rem;border-radius:999px}
+.mobile-nav .btn{display:inline-flex;align-items:center;gap:.5rem;padding:.75rem 1.5rem;border-radius:var(--radius-sm,10px);font-weight:600;font-size:.9rem;transition:all .2s;white-space:nowrap}
+.btn:active{transform:scale(.97)}
+.btn:focus-visible{outline:2px solid var(--pri);outline-offset:3px}
+.btn--rose{margin-top:1.5rem;width:100%;justify-content:center;min-height:52px;font-size:1.05rem;border-radius:999px}
 .nav-dropdown{position:relative;display:flex;align-items:center}
 .nav-dropdown>a{display:flex;align-items:center;gap:.3rem}
 .nav-dropdown>a::after{content:'';border:solid var(--header-ink,var(--ink));border-width:0 1.5px 1.5px 0;display:inline-block;padding:2px;transform:rotate(45deg);margin-top:-2px;transition:transform .2s}
@@ -109,8 +114,6 @@ button{font-family:inherit;cursor:pointer;border:none;background:none;color:inhe
 .blog-card-body h3{font-size:.95rem;font-weight:700;color:var(--ink);margin-bottom:.4rem;line-height:1.3}
 .blog-card-body p{font-size:.8rem;color:var(--stone);line-height:1.5}
 
-.site-footer{background:#F5EDE5;color:#2D1810;padding:2.5rem clamp(1rem,4vw,3rem) 1.5rem;margin-top:clamp(2rem,4vw,3rem)}
-.footer-links a:hover{opacity:1}
 
 /* Force light theme on mobile */
 @media(max-width:960px) and (prefers-color-scheme:dark){
@@ -187,6 +190,7 @@ button{font-family:inherit;cursor:pointer;border:none;background:none;color:inhe
   .footer-col a{color:#746758!important}
   .mobile-bottom-bar{background:#fff!important;border-top:1px solid #E8DDD2!important}
 }
+@media(max-width:640px){.header-inner{height:3.5rem;padding:0 .5rem}}
 </style>
 </head>
 <body>
@@ -207,6 +211,25 @@ button{font-family:inherit;cursor:pointer;border:none;background:none;color:inhe
     <a href="index.html#help" class="btn btn--rose btn--pill mobile-donate" style="margin-top:.5rem">Donate Now</a>
   </nav>
 </div>
+
+<section class="blog-hero">
+  <h1>Cat Care Blog</h1>
+  <p>Tips, stories, and advice from Cat's Meow Cat Rescue — helping cats and their people thrive in Oregon.</p>
+  <div class="search-bar">
+    <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+    <input type="text" id="blog-search" placeholder="Search articles...">
+  </div>
+  <div class="search-count" id="search-count"></div>
+  <div class="cat-pills">
+    <button class="cat-pill active" data-cat="all" style="--pill-color:var(--pri)">All</button>
+    <button class="cat-pill" data-cat="adoption-tips" style="--pill-color:#B22222">Adoption Tips</button>
+    <button class="cat-pill" data-cat="cat-health" style="--pill-color:#2E7D32">Cat Health</button>
+    <button class="cat-pill" data-cat="cat-behavior" style="--pill-color:#1565C0">Cat Behavior</button>
+    <button class="cat-pill" data-cat="fostering" style="--pill-color:#D4A017">Fostering</button>
+    <button class="cat-pill" data-cat="community" style="--pill-color:#7B1FA2">Community</button>
+    <button class="cat-pill" data-cat="cat-care" style="--pill-color:#E65100">Cat Care</button>
+  </div>
+</section>
 
 <div class="blog-content">
   <section class="blog-category" id="adoption-tips">
@@ -350,6 +373,13 @@ function updateCount() {
   var vis = document.querySelectorAll('.blog-card:not([style*="display: none"])').length;
   document.getElementById('search-count').textContent = vis + ' article' + (vis !== 1 ? 's' : '');
 }
+
+document.querySelectorAll('.cat-pill').forEach(function(p){
+  p.addEventListener('click',function(){filterCat(p.dataset.cat,p)});
+});
+var searchInput=document.getElementById('blog-search');
+if(searchInput) searchInput.addEventListener('input',filterBlog);
+updateCount();
 
 var toggle=document.getElementById('nav-toggle'),mob=document.getElementById('mobile-nav');
 if(toggle&&mob){

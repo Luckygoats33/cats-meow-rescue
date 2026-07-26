@@ -23,6 +23,8 @@
   --serif:'Fredoka',system-ui,sans-serif;
   --sans:'Montserrat',system-ui,-apple-system,sans-serif;
   --radius:14px;--radius-sm:10px;--radius-pill:999px;
+
+  --header-bg:#fff;--header-ink:#2D1810;--header-border:#E8DDD2;
 }
 @media(prefers-color-scheme:dark){:root{
   --ground:#120A04;--surface:#1E1410;--ink:#F5EDE7;--stone:#A09080;--mist:#2E2018;
@@ -38,14 +40,14 @@
 }
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
 html{scroll-behavior:smooth;font-size:16px}
-body{font-family:var(--sans);color:var(--ink);background:var(--ground);line-height:1.6;-webkit-font-smoothing:antialiased}
+body{padding-top:3.75rem;font-family:var(--sans);overflow-x:hidden;color:var(--ink);background:var(--ground);line-height:1.6;-webkit-font-smoothing:antialiased}
 a{color:var(--pri);text-decoration:underline}
 a:hover{color:var(--pri-h)}
 img{max-width:100%;height:auto;display:block}
 
-.site-header{position:sticky;top:0;z-index:100;background:var(--header-bg,#fff);border-bottom:1px solid var(--header-border,var(--mist));padding:0 clamp(1rem,4vw,3rem);transition:box-shadow .3s}
+.site-header{position:fixed;top:0;left:0;right:0;z-index:100;background:var(--header-bg,#fff);border-bottom:1px solid var(--header-border,var(--mist));transition:box-shadow .3s}
 .site-header.scrolled{box-shadow:0 1px 12px rgba(0,0,0,.08)}
-.header-inner{max-width:76rem;margin:0 auto;display:flex;align-items:center;height:3.75rem;gap:1.5rem}
+.header-inner{width:min(76rem,calc(100% - 2rem));margin:0 auto;display:flex;align-items:center;height:3.75rem;gap:1.5rem}
 .logo{display:flex;align-items:center;gap:.5rem;font-weight:800;font-size:1.05rem;flex-shrink:0;text-decoration:none;color:var(--header-ink,var(--ink))}
 .logo-img{height:44px;width:auto}
 .main-nav{display:flex;gap:1.25rem;margin-left:auto}
@@ -109,7 +111,6 @@ button{font-family:inherit;cursor:pointer;border:none;background:none;color:inhe
 .cta-inner .btn:hover{background:#FFE76B;transform:translateY(-2px)}
 
 .site-footer{background:#F5EDE5;color:#2D1810;padding:2.5rem clamp(1rem,4vw,3rem) 1.5rem}
-.footer-links a:hover{opacity:1}
 
 /* Force light theme on mobile */
 @media(max-width:960px) and (prefers-color-scheme:dark){
@@ -184,6 +185,7 @@ button{font-family:inherit;cursor:pointer;border:none;background:none;color:inhe
   .footer-col a{color:#746758!important}
   .mobile-bottom-bar{background:#fff!important;border-top:1px solid #E8DDD2!important}
 }
+@media(max-width:640px){.header-inner{height:3.5rem;padding:0 .5rem}}
 </style>
 </head>
 <body>
