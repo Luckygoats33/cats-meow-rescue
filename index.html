@@ -571,8 +571,9 @@ img,video,svg,iframe{max-width:100%;height:auto}
   .hero{min-height:auto;padding:0 0 2rem;background:var(--ground);color:var(--ink);justify-content:flex-start}
   .hero h1,.hero-subtitle,.hero-eyebrow{text-shadow:none}
   .hero-video{position:relative;inset:auto;width:100%;margin:0 0 1rem;height:40vh;border-radius:0;overflow:hidden;order:-1}
-  .hero-video .desktop-video{display:none}
-  .hero-video .mobile-video{display:block}
+  .hero-video .desktop-video{display:block;position:absolute;inset:0;z-index:2;transition:opacity 1.5s ease}
+  .hero-video .desktop-video.fade-out{opacity:0}
+  .hero-video .mobile-video{display:block;position:absolute;inset:0;z-index:1}
   .hero-overlay{display:none}
   .hero::before,.hero::after{display:none}
   .hero-paws{display:none}
@@ -2148,6 +2149,18 @@ renderShop(6);
     });
     return false;
   };
+})();
+</script>
+<script>
+(function(){
+  if(window.innerWidth>960)return;
+  var dv=document.querySelector('.hero-video .desktop-video');
+  if(!dv)return;
+  dv.loop=false;
+  dv.addEventListener('ended',function(){
+    dv.classList.add('fade-out');
+    setTimeout(function(){dv.style.display='none'},1600);
+  });
 })();
 </script>
 <script src="components.js" defer></script>
