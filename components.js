@@ -60,7 +60,6 @@
     + '<a href="' + href('blog.html') + '">Blog</a>'
     + '<a href="' + href('about.html') + '">About</a>'
     + '<a href="' + href('#contact-us') + '">Contact</a>'
-    + '<a href="' + href('#help') + '" class="btn btn--rose btn--pill mobile-donate" style="margin-top:.5rem">Donate Now</a>'
     + '</nav></div>';
 
   // === FOOTER ===
