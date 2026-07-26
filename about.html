@@ -97,6 +97,18 @@ button{font-family:inherit;cursor:pointer;border:none;background:none;color:inhe
 .about-hero h1{font-family:var(--serif);font-size:clamp(2.2rem,5vw,3.5rem);font-weight:700;line-height:1.1;margin-bottom:1rem;position:relative;z-index:1;text-wrap:balance}
 .about-hero p{font-size:clamp(1rem,1.3vw,1.15rem);opacity:.85;max-width:36rem;margin:0 auto;line-height:1.7;position:relative;z-index:1}
 
+.about-photo-banner{overflow:hidden;padding:0}
+.photo-row{display:grid;grid-template-columns:repeat(3,1fr);gap:0}
+.photo-row img{width:100%;height:280px;object-fit:cover}
+@media(max-width:640px){.photo-row{grid-template-columns:1fr}.photo-row img{height:200px}}
+
+.team-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:1.5rem;margin:2rem 0}
+.team-card{background:var(--surface);border:1px solid var(--mist);border-radius:var(--radius);padding:1.5rem;text-align:center}
+.team-photo{width:140px;height:140px;border-radius:50%;object-fit:cover;margin:0 auto 1rem;border:3px solid var(--mist)}
+.team-card h3{font-family:var(--serif);font-size:1.15rem;font-weight:700;margin-bottom:.25rem}
+.team-role{display:inline-block;font-size:.72rem;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:var(--pri);margin-bottom:.75rem}
+.team-card p{font-size:.85rem;color:var(--stone);line-height:1.6}
+
 .about-section{max-width:52rem;margin:0 auto;padding:clamp(3rem,6vw,5rem) clamp(1rem,4vw,3rem)}
 .about-section h2{font-family:var(--serif);font-size:clamp(1.6rem,3vw,2.2rem);font-weight:700;margin-bottom:1.5rem;color:var(--ink);text-wrap:balance}
 .about-section p{font-size:1rem;color:var(--stone);line-height:1.8;margin-bottom:1.25rem}
@@ -196,13 +208,21 @@ button{font-family:inherit;cursor:pointer;border:none;background:none;color:inhe
 <section class="about-hero">
   <img src="logo-cats.png" alt="Cat's Meow mascots" class="mascot">
   <h1>Saving Lives, One Cat at a Time</h1>
-  <p>Cat's Meow Cat Rescue is a 501(c)(3) foster-based rescue in Milwaukie & Gladstone, Oregon, dedicated to rescuing, rehabilitating, and rehoming cats and kittens in need.</p>
+  <p>Hello friends and neighbors! We are a small group of dedicated individuals who started a non-profit cat rescue because we saw the need to help cats in our community.</p>
+</section>
+
+<section class="about-photo-banner">
+  <div class="photo-row">
+    <img src="images/team/hero-cats-1.jpg" alt="Rescue cats from Cat's Meow" loading="lazy">
+    <img src="images/team/hero-cats-2.jpg" alt="Kittens in foster care" loading="lazy">
+    <img src="images/team/hero-cats-3.jpg" alt="Happy adopted cats" loading="lazy">
+  </div>
 </section>
 
 <section class="about-section">
   <h2>Our Story</h2>
   <p>Cat's Meow Cat Rescue was born from a simple belief: <strong>every cat deserves a loving home</strong>. What started as a handful of passionate volunteers rescuing strays from the streets of Milwaukie and Gladstone, Oregon has grown into a dedicated foster-based rescue serving the greater Portland metro area.</p>
-  <p>We are a <strong>501(c)(3) nonprofit organization</strong> that operates entirely through a network of loving foster homes rather than a traditional shelter. This means our cats receive individualized attention, socialization, and veterinary care in a home environment while they wait for their forever families.</p>
+  <p>We are registered with the State of Oregon and have our <strong>501(c)(3) designation</strong>, which means we will give a receipt for any donation of money or supplies for a deduction on your taxes. We have bank and PayPal/Venmo accounts which are used solely to fulfill our mission of helping cats live better lives.</p>
   <p>As a proud <strong>PetSmart Charities partner</strong>, we host regular adoption events at local PetSmart locations, giving our cats maximum visibility and connecting them with potential adopters in a comfortable, accessible setting.</p>
 
   <div class="stats-strip">
@@ -215,7 +235,8 @@ button{font-family:inherit;cursor:pointer;border:none;background:none;color:inhe
 
 <section class="about-section" style="padding-top:0">
   <h2>Our Mission</h2>
-  <p>We rescue cats and kittens from high-risk situations including owner surrenders, stray populations, and overcrowded shelters. Every cat in our care receives comprehensive veterinary treatment, spay/neuter surgery, vaccinations, microchipping, and plenty of love before finding their forever home.</p>
+  <p>Our mission is to help improve the overall lives of cats in our community and our rescue partners to help find homes for cats. We do this in many ways from <strong>trap-neuter-return (TNR)</strong> to finding placement for abandoned or unwanted cats. We promise to behave ethically, honestly, and always with the best interests of our community in mind.</p>
+  <p>We would love to gain your support and look forward to hearing from you. Please reach out to us if you need help with cats.</p>
 
   <div class="mission-cards">
     <div class="mission-card">
@@ -232,6 +253,38 @@ button{font-family:inherit;cursor:pointer;border:none;background:none;color:inhe
       <img src="logo-cats-64.png" alt="Rehome">
       <h3>Rehome</h3>
       <p>Thoughtful matching ensures every cat finds the right forever family through our adoption process.</p>
+    </div>
+  </div>
+</section>
+
+<section class="about-section" style="padding-top:0">
+  <h2>Meet Our Team</h2>
+  <p>Cat's Meow Cat Rescue is powered entirely by dedicated volunteers who give their time, hearts, and homes to the cats in our care.</p>
+
+  <div class="team-grid">
+    <div class="team-card">
+      <img src="images/team/brenda.jpg" alt="Brenda — President" class="team-photo" loading="lazy">
+      <h3>Brenda</h3>
+      <span class="team-role">President</span>
+      <p>A Gladstone resident with years of cat assistance experience, Brenda is the Foster Champion and assists with all functions including adoptions, TNR, intake, outreach, and government compliance.</p>
+    </div>
+    <div class="team-card">
+      <img src="images/team/shona.jpg" alt="Shona — Vice President" class="team-photo" loading="lazy">
+      <h3>Shona</h3>
+      <span class="team-role">Vice President</span>
+      <p>A Gladstone resident and mother, Shona focuses on special-needs cats. She manages our foster network across the Portland metro area and coordinates supplies for all foster homes.</p>
+    </div>
+    <div class="team-card">
+      <img src="images/team/samantha.jpg" alt="Samantha — Secretary" class="team-photo" loading="lazy">
+      <h3>Samantha</h3>
+      <span class="team-role">Secretary</span>
+      <p>A long-time rescue volunteer, Samantha handles fostering, adoption postings, and application coordination, ensuring every cat finds their perfect match.</p>
+    </div>
+    <div class="team-card">
+      <img src="images/team/cara.jpg" alt="Cara — Member at Large" class="team-photo" loading="lazy">
+      <h3>Cara</h3>
+      <span class="team-role">Member at Large</span>
+      <p>A Gladstone resident who began rescue work after her sister relocated with eleven cats. Cara maintains a home catio for rescue assistance and helps with day-to-day operations.</p>
     </div>
   </div>
 </section>
