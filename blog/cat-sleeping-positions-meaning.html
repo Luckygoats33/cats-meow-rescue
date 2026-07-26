@@ -22,7 +22,7 @@
 .article-hero h1{font-family:var(--serif);font-size:clamp(1.6rem,3.5vw,2.4rem);font-weight:700;margin-bottom:.75rem;max-width:42rem;margin-left:auto;margin-right:auto;line-height:1.25}
 .article-meta{font-size:.85rem;color:var(--stone)}
 .cat-badge{display:inline-block;padding:.3rem .9rem;border-radius:var(--radius-pill);color:#fff;font-size:.7rem;font-weight:700;text-transform:uppercase;letter-spacing:.08em;margin-bottom:1rem}
-.article-body{width:min(42rem,calc(100% - 2rem));margin:0 auto;padding:2rem 0 3rem}
+.article-body{max-width:42rem;margin:0 auto;padding:clamp(2rem,4vw,3rem) clamp(1rem,4vw,3rem)}
 .article-body h2{font-family:var(--serif);font-size:1.3rem;font-weight:700;margin:2rem 0 .75rem;color:var(--ink)}
 .article-body p{margin-bottom:1rem;line-height:1.75;color:var(--ink)}
 .article-body ul,.article-body ol{margin:0 0 1rem 1.5rem;line-height:1.75;color:var(--ink)}
@@ -32,7 +32,7 @@
 .cta-inner{max-width:36rem;margin:0 auto}
 .cta-inner h3{font-family:var(--serif);font-size:1.4rem;margin-bottom:.5rem}
 .cta-inner p{opacity:.9;margin-bottom:1.25rem}
-.cta-inner .btn{background:#fff;color:var(--pri);font-weight:700;padding:.75rem 2rem;border-radius:var(--radius-pill)}
+.cta-inner .btn{display:inline-block;background:#FFD700;color:#2D1810;padding:.65rem 1.5rem;border-radius:var(--radius-pill);font-weight:700;font-size:.9rem;transition:all .2s}
 .cta-inner .btn:hover{background:#F5EDE5}
 </style>
 </head>
