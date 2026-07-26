@@ -156,7 +156,7 @@ input,select,textarea{font-family:inherit;font-size:1rem}
 .site-footer{background:#F5EDE5;color:#2D1810;padding:clamp(3rem,5vw,4rem) 0 1.5rem;margin-top:clamp(3rem,6vw,5rem)}
 .footer-grid{display:grid;grid-template-columns:1.5fr 1fr 1fr 1fr;gap:2.5rem;margin-bottom:2.5rem}
 .footer-brand .logo{color:#2D1810;margin-bottom:.75rem}
-.footer-brand .logo-img{height:50px;width:auto;mix-blend-mode:multiply}
+.footer-brand .logo-img{height:60px;width:auto}
 .footer-tagline{font-size:.9rem;opacity:.6;margin-bottom:1rem;line-height:1.6}
 .footer-social{display:flex;gap:.6rem}
 .footer-social a{width:2rem;height:2rem;border:1px solid rgba(0,0,0,.12);border-radius:50%;display:grid;place-items:center;transition:all .2s}

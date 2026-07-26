@@ -13,14 +13,14 @@
   }
 
   // Logo (base64 inline for instant render, no flash)
-  var logoSrc = prefix + 'logo-cats-128.png';
+  var logoSrc = prefix + 'catsm-logo.png';
 
   // === HEADER ===
   var headerHTML = '<header class="site-header" id="site-header">'
     + '<div class="header-inner">'
     + '<a href="' + href('#') + '" class="logo">'
-    + '<img src="' + logoSrc + '" alt="Cat\'s Meow Cat Rescue" class="logo-img" width="44" height="44">'
-    + ' Cat\'s Meow</a>'
+    + '<img src="' + logoSrc + '" alt="Cat\'s Meow Cat Rescue" class="logo-img">'
+    + '</a>'
     + '<nav class="main-nav">'
     + '<a href="' + href('#cats') + '">Adopt</a>'
     + '<div class="nav-dropdown"><a href="' + href('#contact-us') + '">Get Involved</a>'
