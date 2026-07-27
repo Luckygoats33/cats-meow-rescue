@@ -1,0 +1,1056 @@
+<title>Cat's Meow Cat Rescue — Complete Website Report</title>
+<style>
+:root{
+  --pri:#B22222;--pri-dark:#8B1818;--gold:#D4A017;--ground:#FFF9F2;
+  --ink:#2D1810;--stone:#746758;--mist:#EDE5DC;--surface:#FFFFFF;
+  --green:#2E7D32;--green-bg:#E8F5E9;--red-bg:#FDEDED;
+  --font-body:'Segoe UI',-apple-system,system-ui,sans-serif;
+  --font-head:Georgia,'Times New Roman',serif;
+}
+@media(prefers-color-scheme:dark){:root{
+  --ground:#141210;--ink:#F0EBE5;--stone:#A89B8C;--mist:#2A2622;
+  --surface:#1E1C19;--green-bg:#1A2E1A;--red-bg:#2E1A1A;
+}}
+:root[data-theme="dark"]{
+  --ground:#141210;--ink:#F0EBE5;--stone:#A89B8C;--mist:#2A2622;
+  --surface:#1E1C19;--green-bg:#1A2E1A;--red-bg:#2E1A1A;
+}
+:root[data-theme="light"]{
+  --ground:#FFF9F2;--ink:#2D1810;--stone:#746758;--mist:#EDE5DC;
+  --surface:#FFFFFF;--green-bg:#E8F5E9;--red-bg:#FDEDED;
+}
+
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:var(--font-body);background:var(--ground);color:var(--ink);line-height:1.7;font-size:15px}
+
+/* COVER */
+.cover{background:linear-gradient(135deg,var(--pri) 0%,var(--pri-dark) 100%);color:#FFF9F2;padding:6rem 2rem 5rem;text-align:center}
+.cover .icon{font-size:3rem;margin-bottom:1rem}
+.cover .org{font-size:.75rem;text-transform:uppercase;letter-spacing:.35em;opacity:.5;font-weight:700}
+.cover h1{font-family:var(--font-head);font-size:clamp(1.8rem,4vw,2.8rem);font-weight:700;line-height:1.2;margin:.8rem 0;text-wrap:balance}
+.cover .sub{font-size:clamp(.85rem,1.8vw,1.05rem);opacity:.7;max-width:600px;margin:0 auto 1.5rem;line-height:1.6}
+.cover .meta-line{font-size:.72rem;opacity:.35;line-height:2.2}
+.cover .url{display:inline-block;background:rgba(255,255,255,.1);border-radius:8px;padding:.4rem 1.5rem;font-family:monospace;font-size:.85rem;color:var(--gold);margin:1rem 0}
+
+/* LAYOUT */
+.wrap{max-width:860px;margin:0 auto;padding:2rem 1.5rem 4rem}
+.toc{background:var(--surface);border:2px solid var(--mist);border-radius:12px;padding:1.5rem 2rem;margin:2rem 0}
+.toc h2{font-family:var(--font-head);font-size:1.2rem;color:var(--pri);margin-bottom:.8rem;border-bottom:2px solid var(--mist);padding-bottom:.5rem}
+.toc ol{margin-left:1.2rem;counter-reset:toc}
+.toc li{margin:.35rem 0;font-size:.88rem;line-height:1.5}
+.toc a{color:var(--pri);text-decoration:none;font-weight:600}
+.toc a:hover{text-decoration:underline}
+.toc .sub-items{margin-left:1.2rem;list-style-type:lower-alpha}
+
+/* SECTIONS */
+.section{margin:3rem 0 0;padding-top:2rem;border-top:3px solid var(--mist)}
+.section:first-of-type{border-top:none;margin-top:2rem}
+.section h2{font-family:var(--font-head);font-size:clamp(1.3rem,2.5vw,1.7rem);color:var(--pri);margin-bottom:.3rem;line-height:1.25}
+.section .section-num{font-size:.7rem;text-transform:uppercase;letter-spacing:.2em;color:var(--stone);font-weight:700;margin-bottom:.2rem}
+.section h3{font-family:var(--font-head);font-size:1.1rem;color:var(--ink);margin:1.5rem 0 .5rem;padding-bottom:.3rem;border-bottom:1px solid var(--mist)}
+.section h4{font-size:.9rem;font-weight:700;color:var(--stone);margin:1rem 0 .3rem;text-transform:uppercase;letter-spacing:.06em}
+.section p{margin:.5rem 0;font-size:.92rem}
+.section ul,.section ol{margin:.5rem 0 .8rem 1.3rem;font-size:.9rem}
+.section li{margin:.25rem 0}
+
+/* STAT GRID */
+.stat-row{display:grid;gap:.6rem;margin:1rem 0}
+.stat-row.c3{grid-template-columns:repeat(3,1fr)}
+.stat-row.c4{grid-template-columns:repeat(4,1fr)}
+.stat-row.c5{grid-template-columns:repeat(5,1fr)}
+.stat-row.c6{grid-template-columns:repeat(6,1fr)}
+@media(max-width:640px){.stat-row.c4,.stat-row.c5,.stat-row.c6{grid-template-columns:repeat(2,1fr)}}
+.stat-box{background:var(--surface);border:2px solid var(--mist);border-radius:10px;padding:.8rem .5rem;text-align:center}
+.stat-box .n{font-size:1.5rem;font-weight:800;color:var(--pri);line-height:1}
+.stat-box .l{font-size:.58rem;color:var(--stone);text-transform:uppercase;letter-spacing:.08em;font-weight:700;margin-top:.2rem}
+.stat-box.green .n{color:var(--green)}
+
+/* TABLES */
+.tbl-wrap{overflow-x:auto;margin:1rem 0;border-radius:10px;border:2px solid var(--mist)}
+table{width:100%;border-collapse:collapse;font-size:.82rem;font-variant-numeric:tabular-nums}
+th{background:var(--pri);color:white;padding:.55rem .7rem;text-align:left;font-size:.7rem;text-transform:uppercase;letter-spacing:.06em;font-weight:700;white-space:nowrap}
+td{padding:.5rem .7rem;border-bottom:1px solid var(--mist);vertical-align:top}
+tr:last-child td{border-bottom:none}
+tr:nth-child(even){background:rgba(0,0,0,.02)}
+@media(prefers-color-scheme:dark){tr:nth-child(even){background:rgba(255,255,255,.02)}}
+:root[data-theme="dark"] tr:nth-child(even){background:rgba(255,255,255,.02)}
+:root[data-theme="light"] tr:nth-child(even){background:rgba(0,0,0,.02)}
+
+/* CALLOUTS */
+.callout{border-radius:10px;padding:.8rem 1rem;margin:1rem 0;font-size:.88rem;line-height:1.6}
+.callout strong{display:block;margin-bottom:.15rem}
+.callout.ok{background:var(--green-bg);border-left:5px solid var(--green)}
+.callout.ok strong{color:var(--green)}
+.callout.warn{background:#FFF3E0;border-left:5px solid var(--gold)}
+.callout.warn strong{color:#E65100}
+.callout.info{background:var(--surface);border-left:5px solid var(--pri)}
+.callout.info strong{color:var(--pri)}
+@media(prefers-color-scheme:dark){.callout.warn{background:#2A2010}}
+:root[data-theme="dark"] .callout.warn{background:#2A2010}
+
+/* CMP */
+.cmp{display:grid;grid-template-columns:1fr 1fr;gap:.8rem;margin:1rem 0}
+@media(max-width:640px){.cmp{grid-template-columns:1fr}}
+.cmp-col{background:var(--surface);border-radius:10px;padding:1rem;border:2px solid var(--mist)}
+.cmp-col.old{border-top:4px solid var(--stone)}
+.cmp-col.nw{border-top:4px solid var(--green)}
+.cmp-col .hd{font-size:.65rem;text-transform:uppercase;letter-spacing:.1em;font-weight:800;margin-bottom:.4rem}
+.cmp-col.old .hd{color:var(--stone)}
+.cmp-col.nw .hd{color:var(--green)}
+.cmp-col ul{margin:.3rem 0 0 1rem;font-size:.82rem;line-height:1.6}
+
+/* FEATURE CARDS */
+.feat-grid{display:grid;grid-template-columns:1fr 1fr;gap:.6rem;margin:1rem 0}
+@media(max-width:640px){.feat-grid{grid-template-columns:1fr}}
+.feat{background:var(--surface);border:2px solid var(--mist);border-radius:10px;padding:.7rem .9rem}
+.feat .ft{font-weight:700;font-size:.85rem;color:var(--pri);margin-bottom:.15rem}
+.feat .fd{font-size:.78rem;color:var(--stone);line-height:1.5}
+
+/* PILLS */
+.pills{display:flex;flex-wrap:wrap;gap:.35rem;margin:.6rem 0}
+.pill{background:var(--surface);border:2px solid var(--mist);border-radius:20px;padding:.25rem .65rem;font-size:.72rem;font-weight:600;white-space:nowrap}
+.pill.pri{background:var(--pri);color:white;border-color:var(--pri)}
+
+/* PAGE BREAK hint for print */
+@media print{
+  .section{page-break-before:always}
+  .cover{page-break-after:always}
+  .toc{page-break-after:always}
+  body{font-size:11pt}
+}
+</style>
+
+<!-- COVER -->
+<div class="cover">
+  <div class="icon">🐾</div>
+  <div class="org">Cat's Meow Cat Rescue &bull; Milwaukie, Oregon</div>
+  <h1>Complete Website Redesign Report</h1>
+  <div class="sub">A detailed breakdown of every page, feature, function, and strategic decision in the new Cat's Meow Cat Rescue website &mdash; built to increase adoptions, donations, and community engagement.</div>
+  <div class="url">luckygoats33.github.io/cats-meow-rescue</div>
+  <div class="meta-line">Prepared by Samantha Chandler, Board Member<br>July 2026 &bull; 20+ Sections &bull; 166 Pages Built</div>
+</div>
+
+<div class="wrap">
+
+<!-- TABLE OF CONTENTS -->
+<div class="toc">
+  <h2>Table of Contents</h2>
+  <ol>
+    <li><a href="#exec">Executive Summary</a></li>
+    <li><a href="#numbers">By the Numbers</a></li>
+    <li><a href="#homepage">Homepage</a>
+      <ol class="sub-items">
+        <li><a href="#hero">Hero &amp; Video Background</a></li>
+        <li><a href="#quiz">Personality Quiz</a></li>
+        <li><a href="#petfinder">Petfinder Cat Browser</a></li>
+        <li><a href="#events">Events Calendar</a></li>
+        <li><a href="#fundraising">Fundraising Progress</a></li>
+        <li><a href="#forms">Adoption Application &amp; Contact</a></li>
+        <li><a href="#donate-modal">Donate Modal</a></li>
+        <li><a href="#newsletter-popup">Newsletter Popup</a></li>
+      </ol>
+    </li>
+    <li><a href="#shop">Shop Page &mdash; 11 Products</a></li>
+    <li><a href="#blog">Blog &mdash; 160 Articles &amp; SEO Strategy</a></li>
+    <li><a href="#seo-deep">Why 160 Blog Posts Matter for SEO</a></li>
+    <li><a href="#faq">FAQ Page &mdash; 50 Questions</a></li>
+    <li><a href="#about">About Page</a></li>
+    <li><a href="#404">Custom 404 Error Page</a></li>
+    <li><a href="#interactive">Interactive Features &amp; Animations</a></li>
+    <li><a href="#design">Design System &amp; Brand Identity</a></li>
+    <li><a href="#mobile">Mobile Experience</a></li>
+    <li><a href="#technical">Technical &amp; SEO Comparison</a></li>
+    <li><a href="#lighthouse">Google Lighthouse Performance</a></li>
+    <li><a href="#station3">Merchandise &amp; Promotional Products</a></li>
+    <li><a href="#platform">Platform Recommendation</a></li>
+    <li><a href="#next">Next Steps &amp; Timeline</a></li>
+  </ol>
+</div>
+
+<!-- ============================================ -->
+<!-- 1. EXECUTIVE SUMMARY -->
+<!-- ============================================ -->
+<div class="section" id="exec">
+  <div class="section-num">Section 1</div>
+  <h2>Executive Summary</h2>
+  <p>The new Cat's Meow Cat Rescue website is a complete ground-up redesign that replaces the current 7-page Wix site with a 166-page, feature-rich platform purpose-built for a foster-based cat rescue. Every element &mdash; from the custom cat paw cursor to the 160-article blog &mdash; is designed to accomplish three things: <strong>help more cats get adopted, increase donations, and grow our volunteer and foster network.</strong></p>
+
+  <p>The prototype is fully functional and live for review. It includes an online shop, interactive adoption application, live Petfinder integration showing all 31 currently adoptable cats, a personality quiz to match visitors with their ideal cat, an events calendar, fundraising progress trackers, and a comprehensive blog covering every topic a cat owner or potential adopter might search for.</p>
+
+  <div class="callout ok">
+    <strong>Key Achievement</strong>
+    We went from 7 pages with no blog, no shop, no FAQ, and no interactive features &mdash; to 166 pages with 160 blog articles, 50 FAQs, 11 shop products, a personality quiz, live cat profiles, and 24 interactive features. Google Lighthouse scores improved by an average of +38.5 points across all four categories.
+  </div>
+</div>
+
+<!-- ============================================ -->
+<!-- 2. BY THE NUMBERS -->
+<!-- ============================================ -->
+<div class="section" id="numbers">
+  <div class="section-num">Section 2</div>
+  <h2>By the Numbers</h2>
+
+  <div class="stat-row c6">
+    <div class="stat-box"><div class="n">166</div><div class="l">Total Pages</div></div>
+    <div class="stat-box"><div class="n">160</div><div class="l">Blog Articles</div></div>
+    <div class="stat-box"><div class="n">50</div><div class="l">FAQ Questions</div></div>
+    <div class="stat-box"><div class="n">11</div><div class="l">Shop Products</div></div>
+    <div class="stat-box"><div class="n">31</div><div class="l">Adoptable Cats</div></div>
+    <div class="stat-box"><div class="n">24</div><div class="l">Interactive Features</div></div>
+  </div>
+
+  <h3>Content Comparison</h3>
+  <div class="cmp">
+    <div class="cmp-col old">
+      <div class="hd">Current Wix Site</div>
+      <ul>
+        <li>~7 pages total</li>
+        <li>No blog</li>
+        <li>No FAQ</li>
+        <li>No online shop</li>
+        <li>No personality quiz</li>
+        <li>No site-wide search</li>
+        <li>No dark mode</li>
+        <li>No events calendar</li>
+        <li>Links out to Petfinder for cat profiles</li>
+      </ul>
+    </div>
+    <div class="cmp-col nw">
+      <div class="hd">New Website</div>
+      <ul>
+        <li>166 pages total</li>
+        <li>160 blog articles across 6 categories</li>
+        <li>50 FAQs across 7 categories</li>
+        <li>11 shop products with cart system</li>
+        <li>"Find Your Match" personality quiz</li>
+        <li>Site-wide instant search (Cmd+K / Ctrl+K)</li>
+        <li>Dark mode with system detection</li>
+        <li>Interactive events calendar with sharing</li>
+        <li>On-site cat browser with filters</li>
+      </ul>
+    </div>
+  </div>
+  <p style="font-size:.82rem;color:var(--stone);text-align:center;margin-top:.5rem">That's <strong>24&times; more content</strong> and <strong>24 new features</strong> the current site doesn't have.</p>
+</div>
+
+<!-- ============================================ -->
+<!-- 3. HOMEPAGE -->
+<!-- ============================================ -->
+<div class="section" id="homepage">
+  <div class="section-num">Section 3</div>
+  <h2>Homepage &mdash; The Front Door</h2>
+  <p>The homepage is designed as a single-page experience that tells our story, shows our cats, and gives visitors every possible way to get involved &mdash; all without leaving the page. It's 2,169 lines of code containing 12 distinct sections.</p>
+
+  <h3 id="hero">Hero Section &amp; Video Background</h3>
+  <p>The first thing visitors see is a full-width hero with a <strong>looping video background</strong> (desktop) or a high-quality static image (mobile). The video auto-fades after its first play to reduce distraction while keeping the initial "wow" factor.</p>
+  <ul>
+    <li><strong>Stats strip</strong> showing "388+ Cats Rescued", "100% Volunteer Run", and "TNR" program badges</li>
+    <li><strong>Three animated fold cards</strong> with SVG cat illustrations: "Meet Your BFF", "Help the Kitties", "Join the Fun"</li>
+    <li><strong>12 floating paw-print SVGs</strong> with randomized positions, sizes, rotations, and opacity for ambient atmosphere</li>
+    <li><strong>Mission section:</strong> "Saving Lives, One Purr at a Time" with three pillars &mdash; Rescue, Rehabilitate, Rehome</li>
+  </ul>
+  <div class="callout info">
+    <strong>Why a video hero?</strong>
+    Video backgrounds increase time-on-page by 88% on average. For a rescue, showing real cats in motion creates an emotional connection in the first 3 seconds that a static image can't match.
+  </div>
+
+  <h3>"What We Do" Cards</h3>
+  <p>Four cards explain our core programs with icons and descriptions:</p>
+  <div class="feat-grid">
+    <div class="feat"><div class="ft">Foster Care</div><div class="fd">Every cat lives in a real home with a dedicated foster parent until adoption.</div></div>
+    <div class="feat"><div class="ft">Medical Care</div><div class="fd">Full vet workups, spay/neuter, vaccinations, microchipping, and treatment for every cat.</div></div>
+    <div class="feat"><div class="ft">TNR Program</div><div class="fd">Trap-Neuter-Return for community cats to humanely manage populations.</div></div>
+    <div class="feat"><div class="ft">Adoption Events</div><div class="fd">Regular PetSmart events and community meetups to connect cats with families.</div></div>
+  </div>
+
+  <h3 id="quiz">"Find Your Match" Personality Quiz</h3>
+  <p>An interactive 5-question quiz that matches visitors to their ideal cat personality type. This isn't just fun &mdash; it keeps visitors engaged and moves them toward the adoption funnel.</p>
+
+  <h4>Quiz Questions</h4>
+  <div class="tbl-wrap">
+    <table>
+      <tr><th>#</th><th>Question</th><th>Options (4 each)</th><th>Trait Tagged</th></tr>
+      <tr><td>1</td><td>What's your ideal weekend?</td><td>Movie marathon, Hiking/adventure, Coffee & book, Hosting friends</td><td>chill, playful, balanced, social</td></tr>
+      <tr><td>2</td><td>Cat experience level?</td><td>First-time, Had cats before, Currently have cats, Experienced w/ special needs</td><td>gentle, balanced, social, special</td></tr>
+      <tr><td>3</td><td>Living situation?</td><td>Cozy apartment, House with yard, Multi-pet home, Quiet space</td><td>chill, playful, social, independent</td></tr>
+      <tr><td>4</td><td>Personality you'd love?</td><td>Lap cat, Adventure cat, Low-maintenance, Life of the party</td><td>chill, playful, independent, social</td></tr>
+      <tr><td>5</td><td>Open to special needs?</td><td>Absolutely yes, Maybe, Prefer healthy, Need more info</td><td>special, balanced, gentle, balanced</td></tr>
+    </table>
+  </div>
+
+  <h4>6 Result Types</h4>
+  <div class="feat-grid">
+    <div class="feat"><div class="ft">The Gentle Soul</div><div class="fd">Calm, sweet lap cats. Recommended tags: senior, shy, gentle, calm.</div></div>
+    <div class="feat"><div class="ft">The Adventure Buddy</div><div class="fd">Active, playful cats. Tags: young, active, playful, energetic.</div></div>
+    <div class="feat"><div class="ft">The Perfect Balance</div><div class="fd">Adaptable, easygoing. Tags: adult, friendly, adaptable, social.</div></div>
+    <div class="feat"><div class="ft">The Social Butterfly</div><div class="fd">Outgoing, people-loving. Tags: social, bonded pair, friendly, outgoing.</div></div>
+    <div class="feat"><div class="ft">The Cool Cat Companion</div><div class="fd">Independent, low-maintenance. Tags: independent, quiet, chill, mature.</div></div>
+    <div class="feat"><div class="ft">The Hero Adopter</div><div class="fd">Special needs or overlooked cats. Tags: special needs, senior, FIV+, shy.</div></div>
+  </div>
+  <p>Each result includes a description, 4 recommendation tags, a link to browse matching cats on Petfinder, and a retake button. Progress dots show quiz completion status.</p>
+
+  <h3 id="petfinder">Adoptable Cats Browser (Petfinder Integration)</h3>
+  <p>Instead of sending visitors away to Petfinder.com, the new site brings <strong>all 31 currently adoptable cats directly onto the homepage</strong> with photos, names, ages, breeds, and gender.</p>
+
+  <h4>Filter System</h4>
+  <div class="pills">
+    <div class="pill pri">Age: All / Kitten / Young / Adult / Senior</div>
+    <div class="pill pri">Gender: All / Male / Female</div>
+    <div class="pill pri">Coat: All / Short / Medium / Long</div>
+  </div>
+
+  <h4>Current Cat Inventory (31 cats)</h4>
+  <div class="stat-row c4">
+    <div class="stat-box"><div class="n">9</div><div class="l">Kittens</div></div>
+    <div class="stat-box"><div class="n">10</div><div class="l">Young</div></div>
+    <div class="stat-box"><div class="n">8</div><div class="l">Adult</div></div>
+    <div class="stat-box"><div class="n">4</div><div class="l">Senior</div></div>
+  </div>
+  <p>14 female, 17 male. Breeds include Tabby, Tuxedo, Tortoiseshell, Domestic Shorthair, Domestic Longhair, Domestic Medium Hair, and Siamese mixes. Each cat card shows their photo, name, age group, gender, breed, and a "Meet [Name]" button linking to their full Petfinder profile.</p>
+
+  <div class="callout ok">
+    <strong>Why this matters:</strong>
+    Every click that leaves your site is a potential lost adopter. Keeping cat profiles on-site means visitors stay longer, see more cats, and are more likely to fill out an adoption application &mdash; which is also on the same page.
+  </div>
+
+  <h3>Fur Babies Carousel (Success Stories)</h3>
+  <p>A horizontal-scrolling gallery of foster cat success stories. Auto-scrolls every 4 seconds, pauses on hover, and includes previous/next navigation arrows. Each card features a photo, cat name, and story snippet showing our track record of successful adoptions.</p>
+
+  <h3 id="fundraising">Fundraising Progress Bars</h3>
+  <p>Four live fundraising campaigns with visual progress bars showing how close each fund is to its goal:</p>
+  <div class="tbl-wrap">
+    <table>
+      <tr><th>Campaign</th><th>Raised</th><th>Goal</th><th>Progress</th></tr>
+      <tr><td>Medical Emergency Fund</td><td>$1,247</td><td>$3,000</td><td>41.6%</td></tr>
+      <tr><td>Spay/Neuter Program</td><td>$2,180</td><td>$4,000</td><td>54.5%</td></tr>
+      <tr><td>General Operations</td><td>$890</td><td>$2,500</td><td>35.6%</td></tr>
+      <tr><td>Winter Shelter Project</td><td>$3,400</td><td>$5,000</td><td>68.0%</td></tr>
+    </table>
+  </div>
+  <p>These create transparency and urgency. Visitors can see exactly where their money goes and how close a fund is to its goal.</p>
+
+  <h3 id="events">Interactive Events Calendar</h3>
+  <p>A full month-view calendar with navigation showing upcoming events. Clicking an event dot reveals a popup with date, title, location, and description. Each event includes share buttons for WhatsApp, Facebook, and Copy Link.</p>
+  <h4>Upcoming Events (6 scheduled)</h4>
+  <div class="tbl-wrap">
+    <table>
+      <tr><th>Date</th><th>Event</th><th>Location</th></tr>
+      <tr><td>Jul 26, 2026</td><td>PetSmart Adoption Day</td><td>PetSmart Clackamas</td></tr>
+      <tr><td>Aug 15, 2026</td><td>Summer Jamboree</td><td>Milwaukie Community Center</td></tr>
+      <tr><td>Sep 6, 2026</td><td>Kitten Shower Supply Drive</td><td>TBD</td></tr>
+      <tr><td>Oct 17, 2026</td><td>Bingo Night</td><td>Milwaukie, OR</td></tr>
+      <tr><td>Nov 14, 2026</td><td>Holiday Craft Fair</td><td>Gladstone Community Center</td></tr>
+      <tr><td>Dec 5, 2026</td><td>Meowy Christmas Adoption Event</td><td>PetSmart Clackamas</td></tr>
+    </table>
+  </div>
+
+  <h3 id="forms">Adoption Application (4-Step Form)</h3>
+  <p>A complete multi-step adoption application built directly into the homepage &mdash; no PDF downloads, no email-back-and-forth. The form guides applicants through 4 steps with progress indicators.</p>
+
+  <h4>Step 1 &mdash; About You</h4>
+  <ul>
+    <li>Full name, email, phone, full mailing address</li>
+    <li>Housing type (House, Apartment, Condo, Townhouse, Mobile Home, Other)</li>
+    <li>Own or rent? Landlord approval if renting?</li>
+    <li>Number of household members, current pets</li>
+    <li>Application type: Adopt, Foster, or Both</li>
+  </ul>
+  <h4>Step 2 &mdash; Your Dream Cat</h4>
+  <ul>
+    <li>Preferred age, gender, personality ("vibe check")</li>
+    <li>Option to name a specific cat from Petfinder listings</li>
+  </ul>
+  <h4>Step 3 &mdash; Almost There</h4>
+  <ul>
+    <li>Previous cat experience level</li>
+    <li>Vet name and clinic</li>
+    <li>Why do you want to adopt? (free text)</li>
+  </ul>
+  <h4>Step 4 &mdash; Success</h4>
+  <ul>
+    <li>Animated checkmark confirmation</li>
+    <li>"Application Submitted!" with 48-hour review timeline</li>
+    <li>Triggers confetti celebration (paw prints, hearts, colored circles)</li>
+  </ul>
+
+  <h3>Contact Form</h3>
+  <p>Fields: Name, Email, Subject (dropdown with 6 options: Adoption Inquiry, Foster Application, Volunteering, Donation Question, Event Info, Other), and Message. Submit button shows green "Message Sent!" confirmation for 3 seconds.</p>
+
+  <h3 id="donate-modal">Donate Modal</h3>
+  <p>A full donation interface with:</p>
+  <ul>
+    <li>Preset amounts: $10, $25, $50 (default), $100, plus custom amount input</li>
+    <li>Fund dedication dropdown: Where Needed Most, Medical Emergency, Spay/Neuter, General Operations, Winter Shelter</li>
+    <li>Payment options: Facebook Donation, Venmo (@CatsMeowRescue)</li>
+    <li>Contact: phone (503) 850-6363, email, mailing address (PO Box 68222, Milwaukie, OR 97268)</li>
+    <li>Tax-deductible callout with EIN: 83-2426815</li>
+  </ul>
+
+  <h3 id="newsletter-popup">Newsletter Popup</h3>
+  <p>First-time visitors see a playful popup 3 seconds after page load. Before the popup appears, a yarn ball emoji rolls across the screen with a kitten emoji chasing it &mdash; then the popup slides in with cat ear decorations.</p>
+  <ul>
+    <li>Headline: "You've Been Pounced!"</li>
+    <li>Copy: "Join our clowder for the latest mews, adoption alerts &amp; event updates!"</li>
+    <li>Email submission via FormSubmit.co API</li>
+    <li>Cookie-based (localStorage) &mdash; only shown once per visitor</li>
+    <li>Success state: "Purr-fect!" with auto-close after 3.5 seconds</li>
+  </ul>
+  <div class="callout info">
+    <strong>Why a newsletter popup?</strong>
+    Email marketing has a 36:1 ROI ($1 spent = $36 back). Social media organic reach is under 5%. Email reaches 100% of subscribers. Every email address is a future adopter, donor, volunteer, or foster parent who <em>chose</em> to hear from us.
+  </div>
+
+  <h3>Homepage Shop Preview</h3>
+  <p>Shows the first 6 products from the full 11-product catalog with category tabs. "View All" button links to the full shop page. Product detail overlays with size selector, quantity control, and add to cart &mdash; same cart system as the dedicated shop page.</p>
+
+  <h3>PetSmart Partnership Banner</h3>
+  <p>A callout section highlighting our PetSmart Charities partnership with their logo, establishing credibility with visitors.</p>
+
+  <h3>Blog Preview</h3>
+  <p>Shows recent blog posts with category badges, titles, and excerpts. "View All" links to the full blog page with all 160 articles.</p>
+</div>
+
+<!-- ============================================ -->
+<!-- 4. SHOP PAGE -->
+<!-- ============================================ -->
+<div class="section" id="shop">
+  <div class="section-num">Section 4</div>
+  <h2>Shop Page &mdash; 11 Products</h2>
+  <p>A fully functional online store where 100% of proceeds support the rescue. The shop features category filters, size selectors, a slide-in cart drawer, and a complete checkout flow.</p>
+
+  <h3>Complete Product Catalog</h3>
+  <div class="tbl-wrap">
+    <table>
+      <tr><th>#</th><th>Product Name</th><th>Category</th><th>Price</th><th>Sizes</th></tr>
+      <tr><td>1</td><td>Classic Logo Tee</td><td>Tees</td><td>$22</td><td>S, M, L, XL, 2XL, 3XL</td></tr>
+      <tr><td>2</td><td>Rescue Squad Tee</td><td>Tees</td><td>$25</td><td>S, M, L, XL, 2XL, 3XL</td></tr>
+      <tr><td>3</td><td>Adopt Don't Shop Tee</td><td>Tees</td><td>$22</td><td>S, M, L, XL, 2XL, 3XL</td></tr>
+      <tr><td>4</td><td>PNW Cat Lover Tee</td><td>Tees</td><td>$28</td><td>S, M, L, XL, 2XL, 3XL</td></tr>
+      <tr><td>5</td><td>Oregon Coast Crew</td><td>Sweats</td><td>$45</td><td>S, M, L, XL, 2XL, 3XL</td></tr>
+      <tr><td>6</td><td>Cat's Meow Hoodie</td><td>Sweats</td><td>$52</td><td>S, M, L, XL, 2XL, 3XL</td></tr>
+      <tr><td>7</td><td>Paw Print Sticker</td><td>Stickers</td><td>$3</td><td>&mdash;</td></tr>
+      <tr><td>8</td><td>Logo Sticker</td><td>Stickers</td><td>$4</td><td>&mdash;</td></tr>
+      <tr><td>9</td><td>Adopt Don't Shop Sticker</td><td>Stickers</td><td>$5</td><td>&mdash;</td></tr>
+      <tr><td>10</td><td>Logo Magnet</td><td>Magnets</td><td>$6</td><td>&mdash;</td></tr>
+      <tr><td>11</td><td>My Cat Runs This House</td><td>Magnets</td><td>$8</td><td>&mdash;</td></tr>
+    </table>
+  </div>
+
+  <div class="stat-row c4">
+    <div class="stat-box"><div class="n">4</div><div class="l">T-Shirts ($22&ndash;28)</div></div>
+    <div class="stat-box"><div class="n">2</div><div class="l">Sweatshirts ($45&ndash;52)</div></div>
+    <div class="stat-box"><div class="n">3</div><div class="l">Stickers ($3&ndash;5)</div></div>
+    <div class="stat-box"><div class="n">2</div><div class="l">Magnets ($6&ndash;8)</div></div>
+  </div>
+
+  <h3>Shop Features</h3>
+  <ul>
+    <li><strong>Category filters:</strong> All, Tees, Sweats, Stickers, Magnets</li>
+    <li><strong>Size selector:</strong> S through 3XL on all apparel</li>
+    <li><strong>Product detail overlay:</strong> Full-size image, description, size picker, quantity +/- controls</li>
+    <li><strong>Add-to-cart animation:</strong> A yarn ball bounces across the screen with a kitten chasing it to the cart icon</li>
+    <li><strong>Slide-in cart drawer:</strong> Shows all items, quantities, remove buttons, running subtotal</li>
+    <li><strong>Checkout form:</strong> Full name, email, phone, address, order notes</li>
+    <li><strong>Cart persistence:</strong> Saved in localStorage &mdash; items remain even if the browser is closed</li>
+    <li><strong>Max quantity:</strong> 10 per item to prevent accidental over-ordering</li>
+  </ul>
+
+  <h3>Payment Methods Accepted</h3>
+  <ul>
+    <li>Venmo: @CatsMeowCatRescue</li>
+    <li>PayPal: catsmeowcatrescue@gmail.com</li>
+    <li>Check by Mail: PO Box 68222, Milwaukie, OR 97268</li>
+    <li>Pay at Pickup (for local orders)</li>
+  </ul>
+
+  <div class="callout info">
+    <strong>How ordering works:</strong>
+    Checkout generates an email to catsmeowcatrescue@gmail.com with the full order details. A confirmation email is sent to the buyer with payment instructions. This is a lightweight system that works immediately without payment processing setup. For higher volume, Stripe integration ($0 monthly + 2.9% per transaction) can be added.
+  </div>
+</div>
+
+<!-- ============================================ -->
+<!-- 5. BLOG -->
+<!-- ============================================ -->
+<div class="section" id="blog">
+  <div class="section-num">Section 5</div>
+  <h2>Blog &mdash; 160 Articles</h2>
+  <p>The blog is the single largest piece of the new website, containing <strong>160 individual articles</strong> across 6 categories. Each article is a separate HTML page with full SEO optimization &mdash; unique title, meta description, canonical URL, Open Graph tags, and category classification.</p>
+
+  <h3>Category Breakdown</h3>
+  <div class="tbl-wrap">
+    <table>
+      <tr><th>Category</th><th>Articles</th><th>Topics Covered</th></tr>
+      <tr><td>Cat Care Guides</td><td>48</td><td>Nutrition, grooming, litter, enrichment, seasonal care, emergency prep, toxic plants/foods</td></tr>
+      <tr><td>Adoption Tips</td><td>27</td><td>First cat checklist, choosing the right cat, adoption fees explained, kids &amp; cats, returning a cat, special needs adoption</td></tr>
+      <tr><td>Cat Health &amp; Wellness</td><td>27</td><td>Vaccinations, dental care, FIV/FeLV, kidney disease, diabetes, obesity, upper respiratory infections, parasite prevention</td></tr>
+      <tr><td>Cat Behavior</td><td>26</td><td>Body language, tail language, slow blink, zoomies, scratching, kneading, why cats knock things off tables, nighttime activity</td></tr>
+      <tr><td>Fostering</td><td>27</td><td>Getting started, bottle babies, pregnant cats, shy/fearful cats, senior cats, special needs, saying goodbye, supplies list</td></tr>
+      <tr><td>Community &amp; Events</td><td>27</td><td>Portland cat cafes, volunteering, fundraising ideas, Oregon animal laws, TNR programs, pet-friendly rentals, memorial &amp; rainbow bridge</td></tr>
+    </table>
+  </div>
+
+  <h3>Blog Page Features</h3>
+  <ul>
+    <li><strong>Hero search bar:</strong> Real-time filtering as you type &mdash; searches titles and descriptions</li>
+    <li><strong>Category filter chips:</strong> Color-coded pills for each of the 6 categories, plus "All"</li>
+    <li><strong>Dynamic article count:</strong> Updates live as filters are applied ("Showing 27 of 160 articles")</li>
+    <li><strong>View More / Show Less:</strong> Each category shows first 6 articles by default, expandable to show all</li>
+    <li><strong>Search override:</strong> When searching, all matching articles are shown regardless of the "View More" state</li>
+  </ul>
+
+  <h3>Individual Article Template</h3>
+  <p>Each of the 160 blog posts follows a consistent template:</p>
+  <ul>
+    <li>Full SEO meta tags (title, description, canonical, OG tags, robots)</li>
+    <li>Category badge with color matching the blog index page</li>
+    <li>H1 title, publication date</li>
+    <li>Article body with H2 subheadings, paragraphs, ordered/unordered lists</li>
+    <li>Call-to-action banner at the end linking to the adoption section</li>
+    <li>Shared header and footer via components.js</li>
+  </ul>
+
+  <h3>Sample Article Titles</h3>
+  <div class="feat-grid">
+    <div class="feat"><div class="ft">Cat Care</div><div class="fd">"Cat-Proofing Your Portland Home", "Choosing the Right Cat Food", "Indoor Cat Health Guide"</div></div>
+    <div class="feat"><div class="ft">Adoption</div><div class="fd">"Adopting Your First Cat in Portland", "Cat Adoption Myths Debunked", "When to Adopt a Kitten vs. Adult"</div></div>
+    <div class="feat"><div class="ft">Health</div><div class="fd">"Cat Vaccination Schedule", "FIV &amp; FeLV Explained", "When to Take Your Cat to the Emergency Vet"</div></div>
+    <div class="feat"><div class="ft">Behavior</div><div class="fd">"Why Do Cats Knock Things Off Tables?", "Cat Zoomies Explained", "Understanding Cat Body Language"</div></div>
+    <div class="feat"><div class="ft">Fostering</div><div class="fd">"Fostering Bottle Baby Kittens", "Fostering Shy &amp; Fearful Cats", "Saying Goodbye to Your Foster Cat"</div></div>
+    <div class="feat"><div class="ft">Community</div><div class="fd">"Cat Cafe Culture in Portland", "Pet-Friendly Rentals in Portland", "Oregon Animal Welfare Laws"</div></div>
+  </div>
+</div>
+
+<!-- ============================================ -->
+<!-- 6. WHY BLOG POSTS MATTER FOR SEO -->
+<!-- ============================================ -->
+<div class="section" id="seo-deep">
+  <div class="section-num">Section 6</div>
+  <h2>Why 160 Blog Posts Matter for SEO</h2>
+  <p>This is the most important strategic decision in the entire website. Here's exactly why 160 blog articles are the single highest-value investment in this redesign:</p>
+
+  <h3>How Search Engines Find Websites</h3>
+  <p>Google ranks websites based on the number of relevant, quality pages it can index. The current Wix site has ~7 pages. That means Google has 7 chances to show our site in search results. The new site has <strong>166 pages &mdash; that's 166 separate doorways from Google to our website.</strong></p>
+
+  <div class="callout ok">
+    <strong>Real-world example:</strong>
+    Someone in Portland searches "how to introduce two cats." Our article "Multi-Cat Household Tips" appears in Google results. They read it, discover we're a local rescue, see 31 adoptable cats, and start an adoption application &mdash; all from a Google search that had nothing to do with adoption.
+  </div>
+
+  <h3>The Long-Tail Keyword Strategy</h3>
+  <p>Generic searches like "cat rescue" are dominated by national organizations with huge budgets. We can't compete there. But <strong>long-tail searches</strong> &mdash; specific, local, question-based queries &mdash; have less competition and higher intent. Our 160 articles target these searches specifically:</p>
+
+  <div class="tbl-wrap">
+    <table>
+      <tr><th>Search Type</th><th>Example Query</th><th>Our Article</th><th>Competition</th></tr>
+      <tr><td>Local + Adoption</td><td>"adopt a cat milwaukie oregon"</td><td>Cat Adoption in Milwaukie &amp; Gladstone</td><td>Very Low</td></tr>
+      <tr><td>Local + Care</td><td>"low cost vet care portland"</td><td>Low-Cost Vet Care in Portland</td><td>Low</td></tr>
+      <tr><td>Problem + Solution</td><td>"why is my cat scratching furniture"</td><td>Cat Scratching Post Guide</td><td>Medium</td></tr>
+      <tr><td>Question</td><td>"is it better to adopt two cats"</td><td>Adopting Two Cats: Better Than One</td><td>Medium</td></tr>
+      <tr><td>Seasonal + Local</td><td>"summer cat care portland"</td><td>Summer Cat Care in Portland</td><td>Very Low</td></tr>
+      <tr><td>Emergency</td><td>"when to take cat to emergency vet"</td><td>When to Take Cat to Emergency Vet</td><td>Medium</td></tr>
+      <tr><td>Fostering</td><td>"how to foster kittens portland"</td><td>Becoming a Foster Parent in Portland</td><td>Very Low</td></tr>
+      <tr><td>Housing</td><td>"pet friendly rentals portland"</td><td>Pet-Friendly Rentals in Portland</td><td>Low</td></tr>
+    </table>
+  </div>
+
+  <h3>The Portland/Oregon Local Advantage</h3>
+  <p>Many of our articles specifically target <strong>Portland, Oregon, and the Milwaukie/Gladstone area</strong>. This is deliberate. National cat care content competes with PetMD, ASPCA, and other massive sites. But content about cat adoption <em>in Milwaukie, Oregon</em>? There's almost no competition for those searches. We can rank #1 for dozens of local searches.</p>
+
+  <p>Articles with local targeting include:</p>
+  <ul>
+    <li>"Cat Adoption in Milwaukie &amp; Gladstone"</li>
+    <li>"Adopting Black Cats in Oregon"</li>
+    <li>"Flea Prevention for Portland Cats"</li>
+    <li>"Pet Food Banks in Portland"</li>
+    <li>"Oregon Cat Laws &amp; Regulations"</li>
+    <li>"Earthquake Preparedness for Cats in Portland"</li>
+    <li>"Low-Cost Vet Care in Portland"</li>
+    <li>"Cat-Friendly Businesses in Portland"</li>
+    <li>"TNR Programs in Portland &amp; Oregon"</li>
+    <li>"Fostering During Portland Summer"</li>
+  </ul>
+
+  <h3>Content as a Trust Signal</h3>
+  <p>Google's E-E-A-T framework (Experience, Expertise, Authoritativeness, Trustworthiness) rewards sites that demonstrate deep knowledge in their subject area. A 7-page site says "we exist." A 166-page site with 160 in-depth articles says <strong>"we are experts in cat care, adoption, and rescue."</strong> Google ranks experts higher.</p>
+
+  <h3>Compounding Returns</h3>
+  <p>Blog articles are <strong>evergreen</strong>. An article published today continues to drive traffic for years. Unlike social media posts that disappear in 24 hours, or paid ads that stop working when you stop paying, blog content compounds over time. Every month, Google finds more of our articles, ranks them higher, and sends more visitors &mdash; all for free.</p>
+
+  <div class="stat-row c3">
+    <div class="stat-box green"><div class="n">160</div><div class="l">Google Entry Points (vs. 7)</div></div>
+    <div class="stat-box green"><div class="n">24&times;</div><div class="l">More Indexable Content</div></div>
+    <div class="stat-box green"><div class="n">$0</div><div class="l">Ongoing Cost for SEO Traffic</div></div>
+  </div>
+
+  <h3>JSON-LD Structured Data</h3>
+  <p>The website uses two types of Google-recognized structured data schemas:</p>
+  <ul>
+    <li><strong>NonprofitOrganization</strong> (homepage) &mdash; tells Google we're a registered 501(c)(3) with name, EIN, address, phone, social links, founding date, and area served</li>
+    <li><strong>FAQPage</strong> (FAQ page) &mdash; all 50 Q&amp;A pairs are marked up so Google can display them as rich snippets directly in search results, taking up more real estate on the results page</li>
+  </ul>
+
+  <div class="callout info">
+    <strong>What are rich snippets?</strong>
+    When someone searches "cat adoption fees portland" and our FAQ page appears in results, Google can show the question AND answer directly on the search results page &mdash; without the person even clicking. This makes our result dramatically larger and more clickable than competitors' plain blue links.
+  </div>
+</div>
+
+<!-- ============================================ -->
+<!-- 7. FAQ PAGE -->
+<!-- ============================================ -->
+<div class="section" id="faq">
+  <div class="section-num">Section 7</div>
+  <h2>FAQ Page &mdash; 50 Questions</h2>
+  <p>A comprehensive FAQ page with 50 questions and answers across 7 categories, searchable and filterable. Every Q&amp;A pair is also encoded in JSON-LD structured data for Google rich snippets.</p>
+
+  <h3>Category Breakdown</h3>
+  <div class="tbl-wrap">
+    <table>
+      <tr><th>Category</th><th>Questions</th><th>Sample Topics</th></tr>
+      <tr><td>Adoption Process</td><td>10</td><td>How to apply, timeline, requirements, home visits, what's included</td></tr>
+      <tr><td>Fees &amp; What's Included</td><td>7</td><td>Fee amounts, what fees cover, bonded pair discount, payment methods</td></tr>
+      <tr><td>Fostering</td><td>8</td><td>Requirements, supplies provided, duration, what if it doesn't work out</td></tr>
+      <tr><td>Volunteering</td><td>7</td><td>How to volunteer, minimum age, remote opportunities, skills needed</td></tr>
+      <tr><td>Donations &amp; Fundraising</td><td>6</td><td>Tax-deductible info, where money goes, corporate matching, in-kind donations</td></tr>
+      <tr><td>Health &amp; Medical Care</td><td>6</td><td>Vet care included, health guarantees, FIV/FeLV testing, spay/neuter</td></tr>
+      <tr><td>Events &amp; Community</td><td>6</td><td>Where events happen, how to host an event, PetSmart partnership</td></tr>
+    </table>
+  </div>
+
+  <h3>Key Information from FAQs</h3>
+  <div class="stat-row c4">
+    <div class="stat-box"><div class="n">$150</div><div class="l">Kitten Adoption Fee</div></div>
+    <div class="stat-box"><div class="n">$125</div><div class="l">Adult Adoption Fee</div></div>
+    <div class="stat-box"><div class="n">$75</div><div class="l">Senior Adoption Fee</div></div>
+    <div class="stat-box"><div class="n">$50</div><div class="l">Bonded Pair Discount</div></div>
+  </div>
+  <ul>
+    <li>14-day health guarantee on all adoptions</li>
+    <li>$250&ndash;$400 average vet cost per cat (what the rescue invests)</li>
+    <li>21+ age requirement for adoption</li>
+    <li>Lifetime return policy &mdash; we always take our cats back</li>
+  </ul>
+
+  <h3>FAQ Features</h3>
+  <ul>
+    <li><strong>Search bar</strong> with real-time filtering, clear button, and Escape key support</li>
+    <li><strong>Results counter</strong> showing "Showing X of 50 FAQs"</li>
+    <li><strong>Category chips</strong> with emoji icons for quick filtering</li>
+    <li><strong>Accordion behavior:</strong> Clicking a new question automatically closes the previous one</li>
+    <li><strong>Auto-scroll:</strong> Opens question scrolls to the top of the answer for easy reading</li>
+  </ul>
+</div>
+
+<!-- ============================================ -->
+<!-- 8. ABOUT PAGE -->
+<!-- ============================================ -->
+<div class="section" id="about">
+  <div class="section-num">Section 8</div>
+  <h2>About Page</h2>
+  <p>The About page tells our story, introduces our board members, and establishes credibility as a registered 501(c)(3) nonprofit.</p>
+
+  <h3>Stats Strip</h3>
+  <div class="stat-row c4">
+    <div class="stat-box"><div class="n">500+</div><div class="l">Cats Rescued</div></div>
+    <div class="stat-box"><div class="n">31</div><div class="l">Currently Available</div></div>
+    <div class="stat-box"><div class="n">50+</div><div class="l">Foster Homes</div></div>
+    <div class="stat-box"><div class="n">100%</div><div class="l">Volunteer Run</div></div>
+  </div>
+
+  <h3>Our Story</h3>
+  <ul>
+    <li>Founded by volunteers rescuing strays in Milwaukie and Gladstone, Oregon</li>
+    <li>Registered with State of Oregon</li>
+    <li>501(c)(3) tax-exempt designation confirmed</li>
+    <li>PetSmart Charities partner</li>
+    <li>EIN: 83-2426815</li>
+  </ul>
+
+  <h3>Board Members</h3>
+  <div class="tbl-wrap">
+    <table>
+      <tr><th>Name</th><th>Role</th><th>Responsibilities</th></tr>
+      <tr><td>Brenda</td><td>President</td><td>Foster Champion, handles adoptions, TNR, intake, outreach, and compliance</td></tr>
+      <tr><td>Shona</td><td>Vice President</td><td>Special-needs cat focus, manages foster network and supplies</td></tr>
+      <tr><td>Samantha</td><td>Secretary</td><td>Fostering, adoption postings, application coordination</td></tr>
+      <tr><td>Cara</td><td>Member at Large</td><td>Home catio builder, day-to-day operations</td></tr>
+      <tr><td>Samantha Chandler</td><td>Board Member</td><td>Needs real bio and photo added</td></tr>
+    </table>
+  </div>
+
+  <h3>"How You Can Help" CTAs</h3>
+  <p>Three call-to-action buttons: Adopt a Cat, Donate, Volunteer &mdash; each linking to the relevant section of the site.</p>
+</div>
+
+<!-- ============================================ -->
+<!-- 9. 404 PAGE -->
+<!-- ============================================ -->
+<div class="section" id="404">
+  <div class="section-num">Section 9</div>
+  <h2>Custom 404 Error Page</h2>
+  <p>When someone visits a broken link or types a wrong URL, they see a branded error page instead of a generic browser error.</p>
+  <ul>
+    <li>Heading: "This cat wandered off!"</li>
+    <li>Subtext: "The page you're looking for doesn't exist or has been moved."</li>
+    <li>Three navigation links: Go Home, Adopt a Cat, About Us</li>
+    <li>Dark mode support</li>
+    <li><code>meta robots: noindex</code> (correct SEO practice &mdash; error pages should not appear in search)</li>
+  </ul>
+  <div class="callout info">
+    <strong>Why it matters:</strong>
+    A custom 404 page keeps visitors on the site instead of hitting the browser's back button. It turns a dead end into a redirect to useful content.
+  </div>
+</div>
+
+<!-- ============================================ -->
+<!-- 10. INTERACTIVE FEATURES -->
+<!-- ============================================ -->
+<div class="section" id="interactive">
+  <div class="section-num">Section 10</div>
+  <h2>Interactive Features &amp; Animations (24 Total)</h2>
+  <p>Every interactive detail is designed to create a memorable, shareable experience that reflects our personality as a cat rescue. These aren't gimmicks &mdash; they increase time on site, reduce bounce rate, and make people smile.</p>
+
+  <h3>Complete Feature Inventory</h3>
+  <div class="feat-grid">
+    <div class="feat"><div class="ft">1. Cat Paw Cursor</div><div class="fd">Custom SVG paw-print cursor replaces the default arrow across the entire site. Different color for dark mode.</div></div>
+    <div class="feat"><div class="ft">2. Floating Paw Trail</div><div class="fd">Desktop only (>960px). As you move the mouse, small paw prints appear and fade out behind the cursor, alternating rotation.</div></div>
+    <div class="feat"><div class="ft">3. Yarn Ball Cart Animation</div><div class="fd">When adding an item to cart, a yarn ball bounces across the screen with a kitten chasing it to the cart icon.</div></div>
+    <div class="feat"><div class="ft">4. Newsletter Popup</div><div class="fd">"You've Been Pounced!" popup for first-time visitors with yarn ball and kitten chase pre-animation.</div></div>
+    <div class="feat"><div class="ft">5. Site-Wide Instant Search</div><div class="fd">Cmd+K / Ctrl+K opens full overlay. Searches all pages with weighted scoring (title 10pts, description 5pts, category 3pts).</div></div>
+    <div class="feat"><div class="ft">6. Slide-In Cart Drawer</div><div class="fd">Cart slides in from the right with items, quantities, +/- controls, remove, subtotal. Persistent across pages via localStorage.</div></div>
+    <div class="feat"><div class="ft">7. Adoption Confetti</div><div class="fd">60 pieces (paw SVGs, hearts, circles) explode on screen when adoption application is submitted.</div></div>
+    <div class="feat"><div class="ft">8. Dark Mode Toggle</div><div class="fd">System-aware (respects OS preference) with manual toggle. Full token-based color system. Forces light mode on mobile.</div></div>
+    <div class="feat"><div class="ft">9. Scroll Animations</div><div class="fd">IntersectionObserver-based fade-in as sections enter viewport. 6% threshold with 30px bottom margin.</div></div>
+    <div class="feat"><div class="ft">10. Mobile Bottom Bar</div><div class="fd">Fixed "Adopt a Cat" and "Donate" buttons on mobile. Fades out when footer is visible.</div></div>
+    <div class="feat"><div class="ft">11. Personality Quiz</div><div class="fd">5-question interactive quiz matching visitors to their ideal cat personality type with 6 possible results.</div></div>
+    <div class="feat"><div class="ft">12. Live Petfinder Grid</div><div class="fd">31 adoptable cats with photos, filterable by age, gender, and coat length. Each links to Petfinder profile.</div></div>
+    <div class="feat"><div class="ft">13. Events Calendar</div><div class="fd">Full month-view calendar with navigation, event dots, popup details, and social share buttons.</div></div>
+    <div class="feat"><div class="ft">14. Fundraising Bars</div><div class="fd">4 animated progress bars showing campaign status with dollar amounts and percentages.</div></div>
+    <div class="feat"><div class="ft">15. Success Stories Carousel</div><div class="fd">Auto-scrolling horizontal gallery with prev/next arrows, pauses on hover.</div></div>
+    <div class="feat"><div class="ft">16. Multi-Step Application</div><div class="fd">4-step adoption/foster application with progress dots, validation, and success celebration.</div></div>
+    <div class="feat"><div class="ft">17. Contact Form</div><div class="fd">Subject dropdown, green success confirmation, auto-reset after 3 seconds.</div></div>
+    <div class="feat"><div class="ft">18. Donate Modal</div><div class="fd">Preset amounts, custom input, fund dedication, payment links (Venmo, Facebook, check).</div></div>
+    <div class="feat"><div class="ft">19. Blog Search</div><div class="fd">Real-time search across 160 articles with category filter chips and dynamic count.</div></div>
+    <div class="feat"><div class="ft">20. FAQ Accordion</div><div class="fd">Auto-close previous answer, scroll-to-top, category chips, search with results counter.</div></div>
+    <div class="feat"><div class="ft">21. Header Shadow</div><div class="fd">Header gains drop shadow after 30px scroll, creating depth without visual clutter at top.</div></div>
+    <div class="feat"><div class="ft">22. Back-to-Top Button</div><div class="fd">Appears after 600px scroll with smooth scroll-to-top on click.</div></div>
+    <div class="feat"><div class="ft">23. Hero Video Auto-Fade</div><div class="fd">Background video fades out after first play to reduce distraction while keeping initial impact.</div></div>
+    <div class="feat"><div class="ft">24. Custom 404 Page</div><div class="fd">Branded error page with navigation links instead of generic browser error.</div></div>
+  </div>
+</div>
+
+<!-- ============================================ -->
+<!-- 11. DESIGN SYSTEM -->
+<!-- ============================================ -->
+<div class="section" id="design">
+  <div class="section-num">Section 11</div>
+  <h2>Design System &amp; Brand Identity</h2>
+
+  <h3>Brand Colors</h3>
+  <div class="tbl-wrap">
+    <table>
+      <tr><th>Token</th><th>Value</th><th>Purpose</th></tr>
+      <tr><td>Primary</td><td style="color:#B22222;font-weight:800">#B22222 Firebrick Red</td><td>Buttons, headings, accents, brand identity</td></tr>
+      <tr><td>Gold</td><td style="color:#D4A017;font-weight:800">#D4A017</td><td>Secondary accent, highlights, hover states</td></tr>
+      <tr><td>Ground</td><td>#FFF9F2 Warm Cream</td><td>Page background &mdash; warm, inviting, not sterile white</td></tr>
+      <tr><td>Ink</td><td>#2D1810 Dark Brown</td><td>Primary text &mdash; softer than black, matches warmth</td></tr>
+      <tr><td>Stone</td><td>#746758</td><td>Secondary text, captions, metadata</td></tr>
+      <tr><td>Mist</td><td>#EDE5DC</td><td>Borders, dividers, card edges</td></tr>
+      <tr><td>Surface</td><td>#FFFFFF White</td><td>Card backgrounds, elevated surfaces</td></tr>
+      <tr><td>Teal/Green</td><td>#2E7D32</td><td>Success states, positive metrics</td></tr>
+    </table>
+  </div>
+
+  <h3>Typography</h3>
+  <ul>
+    <li><strong>Display font:</strong> Fredoka (Google Fonts) &mdash; rounded, friendly, playful for headings</li>
+    <li><strong>Body font:</strong> Montserrat (Google Fonts, weights 400&ndash;800) &mdash; clean, modern, highly readable</li>
+    <li>Both loaded from Google Fonts with preconnect hints for speed</li>
+  </ul>
+
+  <h3>Dark Mode</h3>
+  <p>Full dark mode with dual implementation:</p>
+  <ul>
+    <li><code>prefers-color-scheme: dark</code> &mdash; automatically respects OS/browser setting</li>
+    <li><code>[data-theme="dark"]</code> attribute &mdash; manual toggle overrides system preference</li>
+    <li>Dark palette: background #1A1A1A, text #F5F0EB, adjusted borders and surfaces</li>
+    <li>Custom cursor colors change for dark mode</li>
+    <li>Mobile (&lt;960px) forces light mode for consistency</li>
+  </ul>
+
+  <h3>Component Architecture</h3>
+  <ul>
+    <li><strong>shared.css</strong> (236 lines) &mdash; all design tokens, base styles, responsive breakpoints</li>
+    <li><strong>components.js</strong> (309 lines) &mdash; generates header, footer, mobile nav, search, and cart across all pages</li>
+    <li>Total: <strong>5 JavaScript files</strong> site-wide (vs. 69 on the Wix site)</li>
+    <li>Single CSS file with CSS custom properties for easy theme changes</li>
+  </ul>
+</div>
+
+<!-- ============================================ -->
+<!-- 12. MOBILE -->
+<!-- ============================================ -->
+<div class="section" id="mobile">
+  <div class="section-num">Section 12</div>
+  <h2>Mobile Experience</h2>
+  <p>72% of nonprofit website traffic comes from mobile devices. The new site is built mobile-first with responsive design at 4 breakpoints: 960px, 640px, 480px, and 380px.</p>
+
+  <div class="stat-row c3">
+    <div class="stat-box green"><div class="n">&lt;2s</div><div class="l">Load Time on 4G</div></div>
+    <div class="stat-box green"><div class="n">44px+</div><div class="l">Touch Target Size</div></div>
+    <div class="stat-box green"><div class="n">5</div><div class="l">JS Files (vs. 69)</div></div>
+  </div>
+
+  <div class="cmp">
+    <div class="cmp-col old">
+      <div class="hd">Wix Mobile</div>
+      <ul>
+        <li>Basic hamburger menu</li>
+        <li>No bottom navigation</li>
+        <li>Tiny text links (hard to tap)</li>
+        <li>No mobile shop</li>
+        <li>Links out to Petfinder</li>
+        <li>69 scripts = slow loading</li>
+      </ul>
+    </div>
+    <div class="cmp-col nw">
+      <div class="hd">New Mobile</div>
+      <ul>
+        <li>Full-screen overlay with accordions</li>
+        <li>Fixed bottom bar: Adopt + Donate</li>
+        <li>Large, thumb-friendly buttons</li>
+        <li>Full cart with slide-in checkout</li>
+        <li>On-site filterable cat grid</li>
+        <li>5 scripts = fast loading</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="callout warn">
+    <strong>Google uses mobile-first indexing since 2021.</strong>
+    This means Google ranks your site based on the mobile version, not the desktop version. Poor mobile performance directly impacts search rankings for terms like "cat rescue Portland" and "adopt a cat near me."
+  </div>
+</div>
+
+<!-- ============================================ -->
+<!-- 13. TECHNICAL COMPARISON -->
+<!-- ============================================ -->
+<div class="section" id="technical">
+  <div class="section-num">Section 13</div>
+  <h2>Technical &amp; SEO Comparison</h2>
+
+  <div class="tbl-wrap">
+    <table>
+      <tr><th>Metric</th><th>Current Wix Site</th><th>New Website</th><th>Change</th></tr>
+      <tr><td>Page Title</td><td>Generic, no keywords</td><td>Keyword-rich with location</td><td style="color:var(--green);font-weight:700">Fixed</td></tr>
+      <tr><td>Meta Description</td><td>None</td><td>Full SEO description on every page</td><td style="color:var(--green);font-weight:700">+166 pages</td></tr>
+      <tr><td>Structured Data</td><td>None</td><td>NonprofitOrganization + FAQPage schemas</td><td style="color:var(--green);font-weight:700">+2 schemas</td></tr>
+      <tr><td>Image Accessibility</td><td>14% have alt text</td><td>92% have alt text</td><td style="color:var(--green);font-weight:700">+78%</td></tr>
+      <tr><td>H1 Headings</td><td>8 per page (broken)</td><td>1 per page (correct)</td><td style="color:var(--green);font-weight:700">Fixed</td></tr>
+      <tr><td>JavaScript Files</td><td>69</td><td>5</td><td style="color:var(--green);font-weight:700">-93%</td></tr>
+      <tr><td>Blog Content</td><td>0 articles</td><td>160 articles</td><td style="color:var(--green);font-weight:700">+160</td></tr>
+      <tr><td>FAQ Content</td><td>0 FAQs</td><td>50 FAQs with JSON-LD</td><td style="color:var(--green);font-weight:700">+50</td></tr>
+      <tr><td>Canonical URLs</td><td>None</td><td>Every page</td><td style="color:var(--green);font-weight:700">+166</td></tr>
+      <tr><td>Open Graph Tags</td><td>None</td><td>Every page</td><td style="color:var(--green);font-weight:700">+166</td></tr>
+      <tr><td>Robots Directive</td><td>None</td><td>Every page (index/follow or noindex)</td><td style="color:var(--green);font-weight:700">+166</td></tr>
+      <tr><td>Favicon</td><td>Generic</td><td>Custom .ico + PNG + Apple touch icon</td><td style="color:var(--green);font-weight:700">Fixed</td></tr>
+    </table>
+  </div>
+</div>
+
+<!-- ============================================ -->
+<!-- 14. LIGHTHOUSE -->
+<!-- ============================================ -->
+<div class="section" id="lighthouse">
+  <div class="section-num">Section 14</div>
+  <h2>Google Lighthouse Performance Scores</h2>
+  <p>Google Lighthouse is the industry standard for measuring website quality. Scores range from 0&ndash;100. Green (90+) is excellent, orange (50&ndash;89) needs work, red (below 50) is poor.</p>
+
+  <div class="tbl-wrap">
+    <table>
+      <tr><th>Category</th><th>Current Site</th><th>New Site</th><th>Improvement</th></tr>
+      <tr><td>Performance</td><td style="color:var(--gold);font-weight:700">52</td><td style="color:var(--green);font-weight:700">92</td><td style="color:var(--green);font-weight:700">+40</td></tr>
+      <tr><td>Accessibility</td><td style="color:var(--gold);font-weight:700">70</td><td style="color:var(--green);font-weight:700">95</td><td style="color:var(--green);font-weight:700">+25</td></tr>
+      <tr><td>SEO</td><td style="color:var(--gold);font-weight:700">58</td><td style="color:var(--green);font-weight:700">97</td><td style="color:var(--green);font-weight:700">+39</td></tr>
+      <tr><td>Best Practices</td><td style="color:var(--stone);font-weight:700">45</td><td style="color:var(--green);font-weight:700">95</td><td style="color:var(--green);font-weight:700">+50</td></tr>
+      <tr><td colspan="3" style="text-align:right;font-weight:800">Average Improvement</td><td style="color:var(--green);font-weight:800">+38.5 points</td></tr>
+    </table>
+  </div>
+
+  <div class="callout ok">
+    <strong>What this means in practice:</strong>
+    The site loads faster (visitors don't leave), is more accessible (screen readers work properly, touch targets are large enough), ranks higher in Google (better SEO score), and follows modern web standards (HTTPS, proper image formats, secure connections).
+  </div>
+</div>
+
+<!-- ============================================ -->
+<!-- 15. STATION 3 MERCHANDISE -->
+<!-- ============================================ -->
+<div class="section" id="station3">
+  <div class="section-num">Section 15</div>
+  <h2>Merchandise &amp; Promotional Products</h2>
+  <p>For physical merchandise production &mdash; custom t-shirts, hoodies, stickers, magnets, tote bags, and other branded items &mdash; we recommend ordering through <strong>Station 3 Promotional Graphics</strong>, a local Oregon business.</p>
+
+  <h3>About Station 3 Promotional Graphics</h3>
+  <div class="tbl-wrap">
+    <table>
+      <tr><th>Detail</th><th>Information</th></tr>
+      <tr><td>Business</td><td>Station 3 Promotional Graphics</td></tr>
+      <tr><td>Address</td><td>1316 NE Highway 101, Lincoln City, OR 97367</td></tr>
+      <tr><td>Phone</td><td>541-996-8115</td></tr>
+      <tr><td>Fax</td><td>541-996-8116</td></tr>
+      <tr><td>Email</td><td>Station3Emb@gmail.com</td></tr>
+      <tr><td>Website</td><td>station3promotionalgraphics.com</td></tr>
+      <tr><td>Availability</td><td>7 days a week customer support</td></tr>
+      <tr><td>Shipping</td><td>Ships nationally (freight charges apply)</td></tr>
+      <tr><td>Quotes</td><td>Custom quotes delivered in 24 hours or less</td></tr>
+    </table>
+  </div>
+
+  <h3>Why Station 3?</h3>
+  <ul>
+    <li><strong>Local Oregon business</strong> &mdash; supports local economy and simplifies pickup logistics</li>
+    <li><strong>Wide product selection</strong> &mdash; apparel, bags, drinkware, awards, office supplies, tech accessories, workwear</li>
+    <li><strong>Multiple decoration methods</strong> &mdash; screen printing, embroidery, and custom imprinting</li>
+    <li><strong>Fast turnaround</strong> &mdash; quotes in 24 hours, rush production available</li>
+    <li><strong>National shipping</strong> &mdash; can ship anywhere for events or online orders</li>
+    <li><strong>7-day support</strong> &mdash; available every day of the week</li>
+  </ul>
+
+  <h3>Product Categories Available</h3>
+  <div class="feat-grid">
+    <div class="feat"><div class="ft">Apparel</div><div class="fd">T-shirts, polos, hoodies, jackets, caps, beanies &mdash; all sizes available</div></div>
+    <div class="feat"><div class="ft">Bags</div><div class="fd">Tote bags, backpacks, coolers, travel bags &mdash; great for adoption events and fundraisers</div></div>
+    <div class="feat"><div class="ft">Drinkware</div><div class="fd">Mugs ($3.25&ndash;$5.55), tumblers ($6.55&ndash;$12.89), water bottles, wine glasses</div></div>
+    <div class="feat"><div class="ft">Promotional Items</div><div class="fd">Stickers, magnets, pens, keychains, office supplies &mdash; ideal for event giveaways</div></div>
+  </div>
+
+  <h3>Pricing &amp; Ordering</h3>
+  <ul>
+    <li><strong>Tote bags:</strong> $1.55&ndash;$2.39 each (quantity-dependent)</li>
+    <li><strong>Mugs:</strong> $3.25&ndash;$5.55 each</li>
+    <li><strong>Tumblers:</strong> $6.55&ndash;$12.89 each</li>
+    <li>Prices exclude screen/setup fees and shipping</li>
+    <li>Additional charges may apply for artwork revisions, proofs, or PMS color matches</li>
+    <li>Pre-production proofs available (adds 5&ndash;10 business days)</li>
+    <li>Rush production available for additional fee</li>
+    <li>No product returns after artwork approval</li>
+  </ul>
+
+  <h3>Apparel Sizes &amp; Colors</h3>
+  <p>T-shirts, hoodies, and sweatshirts are available from Station 3 in a full range of sizes and colors:</p>
+  <ul>
+    <li><strong>Sizes:</strong> Youth XS through Adult 5XL (varies by style)</li>
+    <li><strong>Colors:</strong> Full catalog of colors available &mdash; request specific Pantone matches for brand consistency (Firebrick Red, Warm Cream, Gold)</li>
+    <li><strong>Decoration:</strong> Screen print for bulk orders, embroidery for premium items, custom imprinting for accessories</li>
+  </ul>
+
+  <h3>Shipping &amp; Point of Sale</h3>
+  <ul>
+    <li><strong>Local pickup:</strong> Available at 1316 NE Hwy 101, Lincoln City, OR</li>
+    <li><strong>National shipping:</strong> Ships anywhere in the US (freight charges based on order size/weight)</li>
+    <li><strong>Event inventory:</strong> Order in bulk for PetSmart adoption events, craft fairs, and community events</li>
+    <li><strong>Online store fulfillment:</strong> Can fulfill individual orders shipped directly to customers</li>
+  </ul>
+
+  <div class="callout ok">
+    <strong>Recommended first order:</strong>
+    Start with 50 Classic Logo Tees (mix of sizes S&ndash;2XL in Firebrick Red and White), 100 paw print stickers, and 50 tote bags for the next PetSmart Adoption Day. Contact Station 3 at 541-996-8115 or Station3Emb@gmail.com for a custom quote.
+  </div>
+
+  <h3>How It Connects to the Website</h3>
+  <p>The online shop on the website currently uses AI-generated product mockups. Once real merchandise is ordered from Station 3:</p>
+  <ol>
+    <li>Photograph actual products for the website (replaces mockups)</li>
+    <li>Update shop pricing to match actual cost + markup</li>
+    <li>Add "Ships from Oregon" badge for local appeal</li>
+    <li>List available sizes and colors from Station 3's inventory</li>
+    <li>Orders placed on the website generate an email; fulfillment ships from Station 3 or from local inventory</li>
+  </ol>
+</div>
+
+<!-- ============================================ -->
+<!-- 16. PLATFORM -->
+<!-- ============================================ -->
+<div class="section" id="platform">
+  <div class="section-num">Section 16</div>
+  <h2>Platform Recommendation</h2>
+
+  <div class="tbl-wrap">
+    <table>
+      <tr><th>Option</th><th>Annual Cost</th><th>Pros</th><th>Cons</th></tr>
+      <tr><td><strong>Stay on Wix</strong></td><td>$204&ndash;$404/yr</td><td>Familiar editor, no migration needed</td><td>Limited flexibility, locked to platform, hard to migrate later, poor Lighthouse scores</td></tr>
+      <tr><td style="background:var(--green-bg)"><strong>WordPress + Kinsta (Recommended)</strong></td><td>$435&ndash;$640/yr</td><td>Easy visual editor, full flexibility, portable, managed hosting with daily backups, 43% of all websites use it</td><td>Slightly higher cost, requires occasional updates</td></tr>
+      <tr><td><strong>GitHub Pages (Current Prototype)</strong></td><td>$15&ndash;$20/yr</td><td>Fastest performance, cheapest option, no hosting fees</td><td>Requires coding to update, no visual editor</td></tr>
+    </table>
+  </div>
+
+  <div class="callout ok">
+    <strong>Recommendation: WordPress + Kinsta</strong>
+    A visual dashboard anyone can use (similar to Microsoft Word), managed hosting with daily backups, and if Kinsta doesn't work out, WordPress sites can move to any other host. You're never locked in. The design and development work is being done <strong>pro bono</strong> &mdash; the only ongoing costs are hosting (~$35/mo) and domain renewal (~$15/yr).
+  </div>
+</div>
+
+<!-- ============================================ -->
+<!-- 17. NEXT STEPS -->
+<!-- ============================================ -->
+<div class="section" id="next">
+  <div class="section-num">Section 17</div>
+  <h2>Next Steps &amp; Timeline</h2>
+
+  <h3>Transition Timeline: 1&ndash;2 Weeks</h3>
+  <div class="tbl-wrap">
+    <table>
+      <tr><th>Step</th><th>Action</th></tr>
+      <tr><td>1</td><td>Board reviews prototype and submits feedback</td></tr>
+      <tr><td>2</td><td>Feedback combined into one revision list</td></tr>
+      <tr><td>3</td><td>Design revisions made and approved</td></tr>
+      <tr><td>4</td><td>Kinsta account created in organization's name</td></tr>
+      <tr><td>5</td><td>Convert HTML prototype to WordPress</td></tr>
+      <tr><td>6</td><td>Add final photos, products, donation settings</td></tr>
+      <tr><td>7</td><td>Test on desktop, tablet, mobile + all forms/payments</td></tr>
+      <tr><td>8</td><td>Training session for content editors</td></tr>
+      <tr><td>9</td><td>Connect domain and launch (zero downtime)</td></tr>
+      <tr><td>10</td><td>Document editing responsibilities &amp; schedules</td></tr>
+    </table>
+  </div>
+
+  <h3>Board Decisions Needed</h3>
+  <ol>
+    <li><strong>Platform:</strong> Approve WordPress + Kinsta?</li>
+    <li><strong>Design:</strong> Approve direction? Changes needed?</li>
+    <li><strong>Shop:</strong> Sell products? Which ones? Order from Station 3?</li>
+    <li><strong>Donations:</strong> Accept online? Recurring option?</li>
+    <li><strong>Newsletter:</strong> Start email list?</li>
+    <li><strong>Analytics:</strong> Install Google Analytics?</li>
+    <li><strong>Admin:</strong> Primary + backup site administrators?</li>
+    <li><strong>Legal:</strong> Privacy policy? Domain ownership?</li>
+    <li><strong>Content:</strong> Who updates cat profiles?</li>
+    <li><strong>Social:</strong> Which platforms to link?</li>
+  </ol>
+
+  <h3>What Each Board Member Should Do Now</h3>
+  <ol>
+    <li>Visit the prototype on your phone and computer: <strong>luckygoats33.github.io/cats-meow-rescue</strong></li>
+    <li>Browse every page: Home, Shop, Blog, FAQ, About</li>
+    <li>Try the personality quiz</li>
+    <li>Filter the adoptable cats</li>
+    <li>Add an item to the cart</li>
+    <li>Search for something (Ctrl+K or tap the search icon)</li>
+    <li>Submit feedback on design, content, and features</li>
+    <li>Vote on the 10 decisions listed above</li>
+  </ol>
+
+  <div class="callout ok">
+    <strong>The complete 31-section written brief</strong> has additional details: full technical comparisons, cost breakdowns, 24-feature inventory, 25+ board Q&amp;A with recommended answers, materials checklist, risk management plan, and the 10-phase transition plan.
+  </div>
+
+  <p style="text-align:center;margin-top:2rem;font-size:.8rem;color:var(--stone)">
+    <strong>Cat's Meow Cat Rescue</strong> &bull; 501(c)(3) Nonprofit &bull; EIN 83-2426815<br>
+    PO Box 68222, Milwaukie, OR 97268 &bull; (503) 850-6363 &bull; catsmeowcatrescue@gmail.com<br><br>
+    Prepared by Samantha Chandler &bull; July 2026
+  </p>
+</div>
+
+</div>
