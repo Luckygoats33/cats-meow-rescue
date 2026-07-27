@@ -120,6 +120,18 @@ body.is-fs .nav{bottom:3vh}
 /* SLIDE NUMBER */
 .sn{position:absolute;bottom:1rem;right:1.5rem;font-size:.6rem;color:var(--stone);font-weight:600;opacity:.5}
 
+/* Inventory slide */
+.inv{width:min(92vw,950px)}
+.inv-grid{display:grid;grid-template-columns:1fr 1fr;gap:min(1.2vw,.6rem);margin:.8vh 0}
+.inv-card{background:var(--surface);border:2px solid var(--mist);border-radius:10px;padding:min(1.2vw,.6rem) min(1.5vw,.8rem)}
+.inv-card .inv-h{font-size:min(1.2vw,.7rem);font-weight:800;text-transform:uppercase;letter-spacing:.06em;color:var(--pri);margin-bottom:.3rem;display:flex;align-items:center;gap:.3rem}
+.inv-card ul{margin:0 0 0 .8rem;font-size:min(1.1vw,.62rem);line-height:1.55;color:var(--ink)}
+.inv-card li{margin:.05rem 0}
+.inv-stats{display:grid;grid-template-columns:repeat(5,1fr);gap:min(1vw,.4rem);margin:.6vh 0}
+.inv-stat{background:var(--pri);color:white;border-radius:8px;padding:min(.8vw,.35rem);text-align:center}
+.inv-stat .iv{font-size:min(2vw,1.2rem);font-weight:800;line-height:1}
+.inv-stat .il{font-size:min(.8vw,.45rem);text-transform:uppercase;letter-spacing:.04em;opacity:.8;margin-top:.1rem}
+
 /* Paw watermarks */
 .paw-bg{position:absolute;font-size:min(15vw,10rem);opacity:.04;pointer-events:none;user-select:none}
 .paw-bg.tl{top:-2rem;left:-2rem;transform:rotate(-25deg)}
@@ -180,16 +192,111 @@ body.is-fs .nav{bottom:3vh}
   <div class="sn">3</div>
 </div>
 
-<!-- 4: MEME — Old vs New -->
-<div class="slide meme-slide" data-n="4">
+<!-- 4: EVERYTHING WE BUILT -->
+<div class="slide" data-n="4" style="padding:2.5vh 4vw">
+  <div class="inv">
+    <h2 style="margin-bottom:.5vh;font-size:min(2.8vw,1.6rem)"><span class="emoji">🐾</span> Everything We Built: The Complete Inventory</h2>
+    <div class="inv-stats">
+      <div class="inv-stat"><div class="iv">166</div><div class="il">Pages</div></div>
+      <div class="inv-stat"><div class="iv">160</div><div class="il">Blog Posts</div></div>
+      <div class="inv-stat"><div class="iv">50</div><div class="il">FAQs</div></div>
+      <div class="inv-stat"><div class="iv">11</div><div class="il">Products</div></div>
+      <div class="inv-stat"><div class="iv">24</div><div class="il">Features</div></div>
+    </div>
+    <div class="inv-grid">
+      <div class="inv-card">
+        <div class="inv-h">🏠 Main Pages (6)</div>
+        <ul>
+          <li><strong>Homepage</strong> — hero, stats strip, What We Do cards, personality quiz, live Petfinder cat grid, success stories carousel, newsletter popup</li>
+          <li><strong>Shop</strong> — 11 products, category filters, size selector, yarn ball cart animation, slide-in cart drawer</li>
+          <li><strong>Blog</strong> — 160 articles across 6 categories, real-time search, category filter chips</li>
+          <li><strong>FAQ</strong> — 50 Q&amp;A pairs, 7 category filters, expandable accordion, JSON-LD schema</li>
+          <li><strong>About</strong> — Our Story, 501(c)(3) info, team bios, mission statement</li>
+          <li><strong>404 Page</strong> — Custom lost-cat themed error page</li>
+        </ul>
+      </div>
+      <div class="inv-card">
+        <div class="inv-h">✨ Interactive Features (12)</div>
+        <ul>
+          <li>🐾 Custom cat paw cursor (SVG)</li>
+          <li>👣 Floating paw print trail on mouse move</li>
+          <li>🧶 Yarn ball + kitten chase cart animation</li>
+          <li>😸 "You've Been Pounced!" newsletter popup</li>
+          <li>🔍 Site-wide instant search</li>
+          <li>🛒 Slide-in cart drawer + badge count</li>
+          <li>🎊 Adoption confetti celebration</li>
+          <li>🌙 Dark mode toggle (system-aware)</li>
+          <li>✨ Scroll-triggered fade-in animations</li>
+          <li>📱 Mobile bottom navigation bar</li>
+          <li>🐱 "Find Your Purrfect Match" personality quiz</li>
+          <li>📊 Live Petfinder API cat grid (31 cats)</li>
+        </ul>
+      </div>
+      <div class="inv-card">
+        <div class="inv-h">📝 Blog Categories (160 articles)</div>
+        <ul>
+          <li>💊 Cat Care — 48 articles</li>
+          <li>🏠 Adoption Tips — 27 articles</li>
+          <li>🏥 Cat Health — 25 articles</li>
+          <li>😺 Cat Behavior — 22 articles</li>
+          <li>🏡 Fostering Guide — 20 articles</li>
+          <li>🎉 Community &amp; Events — 18 articles</li>
+          <li>Each with featured image, read time, category tag</li>
+          <li>All SEO-optimized with meta descriptions</li>
+        </ul>
+      </div>
+      <div class="inv-card">
+        <div class="inv-h">🛍️ Shop Products (11)</div>
+        <ul>
+          <li>4 T-Shirts ($22&ndash;$28) — Classic Logo, Adopt Don't Shop, Cat Mom, Rescue Crew</li>
+          <li>3 Sweatshirts ($38&ndash;$42) — Logo Hoodie, Cat Dad, Paw Print Crew</li>
+          <li>2 Stickers ($5) — Logo, Paw Print</li>
+          <li>2 Magnets ($6&ndash;$8) — Logo, Cat Silhouette</li>
+          <li>All with AI-generated product mockup images</li>
+          <li>Category filters + size selectors</li>
+        </ul>
+      </div>
+      <div class="inv-card">
+        <div class="inv-h">🔧 Technical / SEO</div>
+        <ul>
+          <li>JSON-LD structured data (NGO + FAQPage schemas)</li>
+          <li>Google-optimized meta titles &amp; descriptions on every page</li>
+          <li>92% image alt-text accessibility (vs 14% on Wix)</li>
+          <li>1 H1 per page (proper heading hierarchy)</li>
+          <li>5 JS files total (vs 69 on Wix — 93% reduction)</li>
+          <li>Single shared.css with CSS custom properties</li>
+          <li>Mobile-first responsive design (72% of nonprofit traffic)</li>
+          <li>Print-optimized stylesheets</li>
+        </ul>
+      </div>
+      <div class="inv-card">
+        <div class="inv-h">🎨 Design System</div>
+        <ul>
+          <li>Brand colors: Firebrick Red, Gold, Warm Cream</li>
+          <li>Google Fonts: Montserrat (body) + Fredoka (headers)</li>
+          <li>Dark mode with full token system</li>
+          <li>Component library: shared header, footer, nav, forms</li>
+          <li>FormSubmit.co newsletter integration</li>
+          <li>Petfinder API integration for live cat profiles</li>
+          <li>Responsive: desktop, tablet, mobile breakpoints</li>
+          <li>388+ cats rescued counter + success story carousel</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="sn">4</div>
+</div>
+
+<!-- 5: MEME — Old vs New -->
+<div class="slide meme-slide" data-n="5">
   <h2><span class="emoji">😿➡️😻</span> Old Website vs. New Website</h2>
   <img class="meme" src="img/memes/meme-old-vs-new.png" alt="Sad cat as old website vs majestic cat as new website">
   <div class="meme-caption">"Expectation vs. Reality... but this time it's actually better!" 😹</div>
   <div class="sn">4</div>
 </div>
 
-<!-- 5: TECHNICAL -->
-<div class="slide" data-n="5">
+<!-- 6: TECHNICAL -->
+<div class="slide" data-n="6">
   <span class="paw-bg br">🐾</span>
   <h2><span class="emoji">🔬</span> Under the Hood: The Cat Scan Results</h2>
   <div class="cmp">
@@ -221,8 +328,8 @@ body.is-fs .nav{bottom:3vh}
   <div class="sn">5</div>
 </div>
 
-<!-- 6: MEME — Slow Website Cat -->
-<div class="slide meme-slide" data-n="6">
+<!-- 7: MEME — Slow Website Cat -->
+<div class="slide meme-slide" data-n="7">
   <h2><span class="emoji">🐌</span> When Your Website Loads Slower Than a Cat Nap</h2>
   <img class="meme" src="img/memes/meme-slow-website.png" alt="Grumpy cat waiting for slow website to load">
   <div class="co warn" style="margin-top:1.5vh">
@@ -232,8 +339,8 @@ body.is-fs .nav{bottom:3vh}
   <div class="sn">6</div>
 </div>
 
-<!-- 7: SCORES -->
-<div class="slide" data-n="7">
+<!-- 8: SCORES -->
+<div class="slide" data-n="8">
   <h2><span class="emoji">🏆</span> Purrformance Scores</h2>
   <p style="font-size:min(1.4vw,.8rem);color:var(--stone);margin-bottom:1vh">Google Lighthouse: the industry standard. 90+ = great, 50&ndash;89 = needs work, &lt;50 = poor.</p>
   <div class="cmp">
@@ -260,8 +367,8 @@ body.is-fs .nav{bottom:3vh}
   <div class="sn">7</div>
 </div>
 
-<!-- 8: INTERACTIVE FEATURES -->
-<div class="slide" data-n="8">
+<!-- 9: INTERACTIVE FEATURES -->
+<div class="slide" data-n="9">
   <span class="paw-bg tl">🐾</span>
   <h2><span class="emoji">✨</span> The Fun Stuff (We're Not Kitten Around)</h2>
   <div class="pills">
@@ -292,16 +399,16 @@ body.is-fs .nav{bottom:3vh}
   <div class="sn">8</div>
 </div>
 
-<!-- 9: MEME — Add to Cart Cat -->
-<div class="slide meme-slide" data-n="9">
+<!-- 10: MEME — Add to Cart Cat -->
+<div class="slide meme-slide" data-n="10">
   <h2><span class="emoji">🧶</span> Add to Cart? Don't Mind If I Do!</h2>
   <img class="meme" src="img/memes/meme-add-to-cart.png" alt="Cat batting yarn ball toward shopping cart">
   <div class="meme-caption">What visitors see when they click "Add to Cart" on the new website 😻</div>
   <div class="sn">9</div>
 </div>
 
-<!-- 10: MOBILE -->
-<div class="slide" data-n="10">
+<!-- 11: MOBILE -->
+<div class="slide" data-n="11">
   <h2><span class="emoji">📱</span> Mobile Expurrience</h2>
   <div class="sg c3" style="margin-bottom:1vh">
     <div class="sb"><div class="n">72%</div><div class="l">Nonprofit Traffic = Mobile</div></div>
@@ -335,8 +442,8 @@ body.is-fs .nav{bottom:3vh}
   <div class="sn">10</div>
 </div>
 
-<!-- 11: BLOG -->
-<div class="slide" data-n="11">
+<!-- 12: BLOG -->
+<div class="slide" data-n="12">
   <span class="paw-bg br">🐾</span>
   <h2><span class="emoji">📝</span> Blog: 160 Articles Working 24/7</h2>
   <div class="sg c3" style="margin-bottom:1vh">
@@ -356,8 +463,8 @@ body.is-fs .nav{bottom:3vh}
   <div class="sn">11</div>
 </div>
 
-<!-- 12: SHOP -->
-<div class="slide" data-n="12">
+<!-- 13: SHOP -->
+<div class="slide" data-n="13">
   <h2><span class="emoji">🛍️</span> Rep the Rescue: Online Shop</h2>
   <p>11 products with AI-generated mockups. <strong>100% of proceeds support the rescue.</strong></p>
   <div class="sg c4" style="margin:1vh 0">
@@ -379,8 +486,8 @@ body.is-fs .nav{bottom:3vh}
   <div class="sn">12</div>
 </div>
 
-<!-- 13: NEWSLETTER -->
-<div class="slide" data-n="13">
+<!-- 14: NEWSLETTER -->
+<div class="slide" data-n="14">
   <span class="paw-bg tl">🐾</span>
   <h2><span class="emoji">📧</span> Newsletter: The Cat's Meow of Marketing</h2>
   <div class="sg c3" style="margin-bottom:1vh">
@@ -401,8 +508,8 @@ body.is-fs .nav{bottom:3vh}
   <div class="sn">13</div>
 </div>
 
-<!-- 14: PLATFORM -->
-<div class="slide" data-n="14">
+<!-- 15: PLATFORM -->
+<div class="slide" data-n="15">
   <h2><span class="emoji">🏗️</span> Paws &amp; Consider: Platform Options</h2>
   <div class="cc-grid">
     <div class="cc">
@@ -431,8 +538,8 @@ body.is-fs .nav{bottom:3vh}
   <div class="sn">14</div>
 </div>
 
-<!-- 15: MEME — Web Developer Kitten -->
-<div class="slide meme-slide" data-n="15">
+<!-- 16: MEME — Web Developer Kitten -->
+<div class="slide meme-slide" data-n="16">
   <h2><span class="emoji">💻</span> Building Your New Website... One Paw at a Time</h2>
   <img class="meme" src="img/memes/meme-web-developer.png" alt="Kitten wearing glasses coding at a computer">
   <div class="meme-caption">Our development team hard at work 😹</div>
@@ -443,8 +550,8 @@ body.is-fs .nav{bottom:3vh}
   <div class="sn">15</div>
 </div>
 
-<!-- 16: DECISIONS -->
-<div class="slide" data-n="16">
+<!-- 17: DECISIONS -->
+<div class="slide" data-n="17">
   <h2><span class="emoji">✅</span> Key Decisions for the Board</h2>
   <div class="dg">
     <div class="di"><div class="ic">🏗️</div><div><strong>Platform:</strong> Approve WordPress + Kinsta?</div></div>
@@ -462,8 +569,8 @@ body.is-fs .nav{bottom:3vh}
   <div class="sn">16</div>
 </div>
 
-<!-- 17: COMMON QUESTIONS -->
-<div class="slide" data-n="17">
+<!-- 18: COMMON QUESTIONS -->
+<div class="slide" data-n="18">
   <span class="paw-bg br">🐾</span>
   <h2><span class="emoji">❓</span> Feline Curious? Common Questions</h2>
   <ul style="font-size:min(1.7vw,.92rem)">
@@ -477,16 +584,16 @@ body.is-fs .nav{bottom:3vh}
   <div class="sn">17</div>
 </div>
 
-<!-- 18: MEME — Board Meeting Kittens -->
-<div class="slide meme-slide" data-n="18">
+<!-- 19: MEME — Board Meeting Kittens -->
+<div class="slide meme-slide" data-n="19">
   <h2><span class="emoji">🐱</span> The Board Has Spoken... More Treats!</h2>
   <img class="meme" src="img/memes/meme-board-meeting.png" alt="Kittens sitting at a conference table in a board meeting">
   <div class="meme-caption">Artist's rendering of this meeting 😹</div>
   <div class="sn">18</div>
 </div>
 
-<!-- 19: TIMELINE -->
-<div class="slide" data-n="19">
+<!-- 20: TIMELINE -->
+<div class="slide" data-n="20">
   <h2><span class="emoji">📅</span> Transition Timeline: 8&ndash;12 Weeks</h2>
   <div class="tl-grid">
     <div class="st">1</div><div class="ds">🐾 Board reviews prototype and submits feedback</div>
@@ -503,8 +610,8 @@ body.is-fs .nav{bottom:3vh}
   <div class="sn">19</div>
 </div>
 
-<!-- 20: NEXT STEPS -->
-<div class="slide" data-n="20">
+<!-- 21: NEXT STEPS -->
+<div class="slide" data-n="21">
   <span class="paw-bg tl">🐾</span>
   <h2><span class="emoji">🚀</span> Let's Get This Paw-ty Started!</h2>
   <ol style="font-size:min(1.7vw,.95rem);line-height:2.2">
@@ -522,8 +629,8 @@ body.is-fs .nav{bottom:3vh}
   <div class="sn">20</div>
 </div>
 
-<!-- 21: THANK YOU -->
-<div class="slide thx" data-n="21">
+<!-- 22: THANK YOU -->
+<div class="slide thx" data-n="22">
   <div class="cats">😺 🐾 😻 🐾 😸</div>
   <h2>Thank Mew!</h2>
   <p>The goal is not just to replace a website.<br>It's to build a platform that helps more cats find their fur-ever homes.</p>
