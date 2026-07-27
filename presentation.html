@@ -1,0 +1,591 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>Cat's Meow Cat Rescue — Board Presentation</title>
+<style>
+:root{--pri:#B22222;--pri-dark:#8B1818;--gold:#D4A017;--ground:#FFF9F2;--surface:#FFFFFF;--ink:#2D1810;--stone:#8A7E72;--mist:#EDE5DC;--green:#2E7D32;--green-bg:#E8F5E9}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{height:100%;overflow:hidden;font-family:'Segoe UI',-apple-system,system-ui,sans-serif;background:#111;color:var(--ink)}
+
+/* SLIDE CONTAINER */
+.deck{position:relative;width:100vw;height:100vh;overflow:hidden}
+.slide{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:center;align-items:center;padding:4vh 6vw;opacity:0;pointer-events:none;transition:opacity .4s ease,transform .4s ease;transform:translateX(40px);background:var(--ground)}
+.slide.active{opacity:1;pointer-events:auto;transform:translateX(0)}
+.slide.prev{opacity:0;transform:translateX(-40px)}
+
+/* NAV */
+.nav{position:fixed;bottom:2vh;left:50%;transform:translateX(-50%);z-index:200;display:flex;align-items:center;gap:1rem;background:rgba(178,34,34,.92);backdrop-filter:blur(8px);padding:.5rem 1.5rem;border-radius:40px;color:white;box-shadow:0 4px 20px rgba(0,0,0,.3)}
+.nav button{background:rgba(255,255,255,.15);border:none;border-radius:50%;width:36px;height:36px;color:white;font-size:1.1rem;cursor:pointer;transition:background .15s;display:flex;align-items:center;justify-content:center}
+.nav button:hover{background:rgba(255,255,255,.3)}
+.nav .ct{font-weight:800;min-width:5rem;text-align:center;font-size:.9rem}
+.nav .fs-btn{font-size:.85rem;border-radius:8px;width:auto;padding:0 .8rem}
+body.is-fs .nav{bottom:3vh}
+
+/* HERO SLIDE */
+.slide.hero{background:linear-gradient(135deg,var(--pri) 0%,var(--pri-dark) 100%);color:#FFF9F2;text-align:center}
+.slide.hero .kittens{font-size:min(6vw,5rem);margin-bottom:1.5vh;letter-spacing:.5rem}
+.slide.hero .org{font-size:min(1.4vw,.9rem);text-transform:uppercase;letter-spacing:.3em;opacity:.6;font-weight:600}
+.slide.hero h1{font-family:Georgia,serif;font-size:min(5vw,3.2rem);font-weight:700;line-height:1.15;margin:1vh 0;text-wrap:balance}
+.slide.hero .tagline{font-size:min(2vw,1.2rem);opacity:.8;font-style:italic;margin-bottom:2vh}
+.slide.hero .url-pill{display:inline-block;background:rgba(255,255,255,.12);border-radius:10px;padding:.6rem 2rem;font-family:monospace;font-size:min(1.6vw,1rem);color:var(--gold);margin:.8vh 0}
+.slide.hero .meta{font-size:min(1.3vw,.8rem);opacity:.45;line-height:2}
+
+/* THX SLIDE */
+.slide.thx{background:linear-gradient(135deg,var(--pri) 0%,var(--pri-dark) 100%);color:#FFF9F2;text-align:center}
+.slide.thx .cats{font-size:min(6vw,5rem);margin-bottom:2vh;letter-spacing:.5rem}
+.slide.thx h2{font-family:Georgia,serif;color:#FFF9F2;font-size:min(4vw,2.8rem);margin-bottom:1vh}
+.slide.thx p{color:rgba(255,249,242,.7);font-size:min(2vw,1.1rem);line-height:1.8}
+.slide.thx .url-pill{display:inline-block;background:rgba(255,255,255,.12);border-radius:10px;padding:.5rem 1.8rem;font-family:monospace;font-size:min(1.6vw,1rem);color:var(--gold);margin-top:2vh}
+.slide.thx .social{display:flex;gap:1.2rem;justify-content:center;margin-top:2vh}
+.slide.thx .social span{width:44px;height:44px;background:rgba(255,255,255,.15);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1.3rem}
+
+/* CONTENT SLIDES */
+.slide h2{font-family:Georgia,serif;font-size:min(3.5vw,2rem);color:var(--pri);margin-bottom:2vh;line-height:1.2;text-align:center}
+.slide h2 .emoji{margin-right:.5rem}
+.slide p{font-size:min(2vw,1rem);line-height:1.7;max-width:900px;text-align:center}
+.slide ul,.slide ol{margin:.8vh 0 1vh 1.5rem;font-size:min(1.8vw,.95rem);line-height:1.8;max-width:850px;text-align:left}
+
+/* MEME IMAGE */
+.meme{border-radius:12px;max-width:min(70vw,700px);max-height:35vh;object-fit:contain;box-shadow:0 4px 24px rgba(0,0,0,.15);margin:1.5vh 0}
+.meme-caption{font-size:min(1.6vw,.85rem);color:var(--stone);font-style:italic;margin-top:.5vh;text-align:center}
+
+/* STAT GRID */
+.sg{display:grid;gap:min(1.5vw,.8rem);margin:1.5vh 0;width:min(90vw,900px)}
+.sg.c3{grid-template-columns:repeat(3,1fr)}
+.sg.c4{grid-template-columns:repeat(4,1fr)}
+.sg.c6{grid-template-columns:repeat(6,1fr)}
+.sb{background:var(--surface);border:2px solid var(--mist);border-radius:12px;padding:min(2vw,1rem);text-align:center}
+.sb .n{font-size:min(3.5vw,2.2rem);font-weight:800;color:var(--pri);line-height:1}
+.sb .l{font-size:min(1vw,.6rem);color:var(--stone);text-transform:uppercase;letter-spacing:.08em;font-weight:700;margin-top:.3rem}
+
+/* COMPARE */
+.cmp{display:grid;grid-template-columns:1fr 1fr;gap:min(2vw,1rem);margin:1.5vh 0;width:min(90vw,900px)}
+.cmp-col{background:var(--surface);border-radius:12px;padding:min(2.5vw,1.2rem);border:2px solid var(--mist)}
+.cmp-col.old{border-top:5px solid var(--stone)}
+.cmp-col.nw{border-top:5px solid var(--green)}
+.cmp-col .hd{font-size:min(1.2vw,.7rem);text-transform:uppercase;letter-spacing:.1em;font-weight:800;margin-bottom:.6rem}
+.cmp-col.old .hd{color:var(--stone)}
+.cmp-col.nw .hd{color:var(--green)}
+.cmp-col ul{margin-left:1rem;font-size:min(1.5vw,.82rem);line-height:1.7}
+
+/* SCORE RINGS */
+.rr{display:flex;gap:min(3vw,1.5rem);justify-content:center;margin:1vh 0}
+.rg{text-align:center;width:min(10vw,80px)}
+.rg svg{width:min(8vw,65px);height:min(8vw,65px);transform:rotate(-90deg)}
+.rbg{fill:none;stroke:var(--mist);stroke-width:5}
+.rfg{fill:none;stroke-width:5;stroke-linecap:round}
+.rg .v{font-size:min(2vw,1.1rem);font-weight:800;margin-top:-2px}
+.rg .c{font-size:min(.9vw,.55rem);color:var(--stone);font-weight:700;text-transform:uppercase;letter-spacing:.04em}
+
+/* PILLS */
+.pills{display:flex;flex-wrap:wrap;gap:.5rem;margin:1vh 0;justify-content:center;max-width:850px}
+.pill{background:var(--surface);border:2px solid var(--mist);border-radius:24px;padding:.4rem .9rem;font-size:min(1.3vw,.78rem);font-weight:600;white-space:nowrap;display:flex;align-items:center;gap:.3rem}
+
+/* CALLOUT */
+.co{border-radius:12px;padding:min(2vw,1rem) min(2.5vw,1.2rem);margin:1.5vh 0;font-size:min(1.6vw,.85rem);line-height:1.6;max-width:850px;width:min(85vw,850px)}
+.co strong{display:block;margin-bottom:.2rem}
+.co.ok{background:var(--green-bg);border-left:5px solid var(--green)}
+.co.ok strong{color:var(--green)}
+.co.warn{background:#FFF3E0;border-left:5px solid var(--gold)}
+.co.warn strong{color:#E65100}
+
+/* COST CARDS */
+.cc-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:min(1.5vw,.7rem);margin:1.5vh 0;width:min(90vw,900px)}
+.cc{background:var(--surface);border:2px solid var(--mist);border-radius:12px;padding:min(2vw,1rem);text-align:center}
+.cc.rec{border:3px solid var(--green);position:relative}
+.cc.rec::after{content:"RECOMMENDED";position:absolute;top:-.6rem;left:50%;transform:translateX(-50%);background:var(--green);color:white;font-size:min(.9vw,.55rem);font-weight:800;padding:.2rem .7rem;border-radius:5px;letter-spacing:.08em}
+.cc .pt{font-size:min(1vw,.65rem);text-transform:uppercase;letter-spacing:.08em;font-weight:800;color:var(--stone);margin-bottom:.3rem}
+.cc .pr{font-size:min(2.5vw,1.6rem);font-weight:800;color:var(--pri)}
+.cc .pp{font-size:min(.9vw,.6rem);color:var(--stone)}
+.cc .pd{font-size:min(1.2vw,.72rem);color:var(--stone);margin-top:.4rem;line-height:1.5}
+
+/* DECISION GRID */
+.dg{display:grid;grid-template-columns:1fr 1fr;gap:.5rem;margin:1vh 0;width:min(85vw,850px)}
+.di{background:var(--surface);border:2px solid var(--mist);border-radius:10px;padding:.5rem .8rem;font-size:min(1.4vw,.82rem);display:flex;align-items:center;gap:.5rem}
+.di .ic{font-size:min(2vw,1.1rem);flex-shrink:0}
+
+/* TIMELINE */
+.tl-grid{display:grid;grid-template-columns:auto 1fr;gap:.3rem .8rem;margin:1vh 0;font-size:min(1.5vw,.85rem);width:min(85vw,850px)}
+.tl-grid .st{background:var(--pri);color:white;width:min(3vw,24px);height:min(3vw,24px);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:min(1vw,.6rem);font-weight:800}
+.tl-grid .ds{padding:.15rem 0;border-bottom:1px solid var(--mist)}
+
+/* MEME SLIDE (full visual) */
+.slide.meme-slide{padding:3vh 4vw}
+.slide.meme-slide .meme{max-height:50vh;max-width:min(80vw,800px)}
+.slide.meme-slide h2{margin-bottom:1vh}
+
+/* SLIDE NUMBER */
+.sn{position:absolute;bottom:1rem;right:1.5rem;font-size:.6rem;color:var(--stone);font-weight:600;opacity:.5}
+
+/* Paw watermarks */
+.paw-bg{position:absolute;font-size:min(15vw,10rem);opacity:.04;pointer-events:none;user-select:none}
+.paw-bg.tl{top:-2rem;left:-2rem;transform:rotate(-25deg)}
+.paw-bg.br{bottom:-2rem;right:-2rem;transform:rotate(15deg)}
+</style>
+</head>
+<body>
+<div class="deck">
+
+<!-- 1: TITLE -->
+<div class="slide hero active" data-n="1">
+  <div class="kittens">🐱 🐾 😺</div>
+  <div class="org">Cat's Meow Cat Rescue &bull; Milwaukie, Oregon</div>
+  <h1>New Website Development Brief</h1>
+  <div class="tagline">"A modern, mobile-first website to help more cats find their fur-ever homes"</div>
+  <div class="url-pill">luckygoats33.github.io/cats-meow-rescue</div>
+  <div class="meta">Prepared by Samantha Chandler, Board Member<br>Board of Directors &mdash; July 2026</div>
+  <div class="sn">1</div>
+</div>
+
+<!-- 2: MEME — Presenting Cat -->
+<div class="slide meme-slide" data-n="2">
+  <span class="paw-bg tl">🐾</span>
+  <h2><span class="emoji">😸</span> Why We're Here (It's Purrty Important)</h2>
+  <img class="meme" src="img/memes/meme-presenting-cat.png" alt="Cat in business suit presenting to board of cats">
+  <p style="margin-top:1.5vh;font-weight:600;font-size:min(2vw,1.05rem)">Today I'm asking the board to review, provide feedback, and approve our new website direction.</p>
+  <div class="co ok" style="margin-top:1vh">
+    <strong>🖥️ Preview the live prototype right now:</strong>
+    luckygoats33.github.io/cats-meow-rescue &mdash; works on your phone too!
+  </div>
+  <span class="paw-bg br">🐾</span>
+  <div class="sn">2</div>
+</div>
+
+<!-- 3: AT A GLANCE -->
+<div class="slide" data-n="3">
+  <span class="paw-bg tl">🐾</span>
+  <h2><span class="emoji">📊</span> New Website at a Glance</h2>
+  <div class="sg c6">
+    <div class="sb"><div class="n">166</div><div class="l">Total Pages</div></div>
+    <div class="sb"><div class="n">160</div><div class="l">Blog Articles</div></div>
+    <div class="sb"><div class="n">50</div><div class="l">FAQs</div></div>
+    <div class="sb"><div class="n">11</div><div class="l">Products</div></div>
+    <div class="sb"><div class="n">31</div><div class="l">Adoptable Cats</div></div>
+    <div class="sb"><div class="n">24</div><div class="l">New Features</div></div>
+  </div>
+  <div class="cmp" style="margin-top:1vh">
+    <div class="cmp-col old">
+      <div class="hd">😿 Current Wix Site</div>
+      <p style="font-size:min(1.5vw,.85rem);text-align:left">~7 pages, 0 blog articles, 0 FAQs, no shop, no quiz, no search, no dark mode</p>
+    </div>
+    <div class="cmp-col nw">
+      <div class="hd">😻 New Website</div>
+      <p style="font-size:min(1.5vw,.85rem);text-align:left">166 pages, 160 articles, 50 FAQs, 11 products, personality quiz, full search, dark mode, and 24 new features</p>
+    </div>
+  </div>
+  <p style="font-size:min(1.4vw,.8rem);color:var(--stone);margin-top:1vh;font-style:italic">That's <strong>24&times; more content</strong> for Google to find us with. Meow that's impressive! 😼</p>
+  <div class="sn">3</div>
+</div>
+
+<!-- 4: MEME — Old vs New -->
+<div class="slide meme-slide" data-n="4">
+  <h2><span class="emoji">😿➡️😻</span> Old Website vs. New Website</h2>
+  <img class="meme" src="img/memes/meme-old-vs-new.png" alt="Sad cat as old website vs majestic cat as new website">
+  <div class="meme-caption">"Expectation vs. Reality... but this time it's actually better!" 😹</div>
+  <div class="sn">4</div>
+</div>
+
+<!-- 5: TECHNICAL -->
+<div class="slide" data-n="5">
+  <span class="paw-bg br">🐾</span>
+  <h2><span class="emoji">🔬</span> Under the Hood: The Cat Scan Results</h2>
+  <div class="cmp">
+    <div class="cmp-col old">
+      <div class="hd">😿 Wix Site</div>
+      <ul>
+        <li>Generic page title, no keywords</li>
+        <li>No meta description for Google</li>
+        <li>No structured data</li>
+        <li>14% image accessibility</li>
+        <li>8 H1 headings (incorrect)</li>
+        <li><strong>69 JavaScript files 🐌</strong></li>
+        <li>No blog, search, or FAQ</li>
+      </ul>
+    </div>
+    <div class="cmp-col nw">
+      <div class="hd">😻 New Site</div>
+      <ul>
+        <li>Keyword-rich title + location</li>
+        <li>Full SEO meta description</li>
+        <li>NGO + FAQ structured data</li>
+        <li>92% image accessibility</li>
+        <li>1 H1 per page (correct)</li>
+        <li><strong>5 JavaScript files 🚀 (93% fewer!)</strong></li>
+        <li>160 blog articles + search + 50 FAQs</li>
+      </ul>
+    </div>
+  </div>
+  <div class="sn">5</div>
+</div>
+
+<!-- 6: MEME — Slow Website Cat -->
+<div class="slide meme-slide" data-n="6">
+  <h2><span class="emoji">🐌</span> When Your Website Loads Slower Than a Cat Nap</h2>
+  <img class="meme" src="img/memes/meme-slow-website.png" alt="Grumpy cat waiting for slow website to load">
+  <div class="co warn" style="margin-top:1.5vh">
+    <strong>🐾 Translation for non-techies:</strong>
+    The current site is like a cat carrying 69 toys in its mouth trying to run. The new site is a sleek cat with just 5 toys &mdash; way faster! 😹
+  </div>
+  <div class="sn">6</div>
+</div>
+
+<!-- 7: SCORES -->
+<div class="slide" data-n="7">
+  <h2><span class="emoji">🏆</span> Purrformance Scores</h2>
+  <p style="font-size:min(1.4vw,.8rem);color:var(--stone);margin-bottom:1vh">Google Lighthouse: the industry standard. 90+ = great, 50&ndash;89 = needs work, &lt;50 = poor.</p>
+  <div class="cmp">
+    <div class="cmp-col old">
+      <div class="hd">😿 Current Site</div>
+      <div class="rr">
+        <div class="rg"><svg viewBox="0 0 36 36"><circle class="rbg" cx="18" cy="18" r="15.9"/><circle class="rfg" cx="18" cy="18" r="15.9" stroke-dasharray="100" stroke-dashoffset="48" style="stroke:var(--stone)"/></svg><div class="v" style="color:var(--stone)">52</div><div class="c">Perf</div></div>
+        <div class="rg"><svg viewBox="0 0 36 36"><circle class="rbg" cx="18" cy="18" r="15.9"/><circle class="rfg" cx="18" cy="18" r="15.9" stroke-dasharray="100" stroke-dashoffset="30" style="stroke:var(--stone)"/></svg><div class="v" style="color:var(--stone)">70</div><div class="c">Access.</div></div>
+        <div class="rg"><svg viewBox="0 0 36 36"><circle class="rbg" cx="18" cy="18" r="15.9"/><circle class="rfg" cx="18" cy="18" r="15.9" stroke-dasharray="100" stroke-dashoffset="42" style="stroke:var(--stone)"/></svg><div class="v" style="color:var(--stone)">58</div><div class="c">SEO</div></div>
+        <div class="rg"><svg viewBox="0 0 36 36"><circle class="rbg" cx="18" cy="18" r="15.9"/><circle class="rfg" cx="18" cy="18" r="15.9" stroke-dasharray="100" stroke-dashoffset="55" style="stroke:var(--stone)"/></svg><div class="v" style="color:var(--stone)">45</div><div class="c">Best Pr.</div></div>
+      </div>
+    </div>
+    <div class="cmp-col nw">
+      <div class="hd">😻 New Site</div>
+      <div class="rr">
+        <div class="rg"><svg viewBox="0 0 36 36"><circle class="rbg" cx="18" cy="18" r="15.9"/><circle class="rfg" cx="18" cy="18" r="15.9" stroke-dasharray="100" stroke-dashoffset="8" style="stroke:var(--green)"/></svg><div class="v" style="color:var(--green)">92</div><div class="c">Perf</div></div>
+        <div class="rg"><svg viewBox="0 0 36 36"><circle class="rbg" cx="18" cy="18" r="15.9"/><circle class="rfg" cx="18" cy="18" r="15.9" stroke-dasharray="100" stroke-dashoffset="5" style="stroke:var(--green)"/></svg><div class="v" style="color:var(--green)">95</div><div class="c">Access.</div></div>
+        <div class="rg"><svg viewBox="0 0 36 36"><circle class="rbg" cx="18" cy="18" r="15.9"/><circle class="rfg" cx="18" cy="18" r="15.9" stroke-dasharray="100" stroke-dashoffset="3" style="stroke:var(--green)"/></svg><div class="v" style="color:var(--green)">97</div><div class="c">SEO</div></div>
+        <div class="rg"><svg viewBox="0 0 36 36"><circle class="rbg" cx="18" cy="18" r="15.9"/><circle class="rfg" cx="18" cy="18" r="15.9" stroke-dasharray="100" stroke-dashoffset="5" style="stroke:var(--green)"/></svg><div class="v" style="color:var(--green)">95</div><div class="c">Best Pr.</div></div>
+      </div>
+    </div>
+  </div>
+  <p style="font-size:min(1.6vw,.9rem);margin-top:1vh">Average improvement: <strong style="color:var(--green)">+38.5 points</strong> across all categories. The cat's out of the bag! 😸</p>
+  <div class="sn">7</div>
+</div>
+
+<!-- 8: INTERACTIVE FEATURES -->
+<div class="slide" data-n="8">
+  <span class="paw-bg tl">🐾</span>
+  <h2><span class="emoji">✨</span> The Fun Stuff (We're Not Kitten Around)</h2>
+  <div class="pills">
+    <div class="pill">🐾 Cat Paw Cursor</div>
+    <div class="pill">👣 Floating Paw Trail</div>
+    <div class="pill">🧶 Yarn Ball Cart Animation</div>
+    <div class="pill">😸 "You've Been Pounced!" Popup</div>
+    <div class="pill">🔍 Site-Wide Search</div>
+    <div class="pill">🛒 Slide-In Cart + Badge</div>
+    <div class="pill">🎊 Adoption Confetti</div>
+    <div class="pill">🌙 Dark Mode Toggle</div>
+    <div class="pill">✨ Scroll Animations</div>
+    <div class="pill">😺 Custom 404 Page</div>
+    <div class="pill">📱 Mobile Bottom Nav</div>
+    <div class="pill">🐱 "Find Your Purrfect Match" Quiz</div>
+  </div>
+  <div class="cmp" style="margin-top:1vh">
+    <div class="cmp-col" style="border-top:5px solid var(--gold)">
+      <div class="hd" style="color:var(--gold)">🧶 ADD TO CART MAGIC</div>
+      <p style="font-size:min(1.4vw,.82rem);text-align:left">Click "Add to Cart" and a <strong>yarn ball bounces across the screen with a kitten chasing it</strong> to the cart icon. The cart drawer slides open!</p>
+    </div>
+    <div class="cmp-col" style="border-top:5px solid var(--pri)">
+      <div class="hd" style="color:var(--pri)">😸 FIRST VISIT POUNCE</div>
+      <p style="font-size:min(1.4vw,.82rem);text-align:left">First-time visitors get a playful <strong>"You've Been Pounced!"</strong> popup inviting them to join the mailing list. Cookie-based.</p>
+    </div>
+  </div>
+  <span class="paw-bg br">🐾</span>
+  <div class="sn">8</div>
+</div>
+
+<!-- 9: MEME — Add to Cart Cat -->
+<div class="slide meme-slide" data-n="9">
+  <h2><span class="emoji">🧶</span> Add to Cart? Don't Mind If I Do!</h2>
+  <img class="meme" src="img/memes/meme-add-to-cart.png" alt="Cat batting yarn ball toward shopping cart">
+  <div class="meme-caption">What visitors see when they click "Add to Cart" on the new website 😻</div>
+  <div class="sn">9</div>
+</div>
+
+<!-- 10: MOBILE -->
+<div class="slide" data-n="10">
+  <h2><span class="emoji">📱</span> Mobile Expurrience</h2>
+  <div class="sg c3" style="margin-bottom:1vh">
+    <div class="sb"><div class="n">72%</div><div class="l">Nonprofit Traffic = Mobile</div></div>
+    <div class="sb"><div class="n">&lt;2s</div><div class="l">Load Time on 4G</div></div>
+    <div class="sb"><div class="n">44px+</div><div class="l">Touch Target Size</div></div>
+  </div>
+  <div class="cmp">
+    <div class="cmp-col old">
+      <div class="hd">😿 Wix Mobile</div>
+      <ul>
+        <li>Basic hamburger menu</li>
+        <li>No bottom navigation</li>
+        <li>Tiny text links (hard to tap)</li>
+        <li>No mobile shop at all</li>
+        <li>Links out to Petfinder</li>
+        <li>69 scripts = slooooow 🐌</li>
+      </ul>
+    </div>
+    <div class="cmp-col nw">
+      <div class="hd">😻 New Mobile</div>
+      <ul>
+        <li>Full-screen overlay with accordions</li>
+        <li>Fixed bottom bar: Home, Cats, Shop, Donate</li>
+        <li>Big, thumb-friendly buttons</li>
+        <li>Full cart with slide-in checkout</li>
+        <li>On-site filterable cat grid</li>
+        <li>5 scripts = purrfectly fast 🚀</li>
+      </ul>
+    </div>
+  </div>
+  <div class="sn">10</div>
+</div>
+
+<!-- 11: BLOG -->
+<div class="slide" data-n="11">
+  <span class="paw-bg br">🐾</span>
+  <h2><span class="emoji">📝</span> Blog: 160 Articles Working 24/7</h2>
+  <div class="sg c3" style="margin-bottom:1vh">
+    <div class="sb"><div class="n">160</div><div class="l">Articles</div></div>
+    <div class="sb"><div class="n">6</div><div class="l">Categories</div></div>
+    <div class="sb"><div class="n">24&times;</div><div class="l">More Google Entry Points</div></div>
+  </div>
+  <div class="pills" style="margin-bottom:1vh">
+    <div class="pill">🏠 Adoption Tips (27)</div>
+    <div class="pill">🏥 Cat Health (25)</div>
+    <div class="pill">😺 Cat Behavior (22)</div>
+    <div class="pill">🏡 Fostering (20)</div>
+    <div class="pill">🎉 Community (18)</div>
+    <div class="pill">💊 Cat Care (48)</div>
+  </div>
+  <p>Each article is a <strong>doorway from Google search</strong>. Someone searching "how to introduce two cats" finds our article, discovers Cat's Meow, and might adopt, donate, or volunteer. It's like having 160 tiny volunteers out there recruiting 24/7! 😸</p>
+  <div class="sn">11</div>
+</div>
+
+<!-- 12: SHOP -->
+<div class="slide" data-n="12">
+  <h2><span class="emoji">🛍️</span> Rep the Rescue: Online Shop</h2>
+  <p>11 products with AI-generated mockups. <strong>100% of proceeds support the rescue.</strong></p>
+  <div class="sg c4" style="margin:1vh 0">
+    <div class="sb"><div class="n">4</div><div class="l">Tees ($22&ndash;28)</div></div>
+    <div class="sb"><div class="n">3</div><div class="l">Sweats ($38&ndash;42)</div></div>
+    <div class="sb"><div class="n">2</div><div class="l">Stickers ($5)</div></div>
+    <div class="sb"><div class="n">2</div><div class="l">Magnets ($6&ndash;8)</div></div>
+  </div>
+  <ul>
+    <li>Category filters: All, Tees, Sweats, Stickers, Magnets</li>
+    <li>Size selector on each product</li>
+    <li>🧶 Yarn ball + kitten chase animation on "Add to Cart"</li>
+    <li>Slide-in cart drawer with live item count badge</li>
+  </ul>
+  <div class="co ok">
+    <strong>🐾 Before we launch the shop, we need:</strong>
+    Final product list, real photos, pricing, inventory, shipping, and fulfillment plan. Consider print-on-demand (Printful/Printify). Payment via Stripe (2.9% + $0.30/txn).
+  </div>
+  <div class="sn">12</div>
+</div>
+
+<!-- 13: NEWSLETTER -->
+<div class="slide" data-n="13">
+  <span class="paw-bg tl">🐾</span>
+  <h2><span class="emoji">📧</span> Newsletter: The Cat's Meow of Marketing</h2>
+  <div class="sg c3" style="margin-bottom:1vh">
+    <div class="sb"><div class="n">36:1</div><div class="l">Email ROI ($1 = $36 back)</div></div>
+    <div class="sb"><div class="n">3&ndash;5&times;</div><div class="l">vs. Social Conversion</div></div>
+    <div class="sb"><div class="n">4&times;</div><div class="l">More Repeat Donors</div></div>
+  </div>
+  <ul>
+    <li><strong>You own the relationship.</strong> Facebook organic reach is under 5%. Email goes to every subscriber.</li>
+    <li><strong>"You've Been Pounced!" popup</strong> captures first-time visitors with charm, not annoyance.</li>
+    <li><strong>Emergency foster calls</strong> reach people in hours via email, not days via social.</li>
+    <li><strong>Free to start:</strong> Klaviyo or Mailchimp (free up to 500 contacts).</li>
+  </ul>
+  <div class="co ok">
+    <strong>🐾 Start collecting emails from day one.</strong>
+    Every email address is a future adopter, donor, volunteer, or foster parent who <em>chose</em> to hear from us. That's the cat's meow! 😻
+  </div>
+  <div class="sn">13</div>
+</div>
+
+<!-- 14: PLATFORM -->
+<div class="slide" data-n="14">
+  <h2><span class="emoji">🏗️</span> Paws &amp; Consider: Platform Options</h2>
+  <div class="cc-grid">
+    <div class="cc">
+      <div class="pt">Stay on Wix</div>
+      <div class="pr">$204&ndash;404</div>
+      <div class="pp">/year</div>
+      <div class="pd">Familiar editor<br>Limited flexibility<br>Locked to platform<br>Hard to migrate later</div>
+    </div>
+    <div class="cc rec">
+      <div class="pt">WordPress + Kinsta</div>
+      <div class="pr">$435&ndash;640</div>
+      <div class="pp">/year</div>
+      <div class="pd">Easy visual editor<br>Full flexibility<br>Portable (not locked in)<br>Managed hosting + backups<br>43% of all websites use it</div>
+    </div>
+    <div class="cc">
+      <div class="pt">GitHub Pages (HTML)</div>
+      <div class="pr">$15&ndash;20</div>
+      <div class="pp">/year</div>
+      <div class="pd">Fastest performance<br>Cheapest option<br>Requires coding to update<br>No visual editor</div>
+    </div>
+  </div>
+  <div class="co ok">
+    <strong>🐾 My recommendation: WordPress + Kinsta</strong>
+    Visual dashboard anyone can use, managed hosting with daily backups, and you're never locked in.
+  </div>
+  <div class="sn">14</div>
+</div>
+
+<!-- 15: MEME — Web Developer Kitten -->
+<div class="slide meme-slide" data-n="15">
+  <h2><span class="emoji">💻</span> Building Your New Website... One Paw at a Time</h2>
+  <img class="meme" src="img/memes/meme-web-developer.png" alt="Kitten wearing glasses coding at a computer">
+  <div class="meme-caption">Our development team hard at work 😹</div>
+  <div class="co ok" style="margin-top:1.5vh">
+    <strong>🐾 The design and development work is being done pro bono.</strong>
+    The only ongoing costs are hosting ($35/mo) and domain renewal ($15/yr).
+  </div>
+  <div class="sn">15</div>
+</div>
+
+<!-- 16: DECISIONS -->
+<div class="slide" data-n="16">
+  <h2><span class="emoji">✅</span> Key Decisions for the Board</h2>
+  <div class="dg">
+    <div class="di"><div class="ic">🏗️</div><div><strong>Platform:</strong> Approve WordPress + Kinsta?</div></div>
+    <div class="di"><div class="ic">🎨</div><div><strong>Design:</strong> Approve direction? Changes?</div></div>
+    <div class="di"><div class="ic">🛍️</div><div><strong>Shop:</strong> Sell products? Which ones?</div></div>
+    <div class="di"><div class="ic">💰</div><div><strong>Donations:</strong> Accept online? Recurring?</div></div>
+    <div class="di"><div class="ic">📧</div><div><strong>Newsletter:</strong> Start email list?</div></div>
+    <div class="di"><div class="ic">📊</div><div><strong>Analytics:</strong> Install Google Analytics?</div></div>
+    <div class="di"><div class="ic">👤</div><div><strong>Admin:</strong> Primary + backup admins?</div></div>
+    <div class="di"><div class="ic">🔒</div><div><strong>Legal:</strong> Privacy policy? Domain?</div></div>
+    <div class="di"><div class="ic">🐱</div><div><strong>Content:</strong> Who updates cat profiles?</div></div>
+    <div class="di"><div class="ic">🌐</div><div><strong>Social:</strong> Which platforms to link?</div></div>
+  </div>
+  <p style="font-size:min(1.3vw,.75rem);color:var(--stone);margin-top:1vh;font-style:italic">Full list of 60+ individual decisions + answers in the 31-section written brief 📄</p>
+  <div class="sn">16</div>
+</div>
+
+<!-- 17: COMMON QUESTIONS -->
+<div class="slide" data-n="17">
+  <span class="paw-bg br">🐾</span>
+  <h2><span class="emoji">❓</span> Feline Curious? Common Questions</h2>
+  <ul style="font-size:min(1.7vw,.92rem)">
+    <li style="margin-bottom:.8vh"><strong>"Will our URL change?"</strong> &mdash; Nope! catsmeowcatrescue.com stays the same. 😸</li>
+    <li style="margin-bottom:.8vh"><strong>"Will we lose Google rankings?"</strong> &mdash; No. Proper redirects preserve SEO. The new site scores 97 vs. 58 &mdash; rankings should <em>improve</em>.</li>
+    <li style="margin-bottom:.8vh"><strong>"How long is the site down?"</strong> &mdash; Zero downtime. Both sites work during DNS switch.</li>
+    <li style="margin-bottom:.8vh"><strong>"Is it secure for payments?"</strong> &mdash; Yes. Stripe handles all payment data (PCI-DSS Level 1). No card numbers on our server.</li>
+    <li style="margin-bottom:.8vh"><strong>"What if the developer leaves?"</strong> &mdash; WordPress is the world's most popular CMS. Any developer can maintain it. 🔓</li>
+    <li><strong>"How hard is it to update?"</strong> &mdash; Like using Microsoft Word. Blog post = 10 min. Cat status update = 2 min. 🐾</li>
+  </ul>
+  <div class="sn">17</div>
+</div>
+
+<!-- 18: MEME — Board Meeting Kittens -->
+<div class="slide meme-slide" data-n="18">
+  <h2><span class="emoji">🐱</span> The Board Has Spoken... More Treats!</h2>
+  <img class="meme" src="img/memes/meme-board-meeting.png" alt="Kittens sitting at a conference table in a board meeting">
+  <div class="meme-caption">Artist's rendering of this meeting 😹</div>
+  <div class="sn">18</div>
+</div>
+
+<!-- 19: TIMELINE -->
+<div class="slide" data-n="19">
+  <h2><span class="emoji">📅</span> Transition Timeline: 8&ndash;12 Weeks</h2>
+  <div class="tl-grid">
+    <div class="st">1</div><div class="ds">🐾 Board reviews prototype and submits feedback</div>
+    <div class="st">2</div><div class="ds">📋 Feedback combined into one revision list</div>
+    <div class="st">3</div><div class="ds">🎨 Design revisions made and approved</div>
+    <div class="st">4</div><div class="ds">🏗️ Kinsta account created in org's name</div>
+    <div class="st">5</div><div class="ds">💻 Convert HTML to WordPress</div>
+    <div class="st">6</div><div class="ds">📸 Add final photos, products, donation settings</div>
+    <div class="st">7</div><div class="ds">🧪 Test on desktop, tablet, mobile + all forms/payments</div>
+    <div class="st">8</div><div class="ds">📖 Training session for content editors</div>
+    <div class="st">9</div><div class="ds">🌐 Connect domain and launch!</div>
+    <div class="st">10</div><div class="ds">📝 Document editing responsibilities &amp; schedules</div>
+  </div>
+  <div class="sn">19</div>
+</div>
+
+<!-- 20: NEXT STEPS -->
+<div class="slide" data-n="20">
+  <span class="paw-bg tl">🐾</span>
+  <h2><span class="emoji">🚀</span> Let's Get This Paw-ty Started!</h2>
+  <ol style="font-size:min(1.7vw,.95rem);line-height:2.2">
+    <li>Each board member reviews the prototype on their phone + computer</li>
+    <li>Submit feedback on design, content, and features</li>
+    <li>Vote on platform decision (WordPress + Kinsta recommended)</li>
+    <li>Vote on shop, donations, and newsletter</li>
+    <li>Identify primary website administrator + backup</li>
+    <li>Assign content area ownership (who updates what)</li>
+    <li>Confirm domain registrar access and account ownership</li>
+  </ol>
+  <div class="co warn" style="margin-top:1.5vh">
+    <strong>📄 The full 31-section written brief</strong> has everything: technical comparisons, cost breakdowns, 24-feature inventory, 25+ board Q&amp;A with answers, materials checklist, risk management, and a 10-phase transition plan.
+  </div>
+  <div class="sn">20</div>
+</div>
+
+<!-- 21: THANK YOU -->
+<div class="slide thx" data-n="21">
+  <div class="cats">😺 🐾 😻 🐾 😸</div>
+  <h2>Thank Mew!</h2>
+  <p>The goal is not just to replace a website.<br>It's to build a platform that helps more cats find their fur-ever homes.</p>
+  <div class="url-pill">luckygoats33.github.io/cats-meow-rescue</div>
+  <div class="social">
+    <span>📘</span>
+    <span>📸</span>
+    <span>🎵</span>
+    <span>🌐</span>
+  </div>
+  <p style="margin-top:2vh;font-size:min(1.3vw,.8rem);opacity:.45">
+    Samantha Chandler &bull; Board Member<br>
+    Cat's Meow Cat Rescue &bull; Milwaukie, Oregon &bull; July 2026
+  </p>
+  <div class="sn">21</div>
+</div>
+
+</div><!-- /deck -->
+
+<!-- NAV -->
+<div class="nav">
+  <button onclick="go(-1)" title="Previous">&#9664;</button>
+  <div class="ct"><span id="cur">1</span> / <span id="tot">21</span></div>
+  <button onclick="go(1)" title="Next">&#9654;</button>
+  <button class="fs-btn" onclick="toggleFS()" title="Fullscreen">&#x26F6; Full</button>
+</div>
+
+<script>
+const slides=document.querySelectorAll('.slide'),total=slides.length;
+let cur=0;
+document.getElementById('tot').textContent=total;
+
+function show(n){
+  const prev=cur;
+  cur=Math.max(0,Math.min(n,total-1));
+  slides.forEach((s,i)=>{
+    s.classList.remove('active','prev');
+    if(i===cur) s.classList.add('active');
+    else if(i===prev) s.classList.add('prev');
+  });
+  document.getElementById('cur').textContent=cur+1;
+}
+function go(d){show(cur+d)}
+
+document.addEventListener('keydown',e=>{
+  if(e.key==='ArrowRight'||e.key==='ArrowDown'||e.key===' '){e.preventDefault();go(1)}
+  if(e.key==='ArrowLeft'||e.key==='ArrowUp'){e.preventDefault();go(-1)}
+  if(e.key==='Home'){e.preventDefault();show(0)}
+  if(e.key==='End'){e.preventDefault();show(total-1)}
+  if(e.key==='f'||e.key==='F'){toggleFS()}
+});
+
+function toggleFS(){
+  if(!document.fullscreenElement){
+    document.documentElement.requestFullscreen().then(()=>document.body.classList.add('is-fs'));
+  }else{
+    document.exitFullscreen().then(()=>document.body.classList.remove('is-fs'));
+  }
+}
+document.addEventListener('fullscreenchange',()=>{
+  if(!document.fullscreenElement) document.body.classList.remove('is-fs');
+});
+</script>
+</body>
+</html>
