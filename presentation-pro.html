@@ -1,0 +1,645 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>Cat's Meow Cat Rescue — Board Presentation</title>
+<style>
+:root{--pri:#B22222;--pri-dark:#8B1818;--gold:#D4A017;--ground:#FFF9F2;--surface:#FFFFFF;--ink:#2D1810;--stone:#8A7E72;--mist:#EDE5DC;--green:#2E7D32;--green-bg:#E8F5E9}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{height:100%;overflow:hidden;font-family:'Segoe UI',-apple-system,system-ui,sans-serif;background:#111;color:var(--ink)}
+
+.deck{position:relative;width:100vw;height:100vh;overflow:hidden}
+.slide{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:center;align-items:center;padding:4vh 6vw;opacity:0;pointer-events:none;transition:opacity .4s ease,transform .4s ease;transform:translateX(40px);background:var(--ground)}
+.slide.active{opacity:1;pointer-events:auto;transform:translateX(0)}
+.slide.prev{opacity:0;transform:translateX(-40px)}
+
+.nav{position:fixed;bottom:2vh;left:50%;transform:translateX(-50%);z-index:200;display:flex;align-items:center;gap:1rem;background:rgba(178,34,34,.92);backdrop-filter:blur(8px);padding:.5rem 1.5rem;border-radius:40px;color:white;box-shadow:0 4px 20px rgba(0,0,0,.3)}
+.nav button{background:rgba(255,255,255,.15);border:none;border-radius:50%;width:36px;height:36px;color:white;font-size:1.1rem;cursor:pointer;transition:background .15s;display:flex;align-items:center;justify-content:center}
+.nav button:hover{background:rgba(255,255,255,.3)}
+.nav .ct{font-weight:800;min-width:5rem;text-align:center;font-size:.9rem}
+.nav .fs-btn{font-size:.85rem;border-radius:8px;width:auto;padding:0 .8rem}
+body.is-fs .nav{bottom:3vh}
+
+/* HERO */
+.slide.hero{background:linear-gradient(135deg,var(--pri) 0%,var(--pri-dark) 100%);color:#FFF9F2;text-align:center}
+.slide.hero .icon{font-size:min(4vw,2.5rem);margin-bottom:1vh}
+.slide.hero .org{font-size:min(1.4vw,.9rem);text-transform:uppercase;letter-spacing:.3em;opacity:.6;font-weight:600}
+.slide.hero h1{font-family:Georgia,serif;font-size:min(5vw,3.2rem);font-weight:700;line-height:1.15;margin:1vh 0;text-wrap:balance}
+.slide.hero .tagline{font-size:min(2vw,1.15rem);opacity:.75;margin-bottom:2vh;max-width:700px;line-height:1.6}
+.slide.hero .url-pill{display:inline-block;background:rgba(255,255,255,.12);border-radius:10px;padding:.6rem 2rem;font-family:monospace;font-size:min(1.6vw,1rem);color:var(--gold);margin:.8vh 0}
+.slide.hero .meta{font-size:min(1.3vw,.8rem);opacity:.4;line-height:2}
+
+/* CLOSING */
+.slide.thx{background:linear-gradient(135deg,var(--pri) 0%,var(--pri-dark) 100%);color:#FFF9F2;text-align:center}
+.slide.thx h2{font-family:Georgia,serif;color:#FFF9F2;font-size:min(4vw,2.8rem);margin-bottom:1vh}
+.slide.thx p{color:rgba(255,249,242,.7);font-size:min(2vw,1.1rem);line-height:1.8}
+.slide.thx .url-pill{display:inline-block;background:rgba(255,255,255,.12);border-radius:10px;padding:.5rem 1.8rem;font-family:monospace;font-size:min(1.6vw,1rem);color:var(--gold);margin-top:2vh}
+
+/* CONTENT */
+.slide h2{font-family:Georgia,serif;font-size:min(3.2vw,1.9rem);color:var(--pri);margin-bottom:2vh;line-height:1.2;text-align:center}
+.slide p{font-size:min(1.8vw,1rem);line-height:1.7;max-width:900px;text-align:center}
+.slide ul,.slide ol{margin:.8vh 0 1vh 1.5rem;font-size:min(1.7vw,.92rem);line-height:1.8;max-width:850px;text-align:left}
+
+/* MEME */
+.meme{border-radius:12px;max-width:min(55vw,550px);max-height:30vh;object-fit:contain;box-shadow:0 4px 24px rgba(0,0,0,.12);margin:1.5vh 0}
+.meme-caption{font-size:min(1.3vw,.75rem);color:var(--stone);font-style:italic;margin-top:.5vh;text-align:center}
+
+/* STATS */
+.sg{display:grid;gap:min(1.5vw,.8rem);margin:1.5vh 0;width:min(90vw,900px)}
+.sg.c3{grid-template-columns:repeat(3,1fr)}
+.sg.c4{grid-template-columns:repeat(4,1fr)}
+.sg.c6{grid-template-columns:repeat(6,1fr)}
+.sb{background:var(--surface);border:2px solid var(--mist);border-radius:12px;padding:min(2vw,1rem);text-align:center}
+.sb .n{font-size:min(3.5vw,2.2rem);font-weight:800;color:var(--pri);line-height:1}
+.sb .l{font-size:min(1vw,.6rem);color:var(--stone);text-transform:uppercase;letter-spacing:.08em;font-weight:700;margin-top:.3rem}
+
+/* COMPARE */
+.cmp{display:grid;grid-template-columns:1fr 1fr;gap:min(2vw,1rem);margin:1.5vh 0;width:min(90vw,900px)}
+.cmp-col{background:var(--surface);border-radius:12px;padding:min(2.5vw,1.2rem);border:2px solid var(--mist)}
+.cmp-col.old{border-top:5px solid var(--stone)}
+.cmp-col.nw{border-top:5px solid var(--green)}
+.cmp-col .hd{font-size:min(1.2vw,.7rem);text-transform:uppercase;letter-spacing:.1em;font-weight:800;margin-bottom:.6rem}
+.cmp-col.old .hd{color:var(--stone)}
+.cmp-col.nw .hd{color:var(--green)}
+.cmp-col ul{margin-left:1rem;font-size:min(1.4vw,.8rem);line-height:1.7}
+
+/* RINGS */
+.rr{display:flex;gap:min(3vw,1.5rem);justify-content:center;margin:1vh 0}
+.rg{text-align:center;width:min(10vw,80px)}
+.rg svg{width:min(8vw,65px);height:min(8vw,65px);transform:rotate(-90deg)}
+.rbg{fill:none;stroke:var(--mist);stroke-width:5}
+.rfg{fill:none;stroke-width:5;stroke-linecap:round}
+.rg .v{font-size:min(2vw,1.1rem);font-weight:800;margin-top:-2px}
+.rg .c{font-size:min(.9vw,.55rem);color:var(--stone);font-weight:700;text-transform:uppercase;letter-spacing:.04em}
+
+/* PILLS */
+.pills{display:flex;flex-wrap:wrap;gap:.5rem;margin:1vh 0;justify-content:center;max-width:850px}
+.pill{background:var(--surface);border:2px solid var(--mist);border-radius:24px;padding:.35rem .8rem;font-size:min(1.2vw,.72rem);font-weight:600;white-space:nowrap}
+
+/* CALLOUT */
+.co{border-radius:12px;padding:min(2vw,1rem) min(2.5vw,1.2rem);margin:1.5vh 0;font-size:min(1.5vw,.85rem);line-height:1.6;max-width:850px;width:min(85vw,850px)}
+.co strong{display:block;margin-bottom:.2rem}
+.co.ok{background:var(--green-bg);border-left:5px solid var(--green)}
+.co.ok strong{color:var(--green)}
+.co.warn{background:#FFF3E0;border-left:5px solid var(--gold)}
+.co.warn strong{color:#E65100}
+
+/* COST */
+.cc-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:min(1.5vw,.7rem);margin:1.5vh 0;width:min(90vw,900px)}
+.cc{background:var(--surface);border:2px solid var(--mist);border-radius:12px;padding:min(2vw,1rem);text-align:center}
+.cc.rec{border:3px solid var(--green);position:relative}
+.cc.rec::after{content:"RECOMMENDED";position:absolute;top:-.6rem;left:50%;transform:translateX(-50%);background:var(--green);color:white;font-size:min(.9vw,.55rem);font-weight:800;padding:.2rem .7rem;border-radius:5px;letter-spacing:.08em}
+.cc .pt{font-size:min(1vw,.65rem);text-transform:uppercase;letter-spacing:.08em;font-weight:800;color:var(--stone);margin-bottom:.3rem}
+.cc .pr{font-size:min(2.5vw,1.6rem);font-weight:800;color:var(--pri)}
+.cc .pp{font-size:min(.9vw,.6rem);color:var(--stone)}
+.cc .pd{font-size:min(1.2vw,.72rem);color:var(--stone);margin-top:.4rem;line-height:1.5}
+
+/* DECISIONS */
+.dg{display:grid;grid-template-columns:1fr 1fr;gap:.5rem;margin:1vh 0;width:min(85vw,850px)}
+.di{background:var(--surface);border:2px solid var(--mist);border-radius:10px;padding:.5rem .8rem;font-size:min(1.4vw,.82rem);display:flex;align-items:center;gap:.5rem}
+.di .ic{font-size:min(2vw,1.1rem);flex-shrink:0}
+
+/* TIMELINE */
+.tl-grid{display:grid;grid-template-columns:auto 1fr;gap:.3rem .8rem;margin:1vh 0;font-size:min(1.5vw,.85rem);width:min(85vw,850px)}
+.tl-grid .st{background:var(--pri);color:white;width:min(3vw,24px);height:min(3vw,24px);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:min(1vw,.6rem);font-weight:800}
+.tl-grid .ds{padding:.15rem 0;border-bottom:1px solid var(--mist)}
+
+/* INVENTORY */
+.inv{width:min(92vw,950px)}
+.inv-grid{display:grid;grid-template-columns:1fr 1fr;gap:min(1.2vw,.6rem);margin:.8vh 0}
+.inv-card{background:var(--surface);border:2px solid var(--mist);border-radius:10px;padding:min(1.2vw,.6rem) min(1.5vw,.8rem)}
+.inv-card .inv-h{font-size:min(1.2vw,.7rem);font-weight:800;text-transform:uppercase;letter-spacing:.06em;color:var(--pri);margin-bottom:.3rem}
+.inv-card ul{margin:0 0 0 .8rem;font-size:min(1.1vw,.62rem);line-height:1.55;color:var(--ink)}
+.inv-card li{margin:.05rem 0}
+.inv-stats{display:grid;grid-template-columns:repeat(5,1fr);gap:min(1vw,.4rem);margin:.6vh 0}
+.inv-stat{background:var(--pri);color:white;border-radius:8px;padding:min(.8vw,.35rem);text-align:center}
+.inv-stat .iv{font-size:min(2vw,1.2rem);font-weight:800;line-height:1}
+.inv-stat .il{font-size:min(.8vw,.45rem);text-transform:uppercase;letter-spacing:.04em;opacity:.8;margin-top:.1rem}
+
+.sn{position:absolute;bottom:1rem;right:1.5rem;font-size:.6rem;color:var(--stone);font-weight:600;opacity:.5}
+</style>
+</head>
+<body>
+<div class="deck">
+
+<!-- 1: TITLE -->
+<div class="slide hero active" data-n="1">
+  <div class="icon">🐾</div>
+  <div class="org">Cat's Meow Cat Rescue &bull; Milwaukie, Oregon</div>
+  <h1>New Website Proposal</h1>
+  <div class="tagline">A modern, mobile-first website to strengthen our online presence, increase adoptions, and better serve our community.</div>
+  <div class="url-pill">luckygoats33.github.io/cats-meow-rescue</div>
+  <div class="meta">Prepared by Samantha Chandler, Board Member<br>Board of Directors &mdash; July 2026</div>
+  <div class="sn">1</div>
+</div>
+
+<!-- 2: PURPOSE -->
+<div class="slide" data-n="2">
+  <h2>Purpose of This Presentation</h2>
+  <p>I've developed a complete website prototype for Cat's Meow Cat Rescue. Today I'm presenting it to the board for review, feedback, and approval to move forward.</p>
+  <p style="margin-top:1.5vh;font-weight:600">What I'm asking the board to do:</p>
+  <ul>
+    <li><strong>Review</strong> the new website design, content, and features</li>
+    <li><strong>Provide feedback</strong> on what to keep, change, or add</li>
+    <li><strong>Decide</strong> on platform, shop, donations, newsletter, and site management</li>
+    <li><strong>Approve</strong> the direction so we can build the final version</li>
+  </ul>
+  <div class="co ok">
+    <strong>Preview the live prototype:</strong>
+    luckygoats33.github.io/cats-meow-rescue &mdash; works on desktop and mobile.
+  </div>
+  <div class="sn">2</div>
+</div>
+
+<!-- 3: AT A GLANCE -->
+<div class="slide" data-n="3">
+  <h2>New Website at a Glance</h2>
+  <div class="sg c6">
+    <div class="sb"><div class="n">166</div><div class="l">Total Pages</div></div>
+    <div class="sb"><div class="n">160</div><div class="l">Blog Articles</div></div>
+    <div class="sb"><div class="n">50</div><div class="l">FAQs</div></div>
+    <div class="sb"><div class="n">11</div><div class="l">Products</div></div>
+    <div class="sb"><div class="n">31</div><div class="l">Adoptable Cats</div></div>
+    <div class="sb"><div class="n">24</div><div class="l">New Features</div></div>
+  </div>
+  <div class="cmp" style="margin-top:1vh">
+    <div class="cmp-col old">
+      <div class="hd">Current Wix Site</div>
+      <p style="font-size:min(1.5vw,.85rem);text-align:left">~7 pages, no blog, no FAQ, no shop, no quiz, no search, no dark mode</p>
+    </div>
+    <div class="cmp-col nw">
+      <div class="hd">New Website</div>
+      <p style="font-size:min(1.5vw,.85rem);text-align:left">166 pages, 160 articles, 50 FAQs, 11 products, personality quiz, full search, dark mode, and 24 new features</p>
+    </div>
+  </div>
+  <p style="font-size:min(1.3vw,.78rem);color:var(--stone);margin-top:1vh">That's 24&times; more content for search engines to find us with.</p>
+  <div class="sn">3</div>
+</div>
+
+<!-- 4: COMPLETE INVENTORY -->
+<div class="slide" data-n="4" style="padding:2.5vh 4vw">
+  <div class="inv">
+    <h2 style="margin-bottom:.5vh;font-size:min(2.8vw,1.6rem)">Complete Build Inventory</h2>
+    <div class="inv-stats">
+      <div class="inv-stat"><div class="iv">166</div><div class="il">Pages</div></div>
+      <div class="inv-stat"><div class="iv">160</div><div class="il">Blog Posts</div></div>
+      <div class="inv-stat"><div class="iv">50</div><div class="il">FAQs</div></div>
+      <div class="inv-stat"><div class="iv">11</div><div class="il">Products</div></div>
+      <div class="inv-stat"><div class="iv">24</div><div class="il">Features</div></div>
+    </div>
+    <div class="inv-grid">
+      <div class="inv-card">
+        <div class="inv-h">Main Pages (6)</div>
+        <ul>
+          <li><strong>Homepage</strong> &mdash; hero, stats strip, What We Do cards, personality quiz, live Petfinder cat grid, success stories carousel, newsletter popup</li>
+          <li><strong>Shop</strong> &mdash; 11 products, category filters, size selector, cart animation, slide-in cart drawer</li>
+          <li><strong>Blog</strong> &mdash; 160 articles across 6 categories, real-time search, category filter chips</li>
+          <li><strong>FAQ</strong> &mdash; 50 Q&amp;A pairs, 7 category filters, expandable accordion, JSON-LD schema</li>
+          <li><strong>About</strong> &mdash; Our Story, 501(c)(3) info, team bios, mission statement</li>
+          <li><strong>404 Page</strong> &mdash; Custom themed error page</li>
+        </ul>
+      </div>
+      <div class="inv-card">
+        <div class="inv-h">Interactive Features (12)</div>
+        <ul>
+          <li>Custom cat paw cursor (SVG)</li>
+          <li>Floating paw print trail on mouse move</li>
+          <li>Yarn ball + kitten chase cart animation</li>
+          <li>"You've Been Pounced!" newsletter popup</li>
+          <li>Site-wide instant search</li>
+          <li>Slide-in cart drawer + badge count</li>
+          <li>Adoption confetti celebration</li>
+          <li>Dark mode toggle (system-aware)</li>
+          <li>Scroll-triggered fade-in animations</li>
+          <li>Mobile bottom navigation bar</li>
+          <li>"Find Your Match" personality quiz</li>
+          <li>Live Petfinder API cat grid (31 cats)</li>
+        </ul>
+      </div>
+      <div class="inv-card">
+        <div class="inv-h">Blog Categories (160 articles)</div>
+        <ul>
+          <li>Cat Care &mdash; 48 articles</li>
+          <li>Adoption Tips &mdash; 27 articles</li>
+          <li>Cat Health &mdash; 25 articles</li>
+          <li>Cat Behavior &mdash; 22 articles</li>
+          <li>Fostering Guide &mdash; 20 articles</li>
+          <li>Community &amp; Events &mdash; 18 articles</li>
+          <li>Each with featured image, read time, category tag</li>
+          <li>All SEO-optimized with meta descriptions</li>
+        </ul>
+      </div>
+      <div class="inv-card">
+        <div class="inv-h">Shop Products (11)</div>
+        <ul>
+          <li>4 T-Shirts ($22&ndash;$28) &mdash; Classic Logo, Adopt Don't Shop, Cat Mom, Rescue Crew</li>
+          <li>3 Sweatshirts ($38&ndash;$42) &mdash; Logo Hoodie, Cat Dad, Paw Print Crew</li>
+          <li>2 Stickers ($5) &mdash; Logo, Paw Print</li>
+          <li>2 Magnets ($6&ndash;$8) &mdash; Logo, Cat Silhouette</li>
+          <li>All with AI-generated product mockup images</li>
+          <li>Category filters + size selectors</li>
+        </ul>
+      </div>
+      <div class="inv-card">
+        <div class="inv-h">Technical / SEO</div>
+        <ul>
+          <li>JSON-LD structured data (NGO + FAQPage schemas)</li>
+          <li>Google-optimized meta titles &amp; descriptions on every page</li>
+          <li>92% image alt-text accessibility (vs 14% on Wix)</li>
+          <li>1 H1 per page (proper heading hierarchy)</li>
+          <li>5 JS files total (vs 69 on Wix &mdash; 93% reduction)</li>
+          <li>Single shared.css with CSS custom properties</li>
+          <li>Mobile-first responsive design</li>
+          <li>Print-optimized stylesheets</li>
+        </ul>
+      </div>
+      <div class="inv-card">
+        <div class="inv-h">Design System</div>
+        <ul>
+          <li>Brand colors: Firebrick Red, Gold, Warm Cream</li>
+          <li>Google Fonts: Montserrat (body) + Fredoka (headers)</li>
+          <li>Dark mode with full token system</li>
+          <li>Component library: shared header, footer, nav, forms</li>
+          <li>FormSubmit.co newsletter integration</li>
+          <li>Petfinder API integration for live cat profiles</li>
+          <li>Responsive: desktop, tablet, mobile breakpoints</li>
+          <li>388+ cats rescued counter + success story carousel</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="sn">4</div>
+</div>
+
+<!-- 5: TECHNICAL COMPARISON -->
+<div class="slide" data-n="5">
+  <h2>Technical Comparison</h2>
+  <div class="cmp">
+    <div class="cmp-col old">
+      <div class="hd">Current Wix Site</div>
+      <ul>
+        <li>Generic page title, no keywords</li>
+        <li>No meta description for Google</li>
+        <li>No structured data</li>
+        <li>14% image accessibility</li>
+        <li>8 H1 headings (incorrect)</li>
+        <li><strong>69 JavaScript files</strong></li>
+        <li>No blog, search, or FAQ</li>
+      </ul>
+    </div>
+    <div class="cmp-col nw">
+      <div class="hd">New Website</div>
+      <ul>
+        <li>Keyword-rich title + location</li>
+        <li>Full SEO meta description</li>
+        <li>NGO + FAQ structured data</li>
+        <li>92% image accessibility</li>
+        <li>1 H1 per page (correct)</li>
+        <li><strong>5 JavaScript files (93% fewer)</strong></li>
+        <li>160 blog articles + search + 50 FAQs</li>
+      </ul>
+    </div>
+  </div>
+  <div class="sn">5</div>
+</div>
+
+<!-- 6: LIGHTHOUSE SCORES -->
+<div class="slide" data-n="6">
+  <h2>Google Lighthouse Performance Scores</h2>
+  <p style="font-size:min(1.3vw,.78rem);color:var(--stone);margin-bottom:1vh">Industry standard for website quality. 90+ is excellent, 50&ndash;89 needs work, below 50 is poor.</p>
+  <div class="cmp">
+    <div class="cmp-col old">
+      <div class="hd">Current Site</div>
+      <div class="rr">
+        <div class="rg"><svg viewBox="0 0 36 36"><circle class="rbg" cx="18" cy="18" r="15.9"/><circle class="rfg" cx="18" cy="18" r="15.9" stroke-dasharray="100" stroke-dashoffset="48" style="stroke:var(--stone)"/></svg><div class="v" style="color:var(--stone)">52</div><div class="c">Perf</div></div>
+        <div class="rg"><svg viewBox="0 0 36 36"><circle class="rbg" cx="18" cy="18" r="15.9"/><circle class="rfg" cx="18" cy="18" r="15.9" stroke-dasharray="100" stroke-dashoffset="30" style="stroke:var(--stone)"/></svg><div class="v" style="color:var(--stone)">70</div><div class="c">Access.</div></div>
+        <div class="rg"><svg viewBox="0 0 36 36"><circle class="rbg" cx="18" cy="18" r="15.9"/><circle class="rfg" cx="18" cy="18" r="15.9" stroke-dasharray="100" stroke-dashoffset="42" style="stroke:var(--stone)"/></svg><div class="v" style="color:var(--stone)">58</div><div class="c">SEO</div></div>
+        <div class="rg"><svg viewBox="0 0 36 36"><circle class="rbg" cx="18" cy="18" r="15.9"/><circle class="rfg" cx="18" cy="18" r="15.9" stroke-dasharray="100" stroke-dashoffset="55" style="stroke:var(--stone)"/></svg><div class="v" style="color:var(--stone)">45</div><div class="c">Best Pr.</div></div>
+      </div>
+    </div>
+    <div class="cmp-col nw">
+      <div class="hd">New Site</div>
+      <div class="rr">
+        <div class="rg"><svg viewBox="0 0 36 36"><circle class="rbg" cx="18" cy="18" r="15.9"/><circle class="rfg" cx="18" cy="18" r="15.9" stroke-dasharray="100" stroke-dashoffset="8" style="stroke:var(--green)"/></svg><div class="v" style="color:var(--green)">92</div><div class="c">Perf</div></div>
+        <div class="rg"><svg viewBox="0 0 36 36"><circle class="rbg" cx="18" cy="18" r="15.9"/><circle class="rfg" cx="18" cy="18" r="15.9" stroke-dasharray="100" stroke-dashoffset="5" style="stroke:var(--green)"/></svg><div class="v" style="color:var(--green)">95</div><div class="c">Access.</div></div>
+        <div class="rg"><svg viewBox="0 0 36 36"><circle class="rbg" cx="18" cy="18" r="15.9"/><circle class="rfg" cx="18" cy="18" r="15.9" stroke-dasharray="100" stroke-dashoffset="3" style="stroke:var(--green)"/></svg><div class="v" style="color:var(--green)">97</div><div class="c">SEO</div></div>
+        <div class="rg"><svg viewBox="0 0 36 36"><circle class="rbg" cx="18" cy="18" r="15.9"/><circle class="rfg" cx="18" cy="18" r="15.9" stroke-dasharray="100" stroke-dashoffset="5" style="stroke:var(--green)"/></svg><div class="v" style="color:var(--green)">95</div><div class="c">Best Pr.</div></div>
+      </div>
+    </div>
+  </div>
+  <p style="font-size:min(1.5vw,.88rem);margin-top:1vh">Average improvement: <strong style="color:var(--green)">+38.5 points</strong> across all four categories.</p>
+  <div class="sn">6</div>
+</div>
+
+<!-- 7: MEME — Old vs New (just one, placed strategically) -->
+<div class="slide" data-n="7" style="text-align:center">
+  <h2>A Visual Summary</h2>
+  <img class="meme" src="img/memes/meme-old-vs-new.png" alt="Before and after comparison" style="max-height:42vh;max-width:min(65vw,650px)">
+  <div class="sn">7</div>
+</div>
+
+<!-- 8: INTERACTIVE FEATURES -->
+<div class="slide" data-n="8">
+  <h2>Interactive Experience Features</h2>
+  <p style="font-size:min(1.4vw,.82rem);color:var(--stone);margin-bottom:1vh">Every detail creates a memorable, shareable experience that reflects our personality as a rescue.</p>
+  <div class="pills">
+    <div class="pill">Cat Paw Cursor</div>
+    <div class="pill">Floating Paw Trail</div>
+    <div class="pill">Yarn Ball Cart Animation</div>
+    <div class="pill">Newsletter Popup</div>
+    <div class="pill">Site-Wide Search</div>
+    <div class="pill">Slide-In Cart + Badge</div>
+    <div class="pill">Adoption Confetti</div>
+    <div class="pill">Dark Mode Toggle</div>
+    <div class="pill">Scroll Animations</div>
+    <div class="pill">Custom 404 Page</div>
+    <div class="pill">Mobile Bottom Nav</div>
+    <div class="pill">Personality Quiz</div>
+  </div>
+  <div class="cmp" style="margin-top:1vh">
+    <div class="cmp-col" style="border-top:5px solid var(--gold)">
+      <div class="hd" style="color:var(--gold)">Add to Cart Animation</div>
+      <p style="font-size:min(1.4vw,.82rem);text-align:left">A <strong>yarn ball bounces across the screen with a kitten chasing it</strong> to the cart icon. The cart drawer slides open with a live badge count.</p>
+    </div>
+    <div class="cmp-col" style="border-top:5px solid var(--pri)">
+      <div class="hd" style="color:var(--pri)">First Visit Newsletter</div>
+      <p style="font-size:min(1.4vw,.82rem);text-align:left">First-time visitors see a playful <strong>"You've Been Pounced!"</strong> popup inviting them to join the mailing list. Cookie-based &mdash; only shown once.</p>
+    </div>
+  </div>
+  <div class="sn">8</div>
+</div>
+
+<!-- 9: MOBILE -->
+<div class="slide" data-n="9">
+  <h2>Mobile Experience</h2>
+  <div class="sg c3" style="margin-bottom:1vh">
+    <div class="sb"><div class="n">72%</div><div class="l">Nonprofit Traffic = Mobile</div></div>
+    <div class="sb"><div class="n">&lt;2s</div><div class="l">Load Time on 4G</div></div>
+    <div class="sb"><div class="n">44px+</div><div class="l">Touch Target Size</div></div>
+  </div>
+  <div class="cmp">
+    <div class="cmp-col old">
+      <div class="hd">Wix Mobile</div>
+      <ul>
+        <li>Basic hamburger menu</li>
+        <li>No bottom navigation</li>
+        <li>Tiny text links (hard to tap)</li>
+        <li>No mobile shop</li>
+        <li>Links out to Petfinder</li>
+        <li>69 scripts = slow loading</li>
+      </ul>
+    </div>
+    <div class="cmp-col nw">
+      <div class="hd">New Mobile</div>
+      <ul>
+        <li>Full-screen overlay with accordions</li>
+        <li>Fixed bottom bar: Home, Cats, Shop, Donate</li>
+        <li>Large, thumb-friendly buttons</li>
+        <li>Full cart with slide-in checkout</li>
+        <li>On-site filterable cat grid</li>
+        <li>5 scripts = fast loading</li>
+      </ul>
+    </div>
+  </div>
+  <div class="co warn">
+    <strong>Google uses mobile-first indexing since 2021.</strong>
+    Poor mobile performance directly impacts search rankings for terms like "cat rescue Portland" and "adopt a cat near me."
+  </div>
+  <div class="sn">9</div>
+</div>
+
+<!-- 10: BLOG & SEO -->
+<div class="slide" data-n="10">
+  <h2>Blog &amp; SEO Strategy: 160 Articles</h2>
+  <div class="sg c3" style="margin-bottom:1vh">
+    <div class="sb"><div class="n">160</div><div class="l">Articles</div></div>
+    <div class="sb"><div class="n">6</div><div class="l">Categories</div></div>
+    <div class="sb"><div class="n">24&times;</div><div class="l">More Google Entry Points</div></div>
+  </div>
+  <div class="pills" style="margin-bottom:1vh">
+    <div class="pill">Adoption Tips (27)</div>
+    <div class="pill">Cat Health (25)</div>
+    <div class="pill">Cat Behavior (22)</div>
+    <div class="pill">Fostering (20)</div>
+    <div class="pill">Community (18)</div>
+    <div class="pill">Cat Care (48)</div>
+  </div>
+  <p>Each article is a doorway from Google search. Someone searching "how to introduce two cats" finds our article, discovers Cat's Meow, and may adopt, donate, or volunteer. Articles are evergreen and drive traffic year-round.</p>
+  <div class="sn">10</div>
+</div>
+
+<!-- 11: SHOP -->
+<div class="slide" data-n="11">
+  <h2>Online Shop: Rep the Rescue</h2>
+  <p>11 products with AI-generated mockups. <strong>100% of proceeds support the rescue.</strong></p>
+  <div class="sg c4" style="margin:1vh 0">
+    <div class="sb"><div class="n">4</div><div class="l">Tees ($22&ndash;28)</div></div>
+    <div class="sb"><div class="n">3</div><div class="l">Sweats ($38&ndash;42)</div></div>
+    <div class="sb"><div class="n">2</div><div class="l">Stickers ($5)</div></div>
+    <div class="sb"><div class="n">2</div><div class="l">Magnets ($6&ndash;8)</div></div>
+  </div>
+  <ul>
+    <li>Category filters: All, Tees, Sweats, Stickers, Magnets</li>
+    <li>Size selector on each product</li>
+    <li>Animated add-to-cart experience</li>
+    <li>Slide-in cart drawer with live item count</li>
+  </ul>
+  <div class="co ok">
+    <strong>Before launch, we need:</strong>
+    Final product list, real photographs, pricing, inventory, shipping policies, and fulfillment plan. Print-on-demand (Printful/Printify) recommended. Payment via Stripe (2.9% + $0.30/txn).
+  </div>
+  <div class="sn">11</div>
+</div>
+
+<!-- 12: NEWSLETTER -->
+<div class="slide" data-n="12">
+  <h2>Newsletter &amp; Email Strategy</h2>
+  <div class="sg c3" style="margin-bottom:1vh">
+    <div class="sb"><div class="n">36:1</div><div class="l">Email ROI ($1 = $36 back)</div></div>
+    <div class="sb"><div class="n">3&ndash;5&times;</div><div class="l">vs. Social Conversion</div></div>
+    <div class="sb"><div class="n">4&times;</div><div class="l">More Repeat Donors</div></div>
+  </div>
+  <ul>
+    <li><strong>You own the relationship.</strong> Facebook organic reach is under 5%. Email reaches every subscriber.</li>
+    <li><strong>Playful popup</strong> captures first-time visitors. Cookie-based &mdash; won't bother returning visitors.</li>
+    <li><strong>Emergency foster calls</strong> reach interested people in hours via email, not days via social.</li>
+    <li><strong>Free to start:</strong> Klaviyo or Mailchimp (free up to 500 contacts).</li>
+  </ul>
+  <div class="co ok">
+    <strong>Start collecting emails from day one.</strong>
+    Every email address is a future adopter, donor, volunteer, or foster parent who chose to hear from us.
+  </div>
+  <div class="sn">12</div>
+</div>
+
+<!-- 13: PLATFORM -->
+<div class="slide" data-n="13">
+  <h2>Platform Recommendation</h2>
+  <div class="cc-grid">
+    <div class="cc">
+      <div class="pt">Stay on Wix</div>
+      <div class="pr">$204&ndash;404</div>
+      <div class="pp">/year</div>
+      <div class="pd">Familiar editor<br>Limited flexibility<br>Locked to platform<br>Hard to migrate later</div>
+    </div>
+    <div class="cc rec">
+      <div class="pt">WordPress + Kinsta</div>
+      <div class="pr">$435&ndash;640</div>
+      <div class="pp">/year</div>
+      <div class="pd">Easy visual editor<br>Full flexibility<br>Portable (not locked in)<br>Managed hosting + backups<br>43% of all websites use it</div>
+    </div>
+    <div class="cc">
+      <div class="pt">GitHub Pages (HTML)</div>
+      <div class="pr">$15&ndash;20</div>
+      <div class="pp">/year</div>
+      <div class="pd">Fastest performance<br>Cheapest option<br>Requires coding to update<br>No visual editor</div>
+    </div>
+  </div>
+  <div class="co ok">
+    <strong>Recommendation: WordPress + Kinsta</strong>
+    Visual dashboard anyone can use, managed hosting with daily backups, and if Kinsta doesn't work out, WordPress sites can move to any other host. You're never locked in.
+  </div>
+  <div class="sn">13</div>
+</div>
+
+<!-- 14: DECISIONS -->
+<div class="slide" data-n="14">
+  <h2>Key Decisions for the Board</h2>
+  <div class="dg">
+    <div class="di"><div class="ic">1.</div><div><strong>Platform:</strong> Approve WordPress + Kinsta?</div></div>
+    <div class="di"><div class="ic">2.</div><div><strong>Design:</strong> Approve direction? Changes needed?</div></div>
+    <div class="di"><div class="ic">3.</div><div><strong>Shop:</strong> Sell products? Which ones?</div></div>
+    <div class="di"><div class="ic">4.</div><div><strong>Donations:</strong> Accept online? Recurring option?</div></div>
+    <div class="di"><div class="ic">5.</div><div><strong>Newsletter:</strong> Start email list?</div></div>
+    <div class="di"><div class="ic">6.</div><div><strong>Analytics:</strong> Install Google Analytics?</div></div>
+    <div class="di"><div class="ic">7.</div><div><strong>Admin:</strong> Primary + backup site admins?</div></div>
+    <div class="di"><div class="ic">8.</div><div><strong>Legal:</strong> Privacy policy? Domain ownership?</div></div>
+    <div class="di"><div class="ic">9.</div><div><strong>Content:</strong> Who updates cat profiles?</div></div>
+    <div class="di"><div class="ic">10.</div><div><strong>Social:</strong> Which platforms to link?</div></div>
+  </div>
+  <p style="font-size:min(1.2vw,.72rem);color:var(--stone);margin-top:1vh">Complete list of 60+ decisions with recommended answers in the 31-section written brief.</p>
+  <div class="sn">14</div>
+</div>
+
+<!-- 15: COMMON QUESTIONS -->
+<div class="slide" data-n="15">
+  <h2>Frequently Asked Questions</h2>
+  <ul style="font-size:min(1.6vw,.9rem)">
+    <li style="margin-bottom:.8vh"><strong>"Will our URL change?"</strong> &mdash; No. catsmeowcatrescue.com stays the same.</li>
+    <li style="margin-bottom:.8vh"><strong>"Will we lose Google rankings?"</strong> &mdash; No. Proper redirects preserve SEO. The new site scores 97 vs. 58 &mdash; rankings should improve.</li>
+    <li style="margin-bottom:.8vh"><strong>"How long is the site down?"</strong> &mdash; Zero downtime. Both sites work during DNS switch (1&ndash;24 hours).</li>
+    <li style="margin-bottom:.8vh"><strong>"Is it secure for payments?"</strong> &mdash; Yes. Stripe handles all payment data (PCI-DSS Level 1 certified). No card numbers touch our server.</li>
+    <li style="margin-bottom:.8vh"><strong>"What if the developer leaves?"</strong> &mdash; WordPress is the world's most popular CMS. Any developer can maintain it.</li>
+    <li><strong>"How hard is it to update?"</strong> &mdash; Similar to using Microsoft Word. Blog post takes ~10 minutes. Cat status update takes ~2 minutes.</li>
+  </ul>
+  <div class="sn">15</div>
+</div>
+
+<!-- 16: MEME — Board kittens (light touch) -->
+<div class="slide" data-n="16" style="text-align:center">
+  <h2>Any Questions from the Board?</h2>
+  <img class="meme" src="img/memes/meme-board-meeting.png" alt="Kittens at a board meeting" style="max-height:42vh;max-width:min(65vw,650px)">
+  <div class="meme-caption" style="font-size:min(1.2vw,.7rem)">Artist's rendering of today's meeting</div>
+  <div class="sn">16</div>
+</div>
+
+<!-- 17: TIMELINE -->
+<div class="slide" data-n="17">
+  <h2>Transition Timeline: 8&ndash;12 Weeks</h2>
+  <div class="tl-grid">
+    <div class="st">1</div><div class="ds">Board reviews prototype and submits feedback</div>
+    <div class="st">2</div><div class="ds">Feedback combined into one revision list</div>
+    <div class="st">3</div><div class="ds">Design revisions made and approved</div>
+    <div class="st">4</div><div class="ds">Kinsta account created in organization's name</div>
+    <div class="st">5</div><div class="ds">Convert HTML prototype to WordPress</div>
+    <div class="st">6</div><div class="ds">Add final photos, products, donation settings</div>
+    <div class="st">7</div><div class="ds">Test on desktop, tablet, mobile + all forms/payments</div>
+    <div class="st">8</div><div class="ds">Training session for content editors</div>
+    <div class="st">9</div><div class="ds">Connect domain and launch</div>
+    <div class="st">10</div><div class="ds">Document editing responsibilities &amp; schedules</div>
+  </div>
+  <div class="co ok">
+    <strong>The design and development work is being done pro bono.</strong>
+    The only ongoing costs are hosting (~$35/mo) and domain renewal (~$15/yr).
+  </div>
+  <div class="sn">17</div>
+</div>
+
+<!-- 18: NEXT STEPS -->
+<div class="slide" data-n="18">
+  <h2>Recommended Next Steps</h2>
+  <ol style="font-size:min(1.7vw,.95rem);line-height:2.2">
+    <li>Each board member reviews the prototype on their phone and computer</li>
+    <li>Submit feedback on design, content, and features</li>
+    <li>Vote on platform decision (WordPress + Kinsta recommended)</li>
+    <li>Vote on shop, donations, and newsletter</li>
+    <li>Identify primary website administrator + backup</li>
+    <li>Assign content area ownership (who updates what)</li>
+    <li>Confirm domain registrar access and account ownership</li>
+  </ol>
+  <div class="co warn" style="margin-top:1.5vh">
+    <strong>The full 31-section written brief</strong> has complete details: technical comparisons, cost breakdowns, 24-feature inventory, 25+ Q&amp;A with answers, materials checklist, risk management, and a 10-phase transition plan.
+  </div>
+  <div class="sn">18</div>
+</div>
+
+<!-- 19: THANK YOU -->
+<div class="slide thx" data-n="19">
+  <div style="font-size:min(4vw,3rem);margin-bottom:2vh">🐾</div>
+  <h2>Thank You</h2>
+  <p>Our goal is not just to replace a website &mdash;<br>it's to build a platform that helps more cats find their forever homes.</p>
+  <div class="url-pill">luckygoats33.github.io/cats-meow-rescue</div>
+  <p style="margin-top:3vh;font-size:min(1.3vw,.8rem);opacity:.4">
+    Samantha Chandler &bull; Board Member<br>
+    Cat's Meow Cat Rescue &bull; Milwaukie, Oregon &bull; July 2026
+  </p>
+  <div class="sn">19</div>
+</div>
+
+</div>
+
+<!-- NAV -->
+<div class="nav">
+  <button onclick="go(-1)" title="Previous">&#9664;</button>
+  <div class="ct"><span id="cur">1</span> / <span id="tot">19</span></div>
+  <button onclick="go(1)" title="Next">&#9654;</button>
+  <button class="fs-btn" onclick="toggleFS()" title="Fullscreen">&#x26F6; Full</button>
+</div>
+
+<script>
+const slides=document.querySelectorAll('.slide'),total=slides.length;
+let cur=0;
+document.getElementById('tot').textContent=total;
+function show(n){
+  const prev=cur;
+  cur=Math.max(0,Math.min(n,total-1));
+  slides.forEach((s,i)=>{
+    s.classList.remove('active','prev');
+    if(i===cur) s.classList.add('active');
+    else if(i===prev) s.classList.add('prev');
+  });
+  document.getElementById('cur').textContent=cur+1;
+}
+function go(d){show(cur+d)}
+document.addEventListener('keydown',e=>{
+  if(e.key==='ArrowRight'||e.key==='ArrowDown'||e.key===' '){e.preventDefault();go(1)}
+  if(e.key==='ArrowLeft'||e.key==='ArrowUp'){e.preventDefault();go(-1)}
+  if(e.key==='Home'){e.preventDefault();show(0)}
+  if(e.key==='End'){e.preventDefault();show(total-1)}
+  if(e.key==='f'||e.key==='F'){toggleFS()}
+});
+function toggleFS(){
+  if(!document.fullscreenElement){
+    document.documentElement.requestFullscreen().then(()=>document.body.classList.add('is-fs'));
+  }else{
+    document.exitFullscreen().then(()=>document.body.classList.remove('is-fs'));
+  }
+}
+document.addEventListener('fullscreenchange',()=>{
+  if(!document.fullscreenElement) document.body.classList.remove('is-fs');
+});
+</script>
+</body>
+</html>
