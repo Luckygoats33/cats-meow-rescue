@@ -5,6 +5,14 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Shop All Merch | Cat's Meow Cat Rescue</title>
 <meta name="description" content="Shop tees, hoodies, stickers, and magnets to support Cat's Meow Cat Rescue. 100% of proceeds fund cat care.">
+<link rel="canonical" href="https://luckygoats33.github.io/cats-meow-rescue/shop.html">
+<meta property="og:title" content="Shop All Merch | Cat's Meow Cat Rescue">
+<meta property="og:description" content="Shop tees, hoodies, stickers, and magnets to support Cat's Meow Cat Rescue. 100% of proceeds fund cat care.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://luckygoats33.github.io/cats-meow-rescue/shop.html">
+<meta property="og:image" content="https://luckygoats33.github.io/cats-meow-rescue/og-image.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://luckygoats33.github.io/cats-meow-rescue/og-image.png">
 <meta name="theme-color" content="#B22222">
 <link rel="icon" href="favicon.ico" sizes="any">
 <link rel="icon" type="image/png" sizes="32x32" href="logo-cats-32.png">
@@ -202,7 +210,7 @@
         Place Order
       </button>
       <p style="font-size:.7rem;color:var(--stone);text-align:center;margin-top:.75rem;line-height:1.5">
-        Your order will be confirmed via email. Payment instructions will be provided based on your selected method.
+        Placing an order opens an email to the rescue with your details. We do not charge a card here — payment is Venmo, PayPal, check, or pickup.
       </p>
     </div>
 
@@ -210,7 +218,7 @@
       <div class="order-success">
         <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M9 12l2 2 4-4"/></svg>
         <h4>Order Placed!</h4>
-        <p id="success-message">Thank you for your order! We'll send a confirmation email shortly.</p>
+        <p id="success-message">Thank you for your order. Your email app should open with the order details for the rescue.</p>
         <div id="payment-instructions" style="background:var(--ground);border-radius:var(--radius-sm);padding:1rem;text-align:left;margin-bottom:1rem"></div>
         <button class="btn btn--pri btn--pill" onclick="closeCart();resetCheckout();" style="margin-top:.5rem">Continue Shopping</button>
       </div>
@@ -468,7 +476,7 @@ document.getElementById('place-order-btn').addEventListener('click',function(){
   }
 
   document.getElementById('payment-instructions').innerHTML=payHtml;
-  document.getElementById('success-message').textContent='Thank you, '+name.split(' ')[0]+'! Your order confirmation email is on its way.';
+  document.getElementById('success-message').textContent='Thank you, '+name.split(' ')[0]+'! Your email app should open with the order details for catsmeowcatrescue@gmail.com. If it did not, please email those details so we can fulfill your order.';
 
   document.getElementById('checkout-view').style.display='none';
   document.getElementById('order-success').style.display='flex';
