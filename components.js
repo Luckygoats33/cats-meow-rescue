@@ -16,6 +16,26 @@
     return prefix + 'index.html?subject=' + encodeURIComponent(subject) + hash;
   }
   var fosterApp = 'https://app.sparkie.io/application?t=5fab11fbb83c8e002ea3b873&amp;m=CAT_FOSTER';
+  var adoptApp = 'https://app.sparkie.io/application?t=5fab11fbb83c8e002ea3b873&amp;m=CAT_ADOPT';
+  var adoptItems = '<a href="' + href('#cats') + '">Available Cats</a>'
+    + '<a href="' + href('#application') + '">How Adoption Works</a>'
+    + '<a href="' + adoptApp + '" target="_blank" rel="noopener">Apply on Sparkie</a>';
+  var involvedItems = '<a href="' + href('#help') + '">Donate</a>'
+    + '<a href="' + fosterApp + '" target="_blank" rel="noopener">Foster</a>'
+    + '<a href="' + contactHref('#volunteer', 'Volunteering') + '" data-contact-subject="Volunteering">Volunteer</a>'
+    + '<a href="' + href('#events') + '">Events</a>'
+    + '<a href="' + href('working-cats.html') + '">Working Cats</a>';
+  var learnItems = '<a href="' + href('blog.html') + '">Blog</a>'
+    + '<a href="' + href('faq.html') + '">FAQ</a>'
+    + '<a href="' + href('about.html') + '">About</a>';
+  function desktopDrop(label, landing, items) {
+    return '<div class="nav-dropdown"><a href="' + landing + '" aria-haspopup="true" aria-expanded="false">' + label + '</a>'
+      + '<div class="nav-dropdown-menu">' + items + '</div></div>';
+  }
+  function mobileGroup(label, items) {
+    return '<div class="mobile-group"><button type="button" class="mobile-group-toggle" aria-expanded="false">' + label + '</button>'
+      + '<div class="mobile-group-panel">' + items + '</div></div>';
+  }
 
   // Logo (base64 inline for instant render, no flash)
   var logoSrc = prefix + 'catsm-logo.png';
@@ -27,23 +47,10 @@
     + '<img src="' + logoSrc + '" alt="Cat\'s Meow Cat Rescue" class="logo-img">'
     + '</a>'
     + '<nav class="main-nav">'
-    + '<a href="' + href('#application') + '">Adopt</a>'
-    + '<a href="' + href('#help') + '">Donate</a>'
-    + '<a href="' + fosterApp + '" target="_blank" rel="noopener">Foster</a>'
-    + '<a href="' + contactHref('#volunteer', 'Volunteering') + '" data-contact-subject="Volunteering">Volunteer</a>'
-    + '<a href="' + href('#events') + '">Events</a>'
-    + '<a href="' + href('working-cats.html') + '">Working Cats</a>'
-    + '<div class="nav-dropdown"><a href="' + href('blog.html') + '">Blog</a>'
-    + '<div class="nav-dropdown-menu">'
-    + '<a href="' + href('blog.html') + '">All Posts</a>'
-    + '<a href="' + href('blog.html#adoption-tips') + '">Adoption Tips</a>'
-    + '<a href="' + href('blog.html#cat-health') + '">Cat Health</a>'
-    + '<a href="' + href('blog.html#cat-behavior') + '">Cat Behavior</a>'
-    + '<a href="' + href('blog.html#fostering') + '">Fostering</a>'
-    + '<a href="' + href('blog.html#community') + '">Community</a>'
-    + '<a href="' + href('blog.html#cat-care') + '">Cat Care</a>'
-    + '</div></div>'
-    + '<a href="' + href('about.html') + '">About</a>'
+    + desktopDrop('Adopt', href('#application'), adoptItems)
+    + desktopDrop('Get Involved', href('#help'), involvedItems)
+    + '<a href="' + href('shop.html') + '" class="is-dormant" hidden style="display:none">Shop</a>'
+    + desktopDrop('Learn', href('blog.html'), learnItems)
     + '<a href="' + href('#contact-us') + '">Contact</a>'
     + '</nav>'
     + '<a href="' + href('#help') + '" class="btn btn--rose btn--sm btn--pill header-cta">Donate</a>'
@@ -55,15 +62,10 @@
   // === MOBILE NAV ===
   var mobileNavHTML = '<div class="mobile-nav" id="mobile-nav" aria-hidden="true">'
     + '<nav>'
-    + '<a href="' + href('#application') + '">Adopt</a>'
-    + '<a href="' + href('#cats') + '">Available Cats</a>'
-    + '<a href="' + href('#help') + '">Donate</a>'
-    + '<a href="' + fosterApp + '" target="_blank" rel="noopener">Foster</a>'
-    + '<a href="' + contactHref('#volunteer', 'Volunteering') + '" data-contact-subject="Volunteering">Volunteer</a>'
-    + '<a href="' + href('#events') + '">Events</a>'
-    + '<a href="' + href('working-cats.html') + '">Working Cats</a>'
-    + '<a href="' + href('blog.html') + '">Blog</a>'
-    + '<a href="' + href('about.html') + '">About</a>'
+    + mobileGroup('Adopt', adoptItems)
+    + mobileGroup('Get Involved', involvedItems)
+    + '<a href="' + href('shop.html') + '" class="is-dormant" hidden style="display:none">Shop</a>'
+    + mobileGroup('Learn', learnItems)
     + '<a href="' + href('#contact-us') + '">Contact</a>'
     + '</nav></div>';
 
@@ -146,7 +148,51 @@
         document.body.style.overflow = '';
       });
     });
+    mob.querySelectorAll('.mobile-group-toggle').forEach(function(btn){
+      btn.addEventListener('click', function(){
+        var group = btn.parentElement;
+        var willOpen = !group.classList.contains('is-open');
+        mob.querySelectorAll('.mobile-group').forEach(function(g){
+          g.classList.remove('is-open');
+          var t = g.querySelector('.mobile-group-toggle');
+          if (t) t.setAttribute('aria-expanded', 'false');
+        });
+        if (willOpen) {
+          group.classList.add('is-open');
+          btn.setAttribute('aria-expanded', 'true');
+        }
+      });
+    });
   }
+
+  function closeDesktopMenus() {
+    document.querySelectorAll('.main-nav .nav-dropdown.is-open').forEach(function(el){
+      el.classList.remove('is-open');
+      var trigger = el.querySelector('a');
+      if (trigger) trigger.setAttribute('aria-expanded', 'false');
+    });
+  }
+  document.querySelectorAll('.main-nav .nav-dropdown > a').forEach(function(a){
+    a.addEventListener('click', function(e){
+      var finePointer = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
+      if (finePointer) return;
+      var dd = a.parentElement;
+      var open = dd.classList.contains('is-open');
+      closeDesktopMenus();
+      if (!open) {
+        e.preventDefault();
+        e.stopPropagation();
+        dd.classList.add('is-open');
+        a.setAttribute('aria-expanded', 'true');
+      }
+    });
+  });
+  document.addEventListener('click', function(e){
+    if (!e.target.closest || !e.target.closest('.main-nav .nav-dropdown')) closeDesktopMenus();
+  });
+  document.addEventListener('keydown', function(e){
+    if (e.key === 'Escape') closeDesktopMenus();
+  });
 
   // Header scroll shadow
   var header = document.getElementById('site-header');
