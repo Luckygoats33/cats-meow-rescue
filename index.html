@@ -1217,7 +1217,7 @@ img,video,svg,iframe{max-width:100%;height:auto}
     <form class="contact-form reveal" id="contact-form" novalidate>
       <p class="form-hint">Required fields are marked with <span class="req">*</span></p>
       <div class="field-row"><div class="field"><label for="c-name">Name <span class="req" aria-hidden="true">*</span></label><input type="text" id="c-name" name="name" required autocomplete="name" placeholder="Your name"></div><div class="field"><label for="c-email">Email <span class="req" aria-hidden="true">*</span></label><input type="email" id="c-email" name="email" required autocomplete="email" placeholder="your@email.com"></div></div>
-      <div class="field"><label for="c-subject">Subject <span class="req" aria-hidden="true">*</span></label><select id="c-subject" name="subject" required><option value="">Select a topic...</option><option>Adoption Inquiry</option><option>Foster Application</option><option>Volunteering</option><option>Donation Question</option><option>Event Info</option><option>Other</option></select></div>
+      <div class="field"><label for="c-subject">Subject <span class="req" aria-hidden="true">*</span></label><select id="c-subject" name="_subject" required><option value="">Select a topic...</option><option value="Adoption Inquiry">Adoption Inquiry</option><option value="Foster Application">Foster Application</option><option value="Volunteering">Volunteering</option><option value="Donation Question">Donation Question</option><option value="Event Info">Event Info</option><option value="Requesting Rescue Help">Requesting Rescue Help</option><option value="Requesting TNR">Requesting TNR</option><option value="Other">Other</option></select></div>
       <div class="field"><label for="c-message">Message <span class="req" aria-hidden="true">*</span></label><textarea id="c-message" name="message" rows="4" required placeholder="Tell us what's on your mind..."></textarea></div>
       <p class="form-error" id="contact-error" role="alert"></p>
       <button type="submit" class="btn btn--pri btn--lg btn--pill" id="contact-submit" style="width:100%;justify-content:center">Send Message</button>
@@ -1570,7 +1570,7 @@ document.getElementById('contact-form').addEventListener('submit',function(e){
     subject:fieldVal('c-subject'),
     message:fieldVal('c-message'),
     _replyto:fieldVal('c-email'),
-    _subject:'Website Contact — '+fieldVal('c-subject')
+    _subject:fieldVal('c-subject')
   };
   btn.disabled=true;
   var prev=btn.textContent;
