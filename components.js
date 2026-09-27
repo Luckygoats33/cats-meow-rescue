@@ -18,7 +18,7 @@
   var fosterApp = 'https://app.sparkie.io/application?t=5fab11fbb83c8e002ea3b873&amp;m=CAT_FOSTER';
   var adoptApp = 'https://app.sparkie.io/application?t=5fab11fbb83c8e002ea3b873&amp;m=CAT_ADOPT';
   var adoptItems = '<a href="' + href('#cats') + '">Available Cats</a>'
-    + '<a href="' + href('#application') + '">How Adoption Works</a>'
+    + '<a href="' + href('#application') + '">How to adopt</a>'
     + '<a href="' + adoptApp + '" target="_blank" rel="noopener">Apply on Sparkie</a>';
   var involvedItems = '<a href="' + href('#help') + '">Donate</a>'
     + '<a href="' + fosterApp + '" target="_blank" rel="noopener">Foster</a>'
@@ -30,8 +30,8 @@
     + '<a href="' + href('about.html') + '">About</a>'
     + '<a href="' + href('cat-run.html') + '">Cat Run</a>'
     + '<a href="' + href('laser-cats.html') + '">Laser Cats</a>';
-  function desktopDrop(label, landing, items) {
-    return '<div class="nav-dropdown"><a href="' + landing + '" aria-haspopup="true" aria-expanded="false">' + label + '</a>'
+  function desktopDrop(label, landing, items, extra) {
+    return '<div class="nav-dropdown"><a href="' + landing + '"' + (extra || '') + ' aria-haspopup="true" aria-expanded="false">' + label + '</a>'
       + '<div class="nav-dropdown-menu">' + items + '</div></div>';
   }
   function mobileGroup(label, items) {
@@ -49,7 +49,7 @@
     + '<img src="' + logoSrc + '" alt="Cat\'s Meow Cat Rescue" class="logo-img">'
     + '</a>'
     + '<nav class="main-nav">'
-    + desktopDrop('Adopt', href('#application'), adoptItems)
+    + desktopDrop('Adopt', adoptApp, adoptItems, ' target="_blank" rel="noopener"')
     + desktopDrop('Get Involved', href('#help'), involvedItems)
     + '<a href="' + href('shop.html') + '" class="is-dormant" hidden style="display:none">Shop</a>'
     + desktopDrop('Learn', href('blog.html'), learnItems)
@@ -79,11 +79,13 @@
     + '<p class="footer-tagline">Saving lives, one cat at a time.<br>Foster-based rescue in Milwaukie, Oregon.</p>'
     + '<div class="footer-social">'
     + '<a href="https://www.facebook.com/catsmeowcatrescue/" target="_blank" rel="noopener" aria-label="Facebook"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></a>'
+    + '<a href="https://www.instagram.com/catsmeowcatrescue/" target="_blank" rel="noopener" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/><circle cx="17.5" cy="6.5" r="1.5" fill="currentColor" stroke="none"/></svg></a>'
     + '<a href="mailto:catsmeowcatrescue@gmail.com" aria-label="Email"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg></a>'
     + '</div></div>'
     + '<div class="footer-col"><h4>Explore</h4><ul>'
+    + '<li><a href="' + adoptApp + '" target="_blank" rel="noopener">Apply to Adopt</a></li>'
     + '<li><a href="' + href('#cats') + '">Adoptable Cats</a></li>'
-    + '<li><a href="' + href('#application') + '">Adoption Application</a></li>'
+    + '<li><a href="' + href('#application') + '">How to adopt</a></li>'
     + '<li><a href="' + href('#help') + '">Donate</a></li>'
     + '<li><a href="' + fosterApp + '" target="_blank" rel="noopener">Apply to Foster</a></li>'
     + '<li><a href="' + href('working-cats.html') + '">Working Cats</a></li>'
@@ -93,7 +95,6 @@
     + '<li><a href="' + href('about.html') + '">About Us</a></li>'
     + '<li><a href="' + href('cat-run.html') + '">Cat Run</a></li>'
     + '<li><a href="' + href('laser-cats.html') + '">Laser Cats</a></li>'
-    + '<li><a href="https://app.sparkie.io/application?t=5fab11fbb83c8e002ea3b873&amp;m=CAT_ADOPT" target="_blank" rel="noopener">Apply to Adopt</a></li>'
     + '<li><a href="' + href('faq.html') + '">FAQ</a></li>'
     + '<li><a href="' + href('#contact-us') + '">Contact Us</a></li>'
     + '</ul></div>'
@@ -115,7 +116,8 @@
 
   // === MOBILE BOTTOM BAR ===
   var stickyBarHTML = '<div class="mobile-bottom-bar" id="mobile-bottom-bar">'
-    + '<a href="' + href('#application') + '" class="btn btn--pri">Adopt</a>'
+    + '<a href="' + adoptApp + '" class="btn btn--pri" target="_blank" rel="noopener">Adopt</a>'
+    + '<a href="' + href('#application') + '" class="btn btn--outline">How to adopt</a>'
     + '<a href="' + href('#help') + '" class="btn btn--gold">Donate</a>'
     + '</div>';
 
@@ -123,8 +125,22 @@
   var headerMount = document.getElementById('header-mount');
   var footerMount = document.getElementById('footer-mount');
 
+  var skipLinkHTML = '';
+  if (!document.querySelector('.skip-link')) {
+    skipLinkHTML = '<a href="#main" class="skip-link" style="position:absolute;top:-100%;left:1rem;padding:.5rem 1rem;background:var(--pri,#B22222);color:#fff;border-radius:8px;z-index:500;font-size:.85rem;font-weight:600" onfocus="this.style.top=\'1rem\'" onblur="this.style.top=\'-100%\'">Skip to content</a>';
+  }
   if (headerMount) {
-    headerMount.outerHTML = headerHTML + mobileNavHTML;
+    headerMount.outerHTML = skipLinkHTML + headerHTML + mobileNavHTML;
+  }
+  if (!document.getElementById('main')) {
+    var mobileNavEl = document.getElementById('mobile-nav');
+    var skipTarget = mobileNavEl ? mobileNavEl.nextElementSibling : document.querySelector('main');
+    if (skipTarget) {
+      if (!skipTarget.id) skipTarget.id = 'main';
+      if (!skipTarget.hasAttribute('tabindex')) skipTarget.setAttribute('tabindex', '-1');
+      var skipEl = document.querySelector('a.skip-link');
+      if (skipEl) skipEl.setAttribute('href', '#' + skipTarget.id);
+    }
   }
   if (footerMount) {
     footerMount.outerHTML = footerHTML + stickyBarHTML;

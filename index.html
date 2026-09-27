@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Cat's Meow Cat Rescue — Milwaukie, Oregon | Adopt a Cat Today</title>
+<title>Cat's Meow Cat Rescue | Adopt a Cat in Oregon</title>
 <meta name="description" content="Cat's Meow Cat Rescue is a 501(c)(3) nonprofit in Milwaukie & Gladstone, Oregon. Adopt cats and kittens, donate, or volunteer. Every cat deserves a loving home.">
 <meta name="keywords" content="cat rescue, cat adoption, Milwaukie Oregon, Gladstone Oregon, adopt a cat, kitten adoption, 501c3 nonprofit, cat shelter, rescue cats Portland, PetSmart charities partner">
 <meta property="og:title" content="Cat's Meow Cat Rescue — Milwaukie, Oregon">
@@ -26,7 +26,7 @@
 <link rel="stylesheet" href="shared.css">
 <link rel="preconnect" href="https://d8j0ntlcm91z4.cloudfront.net">
 <link rel="preconnect" href="https://images.pexels.com">
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"NonprofitOrganization","name":"Cat's Meow Cat Rescue","description":"501(c)(3) cat rescue in Milwaukie & Gladstone, Oregon. Adopt cats and kittens, donate, or volunteer.","url":"https://luckygoats33.github.io/cats-meow-rescue/","email":"catsmeowcatrescue@gmail.com","telephone":"+1-503-850-6363","taxID":"83-2426815","address":{"@type":"PostalAddress","postOfficeBoxNumber":"68222","addressLocality":"Milwaukie","addressRegion":"OR","postalCode":"97268","addressCountry":"US"},"areaServed":{"@type":"City","name":"Milwaukie, Oregon"},"nonprofitStatus":"501c3","sameAs":["https://www.facebook.com/catsmeowcatrescue/","https://www.instagram.com/catsmeowcatrescue/","https://www.petfinder.com/member/us/or/gladstone/cats-meow-cat-rescue-or393/"]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"NonprofitOrganization","name":"Cat's Meow Cat Rescue","description":"501(c)(3) cat rescue in Milwaukie & Gladstone, Oregon. Adopt cats and kittens, donate, or volunteer.","url":"https://luckygoats33.github.io/cats-meow-rescue/","email":"catsmeowcatrescue@gmail.com","telephone":"+1-503-850-6363","taxID":"83-2426815","address":{"@type":"PostalAddress","postOfficeBoxNumber":"68222","addressLocality":"Milwaukie","addressRegion":"OR","postalCode":"97268","addressCountry":"US"},"areaServed":[{"@type":"AdministrativeArea","name":"Multnomah County, Oregon"},{"@type":"AdministrativeArea","name":"Clackamas County, Oregon"}],"nonprofitStatus":"501c3","sameAs":["https://www.facebook.com/catsmeowcatrescue/","https://www.instagram.com/catsmeowcatrescue/","https://www.petfinder.com/member/us/or/gladstone/cats-meow-cat-rescue-or393/"]}</script>
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Montserrat:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400&display=swap" rel="stylesheet">
 <style>
 :root{
@@ -207,6 +207,8 @@ section[id],#volunteer,#apply{scroll-margin-top:4.75rem}
 .hero-fold p{font-size:.85rem;opacity:.75;line-height:1.5;margin-bottom:1rem}
 .hero-fold .btn{background:rgba(255,255,255,.2);border:1px solid rgba(255,255,255,.3);color:#fff;font-size:.82rem}
 .hero-fold .btn:hover{background:rgba(255,255,255,.35)}
+.hero-fold .fold-secondary{pointer-events:auto;position:relative;z-index:2;margin:.7rem 0 0;display:flex;gap:.85rem;justify-content:center;flex-wrap:wrap;font-size:.78rem}
+.hero-fold .fold-secondary a{color:#fff;text-decoration:underline;pointer-events:auto}
 .fold-bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:none;border-radius:var(--radius)}
 .hero-stats{display:flex;gap:2rem;flex-wrap:wrap;justify-content:center;text-align:center;background:rgba(0,0,0,.1);border-radius:var(--radius);padding:1.25rem 2rem}
 .stat{text-align:center}
@@ -610,7 +612,7 @@ img,video,svg,iframe{max-width:100%;height:auto}
 
 /* Mobile Sticky Bottom Bar */
 .mobile-bottom-bar{position:fixed;bottom:0;left:0;right:0;z-index:100;display:none;background:var(--surface);padding:10px 16px;gap:10px;border-top:1px solid var(--mist);box-shadow:0 -4px 20px rgba(0,0,0,.1);transition:opacity .3s}
-.mobile-bottom-bar .btn{flex:1;text-align:center;justify-content:center;font-size:.9rem;font-weight:700;min-height:48px;border-radius:var(--radius-pill)}
+.mobile-bottom-bar .btn{flex:1;text-align:center;justify-content:center;font-size:.78rem;font-weight:700;min-height:48px;border-radius:var(--radius-pill);padding:.6rem .4rem}
 
 /* Force light theme on mobile — override system dark mode */
 @media(max-width:960px) and (prefers-color-scheme:dark){
@@ -876,7 +878,8 @@ img,video,svg,iframe{max-width:100%;height:auto}
         <img class="fold-cat fold-photo" src="https://images.pexels.com/photos/1170986/pexels-photo-1170986.jpeg?auto=compress&cs=tinysrgb&w=900&h=560&fit=crop" alt="Friendly cat looking at the camera" width="900" height="560">
         <h2 class="heading-md" style="font-size:1.35rem">Meet Your BFF</h2>
         <p>Adorable cats &amp; kittens waiting for their forever home. Find your perfect match!</p>
-        <a href="#cats" class="btn btn--pill">Browse Cats</a>
+        <a href="https://app.sparkie.io/application?t=5fab11fbb83c8e002ea3b873&amp;m=CAT_ADOPT" target="_blank" rel="noopener" class="btn btn--pill">Apply to Adopt</a>
+        <p class="fold-secondary"><a href="#cats">Browse cats</a><a href="#application">How to adopt</a></p>
         <div class="fold-paws"><svg viewBox="0 0 60 56" fill="#fff"><path d="M30 28c-8 0-16 5-16 14 0 6 5 12 16 12s16-6 16-12c0-9-8-14-16-14z"/><ellipse cx="14" cy="16" rx="6" ry="7"/><ellipse cx="26" cy="10" rx="5.5" ry="6.5"/><ellipse cx="34" cy="10" rx="5.5" ry="6.5"/><ellipse cx="46" cy="16" rx="6" ry="7"/></svg><svg viewBox="0 0 60 56" fill="#fff" style="transform:rotate(-15deg)"><path d="M30 28c-8 0-16 5-16 14 0 6 5 12 16 12s16-6 16-12c0-9-8-14-16-14z"/><ellipse cx="14" cy="16" rx="6" ry="7"/><ellipse cx="26" cy="10" rx="5.5" ry="6.5"/><ellipse cx="34" cy="10" rx="5.5" ry="6.5"/><ellipse cx="46" cy="16" rx="6" ry="7"/></svg></div>
       </div>
 
@@ -1205,7 +1208,7 @@ img,video,svg,iframe{max-width:100%;height:auto}
     <div class="petsmart">
       <div class="petsmart-text">
         <h2>Proud Partner of PetSmart Charities</h2>
-        <p>PetSmart Charities is our most vital partner, helping fund spay/neuter surgeries, veterinary care, and adoption events. Visit our adoptable cats at PetSmart locations across the Portland metro area.</p>
+        <p>PetSmart Charities is our most vital partner, helping fund spay/neuter surgeries, veterinary care, and adoption events. Visit adoptable cats and meet-and-greets at PetSmart in Clackamas and Cascade Station only.</p>
         <a href="https://www.petsmartcharities.org/" target="_blank" rel="noopener" class="btn btn--lg" style="background:#fff;color:#1E3A2F">Visit PetSmart Charities</a>
       </div>
       <a href="https://www.petsmartcharities.org/" target="_blank" rel="noopener" class="petsmart-badge" style="text-decoration:none;color:inherit">
@@ -1248,7 +1251,7 @@ img,video,svg,iframe{max-width:100%;height:auto}
     <a id="apply"></a>
     <div class="adopt-how">
       <div class="adopt-how-intro">
-        <span class="kicker reveal">Adoption Application</span>
+        <span class="kicker reveal">How to adopt</span>
         <h2 class="heading-lg reveal"><a href="https://app.sparkie.io/application?t=5fab11fbb83c8e002ea3b873&amp;m=CAT_ADOPT" target="_blank" rel="noopener">Find Your Future BFF</a></h2>
         <p class="body-lg reveal">Here's how adoption works. These are the steps we walk through together. This page is not an application form.</p>
         <a href="https://app.sparkie.io/application?t=5fab11fbb83c8e002ea3b873&amp;m=CAT_ADOPT" target="_blank" rel="noopener" class="btn btn--pri btn--lg btn--pill reveal" style="margin-top:1.5rem">Find Your Future BFF</a>
@@ -1385,7 +1388,7 @@ img,video,svg,iframe{max-width:100%;height:auto}
       <div class="faq-item"><button class="faq-q" onclick="this.parentElement.classList.toggle('open')">How can I become a foster parent?</button><div class="faq-a"><div class="faq-a-inner">Fill out the <a href="https://app.sparkie.io/application?t=5fab11fbb83c8e002ea3b873&amp;m=CAT_FOSTER" target="_blank" rel="noopener" style="color:var(--pri);text-decoration:underline">foster application</a>. Fostering is separate from adoption. We provide food, litter, and medical care. You provide daily care and a safe space.</div></div></div>
       <div class="faq-item"><button class="faq-q" onclick="this.parentElement.classList.toggle('open')">How can I donate to Cat's Meow?</button><div class="faq-a"><div class="faq-a-inner">Give on <a href="https://catsmeowcatrescue.networkforgood.com/projects/177158-saving-lives-one-cat-at-a-time" target="_blank" rel="noopener" style="color:var(--pri);text-decoration:underline">Network for Good</a>, Venmo @CatsMeowCatRescue, or Cash App $catsmeowcatrescue. Checks can be mailed to PO Box 68222, Milwaukie, OR 97268. Our EIN is 83-2426815. We also accept donations of cat food, litter, blankets, and toys.</div></div></div>
       <div class="faq-item"><button class="faq-q" onclick="this.parentElement.classList.toggle('open')">What does "foster-based rescue" mean?</button><div class="faq-a"><div class="faq-a-inner">Unlike traditional shelters, we don't have a physical facility. All our cats live in loving foster homes until they're adopted. This means less stress for the cats and more one-on-one attention, which helps us learn each cat's personality to find them the best forever home.</div></div></div>
-      <div class="faq-item"><button class="faq-q" onclick="this.parentElement.classList.toggle('open')">Can I volunteer without fostering?</button><div class="faq-a"><div class="faq-a-inner">Yes! We need help with adoption events at PetSmart, transporting cats to vet appointments, socializing kittens, photography, social media, fundraising, and more. Fill out our volunteer application to get started.</div></div></div>
+      <div class="faq-item"><button class="faq-q" onclick="this.parentElement.classList.toggle('open')">Can I volunteer without fostering?</button><div class="faq-a"><div class="faq-a-inner">Yes! We need help with adoption events at PetSmart in Clackamas or Cascade Station, transporting cats to vet appointments, socializing kittens, photography, social media, fundraising, and more. To get started, send a Volunteer message through our <a href="#contact-us" data-contact-subject="Volunteering" style="color:var(--pri);text-decoration:underline">contact form</a> (subject: Volunteering).</div></div></div>
       <div class="faq-item"><button class="faq-q" onclick="this.parentElement.classList.toggle('open')">Where are you located?</button><div class="faq-a"><div class="faq-a-inner">Cat's Meow Cat Rescue is based in Milwaukie and Gladstone, Oregon. As a foster-based rescue, we don't have a storefront. Meet-and-greets, when an application looks like a good fit, are at the foster home or at our PetSmart adoption centers in Clackamas or Cascade Station. Our mailing address is PO Box 68222, Milwaukie, OR 97268.</div></div></div>
     </div>
     <div class="faq-more reveal">
@@ -2282,7 +2285,21 @@ renderShop(6);
     },2400);
   }
 
-  setTimeout(runIntro,3000);
+  var nlStart=Date.now();
+  var nlShown=false;
+  function maybeShowNewsletter(){
+    if(nlShown)return;
+    var elapsed=Date.now()-nlStart;
+    if(elapsed<5000)return;
+    if(window.scrollY>120||elapsed>=8000){
+      nlShown=true;
+      window.removeEventListener('scroll',maybeShowNewsletter);
+      runIntro();
+    }
+  }
+  window.addEventListener('scroll',maybeShowNewsletter,{passive:true});
+  setTimeout(maybeShowNewsletter,5000);
+  setTimeout(maybeShowNewsletter,8000);
 
   window.closeNewsletter=function(){
     overlay.classList.remove('show');
