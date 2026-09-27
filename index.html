@@ -598,7 +598,7 @@ img,video,svg,iframe{max-width:100%;height:auto}
   .fold-bg{display:block}
   .hero-fold{background:none;border:none;color:#fff!important;backdrop-filter:none;-webkit-backdrop-filter:none;min-height:180px}
   .hero-fold::after{content:'';position:absolute;inset:0;background:linear-gradient(0deg,rgba(0,0,0,.85) 0%,rgba(0,0,0,.5) 50%,rgba(0,0,0,.2) 100%);border-radius:var(--radius);pointer-events:none}
-  .hero-fold .fold-cat{display:none}
+  .hero-fold .fold-cat,.hero-fold img.fold-photo{display:none}
   .hero-fold h2,.hero-fold h3,.hero-fold p,.hero-fold .btn{position:relative;z-index:2}
   .hero-fold h2{font-size:1.5rem;text-shadow:0 2px 8px rgba(0,0,0,.6)}
   .hero-fold p{font-size:.95rem;opacity:.95;text-shadow:0 1px 4px rgba(0,0,0,.4)}
@@ -2075,9 +2075,12 @@ function renderQuiz(){
   var prog=document.getElementById('quiz-progress');
   if(quizStep>=QUIZ_QS.length){
     var counts={};
-    quizAnswers.forEach(function(t){counts[t]=(counts[t]||0)+1});
+    quizAnswers.forEach(function(t){
+      if(t==='chill')t='gentle';
+      counts[t]=(counts[t]||0)+1;
+    });
     var best=Object.keys(counts).sort(function(a,b){return counts[b]-counts[a]})[0];
-    var r=QUIZ_RESULTS[best];
+    var r=QUIZ_RESULTS[best]||QUIZ_RESULTS.gentle;
     prog.style.display='none';
     el.innerHTML='<div class="quiz-result"><span class="quiz-result-emoji">'+r.emoji+'</span><div class="quiz-result-type">'+r.type+'</div><p class="quiz-result-desc">'+r.desc+'</p><div class="quiz-result-cats">'+r.tags.map(function(t){return '<span class="quiz-result-tag">'+t+'</span>'}).join('')+'</div><a href="#cats" class="btn btn--pri btn--pill">Browse Matching Cats</a><br><button class="quiz-restart" onclick="quizStep=0;quizAnswers=[];renderQuiz()">Retake Quiz</button></div>';
     return;
