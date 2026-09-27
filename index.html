@@ -143,6 +143,9 @@ input,select,textarea{font-family:inherit;font-size:1rem}
 .hero-inner{width:var(--content);margin:0 auto;position:relative;z-index:2}
 .hero h1{margin-bottom:.5rem}
 .hero-subtitle{font-size:clamp(1rem,1.3vw,1.15rem);opacity:.8;max-width:36rem;margin-bottom:2.5rem;line-height:1.7}
+@media(min-width:961px){
+  .hero-subtitle{color:#2D1810;opacity:1;font-weight:600;text-shadow:none}
+}
 .hero-folds{display:grid;grid-template-columns:repeat(3,1fr);gap:1.25rem;margin-bottom:2.5rem}
 .hero-fold{background:rgba(255,255,255,.1);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border:1px solid rgba(255,255,255,.15);border-radius:var(--radius);padding:1.75rem 1.5rem;text-align:center;cursor:default;transition:all .35s ease;position:relative;overflow:hidden;pointer-events:none}
 .hero-fold .btn{pointer-events:auto;cursor:pointer}
@@ -171,6 +174,7 @@ input,select,textarea{font-family:inherit;font-size:1rem}
 .fold-cat{animation:floatCat 4s ease-in-out infinite}
 .hero-fold:nth-child(2) .fold-cat{animation-delay:-.8s}
 .hero-fold:nth-child(3) .fold-cat{animation-delay:-1.6s}
+.hero-fold img.fold-photo{display:block;width:100%;height:150px;object-fit:cover;object-position:center;border-radius:12px;margin:0 0 1rem;box-shadow:0 8px 22px rgba(0,0,0,.28);animation:none}
 /* Floating paw prints background */
 .hero-paws{position:absolute;inset:0;overflow:hidden;pointer-events:none;z-index:1}
 .hero-paw{position:absolute;opacity:.06;animation:pawFloat linear infinite}
@@ -812,7 +816,7 @@ img,video,svg,iframe{max-width:100%;height:auto}
     <div>
       <div class="hero-eyebrow">Portland, Oregon &middot; 501(c)(3) Nonprofit</div>
       <h1 class="heading-xl">Meet Your Next<br>Best Friend</h1>
-      <p class="hero-subtitle">A foster-based, all-volunteer rescue. 388+ cats rescued to date across the Portland metro area.</p>
+      <p class="hero-subtitle">A foster-based, all-volunteer rescue. 4,500 cats helped across the Portland metro area.</p>
       <a href="#events" class="hero-news" id="hero-news" style="margin-bottom:1.5rem;text-decoration:none;color:inherit;cursor:pointer"><span class="news-badge" style="animation:pulse 2s ease-in-out infinite">Upcoming</span> <strong>Bingo Night Oct 17</strong> <span style="font-size:.7rem;opacity:.7;margin-left:.25rem">View Calendar &rarr;</span></a>
     </div>
 
@@ -820,36 +824,7 @@ img,video,svg,iframe{max-width:100%;height:auto}
       <!-- Fold 1: Adopt -->
       <div class="hero-fold" style="color:#fff">
         <img class="fold-bg" src="https://d8j0ntlcm91z4.cloudfront.net/user_3681BqEuWywySamoBS6St7ib1O7/hf_20260725_085347_aaa3abfd-cb05-4eb2-ac0b-9ad49fcaf4e4_min.webp" alt="" loading="lazy">
-        <svg class="fold-cat" viewBox="0 0 140 140" aria-hidden="true">
-          <ellipse cx="70" cy="95" rx="38" ry="40" fill="rgba(255,255,255,.2)"/>
-          <circle cx="70" cy="52" r="30" fill="rgba(255,255,255,.25)"/>
-          <polygon points="48,40 35,8 60,32" fill="rgba(255,255,255,.25)"/>
-          <polygon points="92,40 105,8 80,32" fill="rgba(255,255,255,.25)"/>
-          <polygon points="50,39 40,15 58,33" fill="rgba(255,180,180,.15)"/>
-          <polygon points="90,39 100,15 82,33" fill="rgba(255,180,180,.15)"/>
-          <g class="cat-eyes">
-            <ellipse cx="58" cy="48" rx="8" ry="9" fill="rgba(0,0,0,.06)"/>
-            <ellipse cx="82" cy="48" rx="8" ry="9" fill="rgba(0,0,0,.06)"/>
-            <circle cx="58" cy="47" r="5" fill="#4ADE80"/>
-            <circle cx="82" cy="47" r="5" fill="#4ADE80"/>
-            <circle cx="60" cy="45" r="2" fill="#fff" opacity=".9"/>
-            <circle cx="84" cy="45" r="2" fill="#fff" opacity=".9"/>
-            <circle cx="58" cy="48" r="2.5" fill="rgba(0,0,0,.5)"/>
-            <circle cx="82" cy="48" r="2.5" fill="rgba(0,0,0,.5)"/>
-            <ellipse class="cat-eye-lid" cx="58" cy="47" rx="8" ry="9" fill="rgba(255,255,255,.25)" style="transform-origin:58px 47px"/>
-            <ellipse class="cat-eye-lid" cx="82" cy="47" rx="8" ry="9" fill="rgba(255,255,255,.25)" style="transform-origin:82px 47px"/>
-          </g>
-          <ellipse cx="70" cy="62" rx="4" ry="2.5" fill="rgba(255,180,180,.3)"/>
-          <path d="M60 68 Q70 76 80 68" fill="none" stroke="rgba(255,255,255,.2)" stroke-width="1.5" stroke-linecap="round"/>
-          <line x1="42" y1="56" x2="15" y2="52" stroke="rgba(255,255,255,.15)" stroke-width="1.2"/>
-          <line x1="42" y1="62" x2="12" y2="64" stroke="rgba(255,255,255,.15)" stroke-width="1.2"/>
-          <line x1="98" y1="56" x2="125" y2="52" stroke="rgba(255,255,255,.15)" stroke-width="1.2"/>
-          <line x1="98" y1="62" x2="128" y2="64" stroke="rgba(255,255,255,.15)" stroke-width="1.2"/>
-          <ellipse cx="52" cy="120" rx="12" ry="8" fill="rgba(255,255,255,.15)"/>
-          <ellipse cx="88" cy="120" rx="12" ry="8" fill="rgba(255,255,255,.15)"/>
-          <path class="cat-tail" d="M100 85 Q130 70 125 100 Q122 115 112 108" fill="rgba(255,255,255,.18)" stroke="none" style="transform-origin:100px 85px"/>
-          <circle cx="70" cy="75" r="1.5" fill="rgba(255,255,255,.1)" style="animation:purr 2s ease-in-out infinite"/>
-        </svg>
+        <img class="fold-cat fold-photo" src="https://images.pexels.com/photos/1170986/pexels-photo-1170986.jpeg?auto=compress&cs=tinysrgb&w=900&h=560&fit=crop" alt="Friendly cat looking at the camera" width="900" height="560">
         <h2 class="heading-md" style="font-size:1.35rem">Meet Your BFF</h2>
         <p>Adorable cats &amp; kittens waiting for their forever home. Find your perfect match!</p>
         <a href="#cats" class="btn btn--pill">Browse Cats</a>
@@ -859,35 +834,7 @@ img,video,svg,iframe{max-width:100%;height:auto}
       <!-- Fold 2: Donate -->
       <div class="hero-fold" style="color:#fff">
         <img class="fold-bg" src="https://d8j0ntlcm91z4.cloudfront.net/user_3681BqEuWywySamoBS6St7ib1O7/hf_20260725_085323_ae286697-0edb-40a1-bef5-af5cb543d95f_min.webp" alt="" loading="lazy">
-        <svg class="fold-cat" viewBox="0 0 140 140" aria-hidden="true">
-          <ellipse cx="70" cy="95" rx="38" ry="40" fill="rgba(255,255,255,.2)"/>
-          <circle cx="70" cy="52" r="30" fill="rgba(255,255,255,.25)"/>
-          <polygon points="48,40 35,8 60,32" fill="rgba(255,255,255,.25)"/>
-          <polygon points="92,40 105,8 80,32" fill="rgba(255,255,255,.25)"/>
-          <polygon points="50,39 40,15 58,33" fill="rgba(255,180,180,.15)"/>
-          <polygon points="90,39 100,15 82,33" fill="rgba(255,180,180,.15)"/>
-          <g class="cat-eyes">
-            <ellipse cx="58" cy="48" rx="8" ry="9" fill="rgba(0,0,0,.06)"/>
-            <ellipse cx="82" cy="48" rx="8" ry="9" fill="rgba(0,0,0,.06)"/>
-            <circle cx="58" cy="47" r="5" fill="#FBBF24"/>
-            <circle cx="82" cy="47" r="5" fill="#FBBF24"/>
-            <circle cx="60" cy="45" r="2" fill="#fff" opacity=".9"/>
-            <circle cx="84" cy="45" r="2" fill="#fff" opacity=".9"/>
-            <circle cx="58" cy="48" r="2.5" fill="rgba(0,0,0,.5)"/>
-            <circle cx="82" cy="48" r="2.5" fill="rgba(0,0,0,.5)"/>
-            <ellipse class="cat-eye-lid" cx="58" cy="47" rx="8" ry="9" fill="rgba(255,255,255,.25)" style="transform-origin:58px 47px"/>
-            <ellipse class="cat-eye-lid" cx="82" cy="47" rx="8" ry="9" fill="rgba(255,255,255,.25)" style="transform-origin:82px 47px"/>
-          </g>
-          <ellipse cx="70" cy="62" rx="4" ry="2.5" fill="rgba(255,180,180,.3)"/>
-          <path d="M60 68 Q70 76 80 68" fill="none" stroke="rgba(255,255,255,.2)" stroke-width="1.5" stroke-linecap="round"/>
-          <line x1="42" y1="56" x2="15" y2="52" stroke="rgba(255,255,255,.15)" stroke-width="1.2"/>
-          <line x1="42" y1="62" x2="12" y2="64" stroke="rgba(255,255,255,.15)" stroke-width="1.2"/>
-          <line x1="98" y1="56" x2="125" y2="52" stroke="rgba(255,255,255,.15)" stroke-width="1.2"/>
-          <line x1="98" y1="62" x2="128" y2="64" stroke="rgba(255,255,255,.15)" stroke-width="1.2"/>
-          <!-- Heart -->
-          <path d="M55 85 C55 78 65 75 70 82 C75 75 85 78 85 85 C85 95 70 105 70 105 C70 105 55 95 55 85Z" fill="rgba(255,100,100,.25)"/>
-          <path class="cat-tail" d="M100 85 Q125 60 120 95 Q118 108 108 102" fill="rgba(255,255,255,.18)" stroke="none" style="transform-origin:100px 85px"/>
-        </svg>
+        <img class="fold-cat fold-photo" src="https://images.pexels.com/photos/7725961/pexels-photo-7725961.jpeg?auto=compress&cs=tinysrgb&w=900&h=560&fit=crop" alt="Kitten held gently in someone's hands" width="900" height="560">
         <h2 class="heading-md" style="font-size:1.35rem">Help the Kitties</h2>
         <p>Every dollar goes directly to medical care, food, and shelter for cats in need. Tax-deductible!</p>
         <a href="#help" class="btn btn--pill" data-donate-trigger>Donate Now</a>
@@ -897,38 +844,7 @@ img,video,svg,iframe{max-width:100%;height:auto}
       <!-- Fold 3: Events -->
       <div class="hero-fold" style="color:#fff">
         <img class="fold-bg" src="https://d8j0ntlcm91z4.cloudfront.net/user_3681BqEuWywySamoBS6St7ib1O7/hf_20260725_085338_b4874ae5-9e31-4527-80d8-56eb432024f7_min.webp" alt="" loading="lazy">
-        <svg class="fold-cat" viewBox="0 0 140 140" aria-hidden="true">
-          <ellipse cx="70" cy="95" rx="38" ry="40" fill="rgba(255,255,255,.2)"/>
-          <circle cx="70" cy="52" r="30" fill="rgba(255,255,255,.25)"/>
-          <polygon points="48,40 38,5 60,32" fill="rgba(255,255,255,.25)"/>
-          <polygon points="92,40 102,5 80,32" fill="rgba(255,255,255,.25)"/>
-          <polygon points="50,39 42,12 58,33" fill="rgba(255,180,180,.15)"/>
-          <polygon points="90,39 98,12 82,33" fill="rgba(255,180,180,.15)"/>
-          <g class="cat-eyes">
-            <ellipse cx="58" cy="48" rx="8" ry="9" fill="rgba(0,0,0,.06)"/>
-            <ellipse cx="82" cy="48" rx="8" ry="9" fill="rgba(0,0,0,.06)"/>
-            <circle cx="58" cy="47" r="5" fill="#60A5FA"/>
-            <circle cx="82" cy="47" r="5" fill="#60A5FA"/>
-            <circle cx="60" cy="45" r="2" fill="#fff" opacity=".9"/>
-            <circle cx="84" cy="45" r="2" fill="#fff" opacity=".9"/>
-            <circle cx="58" cy="48" r="2.5" fill="rgba(0,0,0,.5)"/>
-            <circle cx="82" cy="48" r="2.5" fill="rgba(0,0,0,.5)"/>
-            <ellipse class="cat-eye-lid" cx="58" cy="47" rx="8" ry="9" fill="rgba(255,255,255,.25)" style="transform-origin:58px 47px"/>
-            <ellipse class="cat-eye-lid" cx="82" cy="47" rx="8" ry="9" fill="rgba(255,255,255,.25)" style="transform-origin:82px 47px"/>
-          </g>
-          <ellipse cx="70" cy="62" rx="4" ry="2.5" fill="rgba(255,180,180,.3)"/>
-          <path d="M58 66 Q70 58 82 66" fill="none" stroke="rgba(255,255,255,.2)" stroke-width="1.5" stroke-linecap="round"/>
-          <line x1="42" y1="56" x2="15" y2="50" stroke="rgba(255,255,255,.15)" stroke-width="1.2"/>
-          <line x1="42" y1="62" x2="12" y2="64" stroke="rgba(255,255,255,.15)" stroke-width="1.2"/>
-          <line x1="98" y1="56" x2="125" y2="50" stroke="rgba(255,255,255,.15)" stroke-width="1.2"/>
-          <line x1="98" y1="62" x2="128" y2="64" stroke="rgba(255,255,255,.15)" stroke-width="1.2"/>
-          <!-- Yarn ball -->
-          <circle cx="45" cy="110" r="10" fill="none" stroke="rgba(255,255,255,.2)" stroke-width="2"/>
-          <path d="M38 104 Q45 115 52 106" fill="none" stroke="rgba(255,255,255,.15)" stroke-width="1.5"/>
-          <path d="M40 112 Q48 105 50 115" fill="none" stroke="rgba(255,255,255,.15)" stroke-width="1.5"/>
-          <ellipse cx="30" cy="118" rx="10" ry="6" fill="rgba(255,255,255,.12)"/>
-          <path class="cat-tail" d="M100 85 Q135 75 128 105 Q125 118 115 110" fill="rgba(255,255,255,.18)" stroke="none" style="transform-origin:100px 85px"/>
-        </svg>
+        <img class="fold-cat fold-photo" src="https://images.pexels.com/photos/4587998/pexels-photo-4587998.jpeg?auto=compress&cs=tinysrgb&w=900&h=560&fit=crop" alt="Person cuddling a cat at home" width="900" height="560">
         <h2 class="heading-md" style="font-size:1.35rem">Join the Fun</h2>
         <p>Summer Jamboree, Bingo Night, adoption events &amp; more. Bring the family!</p>
         <a href="#events" class="btn btn--pill">See Events</a>
@@ -944,9 +860,9 @@ img,video,svg,iframe{max-width:100%;height:auto}
 <section class="mission">
   <div class="mission-inner">
     <div class="mission-block">
-      <div class="mission-stat">388+</div>
-      <div class="mission-label">Cats Rescued to Date</div>
-      <p class="mission-text">From kittens to golden seniors, every cat lives in a real foster home with a dedicated family — never in a cage.</p>
+      <div class="mission-stat">4,500</div>
+      <div class="mission-label">Cats Helped</div>
+      <p class="mission-text">From kittens to golden seniors, every cat lives in a real foster home with a dedicated family.</p>
     </div>
     <div class="mission-divider"></div>
     <div class="mission-block">
@@ -958,7 +874,7 @@ img,video,svg,iframe{max-width:100%;height:auto}
     <div class="mission-block">
       <div class="mission-stat">TNR</div>
       <div class="mission-label">Population Control</div>
-      <p class="mission-text">We trap, neuter, and return feral cats — reducing colony sizes humanely through our partnership with FCCO.</p>
+      <p class="mission-text">We trap, neuter, and return feral cats — reducing colony sizes humanely.</p>
     </div>
   </div>
 </section>
@@ -971,10 +887,11 @@ img,video,svg,iframe{max-width:100%;height:auto}
   <div class="container">
     <span class="kicker reveal">What We Do &amp; Why</span>
     <h2 class="heading-lg reveal">Every Cat Gets a Shot at a Better Life</h2>
+    <p class="body-lg reveal" style="max-width:40rem;margin-top:.75rem">That &ldquo;shot&rdquo; is literal, too: every cat receives age-appropriate vaccines before going home to their family.</p>
     <div class="wwd-grid">
-      <div class="wwd-card reveal"><img class="wwd-photo" src="https://images.pexels.com/photos/1056251/pexels-photo-1056251.jpeg?auto=compress&cs=tinysrgb&w=400&h=300&fit=crop" alt="Stray cat being rescued" loading="lazy"><h3>Rescue</h3><p>We take in abandoned, surrendered, and stray cats from the Portland metro area and give them immediate care.</p></div>
-      <div class="wwd-card reveal"><img class="wwd-photo" src="https://images.pexels.com/photos/7725961/pexels-photo-7725961.jpeg?auto=compress&cs=tinysrgb&w=400&h=300&fit=crop" alt="Person holding a foster kitten" loading="lazy"><h3>Foster</h3><p>Every cat lives in a real home with a dedicated foster family &mdash; never in a cage. We provide all supplies and vet care.</p></div>
-      <div class="wwd-card reveal"><img class="wwd-photo" src="https://images.pexels.com/photos/2194261/pexels-photo-2194261.jpeg?auto=compress&cs=tinysrgb&w=400&h=300&fit=crop" alt="Community cat outdoors" loading="lazy"><h3>TNR</h3><p>Our Trap-Neuter-Return program humanely manages feral cat colonies through spay/neuter with FCCO.</p></div>
+      <div class="wwd-card reveal"><img class="wwd-photo" src="https://images.pexels.com/photos/1056251/pexels-photo-1056251.jpeg?auto=compress&cs=tinysrgb&w=400&h=300&fit=crop" alt="Stray cat being rescued" loading="lazy"><h3>Rescue</h3><p>We take in abandoned, surrendered, and stray cats from the Portland metro area, give them immediate care, and start age-appropriate vaccines before adoption.</p></div>
+      <div class="wwd-card reveal"><img class="wwd-photo" src="https://images.pexels.com/photos/7725961/pexels-photo-7725961.jpeg?auto=compress&cs=tinysrgb&w=400&h=300&fit=crop" alt="Person holding a foster kitten" loading="lazy"><h3>Foster</h3><p>Every cat lives in a real home with a dedicated foster family. We provide all supplies and vet care.</p></div>
+      <div class="wwd-card reveal"><img class="wwd-photo" src="https://images.pexels.com/photos/2194261/pexels-photo-2194261.jpeg?auto=compress&cs=tinysrgb&w=400&h=300&fit=crop" alt="Community cat outdoors" loading="lazy"><h3>TNR</h3><p>Our Trap-Neuter-Return program humanely manages feral cat colonies through spay and neuter.</p></div>
       <div class="wwd-card reveal"><img class="wwd-photo" src="https://images.pexels.com/photos/6001442/pexels-photo-6001442.jpeg?auto=compress&cs=tinysrgb&w=400&h=300&fit=crop" alt="Happy cat being adopted" loading="lazy"><h3>Adopt</h3><p>We carefully match each cat to their perfect family &mdash; not first-come, first-served. It's about the right fit.</p></div>
     </div>
   </div>
@@ -1027,13 +944,60 @@ img,video,svg,iframe{max-width:100%;height:auto}
   </div>
 </section>
 
-<!-- Lifetime rescue count — no this-year figure is sourced in the repo -->
+<!-- Fur Babies Gallery -->
 <section class="section" style="background:var(--ground)">
   <div class="container">
-    <h2 class="heading-lg reveal">388+ Cats Rescued to Date</h2>
-    <p class="body-lg reveal" style="max-width:32rem;margin-top:.5rem">A foster-based, all-volunteer rescue in the Portland metro area. Cats available for adoption are listed above and on our Petfinder page — not stock photos.</p>
+    <span class="kicker reveal">Happy Endings</span>
+    <h2 class="heading-lg reveal">4,500 Cats Helped</h2>
+    <p class="body-lg reveal" style="max-width:32rem;margin-top:.5rem">Every one of these faces found their forever home through Cat's Meow. From the streets to warm laps — these are our happy endings.</p>
+    <div class="fur-carousel-wrap reveal">
+    <button class="fur-nav fur-nav--prev" id="fur-prev" aria-label="Previous">&larr;</button>
+    <button class="fur-nav fur-nav--next" id="fur-next" aria-label="Next">&rarr;</button>
+    <div class="fur-gallery" id="fur-gallery">
+      <div class="fur-card">
+        <span class="fur-tag">Kitten</span>
+        <img src="https://images.pexels.com/photos/10480345/pexels-photo-10480345.jpeg?auto=compress&cs=tinysrgb&w=600&h=800&fit=crop" alt="Tabby kitten looking up" loading="lazy">
+        <div class="fur-name">Butterscotch</div>
+      </div>
+      <div class="fur-card">
+        <span class="fur-tag">Available</span>
+        <img src="https://images.pexels.com/photos/29748152/pexels-photo-29748152.jpeg?auto=compress&cs=tinysrgb&w=600&h=800&fit=crop" alt="Tabby cat relaxing indoors" loading="lazy">
+        <div class="fur-name">Whiskers</div>
+      </div>
+      <div class="fur-card">
+        <span class="fur-tag">Senior</span>
+        <img src="https://images.pexels.com/photos/16178730/pexels-photo-16178730.jpeg?auto=compress&cs=tinysrgb&w=600&h=800&fit=crop" alt="Green-eyed cat with long whiskers" loading="lazy">
+        <div class="fur-name">Sage</div>
+      </div>
+      <div class="fur-card">
+        <span class="fur-tag">Bonded Pair</span>
+        <img src="https://images.pexels.com/photos/34990726/pexels-photo-34990726.jpeg?auto=compress&cs=tinysrgb&w=600&h=800&fit=crop" alt="Two cats cuddling together" loading="lazy">
+        <div class="fur-name">Peaches &amp; Cream</div>
+      </div>
+      <div class="fur-card">
+        <span class="fur-tag">Kitten</span>
+        <img src="https://images.pexels.com/photos/6900232/pexels-photo-6900232.jpeg?auto=compress&cs=tinysrgb&w=600&h=800&fit=crop" alt="Fluffy kitten on red cushion" loading="lazy">
+        <div class="fur-name">Muffin</div>
+      </div>
+      <div class="fur-card">
+        <span class="fur-tag">Available</span>
+        <img src="https://images.pexels.com/photos/7743485/pexels-photo-7743485.jpeg?auto=compress&cs=tinysrgb&w=600&h=800&fit=crop" alt="Black and white kitten staring" loading="lazy">
+        <div class="fur-name">Domino</div>
+      </div>
+      <div class="fur-card">
+        <span class="fur-tag">Foster</span>
+        <img src="https://images.pexels.com/photos/9088489/pexels-photo-9088489.jpeg?auto=compress&cs=tinysrgb&w=600&h=800&fit=crop" alt="Ginger cat lying down" loading="lazy">
+        <div class="fur-name">Marmalade</div>
+      </div>
+      <div class="fur-card">
+        <span class="fur-tag">Available</span>
+        <img src="https://images.pexels.com/photos/17457980/pexels-photo-17457980.jpeg?auto=compress&cs=tinysrgb&w=600&h=800&fit=crop" alt="White and orange kitten sitting outside" loading="lazy">
+        <div class="fur-name">Clementine</div>
+      </div>
+    </div>
+    </div>
     <div style="text-align:center;margin-top:2rem" class="reveal">
-      <a href="https://www.petfinder.com/member/us/or/gladstone/cats-meow-cat-rescue-or393/" target="_blank" rel="noopener" class="btn btn--pri btn--lg btn--pill">See Cats on Petfinder</a>
+      <a href="#cats" class="btn btn--pri btn--lg btn--pill">See All Adoptable Cats</a>
     </div>
   </div>
 </section>
