@@ -141,7 +141,7 @@ input,select,textarea{font-family:inherit;font-size:1rem}
 .hero-eyebrow{display:inline-flex;align-items:center;gap:.5rem;font-size:.72rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:#FFDD44;margin-bottom:1.2rem}
 .hero-eyebrow::before{content:'';display:block;width:28px;height:2px;background:#FFDD44}
 .is-dormant{display:none !important}
-section[id],#volunteer,#apply,#foster-application{scroll-margin-top:4.75rem}
+section[id],#volunteer,#apply{scroll-margin-top:4.75rem}
 .hero-news{display:inline-flex;align-items:center;gap:.5rem;background:rgba(255,255,255,.15);backdrop-filter:blur(8px);border-radius:var(--radius-pill);padding:.4rem 1rem;font-size:.8rem;margin-bottom:1.5rem}
 .events-socials{display:flex;flex-wrap:wrap;gap:.75rem;margin-top:1.25rem}
 .events-socials .btn{justify-content:center}
@@ -1072,7 +1072,7 @@ img,video,svg,iframe{max-width:100%;height:auto}
       </div>
     </div>
     <div class="help-actions reveal">
-      <div class="help-action-card"><img class="card-photo" src="https://d8j0ntlcm91z4.cloudfront.net/user_3681BqEuWywySamoBS6St7ib1O7/hf_20260725_085331_1e3fb5ac-573a-46bd-a926-cf2f48cdc8f1_min.webp" alt="Tuxedo cat lounging on windowsill" loading="lazy"><h3>Foster a Cat</h3><p>Open your home temporarily. We provide food, litter, and vet care. You provide daily care and a safe space. Fostering uses its own application, separate from adoption.</p><a href="#foster-application" class="btn btn--pri btn--sm btn--pill">Foster Application</a></div>
+      <div class="help-action-card"><img class="card-photo" src="https://d8j0ntlcm91z4.cloudfront.net/user_3681BqEuWywySamoBS6St7ib1O7/hf_20260725_085331_1e3fb5ac-573a-46bd-a926-cf2f48cdc8f1_min.webp" alt="Tuxedo cat lounging on windowsill" loading="lazy"><h3>Foster a Cat</h3><p>Open your home temporarily. We provide food, litter, and vet care. You provide daily care and a safe space. Fostering uses its own application, separate from adoption.</p><a href="#contact-us" data-contact-subject="Foster Application" class="btn btn--pri btn--sm btn--pill">Foster Application</a></div>
       <div class="help-action-card"><img class="card-photo" src="https://d8j0ntlcm91z4.cloudfront.net/user_3681BqEuWywySamoBS6St7ib1O7/hf_20260725_085334_f9765c90-9a09-467d-9d59-c0ab41799a18_min.webp" alt="Senior gray cat with amber eyes" loading="lazy"><h3>Volunteer</h3><p>Drive cats to clinics, help at adoption events, photograph fosters. Flexible hours, huge impact.</p><a href="#volunteer" data-contact-subject="Volunteering" class="btn btn--pri btn--sm btn--pill">Volunteer</a></div>
     </div>
     <p class="reveal" style="text-align:center;margin-top:1.25rem"><a href="working-cats.html" class="btn btn--outline btn--pill">Working Cats / Barn Cats</a></p>
@@ -1236,14 +1236,13 @@ img,video,svg,iframe{max-width:100%;height:auto}
   </div>
 </section>
 
-<!-- Foster: separate from adoption. #foster-application is an in-page placeholder until a real foster form URL exists. -->
+<!-- Foster: contact form with subject Foster Application. No separate foster application URL. -->
 <section class="section" id="foster" style="background:var(--ground)">
   <div class="container" style="max-width:40rem;text-align:center">
     <span class="kicker reveal">Foster</span>
     <h2 class="heading-lg reveal">Foster a Cat</h2>
-    <p class="body-lg reveal" style="margin-top:.75rem">Fostering is its own application, separate from adoption. You care for a cat in your home for a while. We provide food, litter, and veterinary care. You provide daily care and a safe space.</p>
-    <a id="foster-application" href="#foster-application" class="btn btn--pri btn--lg btn--pill reveal" style="margin-top:1.5rem">Foster Application</a>
-    <p class="reveal" style="margin-top:1rem;font-size:.85rem;color:var(--stone);max-width:32rem;margin-left:auto;margin-right:auto">Placeholder. This button stays on this page. The foster application link is not posted yet.</p>
+    <p class="body-lg reveal" style="margin-top:.75rem">Fostering is its own application, separate from adoption. Fill out the foster application via our contact form. You care for a cat in your home for a while. We provide food, litter, and veterinary care. You provide daily care and a safe space.</p>
+    <a href="#contact-us" data-contact-subject="Foster Application" class="btn btn--pri btn--lg btn--pill reveal" style="margin-top:1.5rem">Foster Application</a>
   </div>
 </section>
 
@@ -1271,7 +1270,7 @@ img,video,svg,iframe{max-width:100%;height:auto}
       <div class="faq-item"><button class="faq-q" onclick="this.parentElement.classList.toggle('open')">What's included in the adoption fee?</button><div class="faq-a"><div class="faq-a-inner">The adoption fee includes age-appropriate vaccines. We test one cat from each litter for FIV/FeLV. You receive a blanket or stuffie and the cat's medical records. There is no starter kit. Cats are spayed or neutered before they go home.</div></div></div>
       <div class="faq-item"><button class="faq-q" onclick="this.parentElement.classList.toggle('open')">Can I meet a cat before I adopt?</button><div class="faq-a"><div class="faq-a-inner">After we review your application, the next step is a meet-and-greet if it looks like a good fit. Meetings are at the foster home or at our PetSmart adoption centers in Clackamas or Cascade Station.</div></div></div>
       <div class="faq-item"><button class="faq-q" onclick="this.parentElement.classList.toggle('open')">Do you have kittens available?</button><div class="faq-a"><div class="faq-a-inner">We frequently have kittens, especially during spring and summer (kitten season). Check our adoptable cats section for current availability. Kittens go fast, so if you see one you love, apply quickly!</div></div></div>
-      <div class="faq-item"><button class="faq-q" onclick="this.parentElement.classList.toggle('open')">How can I become a foster parent?</button><div class="faq-a"><div class="faq-a-inner">Fostering uses its own application, separate from adoption. Fill out the <a href="#foster-application" style="color:var(--pri);text-decoration:underline">foster application above</a>. We provide food, litter, and medical care. You provide daily care and a safe space.</div></div></div>
+      <div class="faq-item"><button class="faq-q" onclick="this.parentElement.classList.toggle('open')">How can I become a foster parent?</button><div class="faq-a"><div class="faq-a-inner">Fill out the <a href="#contact-us" data-contact-subject="Foster Application" style="color:var(--pri);text-decoration:underline">foster application via our contact form</a>. Fostering is separate from adoption. We provide food, litter, and medical care. You provide daily care and a safe space.</div></div></div>
       <div class="faq-item"><button class="faq-q" onclick="this.parentElement.classList.toggle('open')">How can I donate to Cat's Meow?</button><div class="faq-a"><div class="faq-a-inner">Give on <a href="https://catsmeowcatrescue.networkforgood.com/projects/177158-saving-lives-one-cat-at-a-time" target="_blank" rel="noopener" style="color:var(--pri);text-decoration:underline">Network for Good</a>, Venmo @CatsMeowCatRescue, or Cash App $catsmeowcatrescue. Checks can be mailed to PO Box 68222, Milwaukie, OR 97268. Our EIN is 83-2426815. We also accept donations of cat food, litter, blankets, and toys.</div></div></div>
       <div class="faq-item"><button class="faq-q" onclick="this.parentElement.classList.toggle('open')">What does "foster-based rescue" mean?</button><div class="faq-a"><div class="faq-a-inner">Unlike traditional shelters, we don't have a physical facility. All our cats live in loving foster homes until they're adopted. This means less stress for the cats and more one-on-one attention, which helps us learn each cat's personality to find them the best forever home.</div></div></div>
       <div class="faq-item"><button class="faq-q" onclick="this.parentElement.classList.toggle('open')">Can I volunteer without fostering?</button><div class="faq-a"><div class="faq-a-inner">Yes! We need help with adoption events at PetSmart, transporting cats to vet appointments, socializing kittens, photography, social media, fundraising, and more. Fill out our volunteer application to get started.</div></div></div>
@@ -1657,7 +1656,7 @@ if('IntersectionObserver' in window){
 /* ── Smooth scroll ── */
 document.querySelectorAll('a[href^="#"]').forEach(function(a){a.addEventListener('click',function(e){
   var id=this.getAttribute('href');if(id==='#')return;
-  var t=document.querySelector(id);if(t){e.preventDefault();var off=document.getElementById('site-header').offsetHeight+12;window.scrollTo({top:t.getBoundingClientRect().top+window.pageYOffset-off,behavior:'smooth'})}
+  var t=document.querySelector(id);if(t){e.preventDefault();if(history.pushState)history.pushState(null,'',id);var off=document.getElementById('site-header').offsetHeight+12;window.scrollTo({top:t.getBoundingClientRect().top+window.pageYOffset-off,behavior:'smooth'})}
 })});
 
 /* ── Donate Modal ── */
