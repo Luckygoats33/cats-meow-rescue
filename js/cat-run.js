@@ -2,8 +2,8 @@
    No Nintendo characters, names, or assets. Drawn with canvas shapes.
 
    Controls
-   - Run: Arrow keys or A / D. Touch: Left and Right buttons.
-   - Jump: Space, W, or Up. Touch: Jump. Hold for a higher jump.
+   - Run: Arrow keys or A / D. Touch: Left and Right buttons, or hold the left or right side of the picture.
+   - Jump: Space, W, or Up. Touch: Jump button, or swipe up on the picture. Hold for a higher jump.
    - Hop on a dog or vacuum to stomp it, or jump over it.
    - R restarts from the first yard. Sound can be muted.
 */
@@ -72,6 +72,10 @@
   var canvas, ctx, frame, overlay, hud, touchEl, scoreEl, livesEl, levelEl, soundBtn, liveEl;
   var view = { dpr: 1, cssW: 960, cssH: 480, scale: 1, w: 960, h: 480 };
   var held = { left: false, right: false, jump: false };
+  var keyHeld = { left: false, right: false, jump: false };
+  var btnHeld = { left: false, right: false, jump: false };
+  var padHeld = { left: false, right: false, jump: false };
+  var pads = {};
   var jumpEdge = false;
   var mode = 'title';
   var paintedMode = '';
@@ -1160,7 +1164,7 @@
 
   function cardHTML() {
     if (mode === 'title') {
-      return '<div class="cr-card"><p class="kicker">Cat\'s Meow Cat Rescue</p><h2>Ready, Miso?</h2><p>Run the backyard, scoop yarn and fish, and reach the porch. Hop on grumpy dogs and runaway vacuums — or jump over them.</p><button type="button" class="btn btn--pri" data-act="start">Start</button><p class="fine">Arrows or A/D to run. Space, W, or Up to jump. Hold the jump for more height.</p></div>';
+      return '<div class="cr-card"><p class="kicker">Cat\'s Meow Cat Rescue</p><h2>Ready, Miso?</h2><p>Run the backyard, scoop yarn and fish, and reach the porch. Hop on grumpy dogs and runaway vacuums — or jump over them.</p><button type="button" class="btn btn--pri" data-act="start">Start</button><p class="fine">Arrows or A/D to run. Space, W, or Up to jump. On a phone, use the buttons or hold the sides of the picture. Swipe up to jump.</p></div>';
     }
     if (mode === 'clear') {
       return '<div class="cr-card"><p class="kicker">' + esc(levelName) + '</p><h2>Yard clear</h2><p class="cr-scoreline">Score ' + score + '</p><p>The foster porch is the next yard. Miso keeps the same lives.</p><button type="button" class="btn btn--pri" data-act="next">On to the porch</button></div>';
@@ -1186,6 +1190,7 @@
       overlay.hidden = mode === 'play';
       hud.hidden = mode !== 'play';
       touchEl.classList.toggle('is-off', mode !== 'play');
+      if (mode !== 'play') clearPads();
       overlay.innerHTML = cardHTML();
       if (liveEl) liveEl.textContent = liveText();
     }
@@ -1269,34 +1274,101 @@
     if (typingOrSearch()) return false;
     var ae = document.activeElement;
     if (!ae || ae === document.body || ae === document.documentElement || ae === canvas) return true;
+    if (ae.id === 'cr-left' || ae.id === 'cr-right' || ae.id === 'cr-jump' || ae.id === 'cr-sound' || ae.id === 'cr-restart') return true;
     return false;
   }
 
-  function codeToHeld(code, down, repeat) {
+  function composeHeld() {
+    var jump = keyHeld.jump || btnHeld.jump || padHeld.jump;
+    if (jump && !held.jump) jumpEdge = true;
+    held.left = keyHeld.left || btnHeld.left || padHeld.left;
+    held.right = keyHeld.right || btnHeld.right || padHeld.right;
+    held.jump = jump;
+  }
+
+  function clearPads() {
+    pads = {};
+    padHeld.left = false;
+    padHeld.right = false;
+    padHeld.jump = false;
+    composeHeld();
+  }
+
+  function recomputePad() {
+    var left = false;
+    var right = false;
+    var jump = false;
+    var ids = Object.keys(pads);
+    for (var i = 0; i < ids.length; i++) {
+      var p = pads[ids[i]];
+      if (p.side < 0) left = true;
+      if (p.side > 0) right = true;
+      if (p.jump) jump = true;
+    }
+    padHeld.left = left;
+    padHeld.right = right;
+    padHeld.jump = jump;
+    composeHeld();
+  }
+
+  function codeToHeld(code, down) {
     var left = code === 'ArrowLeft' || code === 'KeyA';
     var right = code === 'ArrowRight' || code === 'KeyD';
     var jump = code === 'ArrowUp' || code === 'KeyW' || code === 'Space';
-    if (left) held.left = down;
-    if (right) held.right = down;
-    if (jump) {
-      held.jump = down;
-      if (down && !repeat) jumpEdge = true;
-    }
+    if (!left && !right && !jump) return;
+    if (left) keyHeld.left = down;
+    if (right) keyHeld.right = down;
+    if (jump) keyHeld.jump = down;
+    composeHeld();
   }
 
   function bindHold(btn, key) {
     if (!btn) return;
     btn.addEventListener('pointerdown', function (e) {
+      if (e.pointerType === 'mouse' && e.button !== 0) return;
       e.preventDefault();
       try { btn.setPointerCapture(e.pointerId); } catch (err) { /* ignore */ }
-      held[key] = true;
-      if (key === 'jump') jumpEdge = true;
+      btnHeld[key] = true;
+      composeHeld();
     });
-    function release() { held[key] = false; }
+    function release() {
+      btnHeld[key] = false;
+      composeHeld();
+    }
     btn.addEventListener('pointerup', release);
     btn.addEventListener('pointercancel', release);
     btn.addEventListener('lostpointercapture', release);
     btn.addEventListener('contextmenu', function (e) { e.preventDefault(); });
+  }
+
+  function onCanvasDown(e) {
+    if (mode !== 'play' || e.pointerType !== 'touch') return;
+    if (e.cancelable) e.preventDefault();
+    try { canvas.setPointerCapture(e.pointerId); } catch (err) { /* ignore */ }
+    var rect = canvas.getBoundingClientRect();
+    pads[e.pointerId] = {
+      side: (e.clientX - rect.left) < rect.width * 0.5 ? -1 : 1,
+      sx: e.clientX,
+      sy: e.clientY,
+      jump: false
+    };
+    recomputePad();
+  }
+
+  function onCanvasMove(e) {
+    var p = pads[e.pointerId];
+    if (!p) return;
+    if (e.cancelable) e.preventDefault();
+    var dx = e.clientX - p.sx;
+    var dy = e.clientY - p.sy;
+    if (!p.jump && dy < -18 && Math.abs(dy) > Math.abs(dx) * 0.75) p.jump = true;
+    recomputePad();
+  }
+
+  function onCanvasEnd(e) {
+    if (!pads[e.pointerId]) return;
+    delete pads[e.pointerId];
+    recomputePad();
   }
 
   function boot() {
@@ -1353,7 +1425,12 @@
     bindHold(document.getElementById('cr-right'), 'right');
     bindHold(document.getElementById('cr-jump'), 'jump');
 
+    canvas.addEventListener('pointerdown', onCanvasDown);
+    canvas.addEventListener('pointermove', onCanvasMove);
+    canvas.addEventListener('pointerup', onCanvasEnd);
+    canvas.addEventListener('pointercancel', onCanvasEnd);
     canvas.addEventListener('touchmove', function (e) { e.preventDefault(); }, { passive: false });
+    if (touchEl) touchEl.addEventListener('touchmove', function (e) { e.preventDefault(); }, { passive: false });
 
     window.addEventListener('keydown', function (e) {
       if (typingOrSearch()) return;
@@ -1382,14 +1459,14 @@
         e.code === 'KeyA' || e.code === 'KeyD' || e.code === 'KeyW' || e.code === 'Space';
       if (mode === 'play' && gameKey) {
         e.preventDefault();
-        codeToHeld(e.code, true, e.repeat);
+        codeToHeld(e.code, true);
       }
     });
-    window.addEventListener('keyup', function (e) { codeToHeld(e.code, false, false); });
+    window.addEventListener('keyup', function (e) { codeToHeld(e.code, false); });
     window.addEventListener('blur', function () {
-      held.left = false;
-      held.right = false;
-      held.jump = false;
+      keyHeld.left = keyHeld.right = keyHeld.jump = false;
+      btnHeld.left = btnHeld.right = btnHeld.jump = false;
+      clearPads();
     });
 
     window.CatRun = {

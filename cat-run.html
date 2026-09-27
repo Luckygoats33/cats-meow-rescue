@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <title>Cat Run — Cat's Meow Cat Rescue</title>
 <meta name="description" content="Play Cat Run, a short original side-scrolling game about a foster kitten. Then adopt, foster, or donate with Cat's Meow Cat Rescue in Milwaukie and the Portland metro.">
 <link rel="canonical" href="https://luckygoats33.github.io/cats-meow-rescue/cat-run.html">
@@ -41,8 +41,9 @@
   position:relative;width:100%;height:min(480px,62vh);min-height:240px;
   background:#2A1A12;border-radius:var(--radius);overflow:hidden;
   border:1px solid var(--mist);box-shadow:0 14px 36px rgba(45,24,16,.14);
+  overscroll-behavior:none;
 }
-.cr-frame canvas{width:100%;height:100%;display:block;touch-action:none}
+.cr-frame canvas{width:100%;height:100%;max-width:100%;display:block;touch-action:none;-webkit-user-select:none;user-select:none;-webkit-touch-callout:none}
 .cr-frame canvas:focus{outline:none}
 .cr-frame canvas:focus-visible{outline:3px solid var(--gold);outline-offset:-4px}
 .cr-hud{
@@ -91,7 +92,7 @@
 .cr-card .fine{font-size:.72rem;color:var(--stone);margin:.65rem 0 0;line-height:1.45}
 .cr-card .fine a,.cr-note a,.cr-how a{color:var(--pri);font-weight:700;text-decoration:underline;text-underline-offset:2px}
 .cr-touch{
-  display:none;gap:.5rem;margin:.65rem 0 0;user-select:none;-webkit-user-select:none;
+  display:none;gap:.5rem;margin:.55rem 0 0;user-select:none;-webkit-user-select:none;-webkit-touch-callout:none;
 }
 .cr-touch.is-off{display:none !important}
 .cr-touch button{
@@ -112,11 +113,16 @@
 .cr-sr{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);border:0}
 @media (max-width:800px),(pointer:coarse){
   .cr-touch{display:flex}
+  .cr-frame{overscroll-behavior:none}
 }
 @media (max-width:960px){
-  .cr-frame{height:min(420px,calc(100dvh - 17.5rem));min-height:230px}
+  .cr-frame{height:min(420px,calc(100dvh - 17.5rem - env(safe-area-inset-bottom,0px)));min-height:230px}
 }
 @media (max-width:640px){
+  .cr-hero{padding:.8rem .75rem .65rem}
+  .cr-hero p{font-size:.9rem}
+  .cr-wrap{margin-top:.65rem}
+  .cr-frame{height:min(400px,calc(100svh - 16.25rem - env(safe-area-inset-bottom,0px)));min-height:240px}
   .cr-card{padding:.8rem .75rem .7rem}
   .cr-card p{font-size:.8rem;margin-bottom:.5rem}
   .cr-card .btn{min-height:42px;padding:.55rem .6rem;font-size:.82rem}
@@ -133,7 +139,7 @@
   </header>
   <div class="cr-wrap">
     <div class="cr-frame" id="cr-frame">
-      <canvas id="cat-run-canvas" width="960" height="480" tabindex="0" aria-label="Cat Run. Arrow keys or A and D to run. Space, W, or Up to jump."></canvas>
+      <canvas id="cat-run-canvas" width="960" height="480" tabindex="0" aria-label="Cat Run. Arrow keys or A and D to run, or hold the left or right side of the picture. Space, W, Up, the Jump button, or a swipe up to jump."></canvas>
       <div class="cr-hud" id="cr-hud" hidden>
         <div class="cr-stat"><span>Score</span><strong id="cr-score">0</strong></div>
         <div class="cr-mid">
@@ -156,12 +162,13 @@
   <section class="cr-how" aria-labelledby="cr-how-title">
     <h2 id="cr-how-title">How to play</h2>
     <ul>
-      <li><strong>Run:</strong> Arrow keys or A and D. On a phone, use Left and Right.</li>
-      <li><strong>Jump:</strong> Space, W, or Up, or the Jump button. Hold it for a higher leap. A tap is a short hop.</li>
+      <li><strong>Run:</strong> Arrow keys or A and D. On a phone, hold Left or Right, or hold the left or right side of the picture.</li>
+      <li><strong>Jump:</strong> Space, W, or Up, the Jump button, or swipe up on the picture. Hold it for a higher leap. A tap is a short hop.</li>
       <li><strong>Yarn</strong> is 10 points. <strong>Fish treats</strong> are 25. The porch at the end of a yard is 100.</li>
       <li><strong>Dogs and vacuums:</strong> hop on their heads (50 points) or jump over them. A bump from the side costs a life. So does the creek.</li>
       <li><strong>Lives:</strong> you start with 3. Cat beds remember a safe spot. Reach the porch — Backyard Yarn, then Foster Porch.</li>
       <li><strong>Restart</strong> (or the R key) sends Miso back to the first yard. Sound is a few soft beeps, and you can turn it off.</li>
+      <li><strong>Phone:</strong> portrait is the layout these controls are built for. Landscape still uses the same buttons and swipes, with a shorter picture.</li>
     </ul>
   </section>
   <p class="cr-note">Cat's Meow Cat Rescue is a foster-based 501(c)(3) in Milwaukie and the Portland metro. This game is only for fun — it does not take applications or gifts. When you want the real thing: <a href="index.html#application">adopt</a>, <a href="https://app.sparkie.io/application?m=CAT_FOSTER&amp;t=5fab11fbb83c8e002ea3b873" target="_blank" rel="noopener">foster</a>, or <a href="index.html#help">donate</a>.</p>

@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <title>Laser Cats — Cat's Meow Cat Rescue</title>
 <meta name="description" content="Play Laser Cats, a short slingshot game about foster cats with laser eyes. Then adopt, foster, or donate with Cat's Meow Cat Rescue in Milwaukie and the Portland metro.">
 <link rel="canonical" href="https://luckygoats33.github.io/cats-meow-rescue/laser-cats.html">
@@ -41,8 +41,9 @@
   position:relative;width:100%;height:min(480px,62vh);min-height:240px;
   background:#2A1A12;border-radius:var(--radius);overflow:hidden;
   border:1px solid var(--mist);box-shadow:0 14px 36px rgba(45,24,16,.14);
+  overscroll-behavior:none;
 }
-.lc-frame canvas{width:100%;height:100%;display:block;touch-action:none;cursor:crosshair}
+.lc-frame canvas{width:100%;height:100%;max-width:100%;display:block;touch-action:none;cursor:crosshair;-webkit-user-select:none;user-select:none;-webkit-touch-callout:none}
 .lc-frame canvas:focus{outline:none}
 .lc-frame canvas:focus-visible{outline:3px solid var(--gold);outline-offset:-4px}
 .lc-hud{
@@ -92,7 +93,7 @@
 .lc-card .fine{font-size:.72rem;color:var(--stone);margin:.65rem 0 0;line-height:1.45}
 .lc-card .fine a,.lc-note a,.lc-how a{color:var(--pri);font-weight:700;text-decoration:underline;text-underline-offset:2px}
 .lc-touch{
-  display:flex;gap:.5rem;margin:.65rem 0 0;user-select:none;-webkit-user-select:none;
+  display:flex;gap:.5rem;margin:.55rem 0 0;user-select:none;-webkit-user-select:none;-webkit-touch-callout:none;
 }
 .lc-touch.is-off{display:none !important}
 .lc-touch button{
@@ -112,9 +113,13 @@
 .lc-note{color:var(--stone);font-size:.88rem;line-height:1.55;margin-bottom:2.5rem}
 .lc-sr{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);border:0}
 @media (max-width:960px){
-  .lc-frame{height:min(420px,calc(100dvh - 17.5rem));min-height:230px}
+  .lc-frame{height:min(420px,calc(100dvh - 17.5rem - env(safe-area-inset-bottom,0px)));min-height:230px}
 }
 @media (max-width:640px){
+  .lc-hero{padding:.8rem .75rem .65rem}
+  .lc-hero p{font-size:.9rem}
+  .lc-wrap{margin-top:.65rem}
+  .lc-frame{height:min(400px,calc(100svh - 16.25rem - env(safe-area-inset-bottom,0px)));min-height:240px}
   .lc-card{padding:.8rem .75rem .7rem}
   .lc-card p{font-size:.8rem;margin-bottom:.5rem}
   .lc-card .btn{min-height:42px;padding:.55rem .6rem;font-size:.82rem}
@@ -131,7 +136,7 @@
   </header>
   <div class="lc-wrap">
     <div class="lc-frame" id="lc-frame">
-      <canvas id="laser-cats-canvas" width="960" height="480" tabindex="0" aria-label="Laser Cats. Drag back on the slingshot and release to launch. After a cat is in the air, tap where the laser should go, or press the Laser button or the Space key."></canvas>
+      <canvas id="laser-cats-canvas" width="960" height="480" tabindex="0" aria-label="Laser Cats. Drag back on the slingshot and release to launch. On a phone, put a finger on the cat and drag back. After a cat is in the air, tap where the laser should go, or press the Laser eyes button or the Space key."></canvas>
       <div class="lc-hud" id="lc-hud" hidden>
         <div class="lc-stat"><span>Score</span><strong id="lc-score">0</strong></div>
         <div class="lc-mid">
@@ -152,11 +157,12 @@
   <section class="lc-how" aria-labelledby="lc-how-title">
     <h2 id="lc-how-title">How to play</h2>
     <ul>
-      <li><strong>Aim:</strong> drag back from the sling and let go. On a phone, drag on the picture. A short pull is a soft toss.</li>
+      <li><strong>Aim:</strong> drag back from the sling and let go. On a phone, put a finger on the cat and drag back across the picture. A short pull is a soft toss. The sling stays on screen.</li>
       <li><strong>Laser eyes:</strong> after a launch, while that cat is still in play, tap the yard where the beam should go, press Laser eyes, or press Space. Arrows aim the beam. Each cat gets one short shot. It cuts cardboard, vacuums, and pests. Wood and stone need a solid hit.</li>
       <li><strong>Clear the yard:</strong> knock out every vacuum bot, stone dog statue, and cardboard pest. Leftover boards are fine. Four yards, a few cats each.</li>
       <li><strong>Stars:</strong> three if the first cat clears the yard, two if you still have a cat left, one if the last cat does it.</li>
       <li><strong>Restart</strong> replays the yard you are on. On the last card, Play again starts from the porch. Sound is a few soft beeps, and you can turn it off.</li>
+      <li><strong>Phone:</strong> portrait is the layout these controls are built for. Landscape still uses the same drag and tap, with a shorter picture.</li>
     </ul>
   </section>
   <p class="lc-note">Cat's Meow Cat Rescue is a foster-based 501(c)(3) in Milwaukie and the Portland metro. This game is only for fun — it does not take applications or gifts. When you want the real thing: <a href="index.html#application">adopt</a>, <a href="https://app.sparkie.io/application?m=CAT_FOSTER&amp;t=5fab11fbb83c8e002ea3b873" target="_blank" rel="noopener">foster</a>, or <a href="index.html#help">donate</a>.</p>
