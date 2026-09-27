@@ -138,8 +138,10 @@ input,select,textarea{font-family:inherit;font-size:1rem}
 .hero-eyebrow::before{content:'';display:block;width:28px;height:2px;background:#FFDD44}
 .is-dormant{display:none !important}
 .hero-news{display:inline-flex;align-items:center;gap:.5rem;background:rgba(255,255,255,.15);backdrop-filter:blur(8px);border-radius:var(--radius-pill);padding:.4rem 1rem;font-size:.8rem;margin-bottom:1.5rem}
-.events-socials{display:flex;flex-wrap:wrap;gap:.75rem;margin-top:1.5rem}
+.events-socials{display:flex;flex-wrap:wrap;gap:.75rem;margin-top:1.25rem}
 .events-socials .btn{justify-content:center}
+.fb-events{max-width:500px;margin:1.5rem 0 0;background:#fff;border-radius:var(--radius);overflow:hidden;box-shadow:0 8px 24px rgba(0,0,0,.08)}
+.fb-events .fb-page{display:block}
 .news-badge{background:var(--pri);color:#fff;font-weight:700;font-size:.65rem;padding:.15rem .5rem;border-radius:var(--radius-pill);text-transform:uppercase;letter-spacing:.06em}
 .hero-news:hover{background:rgba(255,255,255,.25);transform:translateY(-1px)}
 @keyframes pulse{0%,100%{opacity:1}50%{opacity:.6}}
@@ -823,7 +825,7 @@ img,video,svg,iframe{max-width:100%;height:auto}
       <div class="hero-eyebrow">Portland, Oregon &middot; 501(c)(3) Nonprofit</div>
       <h1 class="heading-xl">Meet Your Next<br>Best Friend</h1>
       <p class="hero-subtitle">A foster-based, all-volunteer rescue. 4,500 cats helped across the Portland metro area.</p>
-      <a href="#events" class="hero-news is-dormant" id="hero-news" hidden style="margin-bottom:1.5rem;text-decoration:none;color:inherit;cursor:pointer"><span class="news-badge" style="animation:pulse 2s ease-in-out infinite">Upcoming</span> <strong>Bingo Night Oct 17</strong> <span style="font-size:.7rem;opacity:.7;margin-left:.25rem">View Calendar &rarr;</span></a>
+      <a href="#events" class="hero-news" id="hero-news" style="margin-bottom:1.5rem;text-decoration:none;color:inherit;cursor:pointer"><span class="news-badge" style="animation:pulse 2s ease-in-out infinite">Upcoming</span> Events are listed from our Facebook page <span style="font-size:.7rem;opacity:.7;margin-left:.25rem">View &rarr;</span></a>
     </div>
 
     <div class="hero-folds">
@@ -1074,25 +1076,22 @@ img,video,svg,iframe{max-width:100%;height:auto}
 <!-- Paw Divider -->
 <div class="paw-divider" aria-hidden="true"><svg viewBox="0 0 60 56" width="20" height="18" fill="var(--pri)" style="opacity:.18;transform:rotate(-8deg)"><path d="M30 28c-8 0-16 5-16 14 0 6 5 12 16 12s16-6 16-12c0-9-8-14-16-14z"/><ellipse cx="14" cy="16" rx="6" ry="7"/><ellipse cx="26" cy="10" rx="5.5" ry="6.5"/><ellipse cx="34" cy="10" rx="5.5" ry="6.5"/><ellipse cx="46" cy="16" rx="6" ry="7"/></svg><svg viewBox="0 0 60 56" width="26" height="22" fill="var(--gold)" style="opacity:.22"><path d="M30 28c-8 0-16 5-16 14 0 6 5 12 16 12s16-6 16-12c0-9-8-14-16-14z"/><ellipse cx="14" cy="16" rx="6" ry="7"/><ellipse cx="26" cy="10" rx="5.5" ry="6.5"/><ellipse cx="34" cy="10" rx="5.5" ry="6.5"/><ellipse cx="46" cy="16" rx="6" ry="7"/></svg><svg viewBox="0 0 60 56" width="22" height="20" fill="var(--pri)" style="opacity:.15;transform:rotate(15deg)"><path d="M30 28c-8 0-16 5-16 14 0 6 5 12 16 12s16-6 16-12c0-9-8-14-16-14z"/><ellipse cx="14" cy="16" rx="6" ry="7"/><ellipse cx="26" cy="10" rx="5.5" ry="6.5"/><ellipse cx="34" cy="10" rx="5.5" ry="6.5"/><ellipse cx="46" cy="16" rx="6" ry="7"/></svg></div>
 
-<!-- Events: socials only. Calendar markup stays in the repo, hidden, until real dates are confirmed. -->
+<!-- Events: Meta Page Plugin, events tab. No local event list. -->
 <section class="section" id="events" style="background:linear-gradient(135deg,#FFF0E6 0%,#FFE4F0 30%,#E8F4FD 60%,#FFF8E1 100%);padding-bottom:4rem">
   <div class="container">
-    <span class="kicker reveal">Find Us</span>
-    <h2 class="heading-lg reveal">Everything is posted on our social media pages</h2>
-    <p class="body-lg reveal" style="max-width:36rem;margin-top:.75rem">Meetups, fundraisers, and adoption days go up on Facebook and Instagram. Check those pages for what’s coming up.</p>
+    <span class="kicker reveal">Upcoming</span>
+    <h2 class="heading-lg reveal">Events from our Facebook page</h2>
+    <p class="body-lg reveal" style="max-width:36rem;margin-top:.75rem">Upcoming events are listed from our Facebook page. They update when we post a new one.</p>
+    <div class="fb-events reveal">
+      <div id="fb-root"></div>
+      <div class="fb-page" data-href="https://www.facebook.com/catsmeowcatrescue" data-tabs="events" data-width="500" data-height="560" data-small-header="true" data-adapt-container-width="true" data-hide-cover="true" data-show-facepile="false">
+        <blockquote cite="https://www.facebook.com/catsmeowcatrescue" class="fb-xfbml-parse-ignore"><a href="https://www.facebook.com/catsmeowcatrescue">Cat's Meow Cat Rescue on Facebook</a></blockquote>
+      </div>
+    </div>
+    <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v26.0"></script>
     <div class="events-socials reveal">
       <a href="https://facebook.com/catsmeowcatrescue" target="_blank" rel="noopener" class="btn btn--pri btn--lg btn--pill">Facebook</a>
       <a href="https://www.instagram.com/catsmeowcatrescue/" target="_blank" rel="noopener" class="btn btn--outline btn--lg btn--pill">Instagram @catsmeowcatrescue</a>
-    </div>
-    <div class="is-dormant" hidden>
-      <div class="events-layout">
-        <div class="cal-wrap">
-          <div class="cal-nav"><button id="cal-prev" aria-label="Previous month">&larr;</button><h3 id="cal-header"></h3><button id="cal-next" aria-label="Next month">&rarr;</button></div>
-          <div class="cal-weekdays"><span>Sun</span><span>Mon</span><span>Tue</span><span>Wed</span><span>Thu</span><span>Fri</span><span>Sat</span></div>
-          <div class="cal-grid" id="cal-grid"></div>
-        </div>
-        <div class="events-list" id="events-list"></div>
-      </div>
     </div>
   </div>
 </section>
@@ -1390,98 +1389,6 @@ img,video,svg,iframe{max-width:100%;height:auto}
 
 <script>
 (function(){
-/* ── Events ── */
-var EVENTS=[
-{date:'2026-07-26',title:'PetSmart Adoption Day',loc:'PetSmart Clackamas',desc:'Meet adoptable cats and kittens at our PetSmart partner location. Walk-ins welcome!'},
-{date:'2026-08-15',title:'Summer Jamboree',loc:'Milwaukie Community Center',desc:'Annual fundraiser with food, games, raffle prizes, and of course — cats. All ages welcome.'},
-{date:'2026-09-06',title:'Kitten Shower Supply Drive',loc:'Drop-off at PO Box or PetSmart',desc:'Help us stock up on kitten formula, tiny blankets, and supplies for the fall rescue season.'},
-{date:'2026-10-17',title:'Bingo Night',loc:'Milwaukie, OR',desc:'Bingo, prizes, snacks, and cat-themed fun. Tickets available in advance — space is limited!'},
-{date:'2026-11-14',title:'Holiday Craft Fair',loc:'Gladstone Community Center',desc:'Handmade cat crafts, rescue merch, and holiday shopping. Proceeds support our medical fund.'},
-{date:'2026-12-05',title:'Meowy Christmas Adoption Event',loc:'PetSmart Clackamas',desc:'Special holiday adoption event. Reduced adoption fees and gift bags for new cat parents.'}
-];
-var calDate=new Date();
-function renderCalendar(){
-  var y=calDate.getFullYear(),m=calDate.getMonth();
-  document.getElementById('cal-header').textContent=calDate.toLocaleDateString('en-US',{month:'long',year:'numeric'});
-  var first=new Date(y,m,1).getDay(),days=new Date(y,m+1,0).getDate();
-  var html='';
-  for(var i=0;i<first;i++)html+='<div class="cal-day"></div>';
-  var today=new Date();
-  for(var d=1;d<=days;d++){
-    var ds=y+'-'+String(m+1).padStart(2,'0')+'-'+String(d).padStart(2,'0');
-    var hasE=EVENTS.some(function(e){return e.date===ds});
-    var isToday=(d===today.getDate()&&m===today.getMonth()&&y===today.getFullYear());
-    html+='<div class="cal-day'+(hasE?' has-event':'')+(isToday?' today':'')+'" data-date="'+ds+'"><span>'+d+'</span>'+(hasE?'<span class="event-dot"></span>':'')+'</div>';
-  }
-  document.getElementById('cal-grid').innerHTML=html;
-  renderEvents();
-}
-function renderEvents(){
-  var now=new Date();now.setHours(0,0,0,0);
-  var upcoming=EVENTS.filter(function(e){return new Date(e.date+'T12:00:00')>=now}).sort(function(a,b){return new Date(a.date)-new Date(b.date)});
-  document.getElementById('events-list').innerHTML=upcoming.length?upcoming.map(function(e){
-    var d=new Date(e.date+'T12:00:00');
-    var dateStr=d.toLocaleDateString('en-US',{weekday:'short',month:'short',day:'numeric',year:'numeric'});
-    var shareText=e.title+' - '+dateStr+' at '+e.loc+'. '+e.desc;
-    var waLink='https://wa.me/?text='+encodeURIComponent(shareText);
-    var fbLink='https://www.facebook.com/sharer/sharer.php?quote='+encodeURIComponent(shareText);
-    return '<div class="event-card"><span class="event-date">'+dateStr+'</span><h3>'+e.title+'</h3><p>'+e.loc+' — '+e.desc+'</p><div class="event-actions"><a href="'+waLink+'" target="_blank" rel="noopener" class="btn btn--sm btn--outline btn--pill">WhatsApp</a><a href="'+fbLink+'" target="_blank" rel="noopener" class="btn btn--sm btn--outline btn--pill">Facebook</a><button class="btn btn--sm btn--ghost btn--pill share-btn" data-text="'+shareText.replace(/"/g,'&quot;')+'">Copy Link</button></div></div>';
-  }).join(''):'<p style="color:var(--stone)">No upcoming events right now. Check back soon!</p>';
-}
-function updateHeroNews(){
-  var el=document.getElementById('hero-news');
-  if(!el)return;
-  var now=new Date();now.setHours(0,0,0,0);
-  var upcoming=EVENTS.filter(function(e){return new Date(e.date+'T12:00:00')>=now}).sort(function(a,b){return new Date(a.date)-new Date(b.date)});
-  if(!upcoming.length){
-    el.innerHTML='<span class="news-badge">Events</span> Check the calendar for dates <span style="font-size:.7rem;opacity:.7;margin-left:.25rem">View Calendar &rarr;</span>';
-    return;
-  }
-  var first=upcoming[0];
-  var d=new Date(first.date+'T12:00:00');
-  var dateStr=d.toLocaleDateString('en-US',{month:'short',day:'numeric'});
-  var extra='';
-  if(upcoming[1]){
-    var d2=new Date(upcoming[1].date+'T12:00:00');
-    extra=' &middot; '+upcoming[1].title+' '+d2.toLocaleDateString('en-US',{month:'short',day:'numeric'});
-  }
-  el.innerHTML='<span class="news-badge" style="animation:pulse 2s ease-in-out infinite">Upcoming</span> <strong>'+first.title+' '+dateStr+'</strong>'+extra+' <span style="font-size:.7rem;opacity:.7;margin-left:.25rem">View Calendar &rarr;</span>';
-}
-
-document.getElementById('cal-prev').addEventListener('click',function(){calDate.setMonth(calDate.getMonth()-1);renderCalendar()});
-document.getElementById('cal-next').addEventListener('click',function(){calDate.setMonth(calDate.getMonth()+1);renderCalendar()});
-document.getElementById('cal-grid').addEventListener('click',function(e){
-  var day=e.target.closest('.has-event');
-  if(!day)return;
-  document.querySelectorAll('.cal-bubble').forEach(function(b){b.remove()});
-  var ds=day.dataset.date;
-  var ev=EVENTS.find(function(ev){return ev.date===ds});
-  if(!ev)return;
-  var d=new Date(ev.date+'T12:00:00');
-  var dateStr=d.toLocaleDateString('en-US',{weekday:'long',month:'long',day:'numeric',year:'numeric'});
-  var bubble=document.createElement('div');
-  bubble.className='cal-bubble';
-  bubble.innerHTML='<button class="bubble-close" aria-label="Close">&times;</button><span class="bubble-date">'+dateStr+'</span><h4>'+ev.title+'</h4><div class="bubble-loc">'+ev.loc+'</div><p>'+ev.desc+'</p>';
-  document.body.appendChild(bubble);
-  var rect=day.getBoundingClientRect();
-  var bw=bubble.offsetWidth;var bh=bubble.offsetHeight;
-  var left=rect.left+rect.width/2-bw/2;
-  var top=rect.top-bh-8;
-  if(top<8){top=rect.bottom+8}
-  if(left<8)left=8;
-  if(left+bw>window.innerWidth-8)left=window.innerWidth-bw-8;
-  bubble.style.left=left+'px';bubble.style.top=top+'px';
-  bubble.querySelector('.bubble-close').addEventListener('click',function(ev){ev.stopPropagation();bubble.remove()});
-});
-document.addEventListener('click',function(e){
-  if(!e.target.closest('.cal-day')&&!e.target.closest('.cal-bubble')){document.querySelectorAll('.cal-bubble').forEach(function(b){b.remove()})}
-  if(e.target.closest('.share-btn')){
-    var txt=e.target.closest('.share-btn').dataset.text;
-    if(navigator.share){navigator.share({text:txt}).catch(function(){})}
-    else if(navigator.clipboard){navigator.clipboard.writeText(txt);e.target.textContent='Copied!';setTimeout(function(){e.target.textContent='Copy Link'},2000)}
-  }
-});
-
 /* ── Shop ── */
 var HF='https://d8j0ntlcm91z4.cloudfront.net/user_3681BqEuWywySamoBS6St7ib1O7/';
 var PRODUCTS=[
@@ -2163,8 +2070,6 @@ document.addEventListener('click',function(e){
 renderQuiz();
 
 /* ── Init ── */
-renderCalendar();
-updateHeroNews();
 renderShop(6);
 })();
 </script>
