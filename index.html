@@ -213,7 +213,7 @@ input,select,textarea{font-family:inherit;font-size:1rem}
 .fur-nav--prev{left:-16px}
 .fur-nav--next{right:-16px}
 @media(max-width:960px){.fur-card{flex:0 0 calc(50% - .5rem);min-width:160px}.fur-nav--prev{left:4px}.fur-nav--next{right:4px}}
-@media(max-width:480px){.fur-card{flex:0 0 80%;min-width:0}}
+@media(max-width:480px){.fur-card{flex:0 0 80%;min-width:0}.give-methods{grid-template-columns:1fr}}
 
 /* Cat Browser */
 .cats-header{display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:1rem;margin-bottom:1.5rem}
@@ -252,10 +252,13 @@ input,select,textarea{font-family:inherit;font-size:1rem}
 .fund-card{background:rgba(255,255,255,.92);border:none;border-radius:var(--radius);padding:1.5rem;box-shadow:0 4px 16px rgba(0,0,0,.12)}
 .fund-card h3{font-size:.95rem;margin-bottom:.25rem;color:#2A1208}
 .fund-desc{font-size:.8rem;color:#5A3A20;margin-bottom:1rem}
-.fund-bar{height:8px;background:rgba(42,18,8,.15);border-radius:4px;overflow:hidden;margin-bottom:.5rem}
-.fund-fill{height:100%;border-radius:4px;transition:width 1s ease}
-.fund-nums{display:flex;justify-content:space-between;font-size:.75rem;color:#5A3A20}
-.fund-nums strong{color:#2A1208}
+.campaign-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:1rem;margin-top:1.25rem}
+.campaign-head{text-align:center;margin-top:2.5rem}
+.campaign-head h3{font-family:var(--serif);font-size:1.6rem;margin-bottom:.4rem}
+.campaign-intro{max-width:42rem;margin:.35rem auto 0;font-size:.92rem;line-height:1.55}
+.fund-card .btn{width:100%;justify-content:center}
+.give-methods{display:grid;grid-template-columns:1fr 1fr;gap:.75rem;margin-bottom:1rem}
+.give-methods .btn{justify-content:center;font-weight:700;border:none;text-align:center;line-height:1.3}
 .help-actions{display:grid;grid-template-columns:1fr 1fr;gap:1.25rem;margin-top:1.5rem}
 .help-action-card{background:#B22222;border:none;border-radius:var(--radius);padding:2rem;text-align:center;color:#fff;box-shadow:0 6px 20px rgba(0,0,0,.2);transition:transform .2s}
 .help-action-card:hover{transform:translateY(-4px)}
@@ -1012,18 +1015,51 @@ img,video,svg,iframe{max-width:100%;height:auto}
   <div class="container">
     <span class="kicker reveal">How to Help the Kitties</span>
     <h2 class="heading-lg reveal">Your Support Saves Lives</h2>
-    <div class="reveal" style="margin-top:2rem;background:linear-gradient(135deg,#B22222,#D43030);color:#fff;border:none;border-radius:var(--radius);padding:2.5rem 2rem;max-width:36rem;margin-left:auto;margin-right:auto;box-shadow:0 8px 32px rgba(178,34,34,.3)">
+    <div class="reveal" style="margin-top:2rem;background:linear-gradient(135deg,#B22222,#D43030);color:#fff;border:none;border-radius:var(--radius);padding:2.5rem 2rem;max-width:40rem;margin-left:auto;margin-right:auto;box-shadow:0 8px 32px rgba(178,34,34,.3)">
       <h3 style="font-family:var(--serif);font-size:1.4rem;text-align:center;margin-bottom:.5rem;color:#fff">Ways to Give</h3>
       <p style="font-size:.85rem;color:rgba(255,255,255,.85);text-align:center;margin-bottom:1.5rem">100% of donations go to cat care. Tax-deductible &middot; EIN: 83-2426815</p>
-      <div style="display:grid;grid-template-columns:1fr 1fr;gap:.75rem;margin-bottom:1rem">
-        <a href="https://www.facebook.com/catsmeowcatrescue/" target="_blank" rel="noopener" class="btn btn--lg btn--pill" style="justify-content:center;background:#fff;color:#B22222;font-weight:700;border:none">Facebook Donate</a>
-        <a href="#help" data-donate-trigger class="btn btn--lg btn--pill" style="justify-content:center;background:#008CFF;color:#fff;border:none;font-weight:700"><svg viewBox="0 0 24 24" width="16" height="16" fill="#fff" style="margin-right:4px"><path d="M19.27 2c.8 1.32 1.16 2.68 1.16 4.4 0 5.48-4.68 12.6-8.48 17.6H5.18L2.57 3.36l5.76-.52 1.6 12.8C11.73 12.4 13.97 7.56 13.97 4.8c0-1.68-.52-2.84-1.2-3.72L19.27 2z"/></svg>Venmo</a>
+      <a href="https://catsmeowcatrescue.networkforgood.com/projects/177158-saving-lives-one-cat-at-a-time" target="_blank" rel="noopener" class="btn btn--lg btn--pill" style="width:100%;justify-content:center;background:#fff;color:#B22222;font-weight:700;border:none;margin-bottom:.75rem">Donate on Network for Good</a>
+      <div class="give-methods">
+        <a href="https://venmo.com/CatsMeowCatRescue" target="_blank" rel="noopener" class="btn btn--lg btn--pill" style="background:#008CFF;color:#fff">Venmo<br>@CatsMeowCatRescue</a>
+        <a href="https://cash.app/$catsmeowcatrescue" target="_blank" rel="noopener" class="btn btn--lg btn--pill" style="background:#00C244;color:#fff">Cash App<br>$catsmeowcatrescue</a>
       </div>
       <div style="display:flex;gap:1rem;justify-content:center;padding-top:1rem;border-top:1px solid rgba(255,255,255,.2);font-size:.82rem;color:rgba(255,255,255,.8);flex-wrap:wrap;text-align:center">
         <span><strong style="color:#fff">Email:</strong> <a href="mailto:catsmeowcatrescue@gmail.com" style="color:#FFDD44">catsmeowcatrescue@gmail.com</a></span>
         <span><strong style="color:#fff">Mail:</strong> PO Box 68222, Milwaukie, OR 97268</span>
       </div>
-      <p style="font-size:.72rem;color:rgba(255,255,255,.65);margin-top:.75rem;text-align:center">Employer matching may be available &middot; Ask us about sponsoring a cat</p>
+      <p style="font-size:.78rem;color:rgba(255,255,255,.85);margin-top:.85rem;text-align:center;line-height:1.5">Employer matching may be available. <a href="https://www.charitynavigator.org/?bay=content.view&amp;cpid=1799" target="_blank" rel="noopener" style="color:#FFDD44;text-decoration:underline">Charity Navigator’s employer matching resources</a> can help you check your workplace.</p>
+      <p style="font-size:.78rem;color:rgba(255,255,255,.85);margin-top:.45rem;text-align:center;line-height:1.5">In Oregon, you can also give through BottleDrop Give / Blue Bags and Fred Meyer Community Rewards.</p>
+    </div>
+    <div class="campaign-head reveal">
+      <h3>Help Support Our Kitties</h3>
+      <p class="campaign-intro">Pick a fund, then give on Network for Good. There is one donation page for now — add the fund name in your donation note so the gift is directed there.</p>
+      <div class="campaign-grid">
+        <article class="fund-card">
+          <h3>Medical Fund</h3>
+          <p class="fund-desc">Veterinary care for sick and injured cats.</p>
+          <a href="https://catsmeowcatrescue.networkforgood.com/projects/177158-saving-lives-one-cat-at-a-time" target="_blank" rel="noopener" class="btn btn--pri btn--sm btn--pill">Give to Medical Fund</a>
+        </article>
+        <article class="fund-card">
+          <h3>Supplies (Fill their belly)</h3>
+          <p class="fund-desc">Food, litter, and everyday supplies for cats in care.</p>
+          <a href="https://catsmeowcatrescue.networkforgood.com/projects/177158-saving-lives-one-cat-at-a-time" target="_blank" rel="noopener" class="btn btn--pri btn--sm btn--pill">Give to Supplies</a>
+        </article>
+        <article class="fund-card">
+          <h3>Spay/Neuter</h3>
+          <p class="fund-desc">Surgeries for cats in our care.</p>
+          <a href="https://catsmeowcatrescue.networkforgood.com/projects/177158-saving-lives-one-cat-at-a-time" target="_blank" rel="noopener" class="btn btn--pri btn--sm btn--pill">Give to Spay/Neuter</a>
+        </article>
+        <article class="fund-card">
+          <h3>Cat colonies / local colony care</h3>
+          <p class="fund-desc">Care for community cats living in local colonies.</p>
+          <a href="https://catsmeowcatrescue.networkforgood.com/projects/177158-saving-lives-one-cat-at-a-time" target="_blank" rel="noopener" class="btn btn--pri btn--sm btn--pill">Give to Colony Care</a>
+        </article>
+        <article class="fund-card">
+          <h3>TNR Feed / community care</h3>
+          <p class="fund-desc">Food and supplies for trap-neuter-return and community feeding.</p>
+          <a href="https://catsmeowcatrescue.networkforgood.com/projects/177158-saving-lives-one-cat-at-a-time" target="_blank" rel="noopener" class="btn btn--pri btn--sm btn--pill">Give to TNR Feed</a>
+        </article>
+      </div>
     </div>
     <div class="help-actions reveal">
       <div class="help-action-card"><img class="card-photo" src="https://d8j0ntlcm91z4.cloudfront.net/user_3681BqEuWywySamoBS6St7ib1O7/hf_20260725_085331_1e3fb5ac-573a-46bd-a926-cf2f48cdc8f1_min.webp" alt="Tuxedo cat lounging on windowsill" loading="lazy"><h3>Foster a Cat</h3><p>Open your home temporarily. We provide everything &mdash; food, litter, vet care, supplies. You provide the love.</p><a href="#apply" class="btn btn--pri btn--sm btn--pill">Apply to Foster</a></div>
@@ -1197,7 +1233,7 @@ img,video,svg,iframe{max-width:100%;height:auto}
       <div class="faq-item"><button class="faq-q" onclick="this.parentElement.classList.toggle('open')">Can I meet a cat before I adopt?</button><div class="faq-a"><div class="faq-a-inner">Absolutely! Once your application is reviewed, we'll arrange a meet-and-greet at the foster home or one of our PetSmart adoption events in Milwaukie and Gladstone. We want to make sure it's the perfect match for both you and the cat.</div></div></div>
       <div class="faq-item"><button class="faq-q" onclick="this.parentElement.classList.toggle('open')">Do you have kittens available?</button><div class="faq-a"><div class="faq-a-inner">We frequently have kittens, especially during spring and summer (kitten season). Check our adoptable cats section for current availability. Kittens go fast, so if you see one you love, apply quickly!</div></div></div>
       <div class="faq-item"><button class="faq-q" onclick="this.parentElement.classList.toggle('open')">How can I become a foster parent?</button><div class="faq-a"><div class="faq-a-inner">We're always looking for foster homes! Fill out our application above and select "Foster" as the type. We provide all food, litter, and medical care — you provide the love and a safe space. Fostering saves lives by freeing up space for more rescues.</div></div></div>
-      <div class="faq-item"><button class="faq-q" onclick="this.parentElement.classList.toggle('open')">How can I donate to Cat's Meow?</button><div class="faq-a"><div class="faq-a-inner">Click the "Donate" button on this page to make a one-time or recurring gift. We also accept donations of cat food, litter, blankets, and toys. As a 501(c)(3) nonprofit, all donations are tax-deductible. Every dollar helps save a cat's life.</div></div></div>
+      <div class="faq-item"><button class="faq-q" onclick="this.parentElement.classList.toggle('open')">How can I donate to Cat's Meow?</button><div class="faq-a"><div class="faq-a-inner">Give on <a href="https://catsmeowcatrescue.networkforgood.com/projects/177158-saving-lives-one-cat-at-a-time" target="_blank" rel="noopener" style="color:var(--pri);text-decoration:underline">Network for Good</a>, Venmo @CatsMeowCatRescue, or Cash App $catsmeowcatrescue. Checks can be mailed to PO Box 68222, Milwaukie, OR 97268. Our EIN is 83-2426815. We also accept donations of cat food, litter, blankets, and toys.</div></div></div>
       <div class="faq-item"><button class="faq-q" onclick="this.parentElement.classList.toggle('open')">What does "foster-based rescue" mean?</button><div class="faq-a"><div class="faq-a-inner">Unlike traditional shelters, we don't have a physical facility. All our cats live in loving foster homes until they're adopted. This means less stress for the cats and more one-on-one attention, which helps us learn each cat's personality to find them the best forever home.</div></div></div>
       <div class="faq-item"><button class="faq-q" onclick="this.parentElement.classList.toggle('open')">Can I volunteer without fostering?</button><div class="faq-a"><div class="faq-a-inner">Yes! We need help with adoption events at PetSmart, transporting cats to vet appointments, socializing kittens, photography, social media, fundraising, and more. Fill out our volunteer application to get started.</div></div></div>
       <div class="faq-item"><button class="faq-q" onclick="this.parentElement.classList.toggle('open')">Where are you located?</button><div class="faq-a"><div class="faq-a-inner">Cat's Meow Cat Rescue is based in Milwaukie and Gladstone, Oregon. As a foster-based rescue, we don't have a storefront, but you can meet our cats at PetSmart adoption events or at foster homes by appointment. Our mailing address is PO Box 68222, Milwaukie, OR 97268.</div></div></div>
@@ -1260,10 +1296,12 @@ img,video,svg,iframe{max-width:100%;height:auto}
       <button class="donate-amt" data-amt="100">$100</button>
     </div>
     <div class="field" style="margin-bottom:1rem"><label for="custom-amount">Or enter your own amount</label><input type="text" id="custom-amount" placeholder="$___" inputmode="numeric"></div>
-    <div class="field"><label>Dedicate to a fund (optional)</label><select><option>Where it's needed most</option><option>Medical Emergency Fund</option><option>Spay/Neuter Fund</option><option>General Operations</option><option>Winter Shelter Project</option></select></div>
-    <a href="https://www.facebook.com/catsmeowcatrescue/" target="_blank" rel="noopener" class="btn btn--pri btn--lg btn--pill" style="width:100%;justify-content:center;margin-top:1rem">Donate via Facebook</a>
-    <a href="https://venmo.com/CatsMeowRescue?txn=pay&amp;amount=50&amp;note=Donation%20to%20Cat%27s%20Meow%20Cat%20Rescue" target="_blank" rel="noopener" class="btn btn--lg btn--pill" id="donate-venmo" style="width:100%;justify-content:center;margin-top:.5rem;background:#008CFF;color:#fff;border:none;font-weight:700">
-      <svg viewBox="0 0 24 24" width="18" height="18" fill="#fff" style="margin-right:6px"><path d="M19.27 2c.8 1.32 1.16 2.68 1.16 4.4 0 5.48-4.68 12.6-8.48 17.6H5.18L2.57 3.36l5.76-.52 1.6 12.8C11.73 12.4 13.97 7.56 13.97 4.8c0-1.68-.52-2.84-1.2-3.72L19.27 2z"/></svg>Donate via Venmo</a>
+    <div class="field"><label for="donate-fund">Dedicate to a fund (optional)</label><select id="donate-fund"><option>Where it's needed most</option><option>Medical Fund</option><option>Supplies (Fill their belly)</option><option>Spay/Neuter</option><option>Cat colonies / local colony care</option><option>TNR Feed / community care</option></select></div>
+    <a href="https://catsmeowcatrescue.networkforgood.com/projects/177158-saving-lives-one-cat-at-a-time" target="_blank" rel="noopener" class="btn btn--pri btn--lg btn--pill" style="width:100%;justify-content:center;margin-top:1rem">Donate on Network for Good</a>
+    <p style="font-size:.72rem;color:var(--stone);text-align:center;margin-top:.6rem">On Network for Good, add the fund name in your donation note so the gift is directed there.</p>
+    <a href="https://venmo.com/CatsMeowCatRescue?txn=pay&amp;amount=50&amp;note=Donation%20to%20Cat%27s%20Meow%20Cat%20Rescue" target="_blank" rel="noopener" class="btn btn--lg btn--pill" id="donate-venmo" style="width:100%;justify-content:center;margin-top:.5rem;background:#008CFF;color:#fff;border:none;font-weight:700">
+      <svg viewBox="0 0 24 24" width="18" height="18" fill="#fff" style="margin-right:6px"><path d="M19.27 2c.8 1.32 1.16 2.68 1.16 4.4 0 5.48-4.68 12.6-8.48 17.6H5.18L2.57 3.36l5.76-.52 1.6 12.8C11.73 12.4 13.97 7.56 13.97 4.8c0-1.68-.52-2.84-1.2-3.72L19.27 2z"/></svg>Venmo @CatsMeowCatRescue</a>
+    <a href="https://cash.app/$catsmeowcatrescue" target="_blank" rel="noopener" class="btn btn--lg btn--pill" style="width:100%;justify-content:center;margin-top:.5rem;background:#00C244;color:#fff;border:none;font-weight:700">Cash App $catsmeowcatrescue</a>
     <div style="display:flex;gap:.5rem;margin-top:.75rem">
       <a href="tel:+15038506363" class="btn btn--outline btn--sm btn--pill" style="flex:1;justify-content:center;font-size:.78rem">Call (503) 850-6363</a>
       <a href="mailto:catsmeowcatrescue@gmail.com?subject=Donation" class="btn btn--outline btn--sm btn--pill" style="flex:1;justify-content:center;font-size:.78rem">Email Us</a>
@@ -1689,11 +1727,18 @@ function getDonateAmount(){
   var chip=active?parseFloat(active.getAttribute('data-amt')):NaN;
   return chip>0?chip:50;
 }
+function donateNote(){
+  var sel=document.getElementById('donate-fund');
+  var fund=sel?sel.value:'';
+  var note="Donation to Cat's Meow Cat Rescue";
+  if(fund && fund!=="Where it's needed most") note+=' — '+fund;
+  return note;
+}
 function updateDonateLinks(){
   var amt=getDonateAmount();
   var venmo=document.getElementById('donate-venmo');
   if(!venmo)return;
-  venmo.href='https://venmo.com/CatsMeowRescue?txn=pay&amount='+encodeURIComponent(String(amt))+'&note='+encodeURIComponent("Donation to Cat's Meow Cat Rescue");
+  venmo.href='https://venmo.com/CatsMeowCatRescue?txn=pay&amount='+encodeURIComponent(String(amt))+'&note='+encodeURIComponent(donateNote());
 }
 document.querySelectorAll('.donate-amounts').forEach(function(wrap){wrap.addEventListener('click',function(e){
   var btn=e.target.closest('.donate-amt');if(!btn)return;
@@ -1711,6 +1756,8 @@ if(customAmt){
     updateDonateLinks();
   });
 }
+var donateFund=document.getElementById('donate-fund');
+if(donateFund) donateFund.addEventListener('change',updateDonateLinks);
 updateDonateLinks();
 function attachDonateTriggers(){
   document.querySelectorAll('a[href="#help"],a[data-donate-trigger],a[href="mailto:catsmeowcatrescue@gmail.com?subject=Donation"]').forEach(function(a){
