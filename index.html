@@ -944,61 +944,17 @@ img,video,svg,iframe{max-width:100%;height:auto}
   </div>
 </section>
 
-<!-- Fur Babies Gallery -->
-<section class="section" style="background:var(--ground)">
+<!-- Adoption totals: official yearly figures live on the PetSmart Charities lookup, not in this page. -->
+<section class="section" id="adoption-totals" style="background:var(--ground)">
   <div class="container">
-    <span class="kicker reveal">Happy Endings</span>
-    <h2 class="heading-lg reveal">4,500 Cats Helped</h2>
-    <p class="body-lg reveal" style="max-width:32rem;margin-top:.5rem">Every one of these faces found their forever home through Cat's Meow. From the streets to warm laps — these are our happy endings.</p>
-    <div class="fur-carousel-wrap reveal">
-    <button class="fur-nav fur-nav--prev" id="fur-prev" aria-label="Previous">&larr;</button>
-    <button class="fur-nav fur-nav--next" id="fur-next" aria-label="Next">&rarr;</button>
-    <div class="fur-gallery" id="fur-gallery">
-      <div class="fur-card">
-        <span class="fur-tag">Kitten</span>
-        <img src="https://images.pexels.com/photos/10480345/pexels-photo-10480345.jpeg?auto=compress&cs=tinysrgb&w=600&h=800&fit=crop" alt="Tabby kitten looking up" loading="lazy">
-        <div class="fur-name">Butterscotch</div>
-      </div>
-      <div class="fur-card">
-        <span class="fur-tag">Available</span>
-        <img src="https://images.pexels.com/photos/29748152/pexels-photo-29748152.jpeg?auto=compress&cs=tinysrgb&w=600&h=800&fit=crop" alt="Tabby cat relaxing indoors" loading="lazy">
-        <div class="fur-name">Whiskers</div>
-      </div>
-      <div class="fur-card">
-        <span class="fur-tag">Senior</span>
-        <img src="https://images.pexels.com/photos/16178730/pexels-photo-16178730.jpeg?auto=compress&cs=tinysrgb&w=600&h=800&fit=crop" alt="Green-eyed cat with long whiskers" loading="lazy">
-        <div class="fur-name">Sage</div>
-      </div>
-      <div class="fur-card">
-        <span class="fur-tag">Bonded Pair</span>
-        <img src="https://images.pexels.com/photos/34990726/pexels-photo-34990726.jpeg?auto=compress&cs=tinysrgb&w=600&h=800&fit=crop" alt="Two cats cuddling together" loading="lazy">
-        <div class="fur-name">Peaches &amp; Cream</div>
-      </div>
-      <div class="fur-card">
-        <span class="fur-tag">Kitten</span>
-        <img src="https://images.pexels.com/photos/6900232/pexels-photo-6900232.jpeg?auto=compress&cs=tinysrgb&w=600&h=800&fit=crop" alt="Fluffy kitten on red cushion" loading="lazy">
-        <div class="fur-name">Muffin</div>
-      </div>
-      <div class="fur-card">
-        <span class="fur-tag">Available</span>
-        <img src="https://images.pexels.com/photos/7743485/pexels-photo-7743485.jpeg?auto=compress&cs=tinysrgb&w=600&h=800&fit=crop" alt="Black and white kitten staring" loading="lazy">
-        <div class="fur-name">Domino</div>
-      </div>
-      <div class="fur-card">
-        <span class="fur-tag">Foster</span>
-        <img src="https://images.pexels.com/photos/9088489/pexels-photo-9088489.jpeg?auto=compress&cs=tinysrgb&w=600&h=800&fit=crop" alt="Ginger cat lying down" loading="lazy">
-        <div class="fur-name">Marmalade</div>
-      </div>
-      <div class="fur-card">
-        <span class="fur-tag">Available</span>
-        <img src="https://images.pexels.com/photos/17457980/pexels-photo-17457980.jpeg?auto=compress&cs=tinysrgb&w=600&h=800&fit=crop" alt="White and orange kitten sitting outside" loading="lazy">
-        <div class="fur-name">Clementine</div>
-      </div>
+    <span class="kicker reveal">PetSmart Charities</span>
+    <h2 class="heading-lg reveal">Official Adoption Totals</h2>
+    <p class="body-lg reveal" style="max-width:40rem;margin-top:.5rem">Cats you can meet today are in <a href="#cats" style="color:var(--pri);font-weight:700">Available Cats</a>, updated from Petfinder. Yearly adoption totals are published by PetSmart Charities for Cat's Meow, Adoption Partner <strong>#9426</strong>.</p>
+    <div class="reveal" style="display:flex;flex-wrap:wrap;gap:.75rem;margin-top:1.5rem">
+      <a href="https://petsmartcharities.org/pro/resources/adoption-partner/adoption-partner-look-up" target="_blank" rel="noopener" class="btn btn--pri btn--lg btn--pill">Look Up Partner #9426</a>
+      <a href="#cats" class="btn btn--outline btn--lg btn--pill">See Available Cats</a>
     </div>
-    </div>
-    <div style="text-align:center;margin-top:2rem" class="reveal">
-      <a href="#cats" class="btn btn--pri btn--lg btn--pill">See All Adoptable Cats</a>
-    </div>
+    <p class="reveal" style="max-width:40rem;margin-top:1rem;font-size:.88rem;color:var(--stone)">On the look-up page, choose a year and enter partner ID 9426. Our lifetime figure, 4,500 cats helped, is in the banner above.</p>
   </div>
 </section>
 
@@ -1956,23 +1912,6 @@ window.removeFromCart=removeFromCart;
 window.updateQty=updateQty;
 window.openCart=openCart;
 window.closeCart=closeCart;
-
-/* ── Fur Gallery Carousel ── */
-var furGal=document.getElementById('fur-gallery');
-if(furGal){
-  var scrollAmt=function(){return furGal.querySelector('.fur-card').offsetWidth+16};
-  document.getElementById('fur-prev').addEventListener('click',function(){furGal.scrollBy({left:-scrollAmt(),behavior:'smooth'})});
-  document.getElementById('fur-next').addEventListener('click',function(){furGal.scrollBy({left:scrollAmt(),behavior:'smooth'})});
-  var furAutoId=setInterval(function(){
-    if(furGal.scrollLeft+furGal.offsetWidth>=furGal.scrollWidth-10){furGal.scrollTo({left:0,behavior:'smooth'})}
-    else{furGal.scrollBy({left:scrollAmt(),behavior:'smooth'})}
-  },4000);
-  furGal.addEventListener('mouseenter',function(){clearInterval(furAutoId)});
-  furGal.addEventListener('mouseleave',function(){furAutoId=setInterval(function(){
-    if(furGal.scrollLeft+furGal.offsetWidth>=furGal.scrollWidth-10){furGal.scrollTo({left:0,behavior:'smooth'})}
-    else{furGal.scrollBy({left:scrollAmt(),behavior:'smooth'})}
-  },4000)});
-}
 
 /* ── Paw Print Cursor Trail ── */
 (function(){
