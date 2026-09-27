@@ -92,11 +92,11 @@ input,select,textarea{font-family:inherit;font-size:1rem}
 .header-inner{width:var(--content);margin:0 auto;display:flex;align-items:center;height:3.75rem;gap:.75rem}
 .logo{display:flex;align-items:center;gap:.5rem;font-weight:800;font-size:1.05rem;flex-shrink:0;color:var(--header-ink)}
 .logo-img{height:44px;width:auto}
-.main-nav{display:flex;gap:.55rem;margin-left:auto;align-items:center}
-.main-nav a{font-size:.68rem;font-weight:600;color:var(--header-ink);transition:color .2s;letter-spacing:.02em;text-transform:uppercase;white-space:nowrap}
+.main-nav{display:flex;gap:1.05rem;margin-left:auto;align-items:center}
+.main-nav a{font-size:.8rem;font-weight:600;color:var(--header-ink);transition:color .2s;letter-spacing:.02em;text-transform:uppercase;white-space:nowrap}
 @media(min-width:1180px){
-  .main-nav{gap:.8rem}
-  .main-nav>a,.nav-dropdown>a{font-size:.74rem}
+  .main-nav{gap:1.35rem}
+  .main-nav>a,.nav-dropdown>a{font-size:.84rem}
 }
 .main-nav a:hover{color:var(--pri)}
 .header-cta{margin-left:.5rem}
@@ -110,18 +110,27 @@ input,select,textarea{font-family:inherit;font-size:1rem}
 .nav-toggle.is-open span:nth-child(3){width:22px;transform:rotate(-45deg) translate(5px,-5px)}
 .mobile-nav{position:fixed;inset:0;background:var(--surface);z-index:95;display:flex;flex-direction:column;align-items:center;justify-content:flex-start;opacity:0;visibility:hidden;transition:all .35s cubic-bezier(.4,0,.2,1);transform:translateY(-12px);overflow-y:auto;padding:4.5rem 1rem 6rem}
 .mobile-nav.is-open{opacity:1;visibility:visible;transform:translateY(0)}
-.mobile-nav nav{display:flex;flex-direction:column;align-items:center;gap:0;width:100%;max-width:320px}
-.mobile-nav nav a{font-family:var(--serif);font-size:1.15rem;font-weight:700;color:var(--ink);padding:10px 0;min-height:44px;display:flex;align-items:center;width:100%;justify-content:center;border-bottom:1px solid var(--mist);letter-spacing:-.01em;transition:color .2s}
-.mobile-nav nav a:last-child{border-bottom:none}
+.mobile-nav nav{display:flex;flex-direction:column;align-items:center;gap:0;width:100%;max-width:22rem}
+.mobile-nav nav>a{font-family:var(--serif);font-size:1.35rem;font-weight:700;color:var(--ink);padding:14px 0;min-height:52px;display:flex;align-items:center;width:100%;justify-content:center;border-bottom:1px solid var(--mist);letter-spacing:-.01em;transition:color .2s}
+.mobile-nav nav>a:last-child{border-bottom:none}
+.mobile-group{width:100%;border-bottom:1px solid var(--mist)}
+.mobile-group-toggle{width:100%;font-family:var(--serif);font-size:1.35rem;font-weight:700;color:var(--ink);min-height:52px;display:flex;align-items:center;justify-content:center;gap:.5rem;padding:12px 0}
+.mobile-group-toggle::after{content:'';border:solid currentColor;border-width:0 2px 2px 0;display:inline-block;padding:3px;transform:rotate(45deg);margin-top:-4px;transition:transform .2s}
+.mobile-group.is-open .mobile-group-toggle{color:var(--pri)}
+.mobile-group.is-open .mobile-group-toggle::after{transform:rotate(-135deg);margin-top:3px}
+.mobile-group-panel{display:none;padding:0 0 .4rem}
+.mobile-group.is-open .mobile-group-panel{display:flex;flex-direction:column;align-items:center}
+.mobile-nav nav .mobile-group-panel a{font-family:var(--serif);font-size:1.05rem;font-weight:600;color:var(--stone);min-height:42px;padding:6px 0;display:flex;align-items:center;justify-content:center;width:100%;border-bottom:none;text-transform:none;letter-spacing:0}
 .nav-dropdown{position:relative;display:flex;align-items:center}
-.nav-dropdown>a{display:flex;align-items:center;gap:.3rem}
-.nav-dropdown>a::after{content:'';border:solid var(--header-ink);border-width:0 1.5px 1.5px 0;display:inline-block;padding:2px;transform:rotate(45deg);margin-top:-2px;transition:transform .2s}
-.nav-dropdown:hover>a::after{transform:rotate(-135deg)}
-.nav-dropdown-menu{position:absolute;top:calc(100% + 8px);left:50%;transform:translateX(-50%);background:var(--surface);border:1px solid var(--mist);border-radius:var(--radius-sm);padding:.5rem 0;min-width:180px;box-shadow:0 8px 24px rgba(0,0,0,.1);opacity:0;visibility:hidden;transition:all .2s;z-index:120}
-.nav-dropdown:hover .nav-dropdown-menu{opacity:1;visibility:visible}
-.nav-dropdown-menu a{display:block;padding:.5rem 1.25rem;font-size:.8rem;font-weight:500;color:var(--ink)!important;text-transform:none!important;letter-spacing:0!important;transition:background .15s,color .15s}
-.nav-dropdown-menu a:hover{background:var(--ground);color:var(--pri)!important}
-.mobile-nav nav a:hover,.mobile-nav nav a:active{color:var(--pri)}
+.nav-dropdown>a{display:flex;align-items:center;gap:.35rem}
+.nav-dropdown>a::after{content:'';border:solid var(--header-ink);border-width:0 1.5px 1.5px 0;display:inline-block;padding:2.5px;transform:rotate(45deg);margin-top:-3px;transition:transform .2s}
+.nav-dropdown:hover>a::after,.nav-dropdown:focus-within>a::after,.nav-dropdown.is-open>a::after{transform:rotate(-135deg);margin-top:2px}
+.nav-dropdown-menu{position:absolute;top:100%;left:50%;transform:translateX(-50%);background:var(--surface);border:1px solid var(--mist);border-radius:var(--radius-sm);padding:.4rem 0;min-width:13.5rem;box-shadow:0 8px 24px rgba(0,0,0,.1);opacity:0;visibility:hidden;transition:opacity .15s ease,visibility 0s linear .15s;z-index:120}
+.nav-dropdown-menu::before{content:'';position:absolute;left:0;right:0;top:-12px;height:12px}
+.nav-dropdown:hover .nav-dropdown-menu,.nav-dropdown:focus-within .nav-dropdown-menu,.nav-dropdown.is-open .nav-dropdown-menu{opacity:1;visibility:visible;transition:opacity .15s ease,visibility 0s}
+.nav-dropdown-menu a{display:block;padding:.55rem 1.15rem;font-size:.84rem;font-weight:600;color:var(--ink)!important;text-transform:none!important;letter-spacing:0!important;white-space:nowrap;transition:background .15s,color .15s}
+.nav-dropdown-menu a:hover,.nav-dropdown-menu a:focus-visible{background:var(--ground);color:var(--pri)!important}
+.mobile-nav nav a:hover,.mobile-nav nav a:active,.mobile-group-toggle:hover{color:var(--pri)}
 .mobile-nav .btn--rose{margin-top:1.5rem;width:100%;justify-content:center;min-height:52px;font-size:1.05rem;border-radius:var(--radius-pill)}
 
 /* Hero */
@@ -145,8 +154,35 @@ section[id],#volunteer,#apply{scroll-margin-top:4.75rem}
 .hero-news{display:inline-flex;align-items:center;gap:.5rem;background:rgba(255,255,255,.15);backdrop-filter:blur(8px);border-radius:var(--radius-pill);padding:.4rem 1rem;font-size:.8rem;margin-bottom:1.5rem}
 .events-socials{display:flex;flex-wrap:wrap;gap:.75rem;margin-top:1.25rem}
 .events-socials .btn{justify-content:center}
-.fb-events{max-width:500px;margin:1.5rem 0 0;background:#fff;border-radius:var(--radius);overflow:hidden;box-shadow:0 8px 24px rgba(0,0,0,.08)}
-.fb-events .fb-page{display:block}
+.events-layout{display:grid;grid-template-columns:minmax(16rem,22rem) minmax(18rem,1fr);gap:1.25rem;align-items:start;margin-top:1.5rem}
+.cal-card,.fb-events{background:#fff;color:#2D1810;border-radius:var(--radius);box-shadow:0 8px 24px rgba(0,0,0,.08)}
+.cal-card{padding:1rem 1rem 1.15rem}
+.cal-head{display:flex;align-items:center;justify-content:space-between;gap:.5rem;margin-bottom:.65rem}
+.cal-head h3{font-family:var(--serif);font-size:1.2rem;font-weight:700;margin:0}
+.cal-nav{width:36px;height:36px;border-radius:50%;border:1px solid #E8DDD2;background:#fff;color:#2D1810;font-size:1.25rem;line-height:1;display:grid;place-items:center}
+.cal-nav:hover{border-color:var(--pri);color:var(--pri)}
+.cal-weekdays,.cal-grid{display:grid;grid-template-columns:repeat(7,1fr);text-align:center}
+.cal-weekdays span{font-size:.65rem;font-weight:700;letter-spacing:.04em;text-transform:uppercase;color:#746758;padding:.2rem 0 .35rem}
+.cal-day{aspect-ratio:1;display:grid;place-items:center;font-size:.82rem;border-radius:50%}
+.cal-day.is-today{background:var(--pri);color:#fff;font-weight:800}
+.cal-note{font-size:.78rem;line-height:1.5;color:#746758;margin:.85rem .15rem 0}
+.fb-events{margin:0;overflow:hidden;padding:1rem 1rem .5rem}
+.fb-events h3{font-family:var(--serif);font-size:1.2rem;font-weight:700;margin:0 0 .35rem;color:#2D1810}
+.fb-events .fb-lead{font-size:.82rem;line-height:1.5;color:#746758;margin:0 0 .75rem}
+.fb-events .fb-page{display:block;min-height:320px}
+@media(max-width:860px){.events-layout{grid-template-columns:1fr}}
+.adopt-how{max-width:46rem;margin:0 auto}
+.adopt-how-intro{text-align:center}
+.adopt-how-intro .body-lg{max-width:34rem;margin:.75rem auto 0}
+.adopt-steps{list-style:none;counter-reset:adopt;margin:2rem 0 0;display:grid;gap:.85rem}
+.adopt-steps li{display:grid;grid-template-columns:2rem 1fr;gap:.15rem 1rem;background:var(--surface);border:1px solid var(--mist);border-radius:var(--radius);padding:1rem 1.15rem 1.05rem;align-items:start}
+.adopt-steps li::before{content:counter(adopt);counter-increment:adopt;grid-column:1;grid-row:1 / -1;align-self:start;width:2rem;height:2rem;border-radius:50%;background:var(--pri);color:#fff;font-family:var(--serif);font-weight:700;display:grid;place-items:center}
+.adopt-steps li>*{grid-column:2;min-width:0}
+.adopt-steps h3{font-family:var(--serif);font-size:1.05rem;margin:0}
+.adopt-steps p{color:var(--stone);font-size:.92rem;line-height:1.55;margin:.2rem 0 0}
+.adopt-steps a{color:var(--pri);font-weight:700;font-size:.88rem;margin-top:.35rem;text-decoration:underline}
+.adopt-foster-note{margin:1.25rem auto 0;max-width:36rem;text-align:center;color:var(--stone);font-size:.95rem;line-height:1.6}
+.adopt-foster-note a{color:var(--pri);font-weight:700;text-decoration:underline}
 .news-badge{background:var(--pri);color:#fff;font-weight:700;font-size:.65rem;padding:.15rem .5rem;border-radius:var(--radius-pill);text-transform:uppercase;letter-spacing:.06em}
 .hero-news:hover{background:rgba(255,255,255,.25);transform:translateY(-1px)}
 @keyframes pulse{0%,100%{opacity:1}50%{opacity:.6}}
@@ -1082,21 +1118,65 @@ img,video,svg,iframe{max-width:100%;height:auto}
 <!-- Paw Divider -->
 <div class="paw-divider" aria-hidden="true"><svg viewBox="0 0 60 56" width="20" height="18" fill="var(--pri)" style="opacity:.18;transform:rotate(-8deg)"><path d="M30 28c-8 0-16 5-16 14 0 6 5 12 16 12s16-6 16-12c0-9-8-14-16-14z"/><ellipse cx="14" cy="16" rx="6" ry="7"/><ellipse cx="26" cy="10" rx="5.5" ry="6.5"/><ellipse cx="34" cy="10" rx="5.5" ry="6.5"/><ellipse cx="46" cy="16" rx="6" ry="7"/></svg><svg viewBox="0 0 60 56" width="26" height="22" fill="var(--gold)" style="opacity:.22"><path d="M30 28c-8 0-16 5-16 14 0 6 5 12 16 12s16-6 16-12c0-9-8-14-16-14z"/><ellipse cx="14" cy="16" rx="6" ry="7"/><ellipse cx="26" cy="10" rx="5.5" ry="6.5"/><ellipse cx="34" cy="10" rx="5.5" ry="6.5"/><ellipse cx="46" cy="16" rx="6" ry="7"/></svg><svg viewBox="0 0 60 56" width="22" height="20" fill="var(--pri)" style="opacity:.15;transform:rotate(15deg)"><path d="M30 28c-8 0-16 5-16 14 0 6 5 12 16 12s16-6 16-12c0-9-8-14-16-14z"/><ellipse cx="14" cy="16" rx="6" ry="7"/><ellipse cx="26" cy="10" rx="5.5" ry="6.5"/><ellipse cx="34" cy="10" rx="5.5" ry="6.5"/><ellipse cx="46" cy="16" rx="6" ry="7"/></svg></div>
 
-<!-- Events: Meta Page Plugin, events tab. No local event list. -->
+<!-- Events hybrid: month grid marks today only. Titles and dates stay in the Facebook Page Plugin. No Graph token and no handwritten event list. -->
 <section class="section" id="events" style="background:linear-gradient(135deg,#FFF0E6 0%,#FFE4F0 30%,#E8F4FD 60%,#FFF8E1 100%);padding-bottom:4rem">
   <div class="container">
     <span class="kicker reveal">Upcoming</span>
-    <h2 class="heading-lg reveal">Events from our Facebook page</h2>
-    <p class="body-lg reveal" style="max-width:36rem;margin-top:.75rem">Upcoming events are listed from our Facebook page. They update when we post a new one.</p>
-    <div class="fb-events reveal">
-      <div id="fb-root"></div>
-      <div class="fb-page" data-href="https://www.facebook.com/catsmeowcatrescue" data-tabs="events" data-width="500" data-height="560" data-small-header="true" data-adapt-container-width="true" data-hide-cover="true" data-show-facepile="false">
-        <blockquote cite="https://www.facebook.com/catsmeowcatrescue" class="fb-xfbml-parse-ignore"><a href="https://www.facebook.com/catsmeowcatrescue">Cat's Meow Cat Rescue on Facebook</a></blockquote>
+    <h2 class="heading-lg reveal">Events Calendar</h2>
+    <p class="body-lg reveal" style="max-width:40rem;margin-top:.75rem">The calendar shows the month. Event names, times, and places load from our Facebook page and update when we post a new one.</p>
+    <div class="events-layout reveal">
+      <div class="cal-card">
+        <div class="cal-head">
+          <button type="button" class="cal-nav" id="cal-prev" aria-label="Previous month">&lsaquo;</button>
+          <h3 id="cal-label">Events</h3>
+          <button type="button" class="cal-nav" id="cal-next" aria-label="Next month">&rsaquo;</button>
+        </div>
+        <div class="cal-weekdays" aria-hidden="true"><span>Sun</span><span>Mon</span><span>Tue</span><span>Wed</span><span>Thu</span><span>Fri</span><span>Sat</span></div>
+        <div id="cal-grid" class="cal-grid" role="grid" aria-label="Month calendar"></div>
+        <p class="cal-note">Today is marked on the grid. We don't type event dates into these squares. Facebook's list beside this calendar is the live schedule.</p>
+      </div>
+      <div class="fb-events">
+        <h3>From our Facebook page</h3>
+        <p class="fb-lead">This list is Facebook's own events tab for Cat's Meow. It stays in sync without a copy of the dates living on this site.</p>
+        <div id="fb-root"></div>
+        <div class="fb-page" data-href="https://www.facebook.com/catsmeowcatrescue" data-tabs="events" data-width="500" data-height="520" data-small-header="true" data-adapt-container-width="true" data-hide-cover="true" data-show-facepile="false">
+          <blockquote cite="https://www.facebook.com/catsmeowcatrescue" class="fb-xfbml-parse-ignore"><a href="https://www.facebook.com/catsmeowcatrescue">Cat's Meow Cat Rescue on Facebook</a></blockquote>
+        </div>
       </div>
     </div>
     <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v26.0"></script>
+    <script>
+    (function(){
+      var grid=document.getElementById('cal-grid');
+      var label=document.getElementById('cal-label');
+      var prev=document.getElementById('cal-prev');
+      var next=document.getElementById('cal-next');
+      if(!grid||!label||!prev||!next)return;
+      var view=new Date();
+      view.setDate(1);
+      var today=new Date();
+      function render(){
+        var year=view.getFullYear();
+        var month=view.getMonth();
+        label.textContent=view.toLocaleString('en-US',{month:'long',year:'numeric'});
+        var firstDow=new Date(year,month,1).getDay();
+        var days=new Date(year,month+1,0).getDate();
+        var html='';
+        var i;
+        for(i=0;i<firstDow;i++) html+='<span class="cal-day" aria-hidden="true"></span>';
+        for(var d=1;d<=days;d++){
+          var isToday=year===today.getFullYear()&&month===today.getMonth()&&d===today.getDate();
+          html+='<span class="cal-day'+(isToday?' is-today':'')+'" role="gridcell"'+(isToday?' aria-current="date"':'')+'>'+d+'</span>';
+        }
+        grid.innerHTML=html;
+      }
+      prev.addEventListener('click',function(){view.setMonth(view.getMonth()-1);render()});
+      next.addEventListener('click',function(){view.setMonth(view.getMonth()+1);render()});
+      render();
+    })();
+    </script>
     <div class="events-socials reveal">
-      <a href="https://facebook.com/catsmeowcatrescue" target="_blank" rel="noopener" class="btn btn--pri btn--lg btn--pill">Facebook</a>
+      <a href="https://www.facebook.com/catsmeowcatrescue" target="_blank" rel="noopener" class="btn btn--pri btn--lg btn--pill">Facebook</a>
       <a href="https://www.instagram.com/catsmeowcatrescue/" target="_blank" rel="noopener" class="btn btn--outline btn--lg btn--pill">Instagram @catsmeowcatrescue</a>
     </div>
   </div>
@@ -1166,7 +1246,39 @@ img,video,svg,iframe{max-width:100%;height:auto}
 <section class="section" id="application">
   <div class="container">
     <a id="apply"></a>
-    <div style="text-align:center"><span class="kicker reveal">Adoption Application</span><h2 class="heading-lg reveal"><a href="https://app.sparkie.io/application?t=5fab11fbb83c8e002ea3b873&amp;m=CAT_ADOPT" target="_blank" rel="noopener">Find Your Future BFF</a></h2><p class="body-lg reveal" style="max-width:30rem;margin:.75rem auto 0">Our matching process is how we make sure every cat lands in the right home.</p><a href="https://app.sparkie.io/application?t=5fab11fbb83c8e002ea3b873&amp;m=CAT_ADOPT" target="_blank" rel="noopener" class="btn btn--pri btn--lg btn--pill" style="margin-top:1.5rem">Find Your Future BFF</a></div>
+    <div class="adopt-how">
+      <div class="adopt-how-intro">
+        <span class="kicker reveal">Adoption Application</span>
+        <h2 class="heading-lg reveal"><a href="https://app.sparkie.io/application?t=5fab11fbb83c8e002ea3b873&amp;m=CAT_ADOPT" target="_blank" rel="noopener">Find Your Future BFF</a></h2>
+        <p class="body-lg reveal">Here's how adoption works. These are the steps we walk through together. This page is not an application form.</p>
+        <a href="https://app.sparkie.io/application?t=5fab11fbb83c8e002ea3b873&amp;m=CAT_ADOPT" target="_blank" rel="noopener" class="btn btn--pri btn--lg btn--pill reveal" style="margin-top:1.5rem">Find Your Future BFF</a>
+      </div>
+      <ol class="adopt-steps reveal">
+        <li>
+          <h3>Browse Available Cats</h3>
+          <p>Look through the cats on this site. That list is live from Petfinder.</p>
+          <a href="#cats">See Available Cats</a>
+        </li>
+        <li>
+          <h3>Apply on Sparkie</h3>
+          <p>When a cat feels right, send the adoption application. That's where we learn about your home.</p>
+          <a href="https://app.sparkie.io/application?t=5fab11fbb83c8e002ea3b873&amp;m=CAT_ADOPT" target="_blank" rel="noopener">Open the adoption application</a>
+        </li>
+        <li>
+          <h3>We review and get in touch</h3>
+          <p>The team reads your application and contacts you.</p>
+        </li>
+        <li>
+          <h3>Meet-and-greet, if it looks like a fit</h3>
+          <p>If it looks like a good match, you'll meet the cat at the foster home or at PetSmart in Clackamas or Cascade Station.</p>
+        </li>
+        <li>
+          <h3>If the match is approved, the cat goes home</h3>
+          <p>Most kittens are $200. Adults are $175. The fee includes age-appropriate vaccines, an FIV/FeLV test for one cat in the litter, a blanket or stuffie, and the cat's records. There is no starter kit.</p>
+        </li>
+      </ol>
+      <p class="adopt-foster-note reveal">Fostering is separate, with its own application. <a href="https://app.sparkie.io/application?t=5fab11fbb83c8e002ea3b873&amp;m=CAT_FOSTER" target="_blank" rel="noopener">Apply to foster</a>.</p>
+    </div>
     <div class="app-wrap is-dormant" hidden>
       <div class="app-progress" id="app-progress"></div>
       <form id="adopt-form" novalidate>
