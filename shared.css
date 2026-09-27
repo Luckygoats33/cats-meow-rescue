@@ -74,7 +74,7 @@ input,select,textarea{font-family:inherit;font-size:1rem}
 .main-nav{display:flex;gap:.55rem;margin-left:auto;align-items:center}
 .main-nav a{font-size:.68rem;font-weight:600;color:var(--header-ink);transition:color .2s;letter-spacing:.02em;text-transform:uppercase;white-space:nowrap}
 .is-dormant{display:none !important}
-section[id],#volunteer,#apply{scroll-margin-top:4.75rem}
+section[id],#volunteer,#apply,#foster-application{scroll-margin-top:4.75rem}
 .main-nav a:hover{color:var(--pri)}
 .header-cta{margin-left:.5rem}
 .nav-toggle{display:none;flex-direction:column;gap:5px;padding:10px;margin-left:auto;z-index:110;width:48px;height:48px;justify-content:center;align-items:center}
