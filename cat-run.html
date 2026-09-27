@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Cat Run — Cat's Meow Cat Rescue</title>
+<meta name="description" content="Play Cat Run, a short original side-scrolling game about a foster kitten. Then adopt, foster, or donate with Cat's Meow Cat Rescue in Milwaukie and the Portland metro.">
+<link rel="canonical" href="https://luckygoats33.github.io/cats-meow-rescue/cat-run.html">
+<meta property="og:title" content="Cat Run — Cat's Meow Cat Rescue">
+<meta property="og:description" content="Guide Miso the foster kitten home. A short original game from Cat's Meow Cat Rescue.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://luckygoats33.github.io/cats-meow-rescue/cat-run.html">
+<meta property="og:image" content="https://luckygoats33.github.io/cats-meow-rescue/og-image.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://luckygoats33.github.io/cats-meow-rescue/og-image.png">
+<meta name="robots" content="index, follow">
+<meta name="theme-color" content="#B22222">
+<link rel="icon" href="favicon.ico" sizes="any">
+<link rel="icon" type="image/png" sizes="32x32" href="logo-cats-32.png">
+<link rel="icon" type="image/png" sizes="48x48" href="logo-cats-48.png">
+<link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+<link rel="stylesheet" href="shared.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Montserrat:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400&display=swap" rel="stylesheet">
+<style>
+.cr-hero{
+  background:linear-gradient(135deg,#B22222 0%,#D43030 55%,#B22222 100%);
+  color:#fff;text-align:center;padding:1.35rem 1rem 1.15rem;position:relative;overflow:hidden;
+}
+.cr-hero .kicker{color:#F3D48A}
+.cr-hero h1{
+  font-family:var(--serif);font-size:clamp(1.85rem,4vw,2.7rem);
+  font-weight:700;line-height:1.08;position:relative;z-index:1;
+}
+.cr-hero p{
+  max-width:34rem;margin:.4rem auto 0;opacity:.9;font-size:.98rem;line-height:1.5;position:relative;z-index:1;
+}
+.cr-wrap{width:min(960px,calc(100% - 1.5rem));margin:1rem auto 0}
+.cr-frame{
+  position:relative;width:100%;height:min(480px,62vh);min-height:240px;
+  background:#2A1A12;border-radius:var(--radius);overflow:hidden;
+  border:1px solid var(--mist);box-shadow:0 14px 36px rgba(45,24,16,.14);
+}
+.cr-frame canvas{width:100%;height:100%;display:block;touch-action:none}
+.cr-frame canvas:focus{outline:none}
+.cr-frame canvas:focus-visible{outline:3px solid var(--gold);outline-offset:-4px}
+.cr-hud{
+  position:absolute;inset:0 auto auto 0;right:0;z-index:2;pointer-events:none;
+  display:flex;justify-content:space-between;align-items:flex-start;gap:.4rem;
+  padding:.5rem .55rem;
+}
+.cr-hud[hidden]{display:none !important}
+.cr-stat{
+  background:rgba(255,249,242,.94);border-radius:10px;padding:.28rem .55rem;min-width:4.1rem;
+  box-shadow:0 2px 8px rgba(0,0,0,.12);
+}
+.cr-stat span{display:block;font-size:.58rem;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:var(--stone)}
+.cr-stat strong{font-family:var(--serif);font-size:1.05rem;font-weight:700;line-height:1.15;color:var(--ink)}
+.cr-lives{display:flex;gap:4px;align-items:center;height:1.15rem}
+.cr-lives i{width:10px;height:10px;border-radius:50%;background:var(--mist);display:block}
+.cr-lives i.on{background:var(--pri)}
+.cr-mid{display:flex;flex-direction:column;align-items:center;gap:.28rem;min-width:0}
+.cr-level{
+  font-family:var(--serif);font-weight:700;font-size:.78rem;line-height:1.2;text-align:center;
+  background:rgba(45,24,16,.55);color:#fff;border-radius:999px;padding:.32rem .7rem;max-width:46vw;
+}
+.cr-hud-btns{display:flex;gap:.3rem;pointer-events:auto}
+.cr-hud-btns button{
+  pointer-events:auto;background:rgba(255,249,242,.94);border-radius:999px;
+  padding:.28rem .6rem;font-size:.68rem;font-weight:800;letter-spacing:.04em;text-transform:uppercase;
+  min-height:30px;color:var(--ink);box-shadow:0 1px 4px rgba(0,0,0,.12);
+}
+.cr-hud-btns button[aria-pressed="false"]{opacity:.7}
+.cr-overlay{
+  position:absolute;inset:0;z-index:3;display:flex;align-items:center;justify-content:center;padding:.7rem;
+  background:linear-gradient(180deg,rgba(42,22,12,.25),rgba(42,22,12,.62));
+}
+.cr-overlay[hidden]{display:none !important}
+.cr-card{
+  width:min(100%,22.5rem);max-height:100%;overflow:auto;
+  background:var(--surface);color:var(--ink);border:1px solid var(--mist);border-radius:var(--radius);
+  padding:.95rem .95rem .85rem;text-align:center;box-shadow:0 16px 40px rgba(0,0,0,.25);
+}
+.cr-card .kicker{margin-bottom:.3rem}
+.cr-card h2{font-family:var(--serif);font-size:clamp(1.25rem,3vw,1.55rem);line-height:1.15;margin-bottom:.35rem}
+.cr-card p{color:var(--stone);font-size:.86rem;line-height:1.45;margin-bottom:.65rem}
+.cr-scoreline{font-family:var(--serif);font-weight:700;color:var(--ink);margin:-.2rem 0 .7rem}
+.cr-card .btn{width:100%;justify-content:center}
+.cr-grid{display:grid;grid-template-columns:1fr 1fr;gap:.4rem}
+.cr-card .fine{font-size:.72rem;color:var(--stone);margin:.65rem 0 0;line-height:1.45}
+.cr-card .fine a,.cr-note a,.cr-how a{color:var(--pri);font-weight:700;text-decoration:underline;text-underline-offset:2px}
+.cr-touch{
+  display:none;gap:.5rem;margin:.65rem 0 0;user-select:none;-webkit-user-select:none;
+}
+.cr-touch.is-off{display:none !important}
+.cr-touch button{
+  flex:1;min-height:56px;border-radius:var(--radius);background:var(--surface);
+  border:1.5px solid var(--mist);font-family:var(--serif);font-weight:700;font-size:1.15rem;
+  color:var(--ink);box-shadow:0 3px 0 #d9cdc0;touch-action:none;
+}
+.cr-touch button.is-down{transform:translateY(2px);box-shadow:none}
+#cr-jump{
+  flex:1.35;background:var(--pri);color:#fff;border-color:#8B1A1A;box-shadow:0 3px 0 #8B1A1A;font-size:1.02rem;
+}
+.cr-how,.cr-note{width:min(42rem,calc(100% - 2rem));margin:1.15rem auto 0}
+.cr-how h2{font-family:var(--serif);font-size:1.35rem;margin-bottom:.45rem}
+.cr-how ul{list-style:disc;padding-left:1.15rem;color:var(--stone);line-height:1.6}
+.cr-how li{margin:.28rem 0}
+.cr-how li strong{color:var(--ink);font-weight:700}
+.cr-note{color:var(--stone);font-size:.88rem;line-height:1.55;margin-bottom:2.5rem}
+.cr-sr{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);border:0}
+@media (max-width:800px),(pointer:coarse){
+  .cr-touch{display:flex}
+}
+@media (max-width:960px){
+  .cr-frame{height:min(420px,calc(100dvh - 17.5rem));min-height:230px}
+}
+@media (max-width:640px){
+  .cr-card{padding:.8rem .75rem .7rem}
+  .cr-card p{font-size:.8rem;margin-bottom:.5rem}
+  .cr-card .btn{min-height:42px;padding:.55rem .6rem;font-size:.82rem}
+}
+</style>
+</head>
+<body>
+<div id="header-mount"></div>
+<main>
+  <header class="cr-hero">
+    <p class="kicker">Play for fun</p>
+    <h1>Cat Run</h1>
+    <p>Guide Miso, a foster kitten, across two backyards to the porch.</p>
+  </header>
+  <div class="cr-wrap">
+    <div class="cr-frame" id="cr-frame">
+      <canvas id="cat-run-canvas" width="960" height="480" tabindex="0" aria-label="Cat Run. Arrow keys or A and D to run. Space, W, or Up to jump."></canvas>
+      <div class="cr-hud" id="cr-hud" hidden>
+        <div class="cr-stat"><span>Score</span><strong id="cr-score">0</strong></div>
+        <div class="cr-mid">
+          <div class="cr-level" id="cr-level">Backyard Yarn</div>
+          <div class="cr-hud-btns">
+            <button type="button" id="cr-sound" aria-pressed="true">Sound</button>
+            <button type="button" id="cr-restart">Restart</button>
+          </div>
+        </div>
+        <div class="cr-stat"><span>Lives</span><div class="cr-lives" id="cr-lives" aria-label="Lives"></div></div>
+      </div>
+      <div class="cr-overlay" id="cr-overlay"></div>
+    </div>
+    <div class="cr-touch is-off" id="cr-touch" aria-label="Touch controls">
+      <button type="button" id="cr-left" aria-label="Move left">◀</button>
+      <button type="button" id="cr-right" aria-label="Move right">▶</button>
+      <button type="button" id="cr-jump" aria-label="Jump">Jump</button>
+    </div>
+  </div>
+  <section class="cr-how" aria-labelledby="cr-how-title">
+    <h2 id="cr-how-title">How to play</h2>
+    <ul>
+      <li><strong>Run:</strong> Arrow keys or A and D. On a phone, use Left and Right.</li>
+      <li><strong>Jump:</strong> Space, W, or Up, or the Jump button. Hold it for a higher leap. A tap is a short hop.</li>
+      <li><strong>Yarn</strong> is 10 points. <strong>Fish treats</strong> are 25. The porch at the end of a yard is 100.</li>
+      <li><strong>Dogs and vacuums:</strong> hop on their heads (50 points) or jump over them. A bump from the side costs a life. So does the creek.</li>
+      <li><strong>Lives:</strong> you start with 3. Cat beds remember a safe spot. Reach the porch — Backyard Yarn, then Foster Porch.</li>
+      <li><strong>Restart</strong> (or the R key) sends Miso back to the first yard. Sound is a few soft beeps, and you can turn it off.</li>
+    </ul>
+  </section>
+  <p class="cr-note">Cat's Meow Cat Rescue is a foster-based 501(c)(3) in Milwaukie and the Portland metro. This game is only for fun — it does not take applications or gifts. When you want the real thing: <a href="index.html#application">adopt</a>, <a href="https://app.sparkie.io/application?m=CAT_FOSTER&amp;t=5fab11fbb83c8e002ea3b873" target="_blank" rel="noopener">foster</a>, or <a href="index.html#help">donate</a>.</p>
+  <p id="cr-live" class="cr-sr" aria-live="polite"></p>
+</main>
+<div id="footer-mount"></div>
+<script src="components.js" defer></script>
+<script src="js/cat-run.js" defer></script>
+</body>
+</html>
