@@ -1,0 +1,725 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, maximum-scale=1, user-scalable=no">
+<meta name="theme-color" content="#B22222">
+<meta name="description" content="Play for fun · support Cat's Meow Cat Rescue — a foster-based 501(c)(3) in Milwaukie / Portland metro, OR.">
+<title>Rescue Dash — Cat's Meow Cat Rescue</title>
+<link rel="icon" type="image/png" href="assets/logo-48.png">
+<link rel="apple-touch-icon" href="assets/logo-128.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --pri:#B22222;--pri-h:#8B1A1A;--pri-l:#D43030;
+  --gold:#D4A017;--gold-h:#B8890F;--gold-l:#E8B830;
+  --ground:#FFF9F2;--surface:#FFFFFF;--ink:#2D1810;--stone:#746758;--mist:#E8DDD2;
+  --radius:14px;--radius-sm:10px;--radius-pill:999px;
+  --serif:'Fredoka',system-ui,sans-serif;
+  --sans:'Montserrat',system-ui,-apple-system,sans-serif;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html,body{height:100%;}
+body{
+  font-family:var(--sans);color:var(--ink);background:var(--ground);
+  min-height:100dvh;display:flex;flex-direction:column;align-items:center;
+  -webkit-font-smoothing:antialiased;overflow-x:hidden;
+  touch-action:manipulation;-webkit-tap-highlight-color:transparent;
+}
+a{color:inherit;text-decoration:none}
+button{font-family:inherit;cursor:pointer;border:none;background:none;color:inherit}
+
+.shell{width:100%;max-width:520px;margin:0 auto;padding:0 0 env(safe-area-inset-bottom);display:flex;flex-direction:column;min-height:100dvh;}
+.topbar{
+  display:flex;align-items:center;gap:.65rem;padding:.7rem 1rem;
+  background:var(--surface);border-bottom:1px solid var(--mist);position:sticky;top:0;z-index:5;
+}
+.topbar img.logo{height:40px;width:auto;display:block}
+.topbar .brand{display:flex;flex-direction:column;gap:.05rem;min-width:0}
+.topbar .brand strong{font-family:var(--serif);font-size:.95rem;line-height:1.15;color:var(--ink)}
+.topbar .brand span{font-size:.65rem;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--stone)}
+.topbar .pill{
+  margin-left:auto;font-size:.65rem;font-weight:700;letter-spacing:.04em;text-transform:uppercase;
+  background:rgba(178,34,34,.1);color:var(--pri);padding:.35rem .7rem;border-radius:var(--radius-pill);white-space:nowrap;
+}
+
+.stage-wrap{flex:1;display:flex;flex-direction:column;padding:.75rem .75rem 0;gap:.75rem}
+.stage{
+  position:relative;width:100%;aspect-ratio:390/520;max-height:min(72dvh,640px);
+  background:#3A1A08;border-radius:var(--radius);overflow:hidden;
+  box-shadow:0 12px 32px rgba(45,24,16,.18);border:1px solid var(--mist);
+  touch-action:none;
+}
+canvas#game{display:block;width:100%;height:100%;cursor:pointer}
+
+.hud{
+  position:absolute;inset:0;pointer-events:none;z-index:2;
+  display:flex;flex-direction:column;justify-content:space-between;padding:.65rem .7rem;
+}
+.hud-row{display:flex;align-items:flex-start;justify-content:space-between;gap:.5rem}
+.stat{
+  background:rgba(255,249,242,.92);backdrop-filter:blur(6px);
+  border-radius:var(--radius-sm);padding:.4rem .65rem;min-width:4.5rem;
+  box-shadow:0 2px 8px rgba(0,0,0,.12);
+}
+.stat .label{font-size:.58rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--stone)}
+.stat .value{font-family:var(--serif);font-size:1.15rem;font-weight:700;color:var(--ink);line-height:1.1}
+.hint-bar{
+  align-self:center;background:rgba(45,24,16,.55);color:#FFF9F2;
+  font-size:.7rem;font-weight:600;padding:.35rem .85rem;border-radius:var(--radius-pill);
+  letter-spacing:.02em;opacity:.95;
+}
+
+.panel{
+  position:absolute;inset:0;z-index:3;display:flex;align-items:center;justify-content:center;
+  padding:1rem;background:linear-gradient(180deg,rgba(18,10,4,.55),rgba(18,10,4,.78));
+  backdrop-filter:blur(3px);
+}
+.panel[hidden]{display:none !important}
+.card{
+  width:100%;max-width:340px;background:var(--surface);border-radius:var(--radius);
+  padding:1.25rem 1.15rem 1.15rem;text-align:center;box-shadow:0 16px 40px rgba(0,0,0,.28);
+  border:1px solid var(--mist);
+}
+.card .badge{
+  display:inline-flex;align-items:center;gap:.35rem;font-size:.65rem;font-weight:800;
+  letter-spacing:.12em;text-transform:uppercase;color:var(--gold);margin-bottom:.55rem;
+}
+.card h1,.card h2{font-family:var(--serif);font-weight:700;line-height:1.15;color:var(--ink);margin-bottom:.45rem}
+.card h1{font-size:clamp(1.55rem,5vw,1.9rem)}
+.card h2{font-size:clamp(1.35rem,4.5vw,1.65rem)}
+.card p{font-size:.88rem;color:var(--stone);line-height:1.55;margin-bottom:1rem}
+.card .scoreline{font-family:var(--serif);font-size:1.05rem;font-weight:600;color:var(--ink);margin-bottom:.85rem}
+.card .logo-hero{height:52px;width:auto;margin:0 auto .75rem;display:block}
+.actions{display:flex;flex-direction:column;gap:.55rem}
+.btn{
+  display:inline-flex;align-items:center;justify-content:center;gap:.45rem;
+  padding:.8rem 1.25rem;border-radius:var(--radius-sm);font-weight:700;font-size:.92rem;
+  transition:background .15s,transform .1s;min-height:48px;
+}
+.btn:active{transform:scale(.97)}
+.btn--pri{background:var(--pri);color:#fff}.btn--pri:hover{background:var(--pri-h)}
+.btn--gold{background:var(--gold);color:#fff}.btn--gold:hover{background:var(--gold-h)}
+.btn--outline{border:1.5px solid var(--mist);color:var(--ink);background:var(--ground)}
+.btn--outline:hover{border-color:var(--pri);color:var(--pri)}
+.btn-row{display:grid;grid-template-columns:1fr 1fr;gap:.5rem}
+.fine{font-size:.72rem;color:var(--stone);margin-top:.85rem;line-height:1.45}
+.fine a{color:var(--pri);font-weight:600;text-decoration:underline;text-underline-offset:2px}
+
+.footer{
+  padding:.85rem 1rem 1.1rem;text-align:center;font-size:.72rem;color:var(--stone);line-height:1.5;
+}
+.footer strong{color:var(--ink);font-weight:600}
+.footer a{color:var(--pri);font-weight:600}
+
+@media (min-width:520px){
+  .shell{max-width:560px}
+  .stage{aspect-ratio:420/480}
+  .topbar img.logo{height:46px}
+}
+</style>
+</head>
+<body>
+<div class="shell">
+  <header class="topbar">
+    <img class="logo" src="assets/catsm-logo.png" alt="Cat's Meow Cat Rescue" width="140" height="54">
+    <div class="brand">
+      <strong>Rescue Dash</strong>
+      <span>Play for fun · support the rescue</span>
+    </div>
+    <span class="pill">OR · 501(c)(3)</span>
+  </header>
+
+  <div class="stage-wrap">
+    <div class="stage" id="stage">
+      <canvas id="game" width="390" height="520" aria-label="Rescue Dash game canvas"></canvas>
+      <div class="hud" id="hud" hidden>
+        <div class="hud-row">
+          <div class="stat"><div class="label">Treats</div><div class="value" id="hudScore">0</div></div>
+          <div class="stat"><div class="label">Best</div><div class="value" id="hudBest">0</div></div>
+          <div class="stat"><div class="label">Lives</div><div class="value" id="hudLives">3</div></div>
+        </div>
+        <div class="hint-bar" id="hudHint">Tap / Space to jump</div>
+      </div>
+
+      <div class="panel" id="panelStart">
+        <div class="card">
+          <img class="logo-hero" src="assets/logo-cats.png" alt="" width="72" height="68">
+          <div class="badge">Cat's Meow Cat Rescue</div>
+          <h1>Rescue Dash</h1>
+          <p>Help a foster kitty dash home — scoop treats, leap obstacles, and cheer on real cats waiting for adoption in the Portland metro.</p>
+          <div class="actions">
+            <button type="button" class="btn btn--pri" id="btnStart">Play</button>
+            <div class="btn-row">
+              <a class="btn btn--gold" href="https://luckygoats33.github.io/cats-meow-rescue/#cats" target="_blank" rel="noopener">Adopt</a>
+              <a class="btn btn--outline" href="https://luckygoats33.github.io/cats-meow-rescue/#help" target="_blank" rel="noopener">Donate</a>
+            </div>
+          </div>
+          <p class="fine">Tap, click, or press Space / ↑ to jump. Collect 25 treats to win a round.<br>This mini-game is just for fun — it doesn’t raise funds by itself.</p>
+        </div>
+      </div>
+
+      <div class="panel" id="panelOver" hidden>
+        <div class="card">
+          <div class="badge">Game over</div>
+          <h2 id="overTitle">Oof — nap time</h2>
+          <p class="scoreline" id="overScore">Treats: 0</p>
+          <p>Real cats need real homes. Browse adoptable friends or chip in for food &amp; vet care.</p>
+          <div class="actions">
+            <button type="button" class="btn btn--pri" id="btnRetry">Play again</button>
+            <div class="btn-row">
+              <a class="btn btn--gold" href="https://luckygoats33.github.io/cats-meow-rescue/#cats" target="_blank" rel="noopener">Adopt a cat</a>
+              <a class="btn btn--outline" href="https://luckygoats33.github.io/cats-meow-rescue/#help" target="_blank" rel="noopener">Donate</a>
+            </div>
+          </div>
+          <p class="fine">Cat's Meow Cat Rescue · Milwaukie / Portland metro · <a href="mailto:catsmeowcatrescue@gmail.com">catsmeowcatrescue@gmail.com</a></p>
+        </div>
+      </div>
+
+      <div class="panel" id="panelWin" hidden>
+        <div class="card">
+          <div class="badge">You did it!</div>
+          <h2>Home safe 🐾</h2>
+          <p class="scoreline" id="winScore">Treats: 25</p>
+          <p>Nice dash! When you’re ready for the real thing — meet foster cats or support care costs.</p>
+          <div class="actions">
+            <button type="button" class="btn btn--pri" id="btnWinAgain">Play again</button>
+            <div class="btn-row">
+              <a class="btn btn--gold" href="https://luckygoats33.github.io/cats-meow-rescue/#cats" target="_blank" rel="noopener">Meet cats</a>
+              <a class="btn btn--outline" href="https://luckygoats33.github.io/cats-meow-rescue/#help" target="_blank" rel="noopener">Donate</a>
+            </div>
+          </div>
+          <p class="fine">Play for fun · support the rescue · Petfinder OR393</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <footer class="footer">
+    <strong>Cat's Meow Cat Rescue</strong> — foster-based, all-volunteer 501(c)(3) serving Milwaukie &amp; the Portland metro.<br>
+    <a href="https://luckygoats33.github.io/cats-meow-rescue/" target="_blank" rel="noopener">luckygoats33.github.io/cats-meow-rescue</a>
+    · <a href="mailto:catsmeowcatrescue@gmail.com">Email</a>
+    · <a href="tel:+15038506363">(503) 850-6363</a>
+  </footer>
+</div>
+
+<script>
+(function(){
+  const WIN_SCORE = 25;
+  const GRAVITY = 0.55;
+  const JUMP_V = -11.2;
+  const GROUND_Y_RATIO = 0.82;
+  const STORAGE_KEY = 'cmcr-rescue-dash-best';
+
+  const canvas = document.getElementById('game');
+  const ctx = canvas.getContext('2d');
+  const stage = document.getElementById('stage');
+  const hud = document.getElementById('hud');
+  const hudScore = document.getElementById('hudScore');
+  const hudBest = document.getElementById('hudBest');
+  const hudLives = document.getElementById('hudLives');
+  const hudHint = document.getElementById('hudHint');
+  const panelStart = document.getElementById('panelStart');
+  const panelOver = document.getElementById('panelOver');
+  const panelWin = document.getElementById('panelWin');
+  const overTitle = document.getElementById('overTitle');
+  const overScore = document.getElementById('overScore');
+  const winScore = document.getElementById('winScore');
+
+  let W = 390, H = 520, groundY = H * GROUND_Y_RATIO;
+  let state = 'start'; // start | play | over | win
+  let score = 0, best = 0, lives = 3, dist = 0, speed = 4.2;
+  let invuln = 0, hintTimer = 180;
+  let cat, entities, particles, hills, clouds, frame;
+  let raf = 0;
+
+  try { best = parseInt(localStorage.getItem(STORAGE_KEY) || '0', 10) || 0; } catch(e){}
+  hudBest.textContent = String(best);
+
+  function resize(){
+    const rect = stage.getBoundingClientRect();
+    const dpr = Math.min(window.devicePixelRatio || 1, 2);
+    W = Math.max(280, Math.floor(rect.width));
+    H = Math.max(360, Math.floor(rect.height));
+    canvas.width = Math.floor(W * dpr);
+    canvas.height = Math.floor(H * dpr);
+    canvas.style.width = W + 'px';
+    canvas.style.height = H + 'px';
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    groundY = H * GROUND_Y_RATIO;
+    if (cat) cat.y = Math.min(cat.y, groundY - cat.h);
+  }
+
+  function makeHills(){
+    hills = [];
+    for (let i = 0; i < 4; i++){
+      hills.push({
+        x: i * W * 0.7,
+        w: W * (0.55 + Math.random() * 0.4),
+        h: 40 + Math.random() * 50,
+        speed: 0.35 + i * 0.08,
+        color: i % 2 ? '#5C2A12' : '#4A2010'
+      });
+    }
+    clouds = [];
+    for (let i = 0; i < 5; i++){
+      clouds.push({
+        x: Math.random() * W,
+        y: 30 + Math.random() * (H * 0.28),
+        w: 40 + Math.random() * 50,
+        speed: 0.2 + Math.random() * 0.25
+      });
+    }
+  }
+
+  function resetGame(){
+    score = 0; lives = 3; dist = 0; speed = 4.2; invuln = 0; hintTimer = 120;
+    cat = {
+      x: W * 0.22, y: groundY - 44, w: 46, h: 40,
+      vy: 0, onGround: true, frame: 0, blink: 0
+    };
+    entities = [];
+    particles = [];
+    spawnCooldown = 70;
+    makeHills();
+    updateHud();
+  }
+
+  let spawnCooldown = 70;
+
+  function updateHud(){
+    hudScore.textContent = String(score);
+    hudLives.textContent = String(lives);
+    hudBest.textContent = String(best);
+    hudHint.style.opacity = hintTimer > 0 ? '1' : '0';
+  }
+
+  function showPanel(which){
+    panelStart.hidden = which !== 'start';
+    panelOver.hidden = which !== 'over';
+    panelWin.hidden = which !== 'win';
+    hud.hidden = which !== 'play';
+  }
+
+  function startPlay(){
+    resetGame();
+    state = 'play';
+    showPanel('play');
+    cancelAnimationFrame(raf);
+    loop();
+  }
+
+  function endGame(win){
+    state = win ? 'win' : 'over';
+    if (score > best){
+      best = score;
+      try { localStorage.setItem(STORAGE_KEY, String(best)); } catch(e){}
+    }
+    updateHud();
+    if (win){
+      winScore.textContent = 'Treats: ' + score;
+      showPanel('win');
+    } else {
+      const titles = ['Oof — nap time', 'Missed the leap', 'Back to the foster couch'];
+      overTitle.textContent = titles[Math.floor(Math.random() * titles.length)];
+      overScore.textContent = 'Treats: ' + score + (best ? ' · Best: ' + best : '');
+      showPanel('over');
+    }
+  }
+
+  function jump(){
+    if (state !== 'play') return;
+    if (cat.onGround){
+      cat.vy = JUMP_V;
+      cat.onGround = false;
+      burst(cat.x + cat.w/2, groundY, '#E8DDD2', 6);
+    }
+  }
+
+  function spawn(){
+    const roll = Math.random();
+    const baseY = groundY;
+    if (roll < 0.58){
+      // treat
+      const kinds = ['fish', 'yarn', 'heart'];
+      const kind = kinds[Math.floor(Math.random() * kinds.length)];
+      const float = Math.random() < 0.45;
+      entities.push({
+        type: 'treat', kind,
+        x: W + 20, y: float ? baseY - 90 - Math.random() * 50 : baseY - 28,
+        w: 22, h: 22, scored: false
+      });
+    } else {
+      // hazard
+      const kinds = ['vacuum', 'puddle', 'box'];
+      const kind = kinds[Math.floor(Math.random() * kinds.length)];
+      const h = kind === 'puddle' ? 14 : (kind === 'box' ? 34 : 36);
+      entities.push({
+        type: 'hazard', kind,
+        x: W + 24, y: baseY - h, w: kind === 'puddle' ? 48 : 34, h
+      });
+    }
+  }
+
+  function burst(x, y, color, n){
+    for (let i = 0; i < n; i++){
+      particles.push({
+        x, y,
+        vx: (Math.random() - 0.5) * 4,
+        vy: -Math.random() * 3 - 1,
+        life: 20 + Math.random() * 15,
+        color
+      });
+    }
+  }
+
+  function aabb(a, b, pad){
+    const p = pad || 0;
+    return a.x + p < b.x + b.w - p && a.x + a.w - p > b.x + p &&
+           a.y + p < b.y + b.h - p && a.y + a.h - p > b.y + p;
+  }
+
+  function tick(){
+    if (state !== 'play') return;
+    dist += speed;
+    speed = Math.min(8.2, 4.2 + dist / 1800);
+    if (hintTimer > 0) hintTimer--;
+
+    // cat physics
+    cat.vy += GRAVITY;
+    cat.y += cat.vy;
+    if (cat.y >= groundY - cat.h){
+      cat.y = groundY - cat.h;
+      cat.vy = 0;
+      cat.onGround = true;
+    }
+    cat.frame += 0.25 + speed * 0.04;
+    if (invuln > 0) invuln--;
+
+    // spawn
+    spawnCooldown -= 1;
+    if (spawnCooldown <= 0){
+      spawn();
+      spawnCooldown = Math.max(38, 78 - speed * 5) + Math.random() * 28;
+    }
+
+    // entities
+    for (let i = entities.length - 1; i >= 0; i--){
+      const e = entities[i];
+      e.x -= speed;
+      if (e.x + e.w < -40){ entities.splice(i, 1); continue; }
+      if (e.type === 'treat' && !e.scored && aabb(cat, e, 4)){
+        e.scored = true;
+        score += 1;
+        burst(e.x + e.w/2, e.y + e.h/2, e.kind === 'heart' ? '#B22222' : '#D4A017', 10);
+        entities.splice(i, 1);
+        updateHud();
+        if (score >= WIN_SCORE){ endGame(true); return; }
+      } else if (e.type === 'hazard' && invuln <= 0 && aabb(cat, e, 8)){
+        lives -= 1;
+        invuln = 70;
+        burst(cat.x + cat.w/2, cat.y + cat.h/2, '#B22222', 12);
+        updateHud();
+        if (lives <= 0){ endGame(false); return; }
+      }
+    }
+
+    // particles
+    for (let i = particles.length - 1; i >= 0; i--){
+      const p = particles[i];
+      p.x += p.vx; p.y += p.vy; p.vy += 0.12; p.life--;
+      if (p.life <= 0) particles.splice(i, 1);
+    }
+
+    // parallax
+    hills.forEach(h => {
+      h.x -= h.speed * (speed / 4);
+      if (h.x + h.w < 0) h.x = W + Math.random() * 40;
+    });
+    clouds.forEach(c => {
+      c.x -= c.speed;
+      if (c.x + c.w < 0){ c.x = W + 20; c.y = 30 + Math.random() * (H * 0.28); }
+    });
+
+    if (hintTimer % 10 === 0) updateHud();
+  }
+
+  function drawSky(){
+    const g = ctx.createLinearGradient(0, 0, 0, H);
+    g.addColorStop(0, '#5B2A14');
+    g.addColorStop(0.45, '#8B4518');
+    g.addColorStop(0.72, '#C4783A');
+    g.addColorStop(1, '#E8B830');
+    ctx.fillStyle = g;
+    ctx.fillRect(0, 0, W, H);
+
+    // sun
+    ctx.fillStyle = 'rgba(255,221,68,0.85)';
+    ctx.beginPath();
+    ctx.arc(W * 0.82, H * 0.16, 28, 0, Math.PI * 2);
+    ctx.fill();
+
+    clouds.forEach(c => {
+      ctx.fillStyle = 'rgba(255,249,242,0.35)';
+      roundCloud(c.x, c.y, c.w);
+    });
+
+    hills.forEach(h => {
+      ctx.fillStyle = h.color;
+      ctx.beginPath();
+      ctx.moveTo(h.x, groundY);
+      ctx.quadraticCurveTo(h.x + h.w/2, groundY - h.h, h.x + h.w, groundY);
+      ctx.closePath();
+      ctx.fill();
+    });
+  }
+
+  function roundCloud(x, y, w){
+    ctx.beginPath();
+    ctx.ellipse(x, y, w * 0.45, w * 0.22, 0, 0, Math.PI * 2);
+    ctx.ellipse(x + w * 0.28, y - 4, w * 0.3, w * 0.18, 0, 0, Math.PI * 2);
+    ctx.ellipse(x - w * 0.22, y + 2, w * 0.28, w * 0.16, 0, 0, Math.PI * 2);
+    ctx.fill();
+  }
+
+  function drawGround(){
+    ctx.fillStyle = '#2A1208';
+    ctx.fillRect(0, groundY, W, H - groundY);
+    ctx.fillStyle = '#3D1E0C';
+    ctx.fillRect(0, groundY, W, 8);
+    // paw-print trail
+    ctx.fillStyle = 'rgba(212,160,23,0.18)';
+    const offset = (dist * 0.5) % 56;
+    for (let x = -offset; x < W + 40; x += 56){
+      paw(x, groundY + 22, 0.45);
+      paw(x + 18, groundY + 34, 0.35);
+    }
+  }
+
+  function paw(x, y, s){
+    ctx.save();
+    ctx.translate(x, y);
+    ctx.scale(s, s);
+    ctx.beginPath(); ctx.arc(0, 0, 6, 0, Math.PI * 2); ctx.fill();
+    ctx.beginPath(); ctx.arc(-8, -8, 3.5, 0, Math.PI * 2); ctx.fill();
+    ctx.beginPath(); ctx.arc(0, -10, 3.5, 0, Math.PI * 2); ctx.fill();
+    ctx.beginPath(); ctx.arc(8, -8, 3.5, 0, Math.PI * 2); ctx.fill();
+    ctx.restore();
+  }
+
+  function drawCat(c){
+    const flash = invuln > 0 && Math.floor(invuln / 4) % 2 === 0;
+    if (flash) return;
+    ctx.save();
+    ctx.translate(c.x, c.y);
+    const bob = c.onGround ? Math.sin(c.frame) * 1.5 : 0;
+    ctx.translate(0, bob);
+
+    // shadow
+    ctx.fillStyle = 'rgba(0,0,0,0.25)';
+    ctx.beginPath();
+    ctx.ellipse(c.w/2, c.h + 4 - bob, c.w * 0.38, 5, 0, 0, Math.PI * 2);
+    ctx.fill();
+
+    // body
+    ctx.fillStyle = '#E8A04A';
+    roundRect(4, 12, 30, 22, 8);
+    ctx.fill();
+    // stripes
+    ctx.strokeStyle = '#C4783A';
+    ctx.lineWidth = 2;
+    ctx.beginPath();
+    ctx.moveTo(12, 14); ctx.quadraticCurveTo(14, 22, 12, 30);
+    ctx.moveTo(20, 14); ctx.quadraticCurveTo(22, 22, 20, 30);
+    ctx.stroke();
+
+    // head
+    ctx.fillStyle = '#E8A04A';
+    ctx.beginPath();
+    ctx.arc(36, 14, 13, 0, Math.PI * 2);
+    ctx.fill();
+    // ears
+    ctx.beginPath();
+    ctx.moveTo(26, 8); ctx.lineTo(28, -4); ctx.lineTo(34, 6);
+    ctx.moveTo(38, 6); ctx.lineTo(44, -4); ctx.lineTo(46, 8);
+    ctx.fill();
+    ctx.fillStyle = '#F5C9A0';
+    ctx.beginPath();
+    ctx.moveTo(28, 6); ctx.lineTo(29.5, 0); ctx.lineTo(32, 6);
+    ctx.moveTo(40, 6); ctx.lineTo(42, 0); ctx.lineTo(44, 6);
+    ctx.fill();
+
+    // face
+    ctx.fillStyle = '#2D1810';
+    ctx.beginPath(); ctx.ellipse(32, 13, 2.2, 2.6, 0, 0, Math.PI * 2); ctx.fill();
+    ctx.beginPath(); ctx.ellipse(40, 13, 2.2, 2.6, 0, 0, Math.PI * 2); ctx.fill();
+    ctx.fillStyle = '#B22222';
+    ctx.beginPath(); ctx.moveTo(36, 16); ctx.lineTo(34.5, 18); ctx.lineTo(37.5, 18); ctx.closePath(); ctx.fill();
+
+    // legs
+    ctx.fillStyle = '#E8A04A';
+    const leg = c.onGround ? Math.sin(c.frame * 1.4) * 4 : 2;
+    roundRect(8, 30, 7, 10 + leg * 0.3, 3); ctx.fill();
+    roundRect(18, 30, 7, 10 - leg * 0.3, 3); ctx.fill();
+
+    // tail
+    ctx.strokeStyle = '#E8A04A';
+    ctx.lineWidth = 5;
+    ctx.lineCap = 'round';
+    ctx.beginPath();
+    ctx.moveTo(6, 18);
+    ctx.quadraticCurveTo(-6, 8 + Math.sin(c.frame) * 4, -2, 0);
+    ctx.stroke();
+
+    ctx.restore();
+  }
+
+  function roundRect(x, y, w, h, r){
+    ctx.beginPath();
+    ctx.moveTo(x + r, y);
+    ctx.arcTo(x + w, y, x + w, y + h, r);
+    ctx.arcTo(x + w, y + h, x, y + h, r);
+    ctx.arcTo(x, y + h, x, y, r);
+    ctx.arcTo(x, y, x + w, y, r);
+    ctx.closePath();
+  }
+
+  function drawEntity(e){
+    ctx.save();
+    ctx.translate(e.x, e.y);
+    if (e.type === 'treat'){
+      if (e.kind === 'fish'){
+        ctx.fillStyle = '#7EC8E3';
+        ctx.beginPath();
+        ctx.ellipse(11, 11, 10, 6, 0, 0, Math.PI * 2);
+        ctx.fill();
+        ctx.beginPath();
+        ctx.moveTo(2, 11); ctx.lineTo(-4, 5); ctx.lineTo(-4, 17); ctx.closePath();
+        ctx.fill();
+        ctx.fillStyle = '#2D1810';
+        ctx.beginPath(); ctx.arc(15, 9, 1.5, 0, Math.PI * 2); ctx.fill();
+      } else if (e.kind === 'yarn'){
+        ctx.fillStyle = '#B22222';
+        ctx.beginPath(); ctx.arc(11, 11, 9, 0, Math.PI * 2); ctx.fill();
+        ctx.strokeStyle = '#8B1A1A';
+        ctx.lineWidth = 1.5;
+        ctx.beginPath();
+        ctx.arc(11, 11, 5, 0.2, 2.5);
+        ctx.arc(11, 11, 7, 3, 5);
+        ctx.stroke();
+      } else {
+        ctx.fillStyle = '#B22222';
+        ctx.beginPath();
+        ctx.moveTo(11, 20);
+        ctx.bezierCurveTo(-2, 10, 2, 0, 11, 6);
+        ctx.bezierCurveTo(20, 0, 24, 10, 11, 20);
+        ctx.fill();
+      }
+    } else {
+      if (e.kind === 'vacuum'){
+        ctx.fillStyle = '#746758';
+        roundRect(4, 8, 26, 22, 6); ctx.fill();
+        ctx.fillStyle = '#2D1810';
+        ctx.beginPath(); ctx.arc(10, 34, 5, 0, Math.PI * 2); ctx.fill();
+        ctx.beginPath(); ctx.arc(24, 34, 5, 0, Math.PI * 2); ctx.fill();
+        ctx.fillStyle = '#D4A017';
+        ctx.fillRect(22, 2, 6, 10);
+      } else if (e.kind === 'puddle'){
+        ctx.fillStyle = 'rgba(80,140,180,0.7)';
+        ctx.beginPath();
+        ctx.ellipse(24, 10, 22, 7, 0, 0, Math.PI * 2);
+        ctx.fill();
+      } else {
+        ctx.fillStyle = '#D4A017';
+        roundRect(2, 4, 30, 28, 4); ctx.fill();
+        ctx.strokeStyle = '#B8890F';
+        ctx.lineWidth = 2;
+        ctx.strokeRect(6, 8, 22, 20);
+        ctx.fillStyle = '#8B1A1A';
+        ctx.font = 'bold 10px Montserrat,sans-serif';
+        ctx.fillText('meow', 6, 22);
+      }
+    }
+    ctx.restore();
+  }
+
+  function drawParticles(){
+    particles.forEach(p => {
+      ctx.globalAlpha = Math.max(0, p.life / 30);
+      ctx.fillStyle = p.color;
+      ctx.beginPath();
+      ctx.arc(p.x, p.y, 3, 0, Math.PI * 2);
+      ctx.fill();
+      ctx.globalAlpha = 1;
+    });
+  }
+
+  function drawIdlePreview(){
+    drawSky();
+    drawGround();
+    // idle cat walking in place for start screen backdrop
+    const c = {
+      x: W * 0.35, y: groundY - 40, w: 46, h: 40,
+      vy: 0, onGround: true, frame: performance.now() / 80, blink: 0
+    };
+    drawCat(c);
+    // floating treat teaser
+    drawEntity({ type:'treat', kind:'yarn', x: W * 0.62, y: groundY - 100 + Math.sin(performance.now()/400)*8, w:22, h:22 });
+    drawEntity({ type:'treat', kind:'fish', x: W * 0.74, y: groundY - 70 + Math.cos(performance.now()/350)*6, w:22, h:22 });
+  }
+
+  function render(){
+    ctx.clearRect(0, 0, W, H);
+    if (state === 'start' || !cat){
+      drawIdlePreview();
+      return;
+    }
+    drawSky();
+    drawGround();
+    entities.forEach(drawEntity);
+    drawCat(cat);
+    drawParticles();
+  }
+
+  function loop(){
+    tick();
+    render();
+    if (state === 'play') raf = requestAnimationFrame(loop);
+    else if (state === 'start') raf = requestAnimationFrame(loop);
+  }
+
+  // input
+  function onJump(e){
+    if (e){ e.preventDefault(); }
+    if (state === 'start'){ startPlay(); return; }
+    if (state === 'play') jump();
+  }
+
+  document.getElementById('btnStart').addEventListener('click', (e) => { e.stopPropagation(); startPlay(); });
+  document.getElementById('btnRetry').addEventListener('click', (e) => { e.stopPropagation(); startPlay(); });
+  document.getElementById('btnWinAgain').addEventListener('click', (e) => { e.stopPropagation(); startPlay(); });
+
+  canvas.addEventListener('pointerdown', onJump);
+  window.addEventListener('keydown', (e) => {
+    if (e.code === 'Space' || e.code === 'ArrowUp' || e.code === 'KeyW'){
+      onJump(e);
+    }
+  });
+
+  window.addEventListener('resize', () => {
+    resize();
+    render();
+  });
+
+  // boot
+  resize();
+  makeHills();
+  showPanel('start');
+  state = 'start';
+  loop();
+})();
+</script>
+</body>
+</html>
