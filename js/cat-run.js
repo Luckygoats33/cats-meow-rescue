@@ -1159,7 +1159,6 @@
   }
 
   function cardHTML() {
-    var fine = '<p class="fine"><a href="' + ADOPT + '">Adopt</a> · <a href="' + esc(FOSTER) + '" target="_blank" rel="noopener">Foster</a> · <a href="' + DONATE + '">Donate</a></p>';
     if (mode === 'title') {
       return '<div class="cr-card"><p class="kicker">Cat\'s Meow Cat Rescue</p><h2>Ready, Miso?</h2><p>Run the backyard, scoop yarn and fish, and reach the porch. Hop on grumpy dogs and runaway vacuums — or jump over them.</p><button type="button" class="btn btn--pri" data-act="start">Start</button><p class="fine">Arrows or A/D to run. Space, W, or Up to jump. Hold the jump for more height.</p></div>';
     }
@@ -1167,9 +1166,9 @@
       return '<div class="cr-card"><p class="kicker">' + esc(levelName) + '</p><h2>Yard clear</h2><p class="cr-scoreline">Score ' + score + '</p><p>The foster porch is the next yard. Miso keeps the same lives.</p><button type="button" class="btn btn--pri" data-act="next">On to the porch</button></div>';
     }
     if (mode === 'win') {
-      return '<div class="cr-card"><p class="kicker">Cat\'s Meow Cat Rescue</p><h2>Miso made it home</h2><p class="cr-scoreline">Score ' + score + '</p><p>That porch feeling is what foster kittens are waiting on. Whenever you want the real thing:</p><div class="cr-grid"><a class="btn btn--outline" href="' + ADOPT + '">Adopt</a><a class="btn btn--outline" href="' + esc(FOSTER) + '" target="_blank" rel="noopener">Foster</a><a class="btn btn--gold" href="' + DONATE + '">Donate</a><button type="button" class="btn btn--pri" data-act="again">Play again</button></div>' + fine + '</div>';
+      return '<div class="cr-card"><p class="kicker">Cat\'s Meow Cat Rescue</p><h2>Miso made it home</h2><p class="cr-scoreline">Score ' + score + '</p><p>That porch feeling is what foster kittens are waiting on. Whenever you want the real thing:</p><div class="cr-grid"><a class="btn btn--outline" href="' + ADOPT + '">Adopt</a><a class="btn btn--outline" href="' + esc(FOSTER) + '" target="_blank" rel="noopener">Foster</a><a class="btn btn--gold" href="' + DONATE + '">Donate</a><button type="button" class="btn btn--pri" data-act="again">Play again</button></div></div>';
     }
-    return '<div class="cr-card"><p class="kicker">Cat\'s Meow Cat Rescue</p><h2>Miso needs a nap</h2><p class="cr-scoreline">Score ' + score + '</p><p>Three lives go quickly. The porch will still be there.</p><div class="cr-grid"><button type="button" class="btn btn--pri" data-act="again">Play again</button><a class="btn btn--outline" href="' + ADOPT + '">Adopt</a><a class="btn btn--outline" href="' + esc(FOSTER) + '" target="_blank" rel="noopener">Foster</a><a class="btn btn--gold" href="' + DONATE + '">Donate</a></div>' + fine + '</div>';
+    return '<div class="cr-card"><p class="kicker">Cat\'s Meow Cat Rescue</p><h2>Miso needs a nap</h2><p class="cr-scoreline">Score ' + score + '</p><p>Three lives go quickly. The porch will still be there.</p><div class="cr-grid"><button type="button" class="btn btn--pri" data-act="again">Play again</button><a class="btn btn--outline" href="' + ADOPT + '">Adopt</a><a class="btn btn--outline" href="' + esc(FOSTER) + '" target="_blank" rel="noopener">Foster</a><a class="btn btn--gold" href="' + DONATE + '">Donate</a></div></div>';
   }
 
   function liveText() {
