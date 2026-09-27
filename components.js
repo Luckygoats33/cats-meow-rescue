@@ -84,7 +84,6 @@
     + '<li><a href="' + href('#contact-us') + '">Contact Us</a></li>'
     + '</ul></div>'
     + '<div class="footer-col"><h4>Resources</h4><ul>'
-    + '<li><a href="https://www.feralcats.com/" target="_blank" rel="noopener">Feral Cat Coalition OR</a></li>'
     + '<li><a href="https://www.oregonhumane.org/" target="_blank" rel="noopener">Oregon Humane Society</a></li>'
     + '<li><a href="https://catadoptionteam.org/" target="_blank" rel="noopener">Cat Adoption Team</a></li>'
     + '<li><a href="https://www.petfinder.com/" target="_blank" rel="noopener">Petfinder</a></li>'
