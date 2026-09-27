@@ -28,7 +28,8 @@
   var learnItems = '<a href="' + href('blog.html') + '">Blog</a>'
     + '<a href="' + href('faq.html') + '">FAQ</a>'
     + '<a href="' + href('about.html') + '">About</a>'
-    + '<a href="' + href('cat-run.html') + '">Cat Run</a>';
+    + '<a href="' + href('cat-run.html') + '">Cat Run</a>'
+    + '<a href="' + href('laser-cats.html') + '">Laser Cats</a>';
   function desktopDrop(label, landing, items) {
     return '<div class="nav-dropdown"><a href="' + landing + '" aria-haspopup="true" aria-expanded="false">' + label + '</a>'
       + '<div class="nav-dropdown-menu">' + items + '</div></div>';
@@ -91,6 +92,7 @@
     + '<li><a href="' + href('blog.html') + '">Blog</a></li>'
     + '<li><a href="' + href('about.html') + '">About Us</a></li>'
     + '<li><a href="' + href('cat-run.html') + '">Cat Run</a></li>'
+    + '<li><a href="' + href('laser-cats.html') + '">Laser Cats</a></li>'
     + '<li><a href="https://app.sparkie.io/application?t=5fab11fbb83c8e002ea3b873&amp;m=CAT_ADOPT" target="_blank" rel="noopener">Apply to Adopt</a></li>'
     + '<li><a href="' + href('faq.html') + '">FAQ</a></li>'
     + '<li><a href="' + href('#contact-us') + '">Contact Us</a></li>'
