@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Cat's Meow Cat Rescue — Milwaukie, Oregon | Adopt a Cat Today</title>
-<meta name="description" content="Cat's Meow Cat Rescue is a 501(c)(3) nonprofit in Milwaukie & Gladstone, Oregon. Adopt cats and kittens, donate, volunteer, or shop rescue merch. Every cat deserves a loving home.">
+<meta name="description" content="Cat's Meow Cat Rescue is a 501(c)(3) nonprofit in Milwaukie & Gladstone, Oregon. Adopt cats and kittens, donate, or volunteer. Every cat deserves a loving home.">
 <meta name="keywords" content="cat rescue, cat adoption, Milwaukie Oregon, Gladstone Oregon, adopt a cat, kitten adoption, 501c3 nonprofit, cat shelter, rescue cats Portland, PetSmart charities partner">
 <meta property="og:title" content="Cat's Meow Cat Rescue — Milwaukie, Oregon">
 <meta property="og:description" content="Adopt your next best friend. 501(c)(3) cat rescue in Milwaukie & Gladstone, Oregon.">
@@ -26,7 +26,7 @@
 <link rel="stylesheet" href="shared.css">
 <link rel="preconnect" href="https://d8j0ntlcm91z4.cloudfront.net">
 <link rel="preconnect" href="https://images.pexels.com">
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"NonprofitOrganization","name":"Cat's Meow Cat Rescue","description":"501(c)(3) cat rescue in Milwaukie & Gladstone, Oregon. Adopt cats and kittens, donate, volunteer, or shop rescue merch.","url":"https://luckygoats33.github.io/cats-meow-rescue/","email":"catsmeowcatrescue@gmail.com","telephone":"+1-503-850-6363","taxID":"83-2426815","address":{"@type":"PostalAddress","postOfficeBoxNumber":"68222","addressLocality":"Milwaukie","addressRegion":"OR","postalCode":"97268","addressCountry":"US"},"areaServed":{"@type":"City","name":"Milwaukie, Oregon"},"nonprofitStatus":"501c3","sameAs":["https://www.facebook.com/catsmeowcatrescue/","https://www.instagram.com/catsmeowcatrescue/","https://www.petfinder.com/member/us/or/gladstone/cats-meow-cat-rescue-or393/"]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"NonprofitOrganization","name":"Cat's Meow Cat Rescue","description":"501(c)(3) cat rescue in Milwaukie & Gladstone, Oregon. Adopt cats and kittens, donate, or volunteer.","url":"https://luckygoats33.github.io/cats-meow-rescue/","email":"catsmeowcatrescue@gmail.com","telephone":"+1-503-850-6363","taxID":"83-2426815","address":{"@type":"PostalAddress","postOfficeBoxNumber":"68222","addressLocality":"Milwaukie","addressRegion":"OR","postalCode":"97268","addressCountry":"US"},"areaServed":{"@type":"City","name":"Milwaukie, Oregon"},"nonprofitStatus":"501c3","sameAs":["https://www.facebook.com/catsmeowcatrescue/","https://www.instagram.com/catsmeowcatrescue/","https://www.petfinder.com/member/us/or/gladstone/cats-meow-cat-rescue-or393/"]}</script>
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Montserrat:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400&display=swap" rel="stylesheet">
 <style>
 :root{
@@ -136,13 +136,21 @@ input,select,textarea{font-family:inherit;font-size:1rem}
 @keyframes heroBlob{0%,100%{transform:translate(0,0) scale(1)}33%{transform:translate(30px,-40px) scale(1.15)}66%{transform:translate(-25px,30px) scale(.9)}}
 .hero-eyebrow{display:inline-flex;align-items:center;gap:.5rem;font-size:.72rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:#FFDD44;margin-bottom:1.2rem}
 .hero-eyebrow::before{content:'';display:block;width:28px;height:2px;background:#FFDD44}
+.is-dormant{display:none !important}
 .hero-news{display:inline-flex;align-items:center;gap:.5rem;background:rgba(255,255,255,.15);backdrop-filter:blur(8px);border-radius:var(--radius-pill);padding:.4rem 1rem;font-size:.8rem;margin-bottom:1.5rem}
+.events-socials{display:flex;flex-wrap:wrap;gap:.75rem;margin-top:1.25rem}
+.events-socials .btn{justify-content:center}
+.fb-events{max-width:500px;margin:1.5rem 0 0;background:#fff;border-radius:var(--radius);overflow:hidden;box-shadow:0 8px 24px rgba(0,0,0,.08)}
+.fb-events .fb-page{display:block}
 .news-badge{background:var(--pri);color:#fff;font-weight:700;font-size:.65rem;padding:.15rem .5rem;border-radius:var(--radius-pill);text-transform:uppercase;letter-spacing:.06em}
 .hero-news:hover{background:rgba(255,255,255,.25);transform:translateY(-1px)}
 @keyframes pulse{0%,100%{opacity:1}50%{opacity:.6}}
 .hero-inner{width:var(--content);margin:0 auto;position:relative;z-index:2}
 .hero h1{margin-bottom:.5rem}
 .hero-subtitle{font-size:clamp(1rem,1.3vw,1.15rem);opacity:.8;max-width:36rem;margin-bottom:2.5rem;line-height:1.7}
+@media(min-width:961px){
+  .hero-subtitle{color:#2D1810;opacity:1;font-weight:600;text-shadow:none}
+}
 .hero-folds{display:grid;grid-template-columns:repeat(3,1fr);gap:1.25rem;margin-bottom:2.5rem}
 .hero-fold{background:rgba(255,255,255,.1);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border:1px solid rgba(255,255,255,.15);border-radius:var(--radius);padding:1.75rem 1.5rem;text-align:center;cursor:default;transition:all .35s ease;position:relative;overflow:hidden;pointer-events:none}
 .hero-fold .btn{pointer-events:auto;cursor:pointer}
@@ -171,6 +179,7 @@ input,select,textarea{font-family:inherit;font-size:1rem}
 .fold-cat{animation:floatCat 4s ease-in-out infinite}
 .hero-fold:nth-child(2) .fold-cat{animation-delay:-.8s}
 .hero-fold:nth-child(3) .fold-cat{animation-delay:-1.6s}
+.hero-fold img.fold-photo{display:block;width:100%;height:150px;object-fit:cover;object-position:center;border-radius:12px;margin:0 0 1rem;box-shadow:0 8px 22px rgba(0,0,0,.28);animation:none}
 /* Floating paw prints background */
 .hero-paws{position:absolute;inset:0;overflow:hidden;pointer-events:none;z-index:1}
 .hero-paw{position:absolute;opacity:.06;animation:pawFloat linear infinite}
@@ -209,7 +218,7 @@ input,select,textarea{font-family:inherit;font-size:1rem}
 .fur-nav--prev{left:-16px}
 .fur-nav--next{right:-16px}
 @media(max-width:960px){.fur-card{flex:0 0 calc(50% - .5rem);min-width:160px}.fur-nav--prev{left:4px}.fur-nav--next{right:4px}}
-@media(max-width:480px){.fur-card{flex:0 0 80%;min-width:0}}
+@media(max-width:480px){.fur-card{flex:0 0 80%;min-width:0}.give-methods{grid-template-columns:1fr}}
 
 /* Cat Browser */
 .cats-header{display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:1rem;margin-bottom:1.5rem}
@@ -248,10 +257,13 @@ input,select,textarea{font-family:inherit;font-size:1rem}
 .fund-card{background:rgba(255,255,255,.92);border:none;border-radius:var(--radius);padding:1.5rem;box-shadow:0 4px 16px rgba(0,0,0,.12)}
 .fund-card h3{font-size:.95rem;margin-bottom:.25rem;color:#2A1208}
 .fund-desc{font-size:.8rem;color:#5A3A20;margin-bottom:1rem}
-.fund-bar{height:8px;background:rgba(42,18,8,.15);border-radius:4px;overflow:hidden;margin-bottom:.5rem}
-.fund-fill{height:100%;border-radius:4px;transition:width 1s ease}
-.fund-nums{display:flex;justify-content:space-between;font-size:.75rem;color:#5A3A20}
-.fund-nums strong{color:#2A1208}
+.campaign-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:1rem;margin-top:1.25rem}
+.campaign-head{text-align:center;margin-top:2.5rem}
+.campaign-head h3{font-family:var(--serif);font-size:1.6rem;margin-bottom:.4rem}
+.campaign-intro{max-width:42rem;margin:.35rem auto 0;font-size:.92rem;line-height:1.55}
+.fund-card .btn{width:100%;justify-content:center}
+.give-methods{display:grid;grid-template-columns:1fr 1fr;gap:.75rem;margin-bottom:1rem}
+.give-methods .btn{justify-content:center;font-weight:700;border:none;text-align:center;line-height:1.3}
 .help-actions{display:grid;grid-template-columns:1fr 1fr;gap:1.25rem;margin-top:1.5rem}
 .help-action-card{background:#B22222;border:none;border-radius:var(--radius);padding:2rem;text-align:center;color:#fff;box-shadow:0 6px 20px rgba(0,0,0,.2);transition:transform .2s}
 .help-action-card:hover{transform:translateY(-4px)}
@@ -594,7 +606,7 @@ img,video,svg,iframe{max-width:100%;height:auto}
   .fold-bg{display:block}
   .hero-fold{background:none;border:none;color:#fff!important;backdrop-filter:none;-webkit-backdrop-filter:none;min-height:180px}
   .hero-fold::after{content:'';position:absolute;inset:0;background:linear-gradient(0deg,rgba(0,0,0,.85) 0%,rgba(0,0,0,.5) 50%,rgba(0,0,0,.2) 100%);border-radius:var(--radius);pointer-events:none}
-  .hero-fold .fold-cat{display:none}
+  .hero-fold .fold-cat,.hero-fold img.fold-photo{display:none}
   .hero-fold h2,.hero-fold h3,.hero-fold p,.hero-fold .btn{position:relative;z-index:2}
   .hero-fold h2{font-size:1.5rem;text-shadow:0 2px 8px rgba(0,0,0,.6)}
   .hero-fold p{font-size:.95rem;opacity:.95;text-shadow:0 1px 4px rgba(0,0,0,.4)}
@@ -812,44 +824,15 @@ img,video,svg,iframe{max-width:100%;height:auto}
     <div>
       <div class="hero-eyebrow">Portland, Oregon &middot; 501(c)(3) Nonprofit</div>
       <h1 class="heading-xl">Meet Your Next<br>Best Friend</h1>
-      <p class="hero-subtitle">A foster-based, all-volunteer rescue. 388+ cats rescued to date across the Portland metro area.</p>
-      <a href="#events" class="hero-news" id="hero-news" style="margin-bottom:1.5rem;text-decoration:none;color:inherit;cursor:pointer"><span class="news-badge" style="animation:pulse 2s ease-in-out infinite">Upcoming</span> <strong>Bingo Night Oct 17</strong> <span style="font-size:.7rem;opacity:.7;margin-left:.25rem">View Calendar &rarr;</span></a>
+      <p class="hero-subtitle">A foster-based, all-volunteer rescue. 4,500 cats helped across the Portland metro area.</p>
+      <a href="#events" class="hero-news" id="hero-news" style="margin-bottom:1.5rem;text-decoration:none;color:inherit;cursor:pointer"><span class="news-badge" style="animation:pulse 2s ease-in-out infinite">Upcoming</span> Events are listed from our Facebook page <span style="font-size:.7rem;opacity:.7;margin-left:.25rem">View &rarr;</span></a>
     </div>
 
     <div class="hero-folds">
       <!-- Fold 1: Adopt -->
       <div class="hero-fold" style="color:#fff">
         <img class="fold-bg" src="https://d8j0ntlcm91z4.cloudfront.net/user_3681BqEuWywySamoBS6St7ib1O7/hf_20260725_085347_aaa3abfd-cb05-4eb2-ac0b-9ad49fcaf4e4_min.webp" alt="" loading="lazy">
-        <svg class="fold-cat" viewBox="0 0 140 140" aria-hidden="true">
-          <ellipse cx="70" cy="95" rx="38" ry="40" fill="rgba(255,255,255,.2)"/>
-          <circle cx="70" cy="52" r="30" fill="rgba(255,255,255,.25)"/>
-          <polygon points="48,40 35,8 60,32" fill="rgba(255,255,255,.25)"/>
-          <polygon points="92,40 105,8 80,32" fill="rgba(255,255,255,.25)"/>
-          <polygon points="50,39 40,15 58,33" fill="rgba(255,180,180,.15)"/>
-          <polygon points="90,39 100,15 82,33" fill="rgba(255,180,180,.15)"/>
-          <g class="cat-eyes">
-            <ellipse cx="58" cy="48" rx="8" ry="9" fill="rgba(0,0,0,.06)"/>
-            <ellipse cx="82" cy="48" rx="8" ry="9" fill="rgba(0,0,0,.06)"/>
-            <circle cx="58" cy="47" r="5" fill="#4ADE80"/>
-            <circle cx="82" cy="47" r="5" fill="#4ADE80"/>
-            <circle cx="60" cy="45" r="2" fill="#fff" opacity=".9"/>
-            <circle cx="84" cy="45" r="2" fill="#fff" opacity=".9"/>
-            <circle cx="58" cy="48" r="2.5" fill="rgba(0,0,0,.5)"/>
-            <circle cx="82" cy="48" r="2.5" fill="rgba(0,0,0,.5)"/>
-            <ellipse class="cat-eye-lid" cx="58" cy="47" rx="8" ry="9" fill="rgba(255,255,255,.25)" style="transform-origin:58px 47px"/>
-            <ellipse class="cat-eye-lid" cx="82" cy="47" rx="8" ry="9" fill="rgba(255,255,255,.25)" style="transform-origin:82px 47px"/>
-          </g>
-          <ellipse cx="70" cy="62" rx="4" ry="2.5" fill="rgba(255,180,180,.3)"/>
-          <path d="M60 68 Q70 76 80 68" fill="none" stroke="rgba(255,255,255,.2)" stroke-width="1.5" stroke-linecap="round"/>
-          <line x1="42" y1="56" x2="15" y2="52" stroke="rgba(255,255,255,.15)" stroke-width="1.2"/>
-          <line x1="42" y1="62" x2="12" y2="64" stroke="rgba(255,255,255,.15)" stroke-width="1.2"/>
-          <line x1="98" y1="56" x2="125" y2="52" stroke="rgba(255,255,255,.15)" stroke-width="1.2"/>
-          <line x1="98" y1="62" x2="128" y2="64" stroke="rgba(255,255,255,.15)" stroke-width="1.2"/>
-          <ellipse cx="52" cy="120" rx="12" ry="8" fill="rgba(255,255,255,.15)"/>
-          <ellipse cx="88" cy="120" rx="12" ry="8" fill="rgba(255,255,255,.15)"/>
-          <path class="cat-tail" d="M100 85 Q130 70 125 100 Q122 115 112 108" fill="rgba(255,255,255,.18)" stroke="none" style="transform-origin:100px 85px"/>
-          <circle cx="70" cy="75" r="1.5" fill="rgba(255,255,255,.1)" style="animation:purr 2s ease-in-out infinite"/>
-        </svg>
+        <img class="fold-cat fold-photo" src="https://images.pexels.com/photos/1170986/pexels-photo-1170986.jpeg?auto=compress&cs=tinysrgb&w=900&h=560&fit=crop" alt="Friendly cat looking at the camera" width="900" height="560">
         <h2 class="heading-md" style="font-size:1.35rem">Meet Your BFF</h2>
         <p>Adorable cats &amp; kittens waiting for their forever home. Find your perfect match!</p>
         <a href="#cats" class="btn btn--pill">Browse Cats</a>
@@ -859,35 +842,7 @@ img,video,svg,iframe{max-width:100%;height:auto}
       <!-- Fold 2: Donate -->
       <div class="hero-fold" style="color:#fff">
         <img class="fold-bg" src="https://d8j0ntlcm91z4.cloudfront.net/user_3681BqEuWywySamoBS6St7ib1O7/hf_20260725_085323_ae286697-0edb-40a1-bef5-af5cb543d95f_min.webp" alt="" loading="lazy">
-        <svg class="fold-cat" viewBox="0 0 140 140" aria-hidden="true">
-          <ellipse cx="70" cy="95" rx="38" ry="40" fill="rgba(255,255,255,.2)"/>
-          <circle cx="70" cy="52" r="30" fill="rgba(255,255,255,.25)"/>
-          <polygon points="48,40 35,8 60,32" fill="rgba(255,255,255,.25)"/>
-          <polygon points="92,40 105,8 80,32" fill="rgba(255,255,255,.25)"/>
-          <polygon points="50,39 40,15 58,33" fill="rgba(255,180,180,.15)"/>
-          <polygon points="90,39 100,15 82,33" fill="rgba(255,180,180,.15)"/>
-          <g class="cat-eyes">
-            <ellipse cx="58" cy="48" rx="8" ry="9" fill="rgba(0,0,0,.06)"/>
-            <ellipse cx="82" cy="48" rx="8" ry="9" fill="rgba(0,0,0,.06)"/>
-            <circle cx="58" cy="47" r="5" fill="#FBBF24"/>
-            <circle cx="82" cy="47" r="5" fill="#FBBF24"/>
-            <circle cx="60" cy="45" r="2" fill="#fff" opacity=".9"/>
-            <circle cx="84" cy="45" r="2" fill="#fff" opacity=".9"/>
-            <circle cx="58" cy="48" r="2.5" fill="rgba(0,0,0,.5)"/>
-            <circle cx="82" cy="48" r="2.5" fill="rgba(0,0,0,.5)"/>
-            <ellipse class="cat-eye-lid" cx="58" cy="47" rx="8" ry="9" fill="rgba(255,255,255,.25)" style="transform-origin:58px 47px"/>
-            <ellipse class="cat-eye-lid" cx="82" cy="47" rx="8" ry="9" fill="rgba(255,255,255,.25)" style="transform-origin:82px 47px"/>
-          </g>
-          <ellipse cx="70" cy="62" rx="4" ry="2.5" fill="rgba(255,180,180,.3)"/>
-          <path d="M60 68 Q70 76 80 68" fill="none" stroke="rgba(255,255,255,.2)" stroke-width="1.5" stroke-linecap="round"/>
-          <line x1="42" y1="56" x2="15" y2="52" stroke="rgba(255,255,255,.15)" stroke-width="1.2"/>
-          <line x1="42" y1="62" x2="12" y2="64" stroke="rgba(255,255,255,.15)" stroke-width="1.2"/>
-          <line x1="98" y1="56" x2="125" y2="52" stroke="rgba(255,255,255,.15)" stroke-width="1.2"/>
-          <line x1="98" y1="62" x2="128" y2="64" stroke="rgba(255,255,255,.15)" stroke-width="1.2"/>
-          <!-- Heart -->
-          <path d="M55 85 C55 78 65 75 70 82 C75 75 85 78 85 85 C85 95 70 105 70 105 C70 105 55 95 55 85Z" fill="rgba(255,100,100,.25)"/>
-          <path class="cat-tail" d="M100 85 Q125 60 120 95 Q118 108 108 102" fill="rgba(255,255,255,.18)" stroke="none" style="transform-origin:100px 85px"/>
-        </svg>
+        <img class="fold-cat fold-photo" src="https://images.pexels.com/photos/7725961/pexels-photo-7725961.jpeg?auto=compress&cs=tinysrgb&w=900&h=560&fit=crop" alt="Kitten held gently in someone's hands" width="900" height="560">
         <h2 class="heading-md" style="font-size:1.35rem">Help the Kitties</h2>
         <p>Every dollar goes directly to medical care, food, and shelter for cats in need. Tax-deductible!</p>
         <a href="#help" class="btn btn--pill" data-donate-trigger>Donate Now</a>
@@ -897,41 +852,10 @@ img,video,svg,iframe{max-width:100%;height:auto}
       <!-- Fold 3: Events -->
       <div class="hero-fold" style="color:#fff">
         <img class="fold-bg" src="https://d8j0ntlcm91z4.cloudfront.net/user_3681BqEuWywySamoBS6St7ib1O7/hf_20260725_085338_b4874ae5-9e31-4527-80d8-56eb432024f7_min.webp" alt="" loading="lazy">
-        <svg class="fold-cat" viewBox="0 0 140 140" aria-hidden="true">
-          <ellipse cx="70" cy="95" rx="38" ry="40" fill="rgba(255,255,255,.2)"/>
-          <circle cx="70" cy="52" r="30" fill="rgba(255,255,255,.25)"/>
-          <polygon points="48,40 38,5 60,32" fill="rgba(255,255,255,.25)"/>
-          <polygon points="92,40 102,5 80,32" fill="rgba(255,255,255,.25)"/>
-          <polygon points="50,39 42,12 58,33" fill="rgba(255,180,180,.15)"/>
-          <polygon points="90,39 98,12 82,33" fill="rgba(255,180,180,.15)"/>
-          <g class="cat-eyes">
-            <ellipse cx="58" cy="48" rx="8" ry="9" fill="rgba(0,0,0,.06)"/>
-            <ellipse cx="82" cy="48" rx="8" ry="9" fill="rgba(0,0,0,.06)"/>
-            <circle cx="58" cy="47" r="5" fill="#60A5FA"/>
-            <circle cx="82" cy="47" r="5" fill="#60A5FA"/>
-            <circle cx="60" cy="45" r="2" fill="#fff" opacity=".9"/>
-            <circle cx="84" cy="45" r="2" fill="#fff" opacity=".9"/>
-            <circle cx="58" cy="48" r="2.5" fill="rgba(0,0,0,.5)"/>
-            <circle cx="82" cy="48" r="2.5" fill="rgba(0,0,0,.5)"/>
-            <ellipse class="cat-eye-lid" cx="58" cy="47" rx="8" ry="9" fill="rgba(255,255,255,.25)" style="transform-origin:58px 47px"/>
-            <ellipse class="cat-eye-lid" cx="82" cy="47" rx="8" ry="9" fill="rgba(255,255,255,.25)" style="transform-origin:82px 47px"/>
-          </g>
-          <ellipse cx="70" cy="62" rx="4" ry="2.5" fill="rgba(255,180,180,.3)"/>
-          <path d="M58 66 Q70 58 82 66" fill="none" stroke="rgba(255,255,255,.2)" stroke-width="1.5" stroke-linecap="round"/>
-          <line x1="42" y1="56" x2="15" y2="50" stroke="rgba(255,255,255,.15)" stroke-width="1.2"/>
-          <line x1="42" y1="62" x2="12" y2="64" stroke="rgba(255,255,255,.15)" stroke-width="1.2"/>
-          <line x1="98" y1="56" x2="125" y2="50" stroke="rgba(255,255,255,.15)" stroke-width="1.2"/>
-          <line x1="98" y1="62" x2="128" y2="64" stroke="rgba(255,255,255,.15)" stroke-width="1.2"/>
-          <!-- Yarn ball -->
-          <circle cx="45" cy="110" r="10" fill="none" stroke="rgba(255,255,255,.2)" stroke-width="2"/>
-          <path d="M38 104 Q45 115 52 106" fill="none" stroke="rgba(255,255,255,.15)" stroke-width="1.5"/>
-          <path d="M40 112 Q48 105 50 115" fill="none" stroke="rgba(255,255,255,.15)" stroke-width="1.5"/>
-          <ellipse cx="30" cy="118" rx="10" ry="6" fill="rgba(255,255,255,.12)"/>
-          <path class="cat-tail" d="M100 85 Q135 75 128 105 Q125 118 115 110" fill="rgba(255,255,255,.18)" stroke="none" style="transform-origin:100px 85px"/>
-        </svg>
+        <img class="fold-cat fold-photo" src="https://images.pexels.com/photos/4587998/pexels-photo-4587998.jpeg?auto=compress&cs=tinysrgb&w=900&h=560&fit=crop" alt="Person cuddling a cat at home" width="900" height="560">
         <h2 class="heading-md" style="font-size:1.35rem">Join the Fun</h2>
-        <p>Summer Jamboree, Bingo Night, adoption events &amp; more. Bring the family!</p>
-        <a href="#events" class="btn btn--pill">See Events</a>
+        <p>Follow along on Facebook and Instagram. Bring the family when we post a meetup.</p>
+        <a href="#events" class="btn btn--pill">Find Us Online</a>
         <div class="fold-paws"><svg viewBox="0 0 60 56" fill="#fff"><path d="M30 28c-8 0-16 5-16 14 0 6 5 12 16 12s16-6 16-12c0-9-8-14-16-14z"/><ellipse cx="14" cy="16" rx="6" ry="7"/><ellipse cx="26" cy="10" rx="5.5" ry="6.5"/><ellipse cx="34" cy="10" rx="5.5" ry="6.5"/><ellipse cx="46" cy="16" rx="6" ry="7"/></svg><svg viewBox="0 0 60 56" fill="#fff" style="transform:rotate(-10deg)"><path d="M30 28c-8 0-16 5-16 14 0 6 5 12 16 12s16-6 16-12c0-9-8-14-16-14z"/><ellipse cx="14" cy="16" rx="6" ry="7"/><ellipse cx="26" cy="10" rx="5.5" ry="6.5"/><ellipse cx="34" cy="10" rx="5.5" ry="6.5"/><ellipse cx="46" cy="16" rx="6" ry="7"/></svg></div>
       </div>
     </div>
@@ -944,9 +868,9 @@ img,video,svg,iframe{max-width:100%;height:auto}
 <section class="mission">
   <div class="mission-inner">
     <div class="mission-block">
-      <div class="mission-stat">388+</div>
-      <div class="mission-label">Cats Rescued to Date</div>
-      <p class="mission-text">From kittens to golden seniors, every cat lives in a real foster home with a dedicated family — never in a cage.</p>
+      <div class="mission-stat">4,500</div>
+      <div class="mission-label">Cats Helped</div>
+      <p class="mission-text">From kittens to golden seniors, every cat lives in a real foster home with a dedicated family.</p>
     </div>
     <div class="mission-divider"></div>
     <div class="mission-block">
@@ -958,7 +882,7 @@ img,video,svg,iframe{max-width:100%;height:auto}
     <div class="mission-block">
       <div class="mission-stat">TNR</div>
       <div class="mission-label">Population Control</div>
-      <p class="mission-text">We trap, neuter, and return feral cats — reducing colony sizes humanely through our partnership with FCCO.</p>
+      <p class="mission-text">We trap, neuter, and return feral cats — reducing colony sizes humanely.</p>
     </div>
   </div>
 </section>
@@ -971,10 +895,11 @@ img,video,svg,iframe{max-width:100%;height:auto}
   <div class="container">
     <span class="kicker reveal">What We Do &amp; Why</span>
     <h2 class="heading-lg reveal">Every Cat Gets a Shot at a Better Life</h2>
+    <p class="body-lg reveal" style="max-width:40rem;margin-top:.75rem">That &ldquo;shot&rdquo; is literal, too: every cat receives age-appropriate vaccines before going home to their family.</p>
     <div class="wwd-grid">
-      <div class="wwd-card reveal"><img class="wwd-photo" src="https://images.pexels.com/photos/1056251/pexels-photo-1056251.jpeg?auto=compress&cs=tinysrgb&w=400&h=300&fit=crop" alt="Stray cat being rescued" loading="lazy"><h3>Rescue</h3><p>We take in abandoned, surrendered, and stray cats from the Portland metro area and give them immediate care.</p></div>
-      <div class="wwd-card reveal"><img class="wwd-photo" src="https://images.pexels.com/photos/7725961/pexels-photo-7725961.jpeg?auto=compress&cs=tinysrgb&w=400&h=300&fit=crop" alt="Person holding a foster kitten" loading="lazy"><h3>Foster</h3><p>Every cat lives in a real home with a dedicated foster family &mdash; never in a cage. We provide all supplies and vet care.</p></div>
-      <div class="wwd-card reveal"><img class="wwd-photo" src="https://images.pexels.com/photos/2194261/pexels-photo-2194261.jpeg?auto=compress&cs=tinysrgb&w=400&h=300&fit=crop" alt="Community cat outdoors" loading="lazy"><h3>TNR</h3><p>Our Trap-Neuter-Return program humanely manages feral cat colonies through spay/neuter with FCCO.</p></div>
+      <div class="wwd-card reveal"><img class="wwd-photo" src="https://images.pexels.com/photos/1056251/pexels-photo-1056251.jpeg?auto=compress&cs=tinysrgb&w=400&h=300&fit=crop" alt="Stray cat being rescued" loading="lazy"><h3>Rescue</h3><p>We take in abandoned, surrendered, and stray cats from the Portland metro area, give them immediate care, and start age-appropriate vaccines before adoption.</p></div>
+      <div class="wwd-card reveal"><img class="wwd-photo" src="https://images.pexels.com/photos/7725961/pexels-photo-7725961.jpeg?auto=compress&cs=tinysrgb&w=400&h=300&fit=crop" alt="Person holding a foster kitten" loading="lazy"><h3>Foster</h3><p>Every cat lives in a real home with a dedicated foster family. We provide all supplies and vet care.</p></div>
+      <div class="wwd-card reveal"><img class="wwd-photo" src="https://images.pexels.com/photos/2194261/pexels-photo-2194261.jpeg?auto=compress&cs=tinysrgb&w=400&h=300&fit=crop" alt="Community cat outdoors" loading="lazy"><h3>TNR</h3><p>Our Trap-Neuter-Return program humanely manages feral cat colonies through spay and neuter.</p></div>
       <div class="wwd-card reveal"><img class="wwd-photo" src="https://images.pexels.com/photos/6001442/pexels-photo-6001442.jpeg?auto=compress&cs=tinysrgb&w=400&h=300&fit=crop" alt="Happy cat being adopted" loading="lazy"><h3>Adopt</h3><p>We carefully match each cat to their perfect family &mdash; not first-come, first-served. It's about the right fit.</p></div>
     </div>
   </div>
@@ -1027,14 +952,63 @@ img,video,svg,iframe{max-width:100%;height:auto}
   </div>
 </section>
 
-<!-- Lifetime rescue count — no this-year figure is sourced in the repo -->
-<section class="section" style="background:var(--ground)">
+<!-- Happy endings: home photos, not live listings. Yearly totals stay on the PetSmart lookup. -->
+<section class="section" id="adoption-totals" style="background:var(--ground)">
   <div class="container">
-    <h2 class="heading-lg reveal">388+ Cats Rescued to Date</h2>
-    <p class="body-lg reveal" style="max-width:32rem;margin-top:.5rem">A foster-based, all-volunteer rescue in the Portland metro area. Cats available for adoption are listed above and on our Petfinder page — not stock photos.</p>
-    <div style="text-align:center;margin-top:2rem" class="reveal">
-      <a href="https://www.petfinder.com/member/us/or/gladstone/cats-meow-cat-rescue-or393/" target="_blank" rel="noopener" class="btn btn--pri btn--lg btn--pill">See Cats on Petfinder</a>
+    <span class="kicker reveal">Happy Endings</span>
+    <h2 class="heading-lg reveal">Life After They Go Home</h2>
+    <p class="body-lg reveal" style="max-width:40rem;margin-top:.5rem">A look at the home life we work toward. These photos are not cats currently up for adoption. Cats you can meet today are in <a href="#cats" style="color:var(--pri);font-weight:700">Available Cats</a>, live from Petfinder.</p>
+    <div class="fur-carousel-wrap reveal">
+      <button class="fur-nav fur-nav--prev" id="fur-prev" aria-label="Previous">&larr;</button>
+      <button class="fur-nav fur-nav--next" id="fur-next" aria-label="Next">&rarr;</button>
+      <div class="fur-gallery" id="fur-gallery">
+        <div class="fur-card">
+          <span class="fur-tag">Alumni</span>
+          <img src="https://images.pexels.com/photos/1404819/pexels-photo-1404819.jpeg?auto=compress&cs=tinysrgb&w=600&h=800&fit=crop" alt="Cat resting on a person's lap at home" loading="lazy">
+          <div class="fur-name">Lap time</div>
+        </div>
+        <div class="fur-card">
+          <span class="fur-tag">Alumni</span>
+          <img src="https://images.pexels.com/photos/1543793/pexels-photo-1543793.jpeg?auto=compress&cs=tinysrgb&w=600&h=800&fit=crop" alt="Two cats sitting together indoors" loading="lazy">
+          <div class="fur-name">Side by side</div>
+        </div>
+        <div class="fur-card">
+          <span class="fur-tag">Alumni</span>
+          <img src="https://images.pexels.com/photos/2061057/pexels-photo-2061057.jpeg?auto=compress&cs=tinysrgb&w=600&h=800&fit=crop" alt="Grey cat curled on a sofa" loading="lazy">
+          <div class="fur-name">Sofa days</div>
+        </div>
+        <div class="fur-card">
+          <span class="fur-tag">Alumni</span>
+          <img src="https://images.pexels.com/photos/1560424/pexels-photo-1560424.jpeg?auto=compress&cs=tinysrgb&w=600&h=800&fit=crop" alt="Person holding a relaxed cat at home" loading="lazy">
+          <div class="fur-name">In good hands</div>
+        </div>
+        <div class="fur-card">
+          <span class="fur-tag">Alumni</span>
+          <img src="https://images.pexels.com/photos/1643457/pexels-photo-1643457.jpeg?auto=compress&cs=tinysrgb&w=600&h=800&fit=crop" alt="Kitten lying on a bed" loading="lazy">
+          <div class="fur-name">Tucked in</div>
+        </div>
+        <div class="fur-card">
+          <span class="fur-tag">Alumni</span>
+          <img src="https://images.pexels.com/photos/1828875/pexels-photo-1828875.jpeg?auto=compress&cs=tinysrgb&w=600&h=800&fit=crop" alt="Cat and dog lying together" loading="lazy">
+          <div class="fur-name">New sibling</div>
+        </div>
+        <div class="fur-card">
+          <span class="fur-tag">Alumni</span>
+          <img src="https://images.pexels.com/photos/1741205/pexels-photo-1741205.jpeg?auto=compress&cs=tinysrgb&w=600&h=800&fit=crop" alt="Cat sitting on a sunny windowsill" loading="lazy">
+          <div class="fur-name">Window seat</div>
+        </div>
+        <div class="fur-card">
+          <span class="fur-tag">Alumni</span>
+          <img src="https://images.pexels.com/photos/1276553/pexels-photo-1276553.jpeg?auto=compress&cs=tinysrgb&w=600&h=800&fit=crop" alt="White cat resting in a patch of sun" loading="lazy">
+          <div class="fur-name">Sunbeam</div>
+        </div>
+      </div>
     </div>
+    <div class="reveal" style="display:flex;flex-wrap:wrap;gap:.75rem;margin-top:1.75rem">
+      <a href="https://petsmartcharities.org/pro/resources/adoption-partner/adoption-partner-look-up" target="_blank" rel="noopener" class="btn btn--pri btn--lg btn--pill">Look Up Partner #9426</a>
+      <a href="#cats" class="btn btn--outline btn--lg btn--pill">See Available Cats</a>
+    </div>
+    <p class="reveal" style="max-width:40rem;margin-top:1rem;font-size:.88rem;color:var(--stone)">Yearly adoption totals are published by PetSmart Charities for Cat's Meow, Adoption Partner <strong>#9426</strong>. On the look-up page, choose a year and enter that ID. Our lifetime figure, 4,500 cats helped, is in the banner above.</p>
   </div>
 </section>
 
@@ -1046,22 +1020,55 @@ img,video,svg,iframe{max-width:100%;height:auto}
   <div class="container">
     <span class="kicker reveal">How to Help the Kitties</span>
     <h2 class="heading-lg reveal">Your Support Saves Lives</h2>
-    <div class="reveal" style="margin-top:2rem;background:linear-gradient(135deg,#B22222,#D43030);color:#fff;border:none;border-radius:var(--radius);padding:2.5rem 2rem;max-width:36rem;margin-left:auto;margin-right:auto;box-shadow:0 8px 32px rgba(178,34,34,.3)">
+    <div class="reveal" style="margin-top:2rem;background:linear-gradient(135deg,#B22222,#D43030);color:#fff;border:none;border-radius:var(--radius);padding:2.5rem 2rem;max-width:40rem;margin-left:auto;margin-right:auto;box-shadow:0 8px 32px rgba(178,34,34,.3)">
       <h3 style="font-family:var(--serif);font-size:1.4rem;text-align:center;margin-bottom:.5rem;color:#fff">Ways to Give</h3>
       <p style="font-size:.85rem;color:rgba(255,255,255,.85);text-align:center;margin-bottom:1.5rem">100% of donations go to cat care. Tax-deductible &middot; EIN: 83-2426815</p>
-      <div style="display:grid;grid-template-columns:1fr 1fr;gap:.75rem;margin-bottom:1rem">
-        <a href="https://www.facebook.com/catsmeowcatrescue/" target="_blank" rel="noopener" class="btn btn--lg btn--pill" style="justify-content:center;background:#fff;color:#B22222;font-weight:700;border:none">Facebook Donate</a>
-        <a href="#help" data-donate-trigger class="btn btn--lg btn--pill" style="justify-content:center;background:#008CFF;color:#fff;border:none;font-weight:700"><svg viewBox="0 0 24 24" width="16" height="16" fill="#fff" style="margin-right:4px"><path d="M19.27 2c.8 1.32 1.16 2.68 1.16 4.4 0 5.48-4.68 12.6-8.48 17.6H5.18L2.57 3.36l5.76-.52 1.6 12.8C11.73 12.4 13.97 7.56 13.97 4.8c0-1.68-.52-2.84-1.2-3.72L19.27 2z"/></svg>Venmo</a>
+      <a href="https://catsmeowcatrescue.networkforgood.com/projects/177158-saving-lives-one-cat-at-a-time" target="_blank" rel="noopener" class="btn btn--lg btn--pill" style="width:100%;justify-content:center;background:#fff;color:#B22222;font-weight:700;border:none;margin-bottom:.75rem">Donate on Network for Good</a>
+      <div class="give-methods">
+        <a href="https://venmo.com/CatsMeowCatRescue" target="_blank" rel="noopener" class="btn btn--lg btn--pill" style="background:#008CFF;color:#fff">Venmo<br>@CatsMeowCatRescue</a>
+        <a href="https://cash.app/$catsmeowcatrescue" target="_blank" rel="noopener" class="btn btn--lg btn--pill" style="background:#00C244;color:#fff">Cash App<br>$catsmeowcatrescue</a>
       </div>
       <div style="display:flex;gap:1rem;justify-content:center;padding-top:1rem;border-top:1px solid rgba(255,255,255,.2);font-size:.82rem;color:rgba(255,255,255,.8);flex-wrap:wrap;text-align:center">
         <span><strong style="color:#fff">Email:</strong> <a href="mailto:catsmeowcatrescue@gmail.com" style="color:#FFDD44">catsmeowcatrescue@gmail.com</a></span>
         <span><strong style="color:#fff">Mail:</strong> PO Box 68222, Milwaukie, OR 97268</span>
       </div>
-      <p style="font-size:.72rem;color:rgba(255,255,255,.65);margin-top:.75rem;text-align:center">Employer matching may be available &middot; Ask us about sponsoring a cat</p>
+      <p style="font-size:.78rem;color:rgba(255,255,255,.85);margin-top:.85rem;text-align:center;line-height:1.5">Employer matching may be available. <a href="https://www.charitynavigator.org/?bay=content.view&amp;cpid=1799" target="_blank" rel="noopener" style="color:#FFDD44;text-decoration:underline">Charity Navigator’s employer matching resources</a> can help you check your workplace.</p>
+      <p style="font-size:.78rem;color:rgba(255,255,255,.85);margin-top:.45rem;text-align:center;line-height:1.5">In Oregon, you can also give through BottleDrop Give / Blue Bags and Fred Meyer Community Rewards.</p>
+    </div>
+    <div class="campaign-head reveal">
+      <h3>Help Support Our Kitties</h3>
+      <p class="campaign-intro">Pick a fund, then give on Network for Good. There is one donation page for now — add the fund name in your donation note so the gift is directed there.</p>
+      <div class="campaign-grid">
+        <article class="fund-card">
+          <h3>Medical Fund</h3>
+          <p class="fund-desc">Veterinary care for sick and injured cats.</p>
+          <a href="https://catsmeowcatrescue.networkforgood.com/projects/177158-saving-lives-one-cat-at-a-time" target="_blank" rel="noopener" class="btn btn--pri btn--sm btn--pill">Give to Medical Fund</a>
+        </article>
+        <article class="fund-card">
+          <h3>Supplies (Fill their belly)</h3>
+          <p class="fund-desc">Food, litter, and everyday supplies for cats in care.</p>
+          <a href="https://catsmeowcatrescue.networkforgood.com/projects/177158-saving-lives-one-cat-at-a-time" target="_blank" rel="noopener" class="btn btn--pri btn--sm btn--pill">Give to Supplies</a>
+        </article>
+        <article class="fund-card">
+          <h3>Spay/Neuter</h3>
+          <p class="fund-desc">Surgeries for cats in our care.</p>
+          <a href="https://catsmeowcatrescue.networkforgood.com/projects/177158-saving-lives-one-cat-at-a-time" target="_blank" rel="noopener" class="btn btn--pri btn--sm btn--pill">Give to Spay/Neuter</a>
+        </article>
+        <article class="fund-card">
+          <h3>Cat colonies / local colony care</h3>
+          <p class="fund-desc">Care for community cats living in local colonies.</p>
+          <a href="https://catsmeowcatrescue.networkforgood.com/projects/177158-saving-lives-one-cat-at-a-time" target="_blank" rel="noopener" class="btn btn--pri btn--sm btn--pill">Give to Colony Care</a>
+        </article>
+        <article class="fund-card">
+          <h3>TNR Feed / community care</h3>
+          <p class="fund-desc">Food and supplies for trap-neuter-return and community feeding.</p>
+          <a href="https://catsmeowcatrescue.networkforgood.com/projects/177158-saving-lives-one-cat-at-a-time" target="_blank" rel="noopener" class="btn btn--pri btn--sm btn--pill">Give to TNR Feed</a>
+        </article>
+      </div>
     </div>
     <div class="help-actions reveal">
-      <div class="help-action-card"><img class="card-photo" src="https://d8j0ntlcm91z4.cloudfront.net/user_3681BqEuWywySamoBS6St7ib1O7/hf_20260725_085331_1e3fb5ac-573a-46bd-a926-cf2f48cdc8f1_min.webp" alt="Tuxedo cat lounging on windowsill" loading="lazy"><h3>Foster a Cat</h3><p>Open your home temporarily. We provide everything &mdash; food, litter, vet care, supplies. You provide the love.</p><a href="#apply" class="btn btn--pri btn--sm btn--pill">Apply to Foster</a></div>
-      <div class="help-action-card"><img class="card-photo" src="https://d8j0ntlcm91z4.cloudfront.net/user_3681BqEuWywySamoBS6St7ib1O7/hf_20260725_085334_f9765c90-9a09-467d-9d59-c0ab41799a18_min.webp" alt="Senior gray cat with amber eyes" loading="lazy"><h3>Volunteer</h3><p>Drive cats to FCCO clinics, help at adoption events, photograph fosters. Flexible hours, huge impact.</p><a href="#contact-us" class="btn btn--pri btn--sm btn--pill">Get Involved</a></div>
+      <div class="help-action-card"><img class="card-photo" src="https://d8j0ntlcm91z4.cloudfront.net/user_3681BqEuWywySamoBS6St7ib1O7/hf_20260725_085331_1e3fb5ac-573a-46bd-a926-cf2f48cdc8f1_min.webp" alt="Tuxedo cat lounging on windowsill" loading="lazy"><h3>Foster a Cat</h3><p>Open your home temporarily. We provide everything &mdash; food, litter, vet care, supplies. You provide the love.</p><a href="#contact-us" class="btn btn--pri btn--sm btn--pill">Apply to Foster</a></div>
+      <div class="help-action-card"><img class="card-photo" src="https://d8j0ntlcm91z4.cloudfront.net/user_3681BqEuWywySamoBS6St7ib1O7/hf_20260725_085334_f9765c90-9a09-467d-9d59-c0ab41799a18_min.webp" alt="Senior gray cat with amber eyes" loading="lazy"><h3>Volunteer</h3><p>Drive cats to clinics, help at adoption events, photograph fosters. Flexible hours, huge impact.</p><a href="#contact-us" class="btn btn--pri btn--sm btn--pill">Get Involved</a></div>
     </div>
   </div>
 </section>
@@ -1069,24 +1076,28 @@ img,video,svg,iframe{max-width:100%;height:auto}
 <!-- Paw Divider -->
 <div class="paw-divider" aria-hidden="true"><svg viewBox="0 0 60 56" width="20" height="18" fill="var(--pri)" style="opacity:.18;transform:rotate(-8deg)"><path d="M30 28c-8 0-16 5-16 14 0 6 5 12 16 12s16-6 16-12c0-9-8-14-16-14z"/><ellipse cx="14" cy="16" rx="6" ry="7"/><ellipse cx="26" cy="10" rx="5.5" ry="6.5"/><ellipse cx="34" cy="10" rx="5.5" ry="6.5"/><ellipse cx="46" cy="16" rx="6" ry="7"/></svg><svg viewBox="0 0 60 56" width="26" height="22" fill="var(--gold)" style="opacity:.22"><path d="M30 28c-8 0-16 5-16 14 0 6 5 12 16 12s16-6 16-12c0-9-8-14-16-14z"/><ellipse cx="14" cy="16" rx="6" ry="7"/><ellipse cx="26" cy="10" rx="5.5" ry="6.5"/><ellipse cx="34" cy="10" rx="5.5" ry="6.5"/><ellipse cx="46" cy="16" rx="6" ry="7"/></svg><svg viewBox="0 0 60 56" width="22" height="20" fill="var(--pri)" style="opacity:.15;transform:rotate(15deg)"><path d="M30 28c-8 0-16 5-16 14 0 6 5 12 16 12s16-6 16-12c0-9-8-14-16-14z"/><ellipse cx="14" cy="16" rx="6" ry="7"/><ellipse cx="26" cy="10" rx="5.5" ry="6.5"/><ellipse cx="34" cy="10" rx="5.5" ry="6.5"/><ellipse cx="46" cy="16" rx="6" ry="7"/></svg></div>
 
-<!-- Events Calendar -->
+<!-- Events: Meta Page Plugin, events tab. No local event list. -->
 <section class="section" id="events" style="background:linear-gradient(135deg,#FFF0E6 0%,#FFE4F0 30%,#E8F4FD 60%,#FFF8E1 100%);padding-bottom:4rem">
   <div class="container">
-    <span class="kicker reveal">Help Out the Kitties</span>
-    <h2 class="heading-lg reveal">Upcoming Events</h2>
-    <div class="events-layout reveal">
-      <div class="cal-wrap">
-        <div class="cal-nav"><button id="cal-prev" aria-label="Previous month">&larr;</button><h3 id="cal-header"></h3><button id="cal-next" aria-label="Next month">&rarr;</button></div>
-        <div class="cal-weekdays"><span>Sun</span><span>Mon</span><span>Tue</span><span>Wed</span><span>Thu</span><span>Fri</span><span>Sat</span></div>
-        <div class="cal-grid" id="cal-grid"></div>
+    <span class="kicker reveal">Upcoming</span>
+    <h2 class="heading-lg reveal">Events from our Facebook page</h2>
+    <p class="body-lg reveal" style="max-width:36rem;margin-top:.75rem">Upcoming events are listed from our Facebook page. They update when we post a new one.</p>
+    <div class="fb-events reveal">
+      <div id="fb-root"></div>
+      <div class="fb-page" data-href="https://www.facebook.com/catsmeowcatrescue" data-tabs="events" data-width="500" data-height="560" data-small-header="true" data-adapt-container-width="true" data-hide-cover="true" data-show-facepile="false">
+        <blockquote cite="https://www.facebook.com/catsmeowcatrescue" class="fb-xfbml-parse-ignore"><a href="https://www.facebook.com/catsmeowcatrescue">Cat's Meow Cat Rescue on Facebook</a></blockquote>
       </div>
-      <div class="events-list" id="events-list"></div>
+    </div>
+    <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v26.0"></script>
+    <div class="events-socials reveal">
+      <a href="https://facebook.com/catsmeowcatrescue" target="_blank" rel="noopener" class="btn btn--pri btn--lg btn--pill">Facebook</a>
+      <a href="https://www.instagram.com/catsmeowcatrescue/" target="_blank" rel="noopener" class="btn btn--outline btn--lg btn--pill">Instagram @catsmeowcatrescue</a>
     </div>
   </div>
 </section>
 
-<!-- Shop -->
-<section class="section" id="shop">
+<!-- Shop (closed for now; markup kept dormant) -->
+<section class="section is-dormant" id="shop" hidden>
   <div class="container">
     <span class="kicker reveal">Cat's Meow Shop</span>
     <h2 class="heading-lg reveal">Rep the Rescue</h2>
@@ -1148,8 +1159,8 @@ img,video,svg,iframe{max-width:100%;height:auto}
 <!-- Apply -->
 <section class="section" id="apply">
   <div class="container">
-    <div style="text-align:center"><span class="kicker reveal">Adoption Application</span><h2 class="heading-lg reveal">Find Your Future BFF</h2><p class="body-lg reveal" style="max-width:30rem;margin:.75rem auto 0">Our matching process is how we make sure every cat lands in the right home. Fill this out and we'll be in touch.</p></div>
-    <div class="app-wrap reveal">
+    <div style="text-align:center"><span class="kicker reveal">Adoption Application</span><h2 class="heading-lg reveal"><a href="https://app.sparkie.io/application?t=5fab11fbb83c8e002ea3b873&amp;m=CAT_ADOPT" target="_blank" rel="noopener">Find Your Future BFF</a></h2><p class="body-lg reveal" style="max-width:30rem;margin:.75rem auto 0">Our matching process is how we make sure every cat lands in the right home.</p><a href="https://app.sparkie.io/application?t=5fab11fbb83c8e002ea3b873&amp;m=CAT_ADOPT" target="_blank" rel="noopener" class="btn btn--pri btn--lg btn--pill" style="margin-top:1.5rem">Find Your Future BFF</a></div>
+    <div class="app-wrap is-dormant" hidden>
       <div class="app-progress" id="app-progress"></div>
       <form id="adopt-form" novalidate>
         <div class="form-step active" data-step="0">
@@ -1206,7 +1217,7 @@ img,video,svg,iframe{max-width:100%;height:auto}
     <form class="contact-form reveal" id="contact-form" novalidate>
       <p class="form-hint">Required fields are marked with <span class="req">*</span></p>
       <div class="field-row"><div class="field"><label for="c-name">Name <span class="req" aria-hidden="true">*</span></label><input type="text" id="c-name" name="name" required autocomplete="name" placeholder="Your name"></div><div class="field"><label for="c-email">Email <span class="req" aria-hidden="true">*</span></label><input type="email" id="c-email" name="email" required autocomplete="email" placeholder="your@email.com"></div></div>
-      <div class="field"><label for="c-subject">Subject <span class="req" aria-hidden="true">*</span></label><select id="c-subject" name="subject" required><option value="">Select a topic...</option><option>Adoption Inquiry</option><option>Foster Application</option><option>Volunteering</option><option>Donation Question</option><option>Event Info</option><option>Other</option></select></div>
+      <div class="field"><label for="c-subject">Subject <span class="req" aria-hidden="true">*</span></label><select id="c-subject" name="_subject" required><option value="">Select a topic...</option><option value="Adoption Inquiry">Adoption Inquiry</option><option value="Foster Application">Foster Application</option><option value="Volunteering">Volunteering</option><option value="Donation Question">Donation Question</option><option value="Event Info">Event Info</option><option value="Requesting Rescue Help">Requesting Rescue Help</option><option value="Requesting TNR">Requesting TNR</option><option value="Other">Other</option></select></div>
       <div class="field"><label for="c-message">Message <span class="req" aria-hidden="true">*</span></label><textarea id="c-message" name="message" rows="4" required placeholder="Tell us what's on your mind..."></textarea></div>
       <p class="form-error" id="contact-error" role="alert"></p>
       <button type="submit" class="btn btn--pri btn--lg btn--pill" id="contact-submit" style="width:100%;justify-content:center">Send Message</button>
@@ -1225,13 +1236,13 @@ img,video,svg,iframe{max-width:100%;height:auto}
     <h2 class="heading-lg reveal">Frequently Asked Questions</h2>
     <p class="body-lg reveal" style="margin-top:.5rem;margin-bottom:1rem;max-width:36rem">Everything you need to know about adopting, fostering, and supporting our rescue cats.</p>
     <div class="faq-list reveal">
-      <div class="faq-item"><button class="faq-q" onclick="this.parentElement.classList.toggle('open')">How do I adopt a cat from Cat's Meow?</button><div class="faq-a"><div class="faq-a-inner">Browse our adoptable cats on this page or on <a href="https://www.petfinder.com/member/us/or/gladstone/cats-meow-cat-rescue-or393/" target="_blank" rel="noopener" style="color:var(--pri);text-decoration:underline">Petfinder</a>. When you find a cat you love, fill out our adoption application above. We'll review it, schedule a meet-and-greet, and if it's a good match, your new best friend comes home!</div></div></div>
-      <div class="faq-item"><button class="faq-q" onclick="this.parentElement.classList.toggle('open')">What are the adoption fees?</button><div class="faq-a"><div class="faq-a-inner">Adoption fees vary by age: kittens (under 1 year) are $150, adult cats (1-7 years) are $100, and senior cats (7+ years) are $75. All fees go directly back into rescue operations, medical care, and food for our foster cats.</div></div></div>
-      <div class="faq-item"><button class="faq-q" onclick="this.parentElement.classList.toggle('open')">What's included in the adoption fee?</button><div class="faq-a"><div class="faq-a-inner">Every adopted cat comes spayed or neutered, up-to-date on vaccinations (FVRCP and rabies), microchipped, dewormed, flea-treated, and FIV/FeLV tested. You also receive a starter kit with food samples and a health record.</div></div></div>
+      <div class="faq-item"><button class="faq-q" onclick="this.parentElement.classList.toggle('open')">How do I adopt a cat from Cat's Meow?</button><div class="faq-a"><div class="faq-a-inner">Browse our adoptable cats on this page or on <a href="https://www.petfinder.com/member/us/or/gladstone/cats-meow-cat-rescue-or393/" target="_blank" rel="noopener" style="color:var(--pri);text-decoration:underline">Petfinder</a>. When you find a cat you love, fill out our <a href="https://app.sparkie.io/application?t=5fab11fbb83c8e002ea3b873&amp;m=CAT_ADOPT" target="_blank" rel="noopener" style="color:var(--pri);text-decoration:underline">adoption application</a>. We'll review it, schedule a meet-and-greet, and if it's a good match, your new best friend comes home!</div></div></div>
+      <div class="faq-item"><button class="faq-q" onclick="this.parentElement.classList.toggle('open')">What are the adoption fees?</button><div class="faq-a"><div class="faq-a-inner">Most kittens are $200. Adults are $175. Fees go down as they age. All fees go directly back into rescue operations, medical care, and food for our foster cats.</div></div></div>
+      <div class="faq-item"><button class="faq-q" onclick="this.parentElement.classList.toggle('open')">What's included in the adoption fee?</button><div class="faq-a"><div class="faq-a-inner">The adoption fee includes age-appropriate vaccines. We test one cat from each litter for FIV/FeLV. You receive a blanket or stuffie and the cat's medical records. There is no starter kit. Cats are spayed or neutered before they go home.</div></div></div>
       <div class="faq-item"><button class="faq-q" onclick="this.parentElement.classList.toggle('open')">Can I meet a cat before I adopt?</button><div class="faq-a"><div class="faq-a-inner">Absolutely! Once your application is reviewed, we'll arrange a meet-and-greet at the foster home or one of our PetSmart adoption events in Milwaukie and Gladstone. We want to make sure it's the perfect match for both you and the cat.</div></div></div>
       <div class="faq-item"><button class="faq-q" onclick="this.parentElement.classList.toggle('open')">Do you have kittens available?</button><div class="faq-a"><div class="faq-a-inner">We frequently have kittens, especially during spring and summer (kitten season). Check our adoptable cats section for current availability. Kittens go fast, so if you see one you love, apply quickly!</div></div></div>
-      <div class="faq-item"><button class="faq-q" onclick="this.parentElement.classList.toggle('open')">How can I become a foster parent?</button><div class="faq-a"><div class="faq-a-inner">We're always looking for foster homes! Fill out our application above and select "Foster" as the type. We provide all food, litter, and medical care — you provide the love and a safe space. Fostering saves lives by freeing up space for more rescues.</div></div></div>
-      <div class="faq-item"><button class="faq-q" onclick="this.parentElement.classList.toggle('open')">How can I donate to Cat's Meow?</button><div class="faq-a"><div class="faq-a-inner">Click the "Donate" button on this page to make a one-time or recurring gift. We also accept donations of cat food, litter, blankets, and toys. As a 501(c)(3) nonprofit, all donations are tax-deductible. Every dollar helps save a cat's life.</div></div></div>
+      <div class="faq-item"><button class="faq-q" onclick="this.parentElement.classList.toggle('open')">How can I become a foster parent?</button><div class="faq-a"><div class="faq-a-inner">We're always looking for foster homes! Use the contact form and choose Foster Application. We provide all food, litter, and medical care — you provide the love and a safe space. Fostering saves lives by freeing up space for more rescues.</div></div></div>
+      <div class="faq-item"><button class="faq-q" onclick="this.parentElement.classList.toggle('open')">How can I donate to Cat's Meow?</button><div class="faq-a"><div class="faq-a-inner">Give on <a href="https://catsmeowcatrescue.networkforgood.com/projects/177158-saving-lives-one-cat-at-a-time" target="_blank" rel="noopener" style="color:var(--pri);text-decoration:underline">Network for Good</a>, Venmo @CatsMeowCatRescue, or Cash App $catsmeowcatrescue. Checks can be mailed to PO Box 68222, Milwaukie, OR 97268. Our EIN is 83-2426815. We also accept donations of cat food, litter, blankets, and toys.</div></div></div>
       <div class="faq-item"><button class="faq-q" onclick="this.parentElement.classList.toggle('open')">What does "foster-based rescue" mean?</button><div class="faq-a"><div class="faq-a-inner">Unlike traditional shelters, we don't have a physical facility. All our cats live in loving foster homes until they're adopted. This means less stress for the cats and more one-on-one attention, which helps us learn each cat's personality to find them the best forever home.</div></div></div>
       <div class="faq-item"><button class="faq-q" onclick="this.parentElement.classList.toggle('open')">Can I volunteer without fostering?</button><div class="faq-a"><div class="faq-a-inner">Yes! We need help with adoption events at PetSmart, transporting cats to vet appointments, socializing kittens, photography, social media, fundraising, and more. Fill out our volunteer application to get started.</div></div></div>
       <div class="faq-item"><button class="faq-q" onclick="this.parentElement.classList.toggle('open')">Where are you located?</button><div class="faq-a"><div class="faq-a-inner">Cat's Meow Cat Rescue is based in Milwaukie and Gladstone, Oregon. As a foster-based rescue, we don't have a storefront, but you can meet our cats at PetSmart adoption events or at foster homes by appointment. Our mailing address is PO Box 68222, Milwaukie, OR 97268.</div></div></div>
@@ -1294,10 +1305,12 @@ img,video,svg,iframe{max-width:100%;height:auto}
       <button class="donate-amt" data-amt="100">$100</button>
     </div>
     <div class="field" style="margin-bottom:1rem"><label for="custom-amount">Or enter your own amount</label><input type="text" id="custom-amount" placeholder="$___" inputmode="numeric"></div>
-    <div class="field"><label>Dedicate to a fund (optional)</label><select><option>Where it's needed most</option><option>Medical Emergency Fund</option><option>Spay/Neuter Fund</option><option>General Operations</option><option>Winter Shelter Project</option></select></div>
-    <a href="https://www.facebook.com/catsmeowcatrescue/" target="_blank" rel="noopener" class="btn btn--pri btn--lg btn--pill" style="width:100%;justify-content:center;margin-top:1rem">Donate via Facebook</a>
-    <a href="https://venmo.com/CatsMeowRescue?txn=pay&amp;amount=50&amp;note=Donation%20to%20Cat%27s%20Meow%20Cat%20Rescue" target="_blank" rel="noopener" class="btn btn--lg btn--pill" id="donate-venmo" style="width:100%;justify-content:center;margin-top:.5rem;background:#008CFF;color:#fff;border:none;font-weight:700">
-      <svg viewBox="0 0 24 24" width="18" height="18" fill="#fff" style="margin-right:6px"><path d="M19.27 2c.8 1.32 1.16 2.68 1.16 4.4 0 5.48-4.68 12.6-8.48 17.6H5.18L2.57 3.36l5.76-.52 1.6 12.8C11.73 12.4 13.97 7.56 13.97 4.8c0-1.68-.52-2.84-1.2-3.72L19.27 2z"/></svg>Donate via Venmo</a>
+    <div class="field"><label for="donate-fund">Dedicate to a fund (optional)</label><select id="donate-fund"><option>Where it's needed most</option><option>Medical Fund</option><option>Supplies (Fill their belly)</option><option>Spay/Neuter</option><option>Cat colonies / local colony care</option><option>TNR Feed / community care</option></select></div>
+    <a href="https://catsmeowcatrescue.networkforgood.com/projects/177158-saving-lives-one-cat-at-a-time" target="_blank" rel="noopener" class="btn btn--pri btn--lg btn--pill" style="width:100%;justify-content:center;margin-top:1rem">Donate on Network for Good</a>
+    <p style="font-size:.72rem;color:var(--stone);text-align:center;margin-top:.6rem">On Network for Good, add the fund name in your donation note so the gift is directed there.</p>
+    <a href="https://venmo.com/CatsMeowCatRescue?txn=pay&amp;amount=50&amp;note=Donation%20to%20Cat%27s%20Meow%20Cat%20Rescue" target="_blank" rel="noopener" class="btn btn--lg btn--pill" id="donate-venmo" style="width:100%;justify-content:center;margin-top:.5rem;background:#008CFF;color:#fff;border:none;font-weight:700">
+      <svg viewBox="0 0 24 24" width="18" height="18" fill="#fff" style="margin-right:6px"><path d="M19.27 2c.8 1.32 1.16 2.68 1.16 4.4 0 5.48-4.68 12.6-8.48 17.6H5.18L2.57 3.36l5.76-.52 1.6 12.8C11.73 12.4 13.97 7.56 13.97 4.8c0-1.68-.52-2.84-1.2-3.72L19.27 2z"/></svg>Venmo @CatsMeowCatRescue</a>
+    <a href="https://cash.app/$catsmeowcatrescue" target="_blank" rel="noopener" class="btn btn--lg btn--pill" style="width:100%;justify-content:center;margin-top:.5rem;background:#00C244;color:#fff;border:none;font-weight:700">Cash App $catsmeowcatrescue</a>
     <div style="display:flex;gap:.5rem;margin-top:.75rem">
       <a href="tel:+15038506363" class="btn btn--outline btn--sm btn--pill" style="flex:1;justify-content:center;font-size:.78rem">Call (503) 850-6363</a>
       <a href="mailto:catsmeowcatrescue@gmail.com?subject=Donation" class="btn btn--outline btn--sm btn--pill" style="flex:1;justify-content:center;font-size:.78rem">Email Us</a>
@@ -1308,7 +1321,7 @@ img,video,svg,iframe{max-width:100%;height:auto}
 
 <!-- Product Detail Overlay -->
 <!-- Cart Drawer -->
-<div class="cart-overlay" id="cart-overlay">
+<div class="cart-overlay is-dormant" id="cart-overlay" hidden>
   <div class="cart-drawer" id="cart-drawer">
     <div class="cart-drawer-head">
       <h3>Your Cart (<span id="cart-count">0</span>)</h3>
@@ -1376,98 +1389,6 @@ img,video,svg,iframe{max-width:100%;height:auto}
 
 <script>
 (function(){
-/* ── Events ── */
-var EVENTS=[
-{date:'2026-07-26',title:'PetSmart Adoption Day',loc:'PetSmart Clackamas',desc:'Meet adoptable cats and kittens at our PetSmart partner location. Walk-ins welcome!'},
-{date:'2026-08-15',title:'Summer Jamboree',loc:'Milwaukie Community Center',desc:'Annual fundraiser with food, games, raffle prizes, and of course — cats. All ages welcome.'},
-{date:'2026-09-06',title:'Kitten Shower Supply Drive',loc:'Drop-off at PO Box or PetSmart',desc:'Help us stock up on kitten formula, tiny blankets, and supplies for the fall rescue season.'},
-{date:'2026-10-17',title:'Bingo Night',loc:'Milwaukie, OR',desc:'Bingo, prizes, snacks, and cat-themed fun. Tickets available in advance — space is limited!'},
-{date:'2026-11-14',title:'Holiday Craft Fair',loc:'Gladstone Community Center',desc:'Handmade cat crafts, rescue merch, and holiday shopping. Proceeds support our medical fund.'},
-{date:'2026-12-05',title:'Meowy Christmas Adoption Event',loc:'PetSmart Clackamas',desc:'Special holiday adoption event. Reduced adoption fees and gift bags for new cat parents.'}
-];
-var calDate=new Date();
-function renderCalendar(){
-  var y=calDate.getFullYear(),m=calDate.getMonth();
-  document.getElementById('cal-header').textContent=calDate.toLocaleDateString('en-US',{month:'long',year:'numeric'});
-  var first=new Date(y,m,1).getDay(),days=new Date(y,m+1,0).getDate();
-  var html='';
-  for(var i=0;i<first;i++)html+='<div class="cal-day"></div>';
-  var today=new Date();
-  for(var d=1;d<=days;d++){
-    var ds=y+'-'+String(m+1).padStart(2,'0')+'-'+String(d).padStart(2,'0');
-    var hasE=EVENTS.some(function(e){return e.date===ds});
-    var isToday=(d===today.getDate()&&m===today.getMonth()&&y===today.getFullYear());
-    html+='<div class="cal-day'+(hasE?' has-event':'')+(isToday?' today':'')+'" data-date="'+ds+'"><span>'+d+'</span>'+(hasE?'<span class="event-dot"></span>':'')+'</div>';
-  }
-  document.getElementById('cal-grid').innerHTML=html;
-  renderEvents();
-}
-function renderEvents(){
-  var now=new Date();now.setHours(0,0,0,0);
-  var upcoming=EVENTS.filter(function(e){return new Date(e.date+'T12:00:00')>=now}).sort(function(a,b){return new Date(a.date)-new Date(b.date)});
-  document.getElementById('events-list').innerHTML=upcoming.length?upcoming.map(function(e){
-    var d=new Date(e.date+'T12:00:00');
-    var dateStr=d.toLocaleDateString('en-US',{weekday:'short',month:'short',day:'numeric',year:'numeric'});
-    var shareText=e.title+' - '+dateStr+' at '+e.loc+'. '+e.desc;
-    var waLink='https://wa.me/?text='+encodeURIComponent(shareText);
-    var fbLink='https://www.facebook.com/sharer/sharer.php?quote='+encodeURIComponent(shareText);
-    return '<div class="event-card"><span class="event-date">'+dateStr+'</span><h3>'+e.title+'</h3><p>'+e.loc+' — '+e.desc+'</p><div class="event-actions"><a href="'+waLink+'" target="_blank" rel="noopener" class="btn btn--sm btn--outline btn--pill">WhatsApp</a><a href="'+fbLink+'" target="_blank" rel="noopener" class="btn btn--sm btn--outline btn--pill">Facebook</a><button class="btn btn--sm btn--ghost btn--pill share-btn" data-text="'+shareText.replace(/"/g,'&quot;')+'">Copy Link</button></div></div>';
-  }).join(''):'<p style="color:var(--stone)">No upcoming events right now. Check back soon!</p>';
-}
-function updateHeroNews(){
-  var el=document.getElementById('hero-news');
-  if(!el)return;
-  var now=new Date();now.setHours(0,0,0,0);
-  var upcoming=EVENTS.filter(function(e){return new Date(e.date+'T12:00:00')>=now}).sort(function(a,b){return new Date(a.date)-new Date(b.date)});
-  if(!upcoming.length){
-    el.innerHTML='<span class="news-badge">Events</span> Check the calendar for dates <span style="font-size:.7rem;opacity:.7;margin-left:.25rem">View Calendar &rarr;</span>';
-    return;
-  }
-  var first=upcoming[0];
-  var d=new Date(first.date+'T12:00:00');
-  var dateStr=d.toLocaleDateString('en-US',{month:'short',day:'numeric'});
-  var extra='';
-  if(upcoming[1]){
-    var d2=new Date(upcoming[1].date+'T12:00:00');
-    extra=' &middot; '+upcoming[1].title+' '+d2.toLocaleDateString('en-US',{month:'short',day:'numeric'});
-  }
-  el.innerHTML='<span class="news-badge" style="animation:pulse 2s ease-in-out infinite">Upcoming</span> <strong>'+first.title+' '+dateStr+'</strong>'+extra+' <span style="font-size:.7rem;opacity:.7;margin-left:.25rem">View Calendar &rarr;</span>';
-}
-
-document.getElementById('cal-prev').addEventListener('click',function(){calDate.setMonth(calDate.getMonth()-1);renderCalendar()});
-document.getElementById('cal-next').addEventListener('click',function(){calDate.setMonth(calDate.getMonth()+1);renderCalendar()});
-document.getElementById('cal-grid').addEventListener('click',function(e){
-  var day=e.target.closest('.has-event');
-  if(!day)return;
-  document.querySelectorAll('.cal-bubble').forEach(function(b){b.remove()});
-  var ds=day.dataset.date;
-  var ev=EVENTS.find(function(ev){return ev.date===ds});
-  if(!ev)return;
-  var d=new Date(ev.date+'T12:00:00');
-  var dateStr=d.toLocaleDateString('en-US',{weekday:'long',month:'long',day:'numeric',year:'numeric'});
-  var bubble=document.createElement('div');
-  bubble.className='cal-bubble';
-  bubble.innerHTML='<button class="bubble-close" aria-label="Close">&times;</button><span class="bubble-date">'+dateStr+'</span><h4>'+ev.title+'</h4><div class="bubble-loc">'+ev.loc+'</div><p>'+ev.desc+'</p>';
-  document.body.appendChild(bubble);
-  var rect=day.getBoundingClientRect();
-  var bw=bubble.offsetWidth;var bh=bubble.offsetHeight;
-  var left=rect.left+rect.width/2-bw/2;
-  var top=rect.top-bh-8;
-  if(top<8){top=rect.bottom+8}
-  if(left<8)left=8;
-  if(left+bw>window.innerWidth-8)left=window.innerWidth-bw-8;
-  bubble.style.left=left+'px';bubble.style.top=top+'px';
-  bubble.querySelector('.bubble-close').addEventListener('click',function(ev){ev.stopPropagation();bubble.remove()});
-});
-document.addEventListener('click',function(e){
-  if(!e.target.closest('.cal-day')&&!e.target.closest('.cal-bubble')){document.querySelectorAll('.cal-bubble').forEach(function(b){b.remove()})}
-  if(e.target.closest('.share-btn')){
-    var txt=e.target.closest('.share-btn').dataset.text;
-    if(navigator.share){navigator.share({text:txt}).catch(function(){})}
-    else if(navigator.clipboard){navigator.clipboard.writeText(txt);e.target.textContent='Copied!';setTimeout(function(){e.target.textContent='Copy Link'},2000)}
-  }
-});
-
 /* ── Shop ── */
 var HF='https://d8j0ntlcm91z4.cloudfront.net/user_3681BqEuWywySamoBS6St7ib1O7/';
 var PRODUCTS=[
@@ -1649,7 +1570,7 @@ document.getElementById('contact-form').addEventListener('submit',function(e){
     subject:fieldVal('c-subject'),
     message:fieldVal('c-message'),
     _replyto:fieldVal('c-email'),
-    _subject:'Website Contact — '+fieldVal('c-subject')
+    _subject:fieldVal('c-subject')
   };
   btn.disabled=true;
   var prev=btn.textContent;
@@ -1723,11 +1644,18 @@ function getDonateAmount(){
   var chip=active?parseFloat(active.getAttribute('data-amt')):NaN;
   return chip>0?chip:50;
 }
+function donateNote(){
+  var sel=document.getElementById('donate-fund');
+  var fund=sel?sel.value:'';
+  var note="Donation to Cat's Meow Cat Rescue";
+  if(fund && fund!=="Where it's needed most") note+=' — '+fund;
+  return note;
+}
 function updateDonateLinks(){
   var amt=getDonateAmount();
   var venmo=document.getElementById('donate-venmo');
   if(!venmo)return;
-  venmo.href='https://venmo.com/CatsMeowRescue?txn=pay&amount='+encodeURIComponent(String(amt))+'&note='+encodeURIComponent("Donation to Cat's Meow Cat Rescue");
+  venmo.href='https://venmo.com/CatsMeowCatRescue?txn=pay&amount='+encodeURIComponent(String(amt))+'&note='+encodeURIComponent(donateNote());
 }
 document.querySelectorAll('.donate-amounts').forEach(function(wrap){wrap.addEventListener('click',function(e){
   var btn=e.target.closest('.donate-amt');if(!btn)return;
@@ -1745,6 +1673,8 @@ if(customAmt){
     updateDonateLinks();
   });
 }
+var donateFund=document.getElementById('donate-fund');
+if(donateFund) donateFund.addEventListener('change',updateDonateLinks);
 updateDonateLinks();
 function attachDonateTriggers(){
   document.querySelectorAll('a[href="#help"],a[data-donate-trigger],a[href="mailto:catsmeowcatrescue@gmail.com?subject=Donation"]').forEach(function(a){
@@ -1993,7 +1923,7 @@ window.updateQty=updateQty;
 window.openCart=openCart;
 window.closeCart=closeCart;
 
-/* ── Fur Gallery Carousel ── */
+/* ── Happy endings carousel ── */
 var furGal=document.getElementById('fur-gallery');
 if(furGal){
   var scrollAmt=function(){return furGal.querySelector('.fur-card').offsetWidth+16};
@@ -2111,9 +2041,12 @@ function renderQuiz(){
   var prog=document.getElementById('quiz-progress');
   if(quizStep>=QUIZ_QS.length){
     var counts={};
-    quizAnswers.forEach(function(t){counts[t]=(counts[t]||0)+1});
+    quizAnswers.forEach(function(t){
+      if(t==='chill')t='gentle';
+      counts[t]=(counts[t]||0)+1;
+    });
     var best=Object.keys(counts).sort(function(a,b){return counts[b]-counts[a]})[0];
-    var r=QUIZ_RESULTS[best];
+    var r=QUIZ_RESULTS[best]||QUIZ_RESULTS.gentle;
     prog.style.display='none';
     el.innerHTML='<div class="quiz-result"><span class="quiz-result-emoji">'+r.emoji+'</span><div class="quiz-result-type">'+r.type+'</div><p class="quiz-result-desc">'+r.desc+'</p><div class="quiz-result-cats">'+r.tags.map(function(t){return '<span class="quiz-result-tag">'+t+'</span>'}).join('')+'</div><a href="#cats" class="btn btn--pri btn--pill">Browse Matching Cats</a><br><button class="quiz-restart" onclick="quizStep=0;quizAnswers=[];renderQuiz()">Retake Quiz</button></div>';
     return;
@@ -2137,8 +2070,6 @@ document.addEventListener('click',function(e){
 renderQuiz();
 
 /* ── Init ── */
-renderCalendar();
-updateHeroNews();
 renderShop(6);
 })();
 </script>
