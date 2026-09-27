@@ -13,7 +13,7 @@
   var STEP = 1 / 120;
   var IMPACT_J = 180;
   var IMPACT_SCALE = 0.1;
-  var ADOPT = 'index.html#application';
+  var ADOPT = 'https://app.sparkie.io/application?t=5fab11fbb83c8e002ea3b873&amp;m=CAT_ADOPT';
   var DONATE = 'index.html#help';
   var FOSTER = 'https://app.sparkie.io/application?m=CAT_FOSTER&t=5fab11fbb83c8e002ea3b873';
   var NAMES = ['Pepper', 'Nori', 'Bean', 'Soot'];
@@ -945,9 +945,9 @@
       return '<div class="lc-card"><p class="kicker">' + esc(level.name) + '</p><h2>Yard clear</h2><p class="lc-stars" aria-label="' + levelStars + ' stars">' + starsGlyph(levelStars) + '</p><p class="lc-scoreline">Score ' + score + '</p><p>Next yard: ' + esc(next) + '.</p><button type="button" class="btn btn--pri" data-act="next">Next yard</button></div>';
     }
     if (mode === 'win') {
-      return '<div class="lc-card"><p class="kicker">Cat\'s Meow Cat Rescue</p><h2>The yard is clear</h2><p class="lc-scoreline">Score ' + score + ' · Stars ' + totalStars + ' of 12</p><p>That cleared-yard feeling is what foster cats are waiting on. Whenever you want the real thing:</p><div class="lc-grid"><a class="btn btn--outline" href="' + ADOPT + '">Adopt</a><a class="btn btn--outline" href="' + esc(FOSTER) + '" target="_blank" rel="noopener">Foster</a><a class="btn btn--gold" href="' + DONATE + '">Donate</a><button type="button" class="btn btn--pri" data-act="again">Play again</button></div></div>';
+      return '<div class="lc-card"><p class="kicker">Cat\'s Meow Cat Rescue</p><h2>The yard is clear</h2><p class="lc-scoreline">Score ' + score + ' · Stars ' + totalStars + ' of 12</p><p>That cleared-yard feeling is what foster cats are waiting on. Whenever you want the real thing:</p><div class="lc-grid"><a class="btn btn--outline" href="' + ADOPT + '" target="_blank" rel="noopener">Adopt</a><a class="btn btn--outline" href="' + esc(FOSTER) + '" target="_blank" rel="noopener">Foster</a><a class="btn btn--gold" href="' + DONATE + '">Donate</a><button type="button" class="btn btn--pri" data-act="again">Play again</button></div></div>';
     }
-    return '<div class="lc-card"><p class="kicker">Cat\'s Meow Cat Rescue</p><h2>Out of cats</h2><p class="lc-scoreline">Score ' + score + '</p><p>The pests are still standing. The sling will still be there.</p><div class="lc-grid"><button type="button" class="btn btn--pri" data-act="again">Play again</button><a class="btn btn--outline" href="' + ADOPT + '">Adopt</a><a class="btn btn--outline" href="' + esc(FOSTER) + '" target="_blank" rel="noopener">Foster</a><a class="btn btn--gold" href="' + DONATE + '">Donate</a></div></div>';
+    return '<div class="lc-card"><p class="kicker">Cat\'s Meow Cat Rescue</p><h2>Out of cats</h2><p class="lc-scoreline">Score ' + score + '</p><p>The pests are still standing. The sling will still be there.</p><div class="lc-grid"><button type="button" class="btn btn--pri" data-act="again">Play again</button><a class="btn btn--outline" href="' + ADOPT + '" target="_blank" rel="noopener">Adopt</a><a class="btn btn--outline" href="' + esc(FOSTER) + '" target="_blank" rel="noopener">Foster</a><a class="btn btn--gold" href="' + DONATE + '">Donate</a></div></div>';
   }
 
   function liveText() {

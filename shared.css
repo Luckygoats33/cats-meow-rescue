@@ -193,7 +193,7 @@ section[id],#volunteer,#apply{scroll-margin-top:4.75rem}
 .back-to-top svg{width:20px;height:20px;stroke:currentColor;fill:none;stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round}
 
 .mobile-bottom-bar{position:fixed;bottom:0;left:0;right:0;z-index:100;display:none;background:var(--surface);padding:10px 16px;gap:10px;border-top:1px solid var(--mist);box-shadow:0 -4px 20px rgba(0,0,0,.1);transition:opacity .3s}
-.mobile-bottom-bar .btn{flex:1;text-align:center;justify-content:center;font-size:.9rem;font-weight:700;min-height:48px;border-radius:var(--radius-pill)}
+.mobile-bottom-bar .btn{flex:1;text-align:center;justify-content:center;font-size:.78rem;font-weight:700;min-height:48px;border-radius:var(--radius-pill);padding:.6rem .4rem}
 
 /* ===== Section 8: Mobile Dark Override ===== */
 @media(max-width:960px) and (prefers-color-scheme:dark){
