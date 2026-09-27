@@ -176,7 +176,8 @@ section[id],#volunteer,#apply{scroll-margin-top:4.75rem}
 .adopt-how-intro .body-lg{max-width:34rem;margin:.75rem auto 0}
 .adopt-steps{list-style:none;counter-reset:adopt;margin:2rem 0 0;display:grid;gap:.85rem}
 .adopt-steps li{display:grid;grid-template-columns:2rem 1fr;gap:.15rem 1rem;background:var(--surface);border:1px solid var(--mist);border-radius:var(--radius);padding:1rem 1.15rem 1.05rem;align-items:start}
-.adopt-steps li::before{content:counter(adopt);counter-increment:adopt;grid-row:1 / -1;align-self:start;width:2rem;height:2rem;border-radius:50%;background:var(--pri);color:#fff;font-family:var(--serif);font-weight:700;display:grid;place-items:center}
+.adopt-steps li::before{content:counter(adopt);counter-increment:adopt;grid-column:1;grid-row:1 / -1;align-self:start;width:2rem;height:2rem;border-radius:50%;background:var(--pri);color:#fff;font-family:var(--serif);font-weight:700;display:grid;place-items:center}
+.adopt-steps li>*{grid-column:2;min-width:0}
 .adopt-steps h3{font-family:var(--serif);font-size:1.05rem;margin:0}
 .adopt-steps p{color:var(--stone);font-size:.92rem;line-height:1.55;margin:.2rem 0 0}
 .adopt-steps a{color:var(--pri);font-weight:700;font-size:.88rem;margin-top:.35rem;text-decoration:underline}
