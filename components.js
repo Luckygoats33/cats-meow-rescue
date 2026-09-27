@@ -11,6 +11,10 @@
     if (anchor.startsWith('http')) return anchor;
     return prefix + anchor;
   }
+  function contactHref(hash, subject) {
+    if (isIndex) return hash;
+    return prefix + 'index.html?subject=' + encodeURIComponent(subject) + hash;
+  }
 
   // Logo (base64 inline for instant render, no flash)
   var logoSrc = prefix + 'catsm-logo.png';
@@ -22,15 +26,12 @@
     + '<img src="' + logoSrc + '" alt="Cat\'s Meow Cat Rescue" class="logo-img">'
     + '</a>'
     + '<nav class="main-nav">'
-    + '<a href="' + href('#cats') + '">Adopt</a>'
-    + '<div class="nav-dropdown"><a href="' + href('#contact-us') + '">Get Involved</a>'
-    + '<div class="nav-dropdown-menu">'
+    + '<a href="' + href('#application') + '">Adopt</a>'
     + '<a href="' + href('#help') + '">Donate</a>'
-    + '<a href="' + href('#contact-us') + '">Foster a Cat</a>'
-    + '<a href="' + href('#contact-us') + '">Volunteer</a>'
+    + '<a href="' + href('#foster') + '">Foster</a>'
+    + '<a href="' + contactHref('#volunteer', 'Volunteering') + '" data-contact-subject="Volunteering">Volunteer</a>'
     + '<a href="' + href('#events') + '">Events</a>'
-    + '</div></div>'
-    + '<a href="' + href('shop.html') + '" class="is-dormant" hidden style="display:none">Shop</a>'
+    + '<a href="' + href('working-cats.html') + '">Working Cats</a>'
     + '<div class="nav-dropdown"><a href="' + href('blog.html') + '">Blog</a>'
     + '<div class="nav-dropdown-menu">'
     + '<a href="' + href('blog.html') + '">All Posts</a>'
@@ -53,10 +54,13 @@
   // === MOBILE NAV ===
   var mobileNavHTML = '<div class="mobile-nav" id="mobile-nav" aria-hidden="true">'
     + '<nav>'
-    + '<a href="' + href('#cats') + '">Adopt</a>'
+    + '<a href="' + href('#application') + '">Adopt</a>'
+    + '<a href="' + href('#cats') + '">Available Cats</a>'
     + '<a href="' + href('#help') + '">Donate</a>'
+    + '<a href="' + href('#foster') + '">Foster</a>'
+    + '<a href="' + contactHref('#volunteer', 'Volunteering') + '" data-contact-subject="Volunteering">Volunteer</a>'
     + '<a href="' + href('#events') + '">Events</a>'
-    + '<a href="' + href('shop.html') + '" class="is-dormant" hidden style="display:none">Shop</a>'
+    + '<a href="' + href('working-cats.html') + '">Working Cats</a>'
     + '<a href="' + href('blog.html') + '">Blog</a>'
     + '<a href="' + href('about.html') + '">About</a>'
     + '<a href="' + href('#contact-us') + '">Contact</a>'
@@ -74,7 +78,10 @@
     + '</div></div>'
     + '<div class="footer-col"><h4>Explore</h4><ul>'
     + '<li><a href="' + href('#cats') + '">Adoptable Cats</a></li>'
+    + '<li><a href="' + href('#application') + '">Adoption Application</a></li>'
     + '<li><a href="' + href('#help') + '">Donate</a></li>'
+    + '<li><a href="' + href('#foster') + '">Foster</a></li>'
+    + '<li><a href="' + href('working-cats.html') + '">Working Cats</a></li>'
     + '<li><a href="' + href('#events') + '">Events</a></li>'
     + '<li class="is-dormant" hidden style="display:none"><a href="' + href('shop.html') + '">Shop</a></li>'
     + '<li><a href="' + href('blog.html') + '">Blog</a></li>'
@@ -101,7 +108,7 @@
 
   // === MOBILE BOTTOM BAR ===
   var stickyBarHTML = '<div class="mobile-bottom-bar" id="mobile-bottom-bar">'
-    + '<a href="' + href('#cats') + '" class="btn btn--pri">Adopt a Cat</a>'
+    + '<a href="' + href('#application') + '" class="btn btn--pri">Adopt</a>'
     + '<a href="' + href('#help') + '" class="btn btn--gold">Donate</a>'
     + '</div>';
 
@@ -264,6 +271,26 @@
     items.forEach(function(el, i) { el.classList.toggle('focused', i === focusIdx); });
     if (items[focusIdx]) items[focusIdx].scrollIntoView({ block: 'nearest' });
   }
+
+  function setContactSubject(value) {
+    if (!value) return;
+    var sel = document.getElementById('c-subject');
+    if (!sel) return;
+    for (var i = 0; i < sel.options.length; i++) {
+      if (sel.options[i].value === value) {
+        sel.value = value;
+        return;
+      }
+    }
+  }
+  try {
+    setContactSubject(new URLSearchParams(location.search).get('subject'));
+  } catch (err) {}
+  document.addEventListener('click', function(e) {
+    var link = e.target.closest && e.target.closest('[data-contact-subject]');
+    if (!link) return;
+    setContactSubject(link.getAttribute('data-contact-subject'));
+  });
 
   searchInput.addEventListener('input', function() {
     var q = searchInput.value.trim().toLowerCase();
