@@ -30,7 +30,7 @@
     + '<a href="' + href('#contact-us') + '">Volunteer</a>'
     + '<a href="' + href('#events') + '">Events</a>'
     + '</div></div>'
-    + '<a href="' + href('shop.html') + '">Shop</a>'
+    + '<a href="' + href('shop.html') + '" class="is-dormant" hidden style="display:none">Shop</a>'
     + '<div class="nav-dropdown"><a href="' + href('blog.html') + '">Blog</a>'
     + '<div class="nav-dropdown-menu">'
     + '<a href="' + href('blog.html') + '">All Posts</a>'
@@ -46,7 +46,7 @@
     + '</nav>'
     + '<a href="' + href('#help') + '" class="btn btn--rose btn--sm btn--pill header-cta">Donate</a>'
     + '<button class="search-toggle" id="search-toggle" aria-label="Search site"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:20px;height:20px"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg></button>'
-    + '<button class="cart-toggle" id="cart-toggle" aria-label="Shopping cart"><svg viewBox="0 0 24 24"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/></svg><span class="cart-badge" id="cart-badge">0</span></button>'
+    + '<button class="cart-toggle is-dormant" id="cart-toggle" hidden style="display:none" aria-label="Shopping cart"><svg viewBox="0 0 24 24"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/></svg><span class="cart-badge" id="cart-badge">0</span></button>'
     + '<button class="nav-toggle" id="nav-toggle" aria-label="Open menu" aria-expanded="false"><span></span><span></span><span></span></button>'
     + '</div></header>';
 
@@ -56,7 +56,7 @@
     + '<a href="' + href('#cats') + '">Adopt</a>'
     + '<a href="' + href('#help') + '">Donate</a>'
     + '<a href="' + href('#events') + '">Events</a>'
-    + '<a href="' + href('shop.html') + '">Shop</a>'
+    + '<a href="' + href('shop.html') + '" class="is-dormant" hidden style="display:none">Shop</a>'
     + '<a href="' + href('blog.html') + '">Blog</a>'
     + '<a href="' + href('about.html') + '">About</a>'
     + '<a href="' + href('#contact-us') + '">Contact</a>'
@@ -76,7 +76,7 @@
     + '<li><a href="' + href('#cats') + '">Adoptable Cats</a></li>'
     + '<li><a href="' + href('#help') + '">Donate</a></li>'
     + '<li><a href="' + href('#events') + '">Events</a></li>'
-    + '<li><a href="' + href('shop.html') + '">Shop</a></li>'
+    + '<li class="is-dormant" hidden style="display:none"><a href="' + href('shop.html') + '">Shop</a></li>'
     + '<li><a href="' + href('blog.html') + '">Blog</a></li>'
     + '<li><a href="' + href('about.html') + '">About Us</a></li>'
     + '<li><a href="' + href('#apply') + '">Apply to Adopt</a></li>'
@@ -288,7 +288,7 @@
         if (cat.indexOf(w) !== -1) score += 3;
       }
       return { item: item, score: score };
-    }).filter(function(x){ return x.score > 0; })
+    }).filter(function(x){ return x.score > 0 && x.item.url !== 'shop.html'; })
       .sort(function(a,b){ return b.score - a.score; })
       .slice(0, 12);
 

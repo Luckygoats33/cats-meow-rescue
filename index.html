@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Cat's Meow Cat Rescue — Milwaukie, Oregon | Adopt a Cat Today</title>
-<meta name="description" content="Cat's Meow Cat Rescue is a 501(c)(3) nonprofit in Milwaukie & Gladstone, Oregon. Adopt cats and kittens, donate, volunteer, or shop rescue merch. Every cat deserves a loving home.">
+<meta name="description" content="Cat's Meow Cat Rescue is a 501(c)(3) nonprofit in Milwaukie & Gladstone, Oregon. Adopt cats and kittens, donate, or volunteer. Every cat deserves a loving home.">
 <meta name="keywords" content="cat rescue, cat adoption, Milwaukie Oregon, Gladstone Oregon, adopt a cat, kitten adoption, 501c3 nonprofit, cat shelter, rescue cats Portland, PetSmart charities partner">
 <meta property="og:title" content="Cat's Meow Cat Rescue — Milwaukie, Oregon">
 <meta property="og:description" content="Adopt your next best friend. 501(c)(3) cat rescue in Milwaukie & Gladstone, Oregon.">
@@ -26,7 +26,7 @@
 <link rel="stylesheet" href="shared.css">
 <link rel="preconnect" href="https://d8j0ntlcm91z4.cloudfront.net">
 <link rel="preconnect" href="https://images.pexels.com">
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"NonprofitOrganization","name":"Cat's Meow Cat Rescue","description":"501(c)(3) cat rescue in Milwaukie & Gladstone, Oregon. Adopt cats and kittens, donate, volunteer, or shop rescue merch.","url":"https://luckygoats33.github.io/cats-meow-rescue/","email":"catsmeowcatrescue@gmail.com","telephone":"+1-503-850-6363","taxID":"83-2426815","address":{"@type":"PostalAddress","postOfficeBoxNumber":"68222","addressLocality":"Milwaukie","addressRegion":"OR","postalCode":"97268","addressCountry":"US"},"areaServed":{"@type":"City","name":"Milwaukie, Oregon"},"nonprofitStatus":"501c3","sameAs":["https://www.facebook.com/catsmeowcatrescue/","https://www.instagram.com/catsmeowcatrescue/","https://www.petfinder.com/member/us/or/gladstone/cats-meow-cat-rescue-or393/"]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"NonprofitOrganization","name":"Cat's Meow Cat Rescue","description":"501(c)(3) cat rescue in Milwaukie & Gladstone, Oregon. Adopt cats and kittens, donate, or volunteer.","url":"https://luckygoats33.github.io/cats-meow-rescue/","email":"catsmeowcatrescue@gmail.com","telephone":"+1-503-850-6363","taxID":"83-2426815","address":{"@type":"PostalAddress","postOfficeBoxNumber":"68222","addressLocality":"Milwaukie","addressRegion":"OR","postalCode":"97268","addressCountry":"US"},"areaServed":{"@type":"City","name":"Milwaukie, Oregon"},"nonprofitStatus":"501c3","sameAs":["https://www.facebook.com/catsmeowcatrescue/","https://www.instagram.com/catsmeowcatrescue/","https://www.petfinder.com/member/us/or/gladstone/cats-meow-cat-rescue-or393/"]}</script>
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Montserrat:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400&display=swap" rel="stylesheet">
 <style>
 :root{
@@ -136,7 +136,10 @@ input,select,textarea{font-family:inherit;font-size:1rem}
 @keyframes heroBlob{0%,100%{transform:translate(0,0) scale(1)}33%{transform:translate(30px,-40px) scale(1.15)}66%{transform:translate(-25px,30px) scale(.9)}}
 .hero-eyebrow{display:inline-flex;align-items:center;gap:.5rem;font-size:.72rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:#FFDD44;margin-bottom:1.2rem}
 .hero-eyebrow::before{content:'';display:block;width:28px;height:2px;background:#FFDD44}
+.is-dormant{display:none !important}
 .hero-news{display:inline-flex;align-items:center;gap:.5rem;background:rgba(255,255,255,.15);backdrop-filter:blur(8px);border-radius:var(--radius-pill);padding:.4rem 1rem;font-size:.8rem;margin-bottom:1.5rem}
+.events-socials{display:flex;flex-wrap:wrap;gap:.75rem;margin-top:1.5rem}
+.events-socials .btn{justify-content:center}
 .news-badge{background:var(--pri);color:#fff;font-weight:700;font-size:.65rem;padding:.15rem .5rem;border-radius:var(--radius-pill);text-transform:uppercase;letter-spacing:.06em}
 .hero-news:hover{background:rgba(255,255,255,.25);transform:translateY(-1px)}
 @keyframes pulse{0%,100%{opacity:1}50%{opacity:.6}}
@@ -820,7 +823,7 @@ img,video,svg,iframe{max-width:100%;height:auto}
       <div class="hero-eyebrow">Portland, Oregon &middot; 501(c)(3) Nonprofit</div>
       <h1 class="heading-xl">Meet Your Next<br>Best Friend</h1>
       <p class="hero-subtitle">A foster-based, all-volunteer rescue. 4,500 cats helped across the Portland metro area.</p>
-      <a href="#events" class="hero-news" id="hero-news" style="margin-bottom:1.5rem;text-decoration:none;color:inherit;cursor:pointer"><span class="news-badge" style="animation:pulse 2s ease-in-out infinite">Upcoming</span> <strong>Bingo Night Oct 17</strong> <span style="font-size:.7rem;opacity:.7;margin-left:.25rem">View Calendar &rarr;</span></a>
+      <a href="#events" class="hero-news is-dormant" id="hero-news" hidden style="margin-bottom:1.5rem;text-decoration:none;color:inherit;cursor:pointer"><span class="news-badge" style="animation:pulse 2s ease-in-out infinite">Upcoming</span> <strong>Bingo Night Oct 17</strong> <span style="font-size:.7rem;opacity:.7;margin-left:.25rem">View Calendar &rarr;</span></a>
     </div>
 
     <div class="hero-folds">
@@ -849,8 +852,8 @@ img,video,svg,iframe{max-width:100%;height:auto}
         <img class="fold-bg" src="https://d8j0ntlcm91z4.cloudfront.net/user_3681BqEuWywySamoBS6St7ib1O7/hf_20260725_085338_b4874ae5-9e31-4527-80d8-56eb432024f7_min.webp" alt="" loading="lazy">
         <img class="fold-cat fold-photo" src="https://images.pexels.com/photos/4587998/pexels-photo-4587998.jpeg?auto=compress&cs=tinysrgb&w=900&h=560&fit=crop" alt="Person cuddling a cat at home" width="900" height="560">
         <h2 class="heading-md" style="font-size:1.35rem">Join the Fun</h2>
-        <p>Summer Jamboree, Bingo Night, adoption events &amp; more. Bring the family!</p>
-        <a href="#events" class="btn btn--pill">See Events</a>
+        <p>Follow along on Facebook and Instagram. Bring the family when we post a meetup.</p>
+        <a href="#events" class="btn btn--pill">Find Us Online</a>
         <div class="fold-paws"><svg viewBox="0 0 60 56" fill="#fff"><path d="M30 28c-8 0-16 5-16 14 0 6 5 12 16 12s16-6 16-12c0-9-8-14-16-14z"/><ellipse cx="14" cy="16" rx="6" ry="7"/><ellipse cx="26" cy="10" rx="5.5" ry="6.5"/><ellipse cx="34" cy="10" rx="5.5" ry="6.5"/><ellipse cx="46" cy="16" rx="6" ry="7"/></svg><svg viewBox="0 0 60 56" fill="#fff" style="transform:rotate(-10deg)"><path d="M30 28c-8 0-16 5-16 14 0 6 5 12 16 12s16-6 16-12c0-9-8-14-16-14z"/><ellipse cx="14" cy="16" rx="6" ry="7"/><ellipse cx="26" cy="10" rx="5.5" ry="6.5"/><ellipse cx="34" cy="10" rx="5.5" ry="6.5"/><ellipse cx="46" cy="16" rx="6" ry="7"/></svg></div>
       </div>
     </div>
@@ -1071,24 +1074,31 @@ img,video,svg,iframe{max-width:100%;height:auto}
 <!-- Paw Divider -->
 <div class="paw-divider" aria-hidden="true"><svg viewBox="0 0 60 56" width="20" height="18" fill="var(--pri)" style="opacity:.18;transform:rotate(-8deg)"><path d="M30 28c-8 0-16 5-16 14 0 6 5 12 16 12s16-6 16-12c0-9-8-14-16-14z"/><ellipse cx="14" cy="16" rx="6" ry="7"/><ellipse cx="26" cy="10" rx="5.5" ry="6.5"/><ellipse cx="34" cy="10" rx="5.5" ry="6.5"/><ellipse cx="46" cy="16" rx="6" ry="7"/></svg><svg viewBox="0 0 60 56" width="26" height="22" fill="var(--gold)" style="opacity:.22"><path d="M30 28c-8 0-16 5-16 14 0 6 5 12 16 12s16-6 16-12c0-9-8-14-16-14z"/><ellipse cx="14" cy="16" rx="6" ry="7"/><ellipse cx="26" cy="10" rx="5.5" ry="6.5"/><ellipse cx="34" cy="10" rx="5.5" ry="6.5"/><ellipse cx="46" cy="16" rx="6" ry="7"/></svg><svg viewBox="0 0 60 56" width="22" height="20" fill="var(--pri)" style="opacity:.15;transform:rotate(15deg)"><path d="M30 28c-8 0-16 5-16 14 0 6 5 12 16 12s16-6 16-12c0-9-8-14-16-14z"/><ellipse cx="14" cy="16" rx="6" ry="7"/><ellipse cx="26" cy="10" rx="5.5" ry="6.5"/><ellipse cx="34" cy="10" rx="5.5" ry="6.5"/><ellipse cx="46" cy="16" rx="6" ry="7"/></svg></div>
 
-<!-- Events Calendar -->
+<!-- Events: socials only. Calendar markup stays in the repo, hidden, until real dates are confirmed. -->
 <section class="section" id="events" style="background:linear-gradient(135deg,#FFF0E6 0%,#FFE4F0 30%,#E8F4FD 60%,#FFF8E1 100%);padding-bottom:4rem">
   <div class="container">
-    <span class="kicker reveal">Help Out the Kitties</span>
-    <h2 class="heading-lg reveal">Upcoming Events</h2>
-    <div class="events-layout reveal">
-      <div class="cal-wrap">
-        <div class="cal-nav"><button id="cal-prev" aria-label="Previous month">&larr;</button><h3 id="cal-header"></h3><button id="cal-next" aria-label="Next month">&rarr;</button></div>
-        <div class="cal-weekdays"><span>Sun</span><span>Mon</span><span>Tue</span><span>Wed</span><span>Thu</span><span>Fri</span><span>Sat</span></div>
-        <div class="cal-grid" id="cal-grid"></div>
+    <span class="kicker reveal">Find Us</span>
+    <h2 class="heading-lg reveal">Everything is posted on our social media pages</h2>
+    <p class="body-lg reveal" style="max-width:36rem;margin-top:.75rem">Meetups, fundraisers, and adoption days go up on Facebook and Instagram. Check those pages for what’s coming up.</p>
+    <div class="events-socials reveal">
+      <a href="https://facebook.com/catsmeowcatrescue" target="_blank" rel="noopener" class="btn btn--pri btn--lg btn--pill">Facebook</a>
+      <a href="https://www.instagram.com/catsmeowcatrescue/" target="_blank" rel="noopener" class="btn btn--outline btn--lg btn--pill">Instagram @catsmeowcatrescue</a>
+    </div>
+    <div class="is-dormant" hidden>
+      <div class="events-layout">
+        <div class="cal-wrap">
+          <div class="cal-nav"><button id="cal-prev" aria-label="Previous month">&larr;</button><h3 id="cal-header"></h3><button id="cal-next" aria-label="Next month">&rarr;</button></div>
+          <div class="cal-weekdays"><span>Sun</span><span>Mon</span><span>Tue</span><span>Wed</span><span>Thu</span><span>Fri</span><span>Sat</span></div>
+          <div class="cal-grid" id="cal-grid"></div>
+        </div>
+        <div class="events-list" id="events-list"></div>
       </div>
-      <div class="events-list" id="events-list"></div>
     </div>
   </div>
 </section>
 
-<!-- Shop -->
-<section class="section" id="shop">
+<!-- Shop (closed for now; markup kept dormant) -->
+<section class="section is-dormant" id="shop" hidden>
   <div class="container">
     <span class="kicker reveal">Cat's Meow Shop</span>
     <h2 class="heading-lg reveal">Rep the Rescue</h2>
@@ -1312,7 +1322,7 @@ img,video,svg,iframe{max-width:100%;height:auto}
 
 <!-- Product Detail Overlay -->
 <!-- Cart Drawer -->
-<div class="cart-overlay" id="cart-overlay">
+<div class="cart-overlay is-dormant" id="cart-overlay" hidden>
   <div class="cart-drawer" id="cart-drawer">
     <div class="cart-drawer-head">
       <h3>Your Cart (<span id="cart-count">0</span>)</h3>
