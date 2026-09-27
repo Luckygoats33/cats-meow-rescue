@@ -15,6 +15,7 @@
     if (isIndex) return hash;
     return prefix + 'index.html?subject=' + encodeURIComponent(subject) + hash;
   }
+  var fosterApp = 'https://app.sparkie.io/application?t=5fab11fbb83c8e002ea3b873&amp;m=CAT_FOSTER';
 
   // Logo (base64 inline for instant render, no flash)
   var logoSrc = prefix + 'catsm-logo.png';
@@ -28,7 +29,7 @@
     + '<nav class="main-nav">'
     + '<a href="' + href('#application') + '">Adopt</a>'
     + '<a href="' + href('#help') + '">Donate</a>'
-    + '<a href="' + href('#foster') + '">Foster</a>'
+    + '<a href="' + fosterApp + '" target="_blank" rel="noopener">Foster</a>'
     + '<a href="' + contactHref('#volunteer', 'Volunteering') + '" data-contact-subject="Volunteering">Volunteer</a>'
     + '<a href="' + href('#events') + '">Events</a>'
     + '<a href="' + href('working-cats.html') + '">Working Cats</a>'
@@ -57,7 +58,7 @@
     + '<a href="' + href('#application') + '">Adopt</a>'
     + '<a href="' + href('#cats') + '">Available Cats</a>'
     + '<a href="' + href('#help') + '">Donate</a>'
-    + '<a href="' + href('#foster') + '">Foster</a>'
+    + '<a href="' + fosterApp + '" target="_blank" rel="noopener">Foster</a>'
     + '<a href="' + contactHref('#volunteer', 'Volunteering') + '" data-contact-subject="Volunteering">Volunteer</a>'
     + '<a href="' + href('#events') + '">Events</a>'
     + '<a href="' + href('working-cats.html') + '">Working Cats</a>'
@@ -80,7 +81,7 @@
     + '<li><a href="' + href('#cats') + '">Adoptable Cats</a></li>'
     + '<li><a href="' + href('#application') + '">Adoption Application</a></li>'
     + '<li><a href="' + href('#help') + '">Donate</a></li>'
-    + '<li><a href="' + href('#foster') + '">Foster</a></li>'
+    + '<li><a href="' + fosterApp + '" target="_blank" rel="noopener">Apply to Foster</a></li>'
     + '<li><a href="' + href('working-cats.html') + '">Working Cats</a></li>'
     + '<li><a href="' + href('#events') + '">Events</a></li>'
     + '<li class="is-dormant" hidden style="display:none"><a href="' + href('shop.html') + '">Shop</a></li>'
