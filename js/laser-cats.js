@@ -69,6 +69,7 @@
   var reduceMotion = false;
   var recentHits = [];
   var pointerId = null;
+  var dragTouch = null;
 
   var LEVELS = [
     {
@@ -907,6 +908,7 @@
     pull.x = 0;
     pull.y = 0;
     dragging = false;
+    dragTouch = null;
     lasering = false;
     aimSet = false;
     aimAngle = 0;
@@ -938,7 +940,7 @@
     var level = LEVELS[levelIndex];
     if (mode === 'play') return '';
     if (mode === 'title') {
-      return '<div class="lc-card"><p class="kicker">Cat\'s Meow Cat Rescue</p><h2>Ready, Pepper?</h2><p>Drag the sling, launch a foster cat, and clear the yard. Once they are flying, fire a short laser from their eyes.</p><button type="button" class="btn btn--pri" data-act="start">Start</button><p class="fine">Drag back and let go. Space or Laser eyes fires the beam. Four short yards.</p></div>';
+      return '<div class="lc-card"><p class="kicker">Cat\'s Meow Cat Rescue</p><h2>Ready, Pepper?</h2><p>Drag the sling, launch a foster cat, and clear the yard. Once they are flying, fire a short laser from their eyes.</p><button type="button" class="btn btn--pri" data-act="start">Start</button><p class="fine">Drag back and let go. On a phone, pull back from the cat. Space, a tap, or Laser eyes fires the beam. Four short yards.</p></div>';
     }
     if (mode === 'clear') {
       var next = LEVELS[levelIndex + 1] ? LEVELS[levelIndex + 1].name : '';
@@ -1084,12 +1086,23 @@
     syncHUD();
   }
 
-  function updateCam(dt) {
-    var focus = (phase === 'flight' && cat) ? cat.x : (SLING.x + 250);
-    var desired = focus - view.w * 0.3;
+  function restingCam() {
     var max = Math.max(0, WORLD_W - view.w);
+    var preferred = clamp(SLING.x + 250 - view.w * 0.3, 0, max);
+    var backRoom = SLING.x - preferred;
+    if (backRoom >= 48) return preferred;
+    var want = Math.min(PULL_MAX + 28, Math.max(96, view.w * 0.34));
+    return clamp(SLING.x - want, 0, max);
+  }
+
+  function updateCam(dt) {
+    if (dragging && phase === 'ready') return;
+    var max = Math.max(0, WORLD_W - view.w);
+    var desired = (phase === 'flight' && cat) ? (cat.x - view.w * 0.34) : restingCam();
     desired = clamp(desired, 0, max);
-    var k = 1 - Math.exp(-3.4 * Math.max(0.016, dt));
+    var hidden = phase !== 'flight' && SLING.x < camX + 24;
+    var rate = phase === 'flight' ? 3.4 : (hidden ? 16 : 6);
+    var k = 1 - Math.exp(-rate * Math.max(0.016, dt));
     camX += (desired - camX) * k;
   }
 
@@ -1523,8 +1536,16 @@
     } catch (err) { /* ignore audio */ }
   }
 
+  function pullFromTouch(e) {
+    var rect = canvas.getBoundingClientRect();
+    var dx = (e.clientX - dragTouch.x) / Math.max(1, rect.width) * view.w;
+    var dy = (e.clientY - dragTouch.y) / Math.max(1, rect.height) * WORLD_H;
+    setPullFrom(SLING.x + dx, SLING.y + dy);
+  }
+
   function onPointerDown(e) {
     if (mode !== 'play') return;
+    if (pointerId !== null) return;
     if (e.button !== undefined && e.button !== 0) return;
     if (e.cancelable) e.preventDefault();
     pointerId = e.pointerId;
@@ -1533,33 +1554,50 @@
     if (phase === 'ready') {
       dragging = true;
       lasering = false;
-      setPullFrom(p.x, p.y);
+      if (e.pointerType === 'touch') {
+        dragTouch = { x: e.clientX, y: e.clientY };
+        pull.x = 0;
+        pull.y = 0;
+      } else {
+        dragTouch = null;
+        setPullFrom(p.x, p.y);
+      }
     } else if (phase === 'flight' && cat && !cat.laserUsed) {
       lasering = true;
       dragging = false;
+      dragTouch = null;
       setAim(p.x, p.y);
     }
   }
 
   function onPointerMove(e) {
     if (pointerId !== null && e.pointerId !== pointerId) return;
+    if ((dragging || lasering) && e.cancelable) e.preventDefault();
     var p = worldFromEvent(e);
-    if (dragging && phase === 'ready') setPullFrom(p.x, p.y);
-    else if (lasering && phase === 'flight') setAim(p.x, p.y);
+    if (dragging && phase === 'ready') {
+      if (dragTouch) pullFromTouch(e);
+      else setPullFrom(p.x, p.y);
+    } else if (lasering && phase === 'flight') setAim(p.x, p.y);
   }
 
-  function onPointerUp(e) {
+  function endPointer(e, cancel) {
     if (pointerId !== null && e.pointerId !== undefined && e.pointerId !== pointerId) return;
     pointerId = null;
+    dragTouch = null;
     if (dragging) {
       dragging = false;
-      tryLaunch();
+      if (cancel) { pull.x = 0; pull.y = 0; }
+      else tryLaunch();
     } else if (lasering) {
       lasering = false;
+      if (cancel) return;
       if (e.clientX) setAim(worldFromEvent(e).x, worldFromEvent(e).y);
       fireLaser();
     }
   }
+
+  function onPointerUp(e) { endPointer(e, false); }
+  function onPointerCancel(e) { endPointer(e, true); }
 
   function onKey(e) {
     if (!keysOk()) return;
@@ -1684,7 +1722,10 @@
     canvas.addEventListener('pointerdown', onPointerDown);
     canvas.addEventListener('pointermove', onPointerMove);
     window.addEventListener('pointerup', onPointerUp);
-    window.addEventListener('pointercancel', onPointerUp);
+    window.addEventListener('pointercancel', onPointerCancel);
+    canvas.addEventListener('touchmove', function (e) {
+      if (mode === 'play' && (dragging || lasering)) e.preventDefault();
+    }, { passive: false });
     window.addEventListener('keydown', onKey);
     window.addEventListener('resize', fit);
     document.addEventListener('visibilitychange', function () {
