@@ -7,12 +7,15 @@
 <meta name="description" content="Cat's Meow Cat Rescue is a 501(c)(3) nonprofit in Milwaukie & Gladstone, Oregon. Adopt cats and kittens, donate, volunteer, or shop rescue merch. Every cat deserves a loving home.">
 <meta name="keywords" content="cat rescue, cat adoption, Milwaukie Oregon, Gladstone Oregon, adopt a cat, kitten adoption, 501c3 nonprofit, cat shelter, rescue cats Portland, PetSmart charities partner">
 <meta property="og:title" content="Cat's Meow Cat Rescue — Milwaukie, Oregon">
-<meta property="og:description" content="Adopt your next best friend. 501(c)(3) cat rescue in Milwaukie & Gladstone, Oregon. 31 cats and kittens available now.">
+<meta property="og:description" content="Adopt your next best friend. 501(c)(3) cat rescue in Milwaukie & Gladstone, Oregon.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://luckygoats33.github.io/cats-meow-rescue/">
+<meta property="og:image" content="https://luckygoats33.github.io/cats-meow-rescue/og-image.png">
+<meta property="og:image:alt" content="Cat's Meow Cat Rescue — adoptable cats in Milwaukie and Gladstone, Oregon">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Cat's Meow Cat Rescue — Milwaukie, Oregon">
 <meta name="twitter:description" content="Adopt your next best friend. 501(c)(3) cat rescue in Milwaukie & Gladstone, Oregon.">
+<meta name="twitter:image" content="https://luckygoats33.github.io/cats-meow-rescue/og-image.png">
 <link rel="canonical" href="https://luckygoats33.github.io/cats-meow-rescue/">
 <meta name="robots" content="index, follow">
 <meta name="theme-color" content="#B22222">
@@ -23,7 +26,7 @@
 <link rel="stylesheet" href="shared.css">
 <link rel="preconnect" href="https://d8j0ntlcm91z4.cloudfront.net">
 <link rel="preconnect" href="https://images.pexels.com">
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"NonprofitOrganization","name":"Cat's Meow Cat Rescue","description":"501(c)(3) cat rescue in Milwaukie & Gladstone, Oregon. Adopt cats and kittens, donate, volunteer, or shop rescue merch.","url":"https://luckygoats33.github.io/cats-meow-rescue/","email":"catsmeowcatrescue@gmail.com","areaServed":{"@type":"City","name":"Milwaukie, Oregon"},"nonprofitStatus":"501c3","sameAs":["https://www.facebook.com/catsmeowcatrescue/","https://www.instagram.com/catsmeowcatrescue/","https://www.petfinder.com/member/us/or/gladstone/cats-meow-cat-rescue-or393/"]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"NonprofitOrganization","name":"Cat's Meow Cat Rescue","description":"501(c)(3) cat rescue in Milwaukie & Gladstone, Oregon. Adopt cats and kittens, donate, volunteer, or shop rescue merch.","url":"https://luckygoats33.github.io/cats-meow-rescue/","email":"catsmeowcatrescue@gmail.com","telephone":"+1-503-850-6363","taxID":"83-2426815","address":{"@type":"PostalAddress","postOfficeBoxNumber":"68222","addressLocality":"Milwaukie","addressRegion":"OR","postalCode":"97268","addressCountry":"US"},"areaServed":{"@type":"City","name":"Milwaukie, Oregon"},"nonprofitStatus":"501c3","sameAs":["https://www.facebook.com/catsmeowcatrescue/","https://www.instagram.com/catsmeowcatrescue/","https://www.petfinder.com/member/us/or/gladstone/cats-meow-cat-rescue-or393/"]}</script>
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Montserrat:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400&display=swap" rel="stylesheet">
 <style>
 :root{
@@ -225,7 +228,7 @@ input,select,textarea{font-family:inherit;font-size:1rem}
 .cats-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:1.25rem}
 .cat-card{background:var(--surface);border:1px solid var(--mist);border-radius:var(--radius);overflow:hidden;transition:transform .2s,box-shadow .2s}
 .cat-card:hover{transform:translateY(-4px);box-shadow:0 12px 28px rgba(0,0,0,.08)}
-.cat-photo{height:220px;position:relative;overflow:hidden}
+.cat-photo{height:220px;position:relative;overflow:hidden;background:#E8DDD2}
 .cat-photo img{width:100%;height:100%;object-fit:cover;transition:transform .4s}
 .cat-card:hover .cat-photo img{transform:scale(1.05)}
 .cat-info{padding:1.25rem}
@@ -234,6 +237,7 @@ input,select,textarea{font-family:inherit;font-size:1rem}
 .cat-badge{display:inline-block;padding:.2rem .6rem;border-radius:var(--radius-pill);font-size:.68rem;font-weight:700;color:#fff;margin-bottom:.5rem}
 .cat-info p{font-size:.82rem;color:var(--stone);line-height:1.5;margin-bottom:.75rem}
 .cats-more{text-align:center;margin-top:2rem}
+#cats pet-scroller{display:block;width:100%;min-height:24rem}
 .no-cats{text-align:center;padding:3rem 1rem;color:var(--stone);font-size:1.1rem}
 
 /* Help Section */
@@ -416,6 +420,12 @@ input,select,textarea{font-family:inherit;font-size:1rem}
 .form-step .step-sub{font-size:.88rem;color:var(--stone);margin-bottom:1.5rem;display:block}
 .field{margin-bottom:1.25rem}
 .field label{display:block;font-size:.78rem;font-weight:600;margin-bottom:.4rem;color:var(--stone);text-transform:uppercase;letter-spacing:.06em}
+.field label .req,.req{color:var(--pri);font-weight:700}
+[hidden]{display:none!important}
+.form-hint{font-size:.8rem;color:var(--stone);margin:0 0 1.25rem}
+.form-error{display:none;margin:.75rem 0 0;padding:.75rem 1rem;border-radius:var(--radius-sm);background:#fdecea;color:#8B1A1A;font-size:.88rem;line-height:1.5}
+.form-error.is-visible{display:block}
+.was-validated input:invalid,.was-validated select:invalid,.was-validated textarea:invalid{border-color:var(--pri)}
 .field input,.field select,.field textarea{width:100%;padding:.7rem 1rem;border:1.5px solid var(--mist);border-radius:var(--radius-sm);background:var(--ground);color:var(--ink);font-size:.95rem;transition:border-color .2s}
 .field input:focus,.field select:focus,.field textarea:focus{outline:none;border-color:var(--pri);box-shadow:0 0 0 3px rgba(196,133,59,.15)}
 .field textarea{resize:vertical;min-height:80px}
@@ -803,7 +813,7 @@ img,video,svg,iframe{max-width:100%;height:auto}
       <div class="hero-eyebrow">Portland, Oregon &middot; 501(c)(3) Nonprofit</div>
       <h1 class="heading-xl">Meet Your Next<br>Best Friend</h1>
       <p class="hero-subtitle">A foster-based, all-volunteer rescue. 388+ cats rescued to date across the Portland metro area.</p>
-      <a href="#events" class="hero-news" style="margin-bottom:1.5rem;text-decoration:none;color:inherit;cursor:pointer"><span class="news-badge" style="animation:pulse 2s ease-in-out infinite">Upcoming</span> <strong>Summer Jamboree Aug 15</strong> &middot; Bingo Night Oct 17 <span style="font-size:.7rem;opacity:.7;margin-left:.25rem">View Calendar &rarr;</span></a>
+      <a href="#events" class="hero-news" id="hero-news" style="margin-bottom:1.5rem;text-decoration:none;color:inherit;cursor:pointer"><span class="news-badge" style="animation:pulse 2s ease-in-out infinite">Upcoming</span> <strong>Bingo Night Oct 17</strong> <span style="font-size:.7rem;opacity:.7;margin-left:.25rem">View Calendar &rarr;</span></a>
     </div>
 
     <div class="hero-folds">
@@ -991,75 +1001,39 @@ img,video,svg,iframe{max-width:100%;height:auto}
 <section class="section" id="cats" style="background:var(--surface)">
   <div class="container">
     <div class="cats-header reveal">
-      <div><span class="kicker">Meet Your Next Best Friend</span><h2 class="heading-lg">Adoptable Cats &amp; Kittens</h2></div>
-      <div class="cats-count">Showing <strong id="cats-showing">31</strong> cats &middot; Live from Petfinder</div>
+      <div>
+        <span class="kicker">Meet Your Next Best Friend</span>
+        <h2 class="heading-lg">Adoptable Cats &amp; Kittens</h2>
+        <p class="cats-count" style="margin-top:.5rem">Live from Petfinder &middot; Cat's Meow Cat Rescue</p>
+      </div>
     </div>
-    <div class="filter-bar reveal" id="filter-bar">
-      <div class="filter-group"><span class="filter-label">Age</span><div class="filter-pills"><button class="pill active" data-group="age" data-value="all">All</button><button class="pill" data-group="age" data-value="kitten">Kitten</button><button class="pill" data-group="age" data-value="young">Young</button><button class="pill" data-group="age" data-value="adult">Adult</button><button class="pill" data-group="age" data-value="senior">Senior</button></div></div>
-      <div class="filter-group"><span class="filter-label">Gender</span><div class="filter-pills"><button class="pill active" data-group="gender" data-value="all">All</button><button class="pill" data-group="gender" data-value="M">Male</button><button class="pill" data-group="gender" data-value="F">Female</button></div></div>
-      <div class="filter-group"><span class="filter-label">Coat</span><div class="filter-pills"><button class="pill active" data-group="coat" data-value="all">All</button><button class="pill" data-group="coat" data-value="short">Short</button><button class="pill" data-group="coat" data-value="medium">Medium</button><button class="pill" data-group="coat" data-value="long">Long</button></div></div>
-    </div>
-    <div class="cats-grid" id="cats-grid"></div>
+    <!-- Pet List Widget - Start -->
+    <script src="https://www.petfinder.com/pet-scroller.bundle.js"></script>
+    <pet-scroller
+        s3Url="https://dbw3zep4prcju.cloudfront.net/"
+        apiBase="https://psl.petfinder.com/graphql"
+        organization='["OR393"]'
+        status="adoptable"
+        petfinderUrl="https://www.petfinder.com/"
+        type='["cat"]'
+        hideBreed="true"
+        limit="12"
+        petListTitle="">
+    </pet-scroller>
+    <!-- Pet List Widget - End -->
     <div class="cats-more reveal">
       <a href="https://www.petfinder.com/member/us/or/gladstone/cats-meow-cat-rescue-or393/" target="_blank" rel="noopener" class="btn btn--pri btn--lg btn--pill">View All Cats on Petfinder</a>
     </div>
   </div>
 </section>
 
-<!-- Fur Babies Gallery -->
+<!-- Lifetime rescue count — no this-year figure is sourced in the repo -->
 <section class="section" style="background:var(--ground)">
   <div class="container">
-    <span class="kicker reveal">Adopted Cats This Year</span>
     <h2 class="heading-lg reveal">388+ Cats Rescued to Date</h2>
-    <p class="body-lg reveal" style="max-width:32rem;margin-top:.5rem">Every one of these faces found their forever home through Cat's Meow. From the streets to warm laps — these are our happy endings.</p>
-    <div class="fur-carousel-wrap reveal">
-    <button class="fur-nav fur-nav--prev" id="fur-prev" aria-label="Previous">&larr;</button>
-    <button class="fur-nav fur-nav--next" id="fur-next" aria-label="Next">&rarr;</button>
-    <div class="fur-gallery" id="fur-gallery">
-      <div class="fur-card">
-        <span class="fur-tag">Kitten</span>
-        <img src="https://images.pexels.com/photos/10480345/pexels-photo-10480345.jpeg?auto=compress&cs=tinysrgb&w=600&h=800&fit=crop" alt="Tabby kitten looking up" loading="lazy">
-        <div class="fur-name">Butterscotch</div>
-      </div>
-      <div class="fur-card">
-        <span class="fur-tag">Available</span>
-        <img src="https://images.pexels.com/photos/29748152/pexels-photo-29748152.jpeg?auto=compress&cs=tinysrgb&w=600&h=800&fit=crop" alt="Tabby cat relaxing indoors" loading="lazy">
-        <div class="fur-name">Whiskers</div>
-      </div>
-      <div class="fur-card">
-        <span class="fur-tag">Senior</span>
-        <img src="https://images.pexels.com/photos/16178730/pexels-photo-16178730.jpeg?auto=compress&cs=tinysrgb&w=600&h=800&fit=crop" alt="Green-eyed cat with long whiskers" loading="lazy">
-        <div class="fur-name">Sage</div>
-      </div>
-      <div class="fur-card">
-        <span class="fur-tag">Bonded Pair</span>
-        <img src="https://images.pexels.com/photos/34990726/pexels-photo-34990726.jpeg?auto=compress&cs=tinysrgb&w=600&h=800&fit=crop" alt="Two cats cuddling together" loading="lazy">
-        <div class="fur-name">Peaches &amp; Cream</div>
-      </div>
-      <div class="fur-card">
-        <span class="fur-tag">Kitten</span>
-        <img src="https://images.pexels.com/photos/6900232/pexels-photo-6900232.jpeg?auto=compress&cs=tinysrgb&w=600&h=800&fit=crop" alt="Fluffy kitten on red cushion" loading="lazy">
-        <div class="fur-name">Muffin</div>
-      </div>
-      <div class="fur-card">
-        <span class="fur-tag">Available</span>
-        <img src="https://images.pexels.com/photos/7743485/pexels-photo-7743485.jpeg?auto=compress&cs=tinysrgb&w=600&h=800&fit=crop" alt="Black and white kitten staring" loading="lazy">
-        <div class="fur-name">Domino</div>
-      </div>
-      <div class="fur-card">
-        <span class="fur-tag">Foster</span>
-        <img src="https://images.pexels.com/photos/9088489/pexels-photo-9088489.jpeg?auto=compress&cs=tinysrgb&w=600&h=800&fit=crop" alt="Ginger cat lying down" loading="lazy">
-        <div class="fur-name">Marmalade</div>
-      </div>
-      <div class="fur-card">
-        <span class="fur-tag">Available</span>
-        <img src="https://images.pexels.com/photos/17457980/pexels-photo-17457980.jpeg?auto=compress&cs=tinysrgb&w=600&h=800&fit=crop" alt="White and orange kitten sitting outside" loading="lazy">
-        <div class="fur-name">Clementine</div>
-      </div>
-    </div>
-    </div>
+    <p class="body-lg reveal" style="max-width:32rem;margin-top:.5rem">A foster-based, all-volunteer rescue in the Portland metro area. Cats available for adoption are listed above and on our Petfinder page — not stock photos.</p>
     <div style="text-align:center;margin-top:2rem" class="reveal">
-      <a href="#cats" class="btn btn--pri btn--lg btn--pill">See All Adoptable Cats</a>
+      <a href="https://www.petfinder.com/member/us/or/gladstone/cats-meow-cat-rescue-or393/" target="_blank" rel="noopener" class="btn btn--pri btn--lg btn--pill">See Cats on Petfinder</a>
     </div>
   </div>
 </section>
@@ -1072,18 +1046,12 @@ img,video,svg,iframe{max-width:100%;height:auto}
   <div class="container">
     <span class="kicker reveal">How to Help the Kitties</span>
     <h2 class="heading-lg reveal">Your Support Saves Lives</h2>
-    <div class="help-grid reveal">
-      <div class="fund-card"><h3>Medical Emergency Fund</h3><p class="fund-desc">For cats needing urgent veterinary care right now</p><div class="fund-bar"><div class="fund-fill" style="width:42%;background:var(--pri)"></div></div><div class="fund-nums"><span><strong>$1,247</strong> raised</span><span>$3,000 goal</span></div></div>
-      <div class="fund-card"><h3>Spay/Neuter Fund</h3><p class="fund-desc">Every surgery prevents more homeless cats</p><div class="fund-bar"><div class="fund-fill" style="width:55%;background:var(--teal)"></div></div><div class="fund-nums"><span><strong>$2,180</strong> raised</span><span>$4,000 goal</span></div></div>
-      <div class="fund-card"><h3>General Operations</h3><p class="fund-desc">Food, litter, supplies for 220+ cats in our care</p><div class="fund-bar"><div class="fund-fill" style="width:36%;background:var(--amber)"></div></div><div class="fund-nums"><span><strong>$890</strong> raised</span><span>$2,500 goal</span></div></div>
-      <div class="fund-card"><h3>Winter Shelter Project</h3><p class="fund-desc">Building outdoor shelters for community cats</p><div class="fund-bar"><div class="fund-fill" style="width:68%;background:var(--gold)"></div></div><div class="fund-nums"><span><strong>$3,400</strong> raised</span><span>$5,000 goal</span></div></div>
-    </div>
     <div class="reveal" style="margin-top:2rem;background:linear-gradient(135deg,#B22222,#D43030);color:#fff;border:none;border-radius:var(--radius);padding:2.5rem 2rem;max-width:36rem;margin-left:auto;margin-right:auto;box-shadow:0 8px 32px rgba(178,34,34,.3)">
       <h3 style="font-family:var(--serif);font-size:1.4rem;text-align:center;margin-bottom:.5rem;color:#fff">Ways to Give</h3>
       <p style="font-size:.85rem;color:rgba(255,255,255,.85);text-align:center;margin-bottom:1.5rem">100% of donations go to cat care. Tax-deductible &middot; EIN: 83-2426815</p>
       <div style="display:grid;grid-template-columns:1fr 1fr;gap:.75rem;margin-bottom:1rem">
         <a href="https://www.facebook.com/catsmeowcatrescue/" target="_blank" rel="noopener" class="btn btn--lg btn--pill" style="justify-content:center;background:#fff;color:#B22222;font-weight:700;border:none">Facebook Donate</a>
-        <a href="https://venmo.com/CatsMeowRescue" target="_blank" rel="noopener" class="btn btn--lg btn--pill" style="justify-content:center;background:#008CFF;color:#fff;border:none;font-weight:700"><svg viewBox="0 0 24 24" width="16" height="16" fill="#fff" style="margin-right:4px"><path d="M19.27 2c.8 1.32 1.16 2.68 1.16 4.4 0 5.48-4.68 12.6-8.48 17.6H5.18L2.57 3.36l5.76-.52 1.6 12.8C11.73 12.4 13.97 7.56 13.97 4.8c0-1.68-.52-2.84-1.2-3.72L19.27 2z"/></svg>Venmo</a>
+        <a href="#help" data-donate-trigger class="btn btn--lg btn--pill" style="justify-content:center;background:#008CFF;color:#fff;border:none;font-weight:700"><svg viewBox="0 0 24 24" width="16" height="16" fill="#fff" style="margin-right:4px"><path d="M19.27 2c.8 1.32 1.16 2.68 1.16 4.4 0 5.48-4.68 12.6-8.48 17.6H5.18L2.57 3.36l5.76-.52 1.6 12.8C11.73 12.4 13.97 7.56 13.97 4.8c0-1.68-.52-2.84-1.2-3.72L19.27 2z"/></svg>Venmo</a>
       </div>
       <div style="display:flex;gap:1rem;justify-content:center;padding-top:1rem;border-top:1px solid rgba(255,255,255,.2);font-size:.82rem;color:rgba(255,255,255,.8);flex-wrap:wrap;text-align:center">
         <span><strong style="color:#fff">Email:</strong> <a href="mailto:catsmeowcatrescue@gmail.com" style="color:#FFDD44">catsmeowcatrescue@gmail.com</a></span>
@@ -1183,34 +1151,38 @@ img,video,svg,iframe{max-width:100%;height:auto}
     <div style="text-align:center"><span class="kicker reveal">Adoption Application</span><h2 class="heading-lg reveal">Find Your Future BFF</h2><p class="body-lg reveal" style="max-width:30rem;margin:.75rem auto 0">Our matching process is how we make sure every cat lands in the right home. Fill this out and we'll be in touch.</p></div>
     <div class="app-wrap reveal">
       <div class="app-progress" id="app-progress"></div>
-      <form id="adopt-form" onsubmit="return false">
+      <form id="adopt-form" novalidate>
         <div class="form-step active" data-step="0">
           <h3>About You</h3><span class="step-sub">Let's start with the basics</span>
-          <div class="field"><label for="f-name">Full Name</label><input type="text" id="f-name" required autocomplete="name" placeholder="Your name"></div>
-          <div class="field-row"><div class="field"><label for="f-email">Email</label><input type="email" id="f-email" required autocomplete="email" placeholder="you@email.com" inputmode="email"></div><div class="field"><label for="f-phone">Phone</label><input type="tel" id="f-phone" required autocomplete="tel" placeholder="(503) 555-0123" inputmode="tel"></div></div>
-          <div class="field"><label for="f-city">City &amp; Zip</label><input type="text" id="f-city" placeholder="Milwaukie, OR 97268"></div>
+          <p class="form-hint">Required fields are marked with <span class="req">*</span></p>
+          <div class="field"><label for="f-name">Full Name <span class="req" aria-hidden="true">*</span></label><input type="text" id="f-name" name="name" required autocomplete="name" placeholder="Your name"></div>
+          <div class="field-row"><div class="field"><label for="f-email">Email <span class="req" aria-hidden="true">*</span></label><input type="email" id="f-email" name="email" required autocomplete="email" placeholder="you@email.com" inputmode="email"></div><div class="field"><label for="f-phone">Phone <span class="req" aria-hidden="true">*</span></label><input type="tel" id="f-phone" name="phone" required autocomplete="tel" placeholder="(503) 555-0123" inputmode="tel"></div></div>
+          <div class="field"><label for="f-city">City &amp; Zip <span class="req" aria-hidden="true">*</span></label><input type="text" id="f-city" name="city" required autocomplete="address-level2" placeholder="Milwaukie, OR 97268"></div>
           <div class="form-actions"><span></span><button type="button" class="btn btn--pri btn--pill btn-next">Next Step</button></div>
         </div>
         <div class="form-step" data-step="1">
           <h3>Your Home</h3><span class="step-sub">Tell us about your living situation</span>
-          <div class="field-row"><div class="field"><label for="f-housing">Housing</label><select id="f-housing"><option value="">Select...</option><option>Own my home</option><option>Rent - landlord allows cats</option><option>Rent - need to check</option></select></div><div class="field"><label for="f-pets">Other Pets?</label><select id="f-pets"><option value="">Select...</option><option>No other pets</option><option>Dog(s)</option><option>Cat(s)</option><option>Dogs &amp; cats</option><option>Other</option></select></div></div>
-          <div class="field-row"><div class="field"><label for="f-adults">Adults in Home</label><input type="number" id="f-adults" min="1" max="10" placeholder="1"></div><div class="field"><label for="f-kids">Children (Ages)</label><input type="text" id="f-kids" placeholder="None, or ages"></div></div>
-          <div class="field"><label for="f-indoor">Indoor only?</label><select id="f-indoor"><option>Yes - strictly indoor</option><option>Indoor with enclosed catio</option><option>Indoor/outdoor</option></select></div>
+          <p class="form-hint">Required fields are marked with <span class="req">*</span></p>
+          <div class="field-row"><div class="field"><label for="f-housing">Housing <span class="req" aria-hidden="true">*</span></label><select id="f-housing" name="housing" required><option value="">Select...</option><option>Own my home</option><option>Rent - landlord allows cats</option><option>Rent - need to check</option></select></div><div class="field"><label for="f-pets">Other Pets? <span class="req" aria-hidden="true">*</span></label><select id="f-pets" name="pets" required><option value="">Select...</option><option>No other pets</option><option>Dog(s)</option><option>Cat(s)</option><option>Dogs &amp; cats</option><option>Other</option></select></div></div>
+          <div class="field-row"><div class="field"><label for="f-adults">Adults in Home <span class="req" aria-hidden="true">*</span></label><input type="number" id="f-adults" name="adults" min="1" max="10" required placeholder="1"></div><div class="field"><label for="f-kids">Children (Ages)</label><input type="text" id="f-kids" name="kids" placeholder="None, or ages"></div></div>
+          <div class="field"><label for="f-indoor">Indoor only? <span class="req" aria-hidden="true">*</span></label><select id="f-indoor" name="indoor" required><option value="">Select...</option><option>Yes - strictly indoor</option><option>Indoor with enclosed catio</option><option>Indoor/outdoor</option></select></div>
           <div class="form-actions"><button type="button" class="btn btn--outline btn--pill btn-prev">Back</button><button type="button" class="btn btn--pri btn--pill btn-next">Next Step</button></div>
         </div>
         <div class="form-step" data-step="2">
           <h3>Your Dream Cat</h3><span class="step-sub">Help us match you with the perfect companion</span>
-          <div class="field-row"><div class="field"><label for="f-age">Preferred Age</label><select id="f-age"><option>Any age</option><option>Kitten (under 1 year)</option><option>Young (1-7 years)</option><option>Adult (7-14 years)</option><option>Senior (15+ years)</option></select></div><div class="field"><label for="f-gender">Preferred Gender</label><select id="f-gender"><option>No preference</option><option>Male</option><option>Female</option></select></div></div>
-          <div class="field"><label for="f-vibe">Vibe Check</label><select id="f-vibe"><option>Open to any personality</option><option>Total Sweetheart - calm, cuddly, chill</option><option>Has Opinions - independent, sassy, confident</option><option>Certified Gremlin - chaotic, playful, wild</option></select></div>
-          <div class="field"><label for="f-specific">Specific Cat in Mind?</label><input type="text" id="f-specific" placeholder="Name from Petfinder, or leave blank"></div>
+          <div class="field-row"><div class="field"><label for="f-age">Preferred Age</label><select id="f-age" name="preferred_age"><option>Any age</option><option>Kitten (under 1 year)</option><option>Young (1-7 years)</option><option>Adult (7-14 years)</option><option>Senior (15+ years)</option></select></div><div class="field"><label for="f-gender">Preferred Gender</label><select id="f-gender" name="preferred_gender"><option>No preference</option><option>Male</option><option>Female</option></select></div></div>
+          <div class="field"><label for="f-vibe">Vibe Check</label><select id="f-vibe" name="vibe"><option>Open to any personality</option><option>Total Sweetheart - calm, cuddly, chill</option><option>Has Opinions - independent, sassy, confident</option><option>Certified Gremlin - chaotic, playful, wild</option></select></div>
+          <div class="field"><label for="f-specific">Specific Cat in Mind?</label><input type="text" id="f-specific" name="specific_cat" placeholder="Name from Petfinder, or leave blank"></div>
           <div class="form-actions"><button type="button" class="btn btn--outline btn--pill btn-prev">Back</button><button type="button" class="btn btn--pri btn--pill btn-next">Next Step</button></div>
         </div>
         <div class="form-step" data-step="3">
           <h3>Almost There</h3><span class="step-sub">A few more things and you're done</span>
-          <div class="field"><label for="f-exp">Previous Cat Experience</label><select id="f-exp"><option value="">Select...</option><option>First-time cat owner</option><option>Have owned cats before</option><option>Currently have cats</option><option>Experienced with special needs</option></select></div>
-          <div class="field"><label for="f-vet">Vet Name / Clinic (if applicable)</label><input type="text" id="f-vet" placeholder="Your vet's name or clinic"></div>
-          <div class="field"><label for="f-why">Why Do You Want to Adopt?</label><textarea id="f-why" placeholder="Tell us about yourself and what you're looking for in a companion..."></textarea></div>
-          <div class="form-actions"><button type="button" class="btn btn--outline btn--pill btn-prev">Back</button><button type="button" class="btn btn--pri btn--pill btn-next" id="btn-submit">Submit Application</button></div>
+          <p class="form-hint">Required fields are marked with <span class="req">*</span></p>
+          <div class="field"><label for="f-exp">Previous Cat Experience <span class="req" aria-hidden="true">*</span></label><select id="f-exp" name="experience" required><option value="">Select...</option><option>First-time cat owner</option><option>Have owned cats before</option><option>Currently have cats</option><option>Experienced with special needs</option></select></div>
+          <div class="field"><label for="f-vet">Vet Name / Clinic (if applicable)</label><input type="text" id="f-vet" name="vet" placeholder="Your vet's name or clinic"></div>
+          <div class="field"><label for="f-why">Why Do You Want to Adopt? <span class="req" aria-hidden="true">*</span></label><textarea id="f-why" name="why" required placeholder="Tell us about yourself and what you're looking for in a companion..."></textarea></div>
+          <p class="form-error" id="adopt-error" role="alert"></p>
+          <div class="form-actions"><button type="button" class="btn btn--outline btn--pill btn-prev">Back</button><button type="submit" class="btn btn--pri btn--pill" id="btn-submit">Submit Application</button></div>
         </div>
         <div class="form-step" data-step="4">
           <div class="form-success">
@@ -1231,12 +1203,18 @@ img,video,svg,iframe{max-width:100%;height:auto}
     <span class="kicker reveal">Get in Touch</span>
     <h2 class="heading-lg reveal">Contact Us</h2>
     <p class="body-lg reveal" style="margin-top:.5rem;margin-bottom:2rem">Have a question about adoption, fostering, or volunteering? We'd love to hear from you.</p>
-    <form class="contact-form reveal" onsubmit="return false">
-      <div class="field-row"><div class="field"><label>Name</label><input type="text" placeholder="Your name"></div><div class="field"><label>Email</label><input type="email" placeholder="your@email.com"></div></div>
-      <div class="field"><label>Subject</label><select><option value="">Select a topic...</option><option>Adoption Inquiry</option><option>Foster Application</option><option>Volunteering</option><option>Donation Question</option><option>Event Info</option><option>Other</option></select></div>
-      <div class="field"><label>Message</label><textarea rows="4" placeholder="Tell us what's on your mind..."></textarea></div>
-      <button type="submit" class="btn btn--pri btn--lg btn--pill" style="width:100%;justify-content:center" onclick="this.textContent='Message Sent!';this.style.background='#2E7D32';setTimeout(function(){this.textContent='Send Message';this.style.background=''}.bind(this),3000)">Send Message</button>
+    <form class="contact-form reveal" id="contact-form" novalidate>
+      <p class="form-hint">Required fields are marked with <span class="req">*</span></p>
+      <div class="field-row"><div class="field"><label for="c-name">Name <span class="req" aria-hidden="true">*</span></label><input type="text" id="c-name" name="name" required autocomplete="name" placeholder="Your name"></div><div class="field"><label for="c-email">Email <span class="req" aria-hidden="true">*</span></label><input type="email" id="c-email" name="email" required autocomplete="email" placeholder="your@email.com"></div></div>
+      <div class="field"><label for="c-subject">Subject <span class="req" aria-hidden="true">*</span></label><select id="c-subject" name="subject" required><option value="">Select a topic...</option><option>Adoption Inquiry</option><option>Foster Application</option><option>Volunteering</option><option>Donation Question</option><option>Event Info</option><option>Other</option></select></div>
+      <div class="field"><label for="c-message">Message <span class="req" aria-hidden="true">*</span></label><textarea id="c-message" name="message" rows="4" required placeholder="Tell us what's on your mind..."></textarea></div>
+      <p class="form-error" id="contact-error" role="alert"></p>
+      <button type="submit" class="btn btn--pri btn--lg btn--pill" id="contact-submit" style="width:100%;justify-content:center">Send Message</button>
     </form>
+    <div class="form-success" id="contact-success" hidden>
+      <h3>Message sent</h3>
+      <p>Thanks — we received your note and will reply at the email you provided.</p>
+    </div>
   </div>
 </section>
 
@@ -1270,7 +1248,8 @@ img,video,svg,iframe{max-width:100%;height:auto}
     <div class="newsletter reveal">
       <h2>Stay in the Loop</h2>
       <p>Get rescue stories, event announcements, and the best cat content in Portland delivered to your inbox.</p>
-      <form class="nl-form" onsubmit="return false"><input type="email" placeholder="Your email address" aria-label="Email for newsletter"><button class="btn" style="background:#B22222;color:#fff;font-weight:700">Subscribe</button></form>
+      <form class="nl-form" id="page-nl-form"><input type="email" id="page-nl-email" required autocomplete="email" placeholder="Your email address" aria-label="Email for newsletter"><button type="submit" class="btn" style="background:#B22222;color:#fff;font-weight:700">Subscribe</button></form>
+      <p class="form-error" id="page-nl-error" role="alert" style="max-width:26rem;margin:.75rem auto 0"></p>
     </div>
   </div>
 </section>
@@ -1317,7 +1296,7 @@ img,video,svg,iframe{max-width:100%;height:auto}
     <div class="field" style="margin-bottom:1rem"><label for="custom-amount">Or enter your own amount</label><input type="text" id="custom-amount" placeholder="$___" inputmode="numeric"></div>
     <div class="field"><label>Dedicate to a fund (optional)</label><select><option>Where it's needed most</option><option>Medical Emergency Fund</option><option>Spay/Neuter Fund</option><option>General Operations</option><option>Winter Shelter Project</option></select></div>
     <a href="https://www.facebook.com/catsmeowcatrescue/" target="_blank" rel="noopener" class="btn btn--pri btn--lg btn--pill" style="width:100%;justify-content:center;margin-top:1rem">Donate via Facebook</a>
-    <a href="https://venmo.com/CatsMeowRescue" target="_blank" rel="noopener" class="btn btn--lg btn--pill" style="width:100%;justify-content:center;margin-top:.5rem;background:#008CFF;color:#fff;border:none;font-weight:700">
+    <a href="https://venmo.com/CatsMeowRescue?txn=pay&amp;amount=50&amp;note=Donation%20to%20Cat%27s%20Meow%20Cat%20Rescue" target="_blank" rel="noopener" class="btn btn--lg btn--pill" id="donate-venmo" style="width:100%;justify-content:center;margin-top:.5rem;background:#008CFF;color:#fff;border:none;font-weight:700">
       <svg viewBox="0 0 24 24" width="18" height="18" fill="#fff" style="margin-right:6px"><path d="M19.27 2c.8 1.32 1.16 2.68 1.16 4.4 0 5.48-4.68 12.6-8.48 17.6H5.18L2.57 3.36l5.76-.52 1.6 12.8C11.73 12.4 13.97 7.56 13.97 4.8c0-1.68-.52-2.84-1.2-3.72L19.27 2z"/></svg>Donate via Venmo</a>
     <div style="display:flex;gap:.5rem;margin-top:.75rem">
       <a href="tel:+15038506363" class="btn btn--outline btn--sm btn--pill" style="flex:1;justify-content:center;font-size:.78rem">Call (503) 850-6363</a>
@@ -1358,12 +1337,12 @@ img,video,svg,iframe{max-width:100%;height:auto}
       <div class="checkout-field"><label for="co-notes">Order Notes (optional)</label><textarea id="co-notes" rows="2" placeholder="Any special requests..."></textarea></div>
       <div class="checkout-summary" id="checkout-summary"></div>
       <button class="btn btn--pri btn--lg btn--pill" id="checkout-submit" style="width:100%;justify-content:center">Place Order</button>
-      <div class="cart-note" style="margin-top:.75rem">You'll receive a confirmation email with payment instructions (Venmo, PayPal, or check).</div>
+      <div class="cart-note" style="margin-top:.75rem">Placing an order opens an email to the rescue with your details. Payment is via Venmo, PayPal, check, or pickup — we do not charge a card here.</div>
     </div>
     <div class="order-success" id="order-success" style="display:none">
       <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M9 12l2 2 4-4"/></svg>
       <h4>Order Submitted!</h4>
-      <p>Thank you for supporting Cat's Meow Cat Rescue! We've sent your order details to <strong>catsmeowcatrescue@gmail.com</strong>. You'll receive a confirmation email with payment instructions shortly.</p>
+      <p>Thank you for supporting Cat's Meow Cat Rescue! Your email app should open with the order details addressed to <strong>catsmeowcatrescue@gmail.com</strong>. If it did not, please email those details so we can fulfill your order. We will reply with payment instructions.</p>
       <button class="btn btn--pri btn--pill" onclick="closeCart()">Continue Shopping</button>
     </div>
   </div>
@@ -1397,70 +1376,6 @@ img,video,svg,iframe{max-width:100%;height:auto}
 
 <script>
 (function(){
-/* ── Cat Data ── */
-var PF='https://dbw3zep4prcju.cloudfront.net/animal/';
-var CATS=[
-{name:"Gash",grp:"young",gender:"M",coat:"short",breed:"Tabby & DSH",img:PF+"a72f65a1-358e-4b59-894c-2beb9e405859/image/05678d70-022c-4681-89bf-46ca6916d7ac.jpeg",link:"https://www.petfinder.com/cat/gash-a72f65a1-358e-4b59-894c-2beb9e405859/or/gladstone/cats-meow-cat-rescue-or393/details/"},
-{name:"Ash",grp:"young",gender:"F",coat:"short",breed:"Tuxedo & DSH",img:PF+"f05ca8b0-5423-43e3-9fbc-10294a06b4dd/image/76b89393-3066-42d8-a329-5579243815df.jpeg",link:"https://www.petfinder.com/cat/ash-f05ca8b0-5423-43e3-9fbc-10294a06b4dd/or/gladstone/cats-meow-cat-rescue-or393/details/"},
-{name:"Vinegar",grp:"young",gender:"F",coat:"short",breed:"Tortoiseshell & DSH",img:PF+"3f868386-a167-41c0-b62a-7bc7c47b70d8/image/497eafda-574a-4d58-bded-fa19eefbb88a.jpeg",link:"https://www.petfinder.com/cat/vinegar-3f868386-a167-41c0-b62a-7bc7c47b70d8/or/gladstone/cats-meow-cat-rescue-or393/details/"},
-{name:"Chuck",grp:"adult",gender:"M",coat:"short",breed:"Tabby & DSH",img:PF+"226113cb-1970-4b1f-92a9-1c95b7218631/image/bf7988a3-73fa-4144-9ec9-780652fbafb6.jpg",link:"https://www.petfinder.com/cat/chuck-226113cb-1970-4b1f-92a9-1c95b7218631/or/gladstone/cats-meow-cat-rescue-or393/details/"},
-{name:"Sassy",grp:"kitten",gender:"F",coat:"short",breed:"DSH",img:PF+"9a82ced3-4d92-4ebe-90a0-c97a25f98cc5/image/e2dedfd0-11e1-492c-8302-2c02d843f765.jpg",link:"https://www.petfinder.com/cat/sassy-9a82ced3-4d92-4ebe-90a0-c97a25f98cc5/or/gladstone/cats-meow-cat-rescue-or393/details/"},
-{name:"Maisey",grp:"young",gender:"F",coat:"short",breed:"Tabby & DSH",img:PF+"523f02f8-e8e2-447e-8893-0b01d4f131a0/image/9c82d4e2-4144-414f-bf67-8a2f939febef.jpg",link:"https://www.petfinder.com/cat/maisey-523f02f8-e8e2-447e-8893-0b01d4f131a0/or/gladstone/cats-meow-cat-rescue-or393/details/"},
-{name:"Nova",grp:"kitten",gender:"F",coat:"short",breed:"Tuxedo & DSH",img:PF+"742c47ae-dc36-4e34-8710-8f04875005a0/image/5dc476a3-30c0-4ac7-974c-9b9acffdae7e.jpg",link:"https://www.petfinder.com/cat/nova-742c47ae-dc36-4e34-8710-8f04875005a0/or/gladstone/cats-meow-cat-rescue-or393/details/"},
-{name:"Freyja",grp:"young",gender:"F",coat:"long",breed:"Tabby & DLH",img:PF+"57b59a1f-30b2-4849-860e-14071a256f33/image/cd63c228-1cac-4060-ad35-e46b610c1f44.jpg",link:"https://www.petfinder.com/cat/freyja-57b59a1f-30b2-4849-860e-14071a256f33/or/gladstone/cats-meow-cat-rescue-or393/details/"},
-{name:"Ms Kitty",grp:"senior",gender:"F",coat:"short",breed:"Tuxedo & DSH",img:PF+"45031514-6d30-4f26-9d98-31ff35707c77/image/d2596669-9adf-4a34-873c-fdf05de739d5.jpg",link:"https://www.petfinder.com/cat/madame-meowzers-aka-ms-kitty-45031514-6d30-4f26-9d98-31ff35707c77/or/gladstone/cats-meow-cat-rescue-or393/details/"},
-{name:"Twix",grp:"kitten",gender:"M",coat:"medium",breed:"Tabby & DMH",img:PF+"008c724a-30ca-497b-8aa0-7e3d1e1d724a/image/51e960e9-f2e3-46ce-8c15-9de8b4ec096e.jpg",link:"https://www.petfinder.com/cat/twix-008c724a-30ca-497b-8aa0-7e3d1e1d724a/or/gladstone/cats-meow-cat-rescue-or393/details/"},
-{name:"Italia",grp:"young",gender:"M",coat:"short",breed:"Tabby & DSH",img:PF+"6c3eb092-e8cf-4ff7-a608-232a4be5a441/image/299048b2-3521-48df-8297-11f94f02e1b5.jpg",link:"https://www.petfinder.com/cat/italia-6c3eb092-e8cf-4ff7-a608-232a4be5a441/or/gladstone/cats-meow-cat-rescue-or393/details/"},
-{name:"Pibbs",grp:"adult",gender:"F",coat:"short",breed:"DSH & Tabby",img:PF+"b5fe521e-27e8-451e-b796-f1a5a6c63256/image/e3a79c2f-5606-462e-9f6f-6e4b591a5059.jpeg",link:"https://www.petfinder.com/cat/pibbs-b5fe521e-27e8-451e-b796-f1a5a6c63256/or/gladstone/cats-meow-cat-rescue-or393/details/"},
-{name:"Murphy",grp:"adult",gender:"M",coat:"medium",breed:"Tabby & DMH",img:PF+"80d58c15-f7b2-4603-b6f1-cfb67a88c9e8/image/041ef9ce-6c99-4db5-b2a5-72550eae7d4f.jpg",link:"https://www.petfinder.com/cat/murphy-80d58c15-f7b2-4603-b6f1-cfb67a88c9e8/or/gladstone/cats-meow-cat-rescue-or393/details/"},
-{name:"Sage Derby",grp:"young",gender:"F",coat:"short",breed:"Tortoiseshell & DSH",img:PF+"7d3219a3-4c40-4947-82ef-72d8978b5336/image/aa7f295f-27c1-4249-bed5-ffa38b844d44.jpg",link:"https://www.petfinder.com/cat/sage-derby-7d3219a3-4c40-4947-82ef-72d8978b5336/or/gladstone/cats-meow-cat-rescue-or393/details/"},
-{name:"Tucker",grp:"kitten",gender:"M",coat:"short",breed:"Tabby & DSH",img:PF+"52d6076c-62e1-4f6f-80f4-bca81d13102f/image/a672bf8d-8fc1-43c1-a2c1-3ea87ec6356d.jpg",link:"https://www.petfinder.com/cat/tucker-52d6076c-62e1-4f6f-80f4-bca81d13102f/or/gladstone/cats-meow-cat-rescue-or393/details/"},
-{name:"Snape",grp:"young",gender:"M",coat:"long",breed:"DLH",img:PF+"93152927-5189-4139-9b07-1b0e6360bde6/image/38be71ca-d51b-4f32-a87c-6d225b7e9635.jpg",link:"https://www.petfinder.com/cat/snape-93152927-5189-4139-9b07-1b0e6360bde6/or/gladstone/cats-meow-cat-rescue-or393/details/"},
-{name:"Winnie",grp:"adult",gender:"F",coat:"short",breed:"Tabby & DSH",img:PF+"79727281-e508-4726-a1c7-490dbf6523dc/image/8f68ac57-99eb-497f-80b7-bb3f983046e1.jpg",link:"https://www.petfinder.com/cat/winnie-79727281-e508-4726-a1c7-490dbf6523dc/or/gladstone/cats-meow-cat-rescue-or393/details/"},
-{name:"Biscuit",grp:"kitten",gender:"F",coat:"short",breed:"Tabby & DSH",img:PF+"7802fc2e-3846-4df1-9df5-8825961b3b5b/image/dafa02c6-fdc1-4ff8-ad54-0fb9a56359ea.jpg",link:"https://www.petfinder.com/cat/biscuit-7802fc2e-3846-4df1-9df5-8825961b3b5b/or/gladstone/cats-meow-cat-rescue-or393/details/"},
-{name:"Sauvie",grp:"adult",gender:"F",coat:"short",breed:"DSH",img:PF+"845fec14-2d23-4122-adc4-bc1224d6a9b4/image/1fcc7527-8694-482a-b37a-254efd48b46d.jpg",link:"https://www.petfinder.com/cat/sauvie-845fec14-2d23-4122-adc4-bc1224d6a9b4/or/gladstone/cats-meow-cat-rescue-or393/details/"},
-{name:"Eclipse",grp:"young",gender:"F",coat:"short",breed:"DSH",img:PF+"83e2a932-1259-4a38-bec9-edc0c1bda209/image/aa387c23-aff9-49df-8953-ea5378de5a11.jpg",link:"https://www.petfinder.com/cat/eclipse-83e2a932-1259-4a38-bec9-edc0c1bda209/or/gladstone/cats-meow-cat-rescue-or393/details/"},
-{name:"Grubby",grp:"kitten",gender:"M",coat:"short",breed:"Tabby & DSH",img:PF+"34425bea-bf00-42a1-9e00-f4f293dc5b1d/image/5ebb0f63-5c71-4d6c-b773-4fa68105802e.jpg",link:"https://www.petfinder.com/cat/grubby-34425bea-bf00-42a1-9e00-f4f293dc5b1d/or/gladstone/cats-meow-cat-rescue-or393/details/"},
-{name:"Rockwell",grp:"kitten",gender:"M",coat:"short",breed:"DSH",img:PF+"abb51cc1-a2eb-44ff-a457-c3ff2057f84e/image/b2ed2f99-d642-41a3-b202-2bb627fc3167.jpg",link:"https://www.petfinder.com/cat/rockwell-abb51cc1-a2eb-44ff-a457-c3ff2057f84e/or/gladstone/cats-meow-cat-rescue-or393/details/"},
-{name:"Smudge",grp:"adult",gender:"M",coat:"short",breed:"DSH",img:PF+"6bc6bdb6-8cb7-4f0c-aea3-b99a11f71079/image/4ae3b46d-44a6-4155-a945-f336079d5e07.jpeg",link:"https://www.petfinder.com/cat/smudge-6bc6bdb6-8cb7-4f0c-aea3-b99a11f71079/or/gladstone/cats-meow-cat-rescue-or393/details/"},
-{name:"Maxine",grp:"young",gender:"F",coat:"short",breed:"DSH & Tabby",img:PF+"7ad95cbc-ebb4-469f-bc6e-a182f3758795/image/aaf0f072-ba58-4550-8462-a30b59757a1b.jpeg",link:"https://www.petfinder.com/cat/maxine-7ad95cbc-ebb4-469f-bc6e-a182f3758795/or/gladstone/cats-meow-cat-rescue-or393/details/"},
-{name:"Mimolette",grp:"kitten",gender:"F",coat:"short",breed:"Tortoiseshell & DSH",img:PF+"c86f5e98-120a-4a2e-9829-4433803bd3f8/image/157f62a7-9654-4832-9677-541249991342.jpg",link:"https://www.petfinder.com/cat/mimolette-c86f5e98-120a-4a2e-9829-4433803bd3f8/or/gladstone/cats-meow-cat-rescue-or393/details/"},
-{name:"Tonya",grp:"adult",gender:"F",coat:"short",breed:"Tabby & DSH",img:PF+"f63f13fb-bdf7-4fa1-83dc-b5063cf6ef9e/image/0f9fa78e-9796-4df8-96e8-dd7ff015c506.jpg",link:"https://www.petfinder.com/cat/tonya-f63f13fb-bdf7-4fa1-83dc-b5063cf6ef9e/or/gladstone/cats-meow-cat-rescue-or393/details/"},
-{name:"Truffle",grp:"kitten",gender:"M",coat:"long",breed:"DLH",img:PF+"0fc3c943-74f5-4c4d-bd12-aa7a59e9de44/image/cbd9e3c1-a155-44d3-86e1-ba1e32139a3c.jpg",link:"https://www.petfinder.com/cat/truffle-0fc3c943-74f5-4c4d-bd12-aa7a59e9de44/or/gladstone/cats-meow-cat-rescue-or393/details/"},
-{name:"Snowy",grp:"young",gender:"F",coat:"short",breed:"Siamese & DSH",img:PF+"ee458d6e-1222-48be-be67-3f3ca981213b/image/90b7ec28-28b3-4421-a547-32b8269d5f28.jpeg",link:"https://www.petfinder.com/cat/snowy-ee458d6e-1222-48be-be67-3f3ca981213b/or/gladstone/cats-meow-cat-rescue-or393/details/"},
-{name:"Emmie",grp:"adult",gender:"F",coat:"short",breed:"Tabby & DSH",img:PF+"5020655f-da8d-47e4-836c-7efd61f93751/image/933bb6ac-8bc5-4d09-9da6-a7154e582823.jpg",link:"https://www.petfinder.com/cat/emmie-5020655f-da8d-47e4-836c-7efd61f93751/or/gladstone/cats-meow-cat-rescue-or393/details/"},
-{name:"River Rock",grp:"young",gender:"M",coat:"short",breed:"DSH",img:PF+"34b8f8fd-b0bb-4ca2-885f-69f106bb22cc/image/7a98d522-2c5e-417a-8888-c21a6d3e0e52.jpg",link:"https://www.petfinder.com/cat/river-rock-34b8f8fd-b0bb-4ca2-885f-69f106bb22cc/or/gladstone/cats-meow-cat-rescue-or393/details/"},
-{name:"Hope",grp:"young",gender:"F",coat:"long",breed:"DLH",img:PF+"b86376f6-64f9-4f85-88e6-efbd00a24e3d/image/fd6223bf-ad13-4e19-a7fb-674d47cfdc9a.jpg",link:"https://www.petfinder.com/cat/hope-b86376f6-64f9-4f85-88e6-efbd00a24e3d/or/gladstone/cats-meow-cat-rescue-or393/details/"}
-];
-
-function renderCats(list,limit){
-  var g=document.getElementById('cats-grid');
-  if(!list.length){g.innerHTML='<div class="no-cats">No cats match your filters. Try adjusting your search!</div>';document.getElementById('cats-showing').textContent='0';return}
-  var show=limit?list.slice(0,limit):list;
-  g.innerHTML=show.map(function(c){
-    var ageLbl=c.grp.charAt(0).toUpperCase()+c.grp.slice(1);
-    var genderLbl=c.gender==='M'?'Male':'Female';
-    return '<div class="cat-card"><div class="cat-photo"><img src="'+c.img+'" alt="'+c.name+'" loading="lazy"></div><div class="cat-info"><h3>'+c.name+'</h3><span class="cat-details">'+ageLbl+' · '+genderLbl+' · '+c.breed+'</span><a href="'+c.link+'" target="_blank" rel="noopener" class="btn btn--pri btn--sm btn--pill">Meet '+c.name+'</a></div></div>';
-  }).join('');
-  document.getElementById('cats-showing').textContent=show.length+(list.length>show.length?' of '+list.length:'');
-}
-
-/* ── Filters ── */
-var filters={age:'all',gender:'all',coat:'all'};
-document.getElementById('filter-bar').addEventListener('click',function(e){
-  var pill=e.target.closest('.pill');if(!pill)return;
-  var grp=pill.dataset.group,val=pill.dataset.value;
-  filters[grp]=val;
-  pill.parentElement.querySelectorAll('.pill').forEach(function(p){p.classList.toggle('active',p.dataset.value===val)});
-  var filtered=CATS.filter(function(c){
-    if(filters.age!=='all'&&c.grp!==filters.age)return false;
-    if(filters.gender!=='all'&&c.gender!==filters.gender)return false;
-    if(filters.coat!=='all'&&c.coat!==filters.coat)return false;
-    return true;
-  });
-  renderCats(filtered,8);
-});
-
 /* ── Events ── */
 var EVENTS=[
 {date:'2026-07-26',title:'PetSmart Adoption Day',loc:'PetSmart Clackamas',desc:'Meet adoptable cats and kittens at our PetSmart partner location. Walk-ins welcome!'},
@@ -1470,7 +1385,7 @@ var EVENTS=[
 {date:'2026-11-14',title:'Holiday Craft Fair',loc:'Gladstone Community Center',desc:'Handmade cat crafts, rescue merch, and holiday shopping. Proceeds support our medical fund.'},
 {date:'2026-12-05',title:'Meowy Christmas Adoption Event',loc:'PetSmart Clackamas',desc:'Special holiday adoption event. Reduced adoption fees and gift bags for new cat parents.'}
 ];
-var calDate=new Date(2026,6);
+var calDate=new Date();
 function renderCalendar(){
   var y=calDate.getFullYear(),m=calDate.getMonth();
   document.getElementById('cal-header').textContent=calDate.toLocaleDateString('en-US',{month:'long',year:'numeric'});
@@ -1499,6 +1414,26 @@ function renderEvents(){
     return '<div class="event-card"><span class="event-date">'+dateStr+'</span><h3>'+e.title+'</h3><p>'+e.loc+' — '+e.desc+'</p><div class="event-actions"><a href="'+waLink+'" target="_blank" rel="noopener" class="btn btn--sm btn--outline btn--pill">WhatsApp</a><a href="'+fbLink+'" target="_blank" rel="noopener" class="btn btn--sm btn--outline btn--pill">Facebook</a><button class="btn btn--sm btn--ghost btn--pill share-btn" data-text="'+shareText.replace(/"/g,'&quot;')+'">Copy Link</button></div></div>';
   }).join(''):'<p style="color:var(--stone)">No upcoming events right now. Check back soon!</p>';
 }
+function updateHeroNews(){
+  var el=document.getElementById('hero-news');
+  if(!el)return;
+  var now=new Date();now.setHours(0,0,0,0);
+  var upcoming=EVENTS.filter(function(e){return new Date(e.date+'T12:00:00')>=now}).sort(function(a,b){return new Date(a.date)-new Date(b.date)});
+  if(!upcoming.length){
+    el.innerHTML='<span class="news-badge">Events</span> Check the calendar for dates <span style="font-size:.7rem;opacity:.7;margin-left:.25rem">View Calendar &rarr;</span>';
+    return;
+  }
+  var first=upcoming[0];
+  var d=new Date(first.date+'T12:00:00');
+  var dateStr=d.toLocaleDateString('en-US',{month:'short',day:'numeric'});
+  var extra='';
+  if(upcoming[1]){
+    var d2=new Date(upcoming[1].date+'T12:00:00');
+    extra=' &middot; '+upcoming[1].title+' '+d2.toLocaleDateString('en-US',{month:'short',day:'numeric'});
+  }
+  el.innerHTML='<span class="news-badge" style="animation:pulse 2s ease-in-out infinite">Upcoming</span> <strong>'+first.title+' '+dateStr+'</strong>'+extra+' <span style="font-size:.7rem;opacity:.7;margin-left:.25rem">View Calendar &rarr;</span>';
+}
+
 document.getElementById('cal-prev').addEventListener('click',function(){calDate.setMonth(calDate.getMonth()-1);renderCalendar()});
 document.getElementById('cal-next').addEventListener('click',function(){calDate.setMonth(calDate.getMonth()+1);renderCalendar()});
 document.getElementById('cal-grid').addEventListener('click',function(e){
@@ -1582,6 +1517,65 @@ document.addEventListener('click',function(e){
 });
 
 /* ── Application Form ── */
+var FORMSUBMIT_URL='https://formsubmit.co/ajax/catsmeowcatrescue@gmail.com';
+function fieldVal(id){var el=document.getElementById(id);return el?String(el.value).trim():''}
+function showFormError(id,msg){
+  var el=document.getElementById(id);
+  if(!el)return;
+  el.textContent=msg||'';
+  el.classList.toggle('is-visible',!!msg);
+}
+function validateStep(stepEl){
+  if(!stepEl)return true;
+  stepEl.classList.add('was-validated');
+  var fields=stepEl.querySelectorAll('input,select,textarea');
+  for(var i=0;i<fields.length;i++){
+    if(!fields[i].checkValidity()){
+      fields[i].reportValidity();
+      fields[i].focus();
+      return false;
+    }
+  }
+  return true;
+}
+function sendToRescue(payload){
+  return fetch(FORMSUBMIT_URL,{
+    method:'POST',
+    headers:{'Content-Type':'application/json','Accept':'application/json'},
+    body:JSON.stringify(payload)
+  }).then(function(r){
+    return r.text().then(function(text){
+      var data={};
+      try{data=JSON.parse(text)}catch(err){data={message:text}}
+      if(!r.ok || data.success===false || data.success==='false'){
+        throw new Error(data.message||('Send failed ('+r.status+')'));
+      }
+      return data;
+    });
+  });
+}
+function collectAdoptPayload(){
+  return {
+    name:fieldVal('f-name'),
+    email:fieldVal('f-email'),
+    phone:fieldVal('f-phone'),
+    city:fieldVal('f-city'),
+    housing:fieldVal('f-housing'),
+    pets:fieldVal('f-pets'),
+    adults:fieldVal('f-adults'),
+    kids:fieldVal('f-kids'),
+    indoor:fieldVal('f-indoor'),
+    preferred_age:fieldVal('f-age'),
+    preferred_gender:fieldVal('f-gender'),
+    vibe:fieldVal('f-vibe'),
+    specific_cat:fieldVal('f-specific'),
+    experience:fieldVal('f-exp'),
+    vet:fieldVal('f-vet'),
+    why:fieldVal('f-why'),
+    _replyto:fieldVal('f-email'),
+    _subject:'Adoption Application — '+fieldVal('f-name')
+  };
+}
 var totalSteps=4,currentStep=0;
 function updateProgress(){
   var html='';
@@ -1591,32 +1585,106 @@ function updateProgress(){
   }
   document.getElementById('app-progress').innerHTML=html;
 }
+function goToAdoptStep(next){
+  var steps=document.querySelectorAll('#adopt-form .form-step');
+  if(!steps[currentStep]||!steps[next])return;
+  steps[currentStep].classList.remove('active');
+  currentStep=next;
+  steps[currentStep].classList.add('active');
+  if(currentStep===4){
+    document.getElementById('app-progress').style.display='none';
+  }else{
+    document.getElementById('app-progress').style.display='';
+    updateProgress();
+    var focusable=steps[currentStep].querySelector('input,select,textarea');
+    if(focusable)focusable.focus();
+  }
+}
+function submitAdoptForm(){
+  var step=document.querySelector('#adopt-form .form-step.active');
+  showFormError('adopt-error','');
+  if(!validateStep(step))return;
+  var btn=document.getElementById('btn-submit');
+  var payload=collectAdoptPayload();
+  btn.disabled=true;
+  var prev=btn.textContent;
+  btn.textContent='Sending...';
+  sendToRescue(payload).then(function(){
+    goToAdoptStep(4);
+    launchConfetti();
+  }).catch(function(){
+    showFormError('adopt-error','We could not send your application. Please try again or email catsmeowcatrescue@gmail.com.');
+    btn.disabled=false;
+    btn.textContent=prev;
+  });
+}
+document.getElementById('adopt-form').addEventListener('submit',function(e){
+  e.preventDefault();
+  if(currentStep===3){submitAdoptForm();return}
+  var step=document.querySelector('#adopt-form .form-step.active');
+  if(!validateStep(step))return;
+  goToAdoptStep(currentStep+1);
+});
 document.getElementById('adopt-form').addEventListener('click',function(e){
   if(e.target.closest('.btn-next')){
-    var steps=document.querySelectorAll('.form-step');
-    if(currentStep===3){
-      steps[currentStep].classList.remove('active');
-      currentStep=4;
-      steps[currentStep].classList.add('active');
-      document.getElementById('app-progress').style.display='none';
-      launchConfetti();
-      return;
-    }
-    steps[currentStep].classList.remove('active');
-    currentStep++;
-    steps[currentStep].classList.add('active');
-    updateProgress();
-    steps[currentStep].querySelector('input,select,textarea').focus();
+    var step=document.querySelector('#adopt-form .form-step.active');
+    if(!validateStep(step))return;
+    goToAdoptStep(currentStep+1);
   }
   if(e.target.closest('.btn-prev')){
-    var steps=document.querySelectorAll('.form-step');
-    steps[currentStep].classList.remove('active');
-    currentStep--;
-    steps[currentStep].classList.add('active');
-    updateProgress();
+    goToAdoptStep(currentStep-1);
   }
 });
 updateProgress();
+
+document.getElementById('contact-form').addEventListener('submit',function(e){
+  e.preventDefault();
+  var form=e.currentTarget;
+  showFormError('contact-error','');
+  if(!validateStep(form))return;
+  var btn=document.getElementById('contact-submit');
+  var payload={
+    name:fieldVal('c-name'),
+    email:fieldVal('c-email'),
+    subject:fieldVal('c-subject'),
+    message:fieldVal('c-message'),
+    _replyto:fieldVal('c-email'),
+    _subject:'Website Contact — '+fieldVal('c-subject')
+  };
+  btn.disabled=true;
+  var prev=btn.textContent;
+  btn.textContent='Sending...';
+  sendToRescue(payload).then(function(){
+    form.hidden=true;
+    var ok=document.getElementById('contact-success');
+    if(ok)ok.hidden=false;
+  }).catch(function(){
+    showFormError('contact-error','We could not send your message. Please try again or email catsmeowcatrescue@gmail.com.');
+    btn.disabled=false;
+    btn.textContent=prev;
+  });
+});
+
+var pageNl=document.getElementById('page-nl-form');
+if(pageNl){
+  pageNl.addEventListener('submit',function(e){
+    e.preventDefault();
+    showFormError('page-nl-error','');
+    if(!pageNl.checkValidity()){pageNl.reportValidity();return}
+    var email=fieldVal('page-nl-email');
+    var btn=pageNl.querySelector('button[type="submit"]');
+    btn.disabled=true;
+    var prev=btn.textContent;
+    btn.textContent='Sending...';
+    sendToRescue({email:email,_subject:'New Newsletter Subscriber - Cat\'s Meow Website!'}).then(function(){
+      btn.textContent='Subscribed!';
+    }).catch(function(){
+      showFormError('page-nl-error','We could not subscribe you. Please try again or email catsmeowcatrescue@gmail.com.');
+      btn.disabled=false;
+      btn.textContent=prev;
+    });
+  });
+}
 
 /* ── Mobile Nav ── */
 
@@ -1647,12 +1715,37 @@ function openDonate(e){if(e)e.preventDefault();donateModal.classList.add('is-ope
 function closeDonate(){donateModal.classList.remove('is-open');document.body.style.overflow=''}
 document.getElementById('donate-close').addEventListener('click',closeDonate);
 donateModal.addEventListener('click',function(e){if(e.target===donateModal)closeDonate()});
+function getDonateAmount(){
+  var raw=fieldVal('custom-amount').replace(/[^0-9.]/g,'');
+  var custom=parseFloat(raw);
+  if(custom>0)return custom;
+  var active=document.querySelector('.donate-amt.active');
+  var chip=active?parseFloat(active.getAttribute('data-amt')):NaN;
+  return chip>0?chip:50;
+}
+function updateDonateLinks(){
+  var amt=getDonateAmount();
+  var venmo=document.getElementById('donate-venmo');
+  if(!venmo)return;
+  venmo.href='https://venmo.com/CatsMeowRescue?txn=pay&amount='+encodeURIComponent(String(amt))+'&note='+encodeURIComponent("Donation to Cat's Meow Cat Rescue");
+}
 document.querySelectorAll('.donate-amounts').forEach(function(wrap){wrap.addEventListener('click',function(e){
   var btn=e.target.closest('.donate-amt');if(!btn)return;
   wrap.querySelectorAll('.donate-amt').forEach(function(b){b.classList.remove('active')});
   btn.classList.add('active');
   document.getElementById('custom-amount').value='';
+  updateDonateLinks();
 })});
+var customAmt=document.getElementById('custom-amount');
+if(customAmt){
+  customAmt.addEventListener('input',function(){
+    if(this.value.replace(/[^0-9.]/g,'')){
+      document.querySelectorAll('.donate-amt').forEach(function(b){b.classList.remove('active')});
+    }
+    updateDonateLinks();
+  });
+}
+updateDonateLinks();
 function attachDonateTriggers(){
   document.querySelectorAll('a[href="#help"],a[data-donate-trigger],a[href="mailto:catsmeowcatrescue@gmail.com?subject=Donation"]').forEach(function(a){
     if(a.closest('.site-footer')||a.closest('.form-success')||a._donateAttached)return;
@@ -2044,8 +2137,8 @@ document.addEventListener('click',function(e){
 renderQuiz();
 
 /* ── Init ── */
-renderCats(CATS,8);
 renderCalendar();
+updateHeroNews();
 renderShop(6);
 })();
 </script>
