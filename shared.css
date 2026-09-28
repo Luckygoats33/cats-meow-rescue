@@ -210,9 +210,9 @@ section[id],#volunteer,#apply{scroll-margin-top:4.75rem}
   .main-nav,.header-cta{display:none}
   .nav-toggle{display:flex;order:2}
   .cart-toggle{order:1;margin-left:auto}
-  .mobile-bottom-bar{display:flex}
-  .back-to-top{bottom:82px;right:1rem;width:42px;height:42px}
-  body{padding-bottom:72px}
+  .mobile-bottom-bar{display:flex;padding-bottom:calc(10px + env(safe-area-inset-bottom, 0px))}
+  .back-to-top{bottom:calc(96px + env(safe-area-inset-bottom, 0px));right:1rem;width:42px;height:42px}
+  body{padding-bottom:calc(78px + env(safe-area-inset-bottom, 0px))}
   .footer-grid{grid-template-columns:1fr 1fr;gap:1.5rem}
   .container{width:calc(100% - 2.5rem)}
 }
