@@ -1,0 +1,116 @@
+{
+  "partnerId": "9426",
+  "organization": "Cat's Meow Cat Rescue",
+  "sourceName": "PetSmart Charities Adoption Partner Look Up",
+  "sourceUrl": "https://petsmartcharities.org/pro/resources/adoption-partner/adoption-partner-look-up",
+  "fetchedAt": "2026-10-01T01:04:20Z",
+  "currentThrough": "September 27, 2026",
+  "refresh": "GitHub Actions runs scripts/sync_petsmart_totals.py every Monday at 15:00 UTC and commits this file when the numbers change. PetSmart Charities says these totals are updated weekly. There is no public JSON API, and the look-up host does not allow browser requests from GitHub Pages.",
+  "years": [
+    {
+      "year": 2026,
+      "partnerId": "9426",
+      "adoptionTotal": 314,
+      "approximate": true,
+      "breakdown": [
+        {
+          "label": "Spring NAW Total",
+          "value": 14
+        },
+        {
+          "label": "Summer NAW Total",
+          "value": 66
+        },
+        {
+          "label": "Fall NAW Total",
+          "value": 0
+        }
+      ]
+    },
+    {
+      "year": 2025,
+      "partnerId": "9426",
+      "adoptionTotal": 514,
+      "approximate": true,
+      "breakdown": [
+        {
+          "label": "Spring NAW Total",
+          "value": 22
+        },
+        {
+          "label": "Summer NAW Total",
+          "value": 39
+        },
+        {
+          "label": "Fall NAW Total",
+          "value": 28
+        }
+      ]
+    },
+    {
+      "year": 2024,
+      "partnerId": "9426",
+      "adoptionTotal": 465,
+      "approximate": true,
+      "breakdown": [
+        {
+          "label": "Spring NAW Total",
+          "value": 26
+        },
+        {
+          "label": "Summer NAW Total",
+          "value": 44
+        },
+        {
+          "label": "Fall NAW Total",
+          "value": 26
+        }
+      ]
+    },
+    {
+      "year": 2023,
+      "partnerId": "9426",
+      "adoptionTotal": 446,
+      "approximate": true,
+      "breakdown": [
+        {
+          "label": "Spring NAW Total",
+          "value": 0
+        },
+        {
+          "label": "Summer NAW Total",
+          "value": 20
+        },
+        {
+          "label": "Fall NAW Total",
+          "value": 8
+        }
+      ]
+    },
+    {
+      "year": 2022,
+      "partnerId": "9426",
+      "adoptionTotal": 370,
+      "approximate": true,
+      "breakdown": []
+    },
+    {
+      "year": 2021,
+      "partnerId": "9426",
+      "adoptionTotal": 434,
+      "approximate": true,
+      "breakdown": []
+    },
+    {
+      "year": 2019,
+      "partnerId": "9426",
+      "adoptionTotal": 73,
+      "approximate": true,
+      "breakdown": []
+    }
+  ],
+  "emptyYears": [
+    2020,
+    2018
+  ]
+}
