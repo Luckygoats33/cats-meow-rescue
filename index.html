@@ -447,6 +447,29 @@ section[id],#volunteer,#apply{scroll-margin-top:4.75rem}
 .petsmart-badge .big{font-size:2.5rem;font-weight:800;display:block}
 .petsmart-badge .label{font-size:.75rem;opacity:.7;text-transform:uppercase;letter-spacing:.1em}
 
+/* Yearly adoption totals synced from PetSmart Charities */
+.psc-wrap{margin-top:1.35rem;max-width:40rem}
+.psc-years{display:flex;flex-wrap:wrap;gap:.5rem;margin:0 0 1rem}
+.psc-card{background:var(--surface);border:1px solid var(--mist);border-radius:var(--radius);padding:1.25rem 1.35rem;min-width:0}
+.psc-id{font-size:.78rem;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:var(--stone)}
+.psc-year{font-family:var(--serif);font-size:1.35rem;margin:.35rem 0 0}
+.psc-total{font-family:var(--serif);font-size:clamp(3rem,10vw,4.25rem);font-weight:700;line-height:1;color:var(--pri);margin:.2rem 0 .15rem;overflow-wrap:anywhere}
+.psc-total sup{font-size:.42em;margin-left:.1rem}
+.psc-total-label{font-weight:700;font-size:.95rem}
+.psc-naw{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:.75rem;margin-top:1rem}
+.psc-naw-item{background:var(--ground);border:1px solid var(--mist);border-radius:var(--radius-sm);padding:.8rem .85rem;min-width:0}
+.psc-naw-item strong{display:block;font-family:var(--serif);font-size:1.45rem;line-height:1.1;overflow-wrap:anywhere}
+.psc-naw-item span{display:block;font-size:.75rem;color:var(--stone);line-height:1.35;margin-top:.25rem}
+.psc-meta{margin-top:.85rem;font-size:.82rem;color:var(--stone);line-height:1.55}
+.psc-loading,.psc-error{font-size:.95rem;color:var(--stone);line-height:1.6}
+.psc-years .pill{min-height:44px;display:inline-flex;align-items:center}
+.psc-sr{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+.psc-actions{margin-top:1.35rem}
+@media(max-width:640px){
+  .psc-naw{grid-template-columns:1fr}
+  .psc-actions .btn{width:100%;justify-content:center;white-space:normal;text-align:center}
+}
+
 /* Application Form */
 .app-wrap{background:var(--surface);border:1px solid var(--mist);border-radius:var(--radius);max-width:36rem;margin:2rem auto 0;overflow:hidden}
 .app-progress{display:flex;padding:1.25rem 1.5rem;border-bottom:1px solid var(--mist);gap:.5rem}
@@ -941,17 +964,23 @@ img,video,svg,iframe{max-width:100%;height:auto}
   </div>
 </section>
 
-<!-- Yearly totals stay on the PetSmart lookup. Past-cat photos are not shown. -->
+<!-- Yearly totals are synced from the public PetSmart Charities look-up. The lifetime 4,500 figure stays in the banner above. -->
 <section class="section" id="adoption-totals" style="background:var(--ground)">
   <div class="container">
     <span class="kicker reveal">PetSmart Charities</span>
     <h2 class="heading-lg reveal">Yearly Adoption Totals</h2>
-    <p class="reveal" style="max-width:40rem;margin-top:.75rem;font-size:.95rem;line-height:1.6;color:var(--stone)">Yearly adoption totals are published by PetSmart Charities for Cat's Meow, Adoption Partner <strong>#9426</strong>. On the look-up page, choose a year and enter that ID. Our lifetime figure, 4,500 cats helped, is in the banner above.</p>
-    <div class="reveal" style="margin-top:1.5rem">
+    <p class="reveal" style="max-width:40rem;margin-top:.75rem;font-size:.95rem;line-height:1.6;color:var(--stone)">PetSmart Charities publishes yearly in-store adoption totals for Cat's Meow, Adoption Partner <strong>#9426</strong>. The numbers below are read from that public look-up and refresh every Monday. Our lifetime figure, 4,500 cats helped, is in the banner above.</p>
+    <div id="psc-totals" class="psc-wrap reveal">
+      <p class="psc-loading" data-psc-loading>Loading PetSmart Charities totals…</p>
+      <div data-psc-body hidden></div>
+      <p class="psc-error" data-psc-error hidden>These totals could not be loaded. Use the PetSmart Charities look-up to see partner #9426.</p>
+    </div>
+    <div class="psc-actions reveal">
       <a href="https://petsmartcharities.org/pro/resources/adoption-partner/adoption-partner-look-up" target="_blank" rel="noopener" class="btn btn--pri btn--lg btn--pill">Look Up Partner #9426</a>
     </div>
   </div>
 </section>
+<script src="js/petsmart-totals.js" defer></script>
 
 <!-- Paw Divider -->
 <div class="paw-divider" aria-hidden="true"><svg viewBox="0 0 60 56" width="22" height="18" fill="var(--gold)" style="opacity:.2;transform:rotate(20deg)"><path d="M30 28c-8 0-16 5-16 14 0 6 5 12 16 12s16-6 16-12c0-9-8-14-16-14z"/><ellipse cx="14" cy="16" rx="6" ry="7"/><ellipse cx="26" cy="10" rx="5.5" ry="6.5"/><ellipse cx="34" cy="10" rx="5.5" ry="6.5"/><ellipse cx="46" cy="16" rx="6" ry="7"/></svg><svg viewBox="0 0 60 56" width="28" height="24" fill="var(--pri)" style="opacity:.25"><path d="M30 28c-8 0-16 5-16 14 0 6 5 12 16 12s16-6 16-12c0-9-8-14-16-14z"/><ellipse cx="14" cy="16" rx="6" ry="7"/><ellipse cx="26" cy="10" rx="5.5" ry="6.5"/><ellipse cx="34" cy="10" rx="5.5" ry="6.5"/><ellipse cx="46" cy="16" rx="6" ry="7"/></svg><svg viewBox="0 0 60 56" width="24" height="20" fill="var(--gold)" style="opacity:.2;transform:rotate(-12deg)"><path d="M30 28c-8 0-16 5-16 14 0 6 5 12 16 12s16-6 16-12c0-9-8-14-16-14z"/><ellipse cx="14" cy="16" rx="6" ry="7"/><ellipse cx="26" cy="10" rx="5.5" ry="6.5"/><ellipse cx="34" cy="10" rx="5.5" ry="6.5"/><ellipse cx="46" cy="16" rx="6" ry="7"/></svg></div>

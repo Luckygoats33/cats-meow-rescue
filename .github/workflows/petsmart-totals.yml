@@ -1,0 +1,45 @@
+name: Sync PetSmart adoption totals
+
+# PetSmart Charities publishes partner totals on a public Drupal look-up and
+# says those totals are updated weekly. There is no public JSON API, and the
+# look-up does not allow browser fetches from GitHub Pages (no CORS header).
+# This job reads the same public view and commits data/petsmart-adoption-totals.json.
+on:
+  schedule:
+    - cron: "0 15 * * 1"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: petsmart-totals
+  cancel-in-progress: false
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Test look-up parser
+        run: python scripts/test_sync_petsmart_totals.py
+
+      - name: Refresh totals for partner 9426
+        run: python scripts/sync_petsmart_totals.py
+
+      - name: Commit updated totals
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/petsmart-adoption-totals.json
+          if git diff --staged --quiet; then
+            echo "PetSmart totals are unchanged."
+          else
+            git commit -m "Update PetSmart Charities adoption totals for partner 9426"
+            git push
+          fi
