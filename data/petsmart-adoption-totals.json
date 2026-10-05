@@ -3,14 +3,14 @@
   "organization": "Cat's Meow Cat Rescue",
   "sourceName": "PetSmart Charities Adoption Partner Look Up",
   "sourceUrl": "https://petsmartcharities.org/pro/resources/adoption-partner/adoption-partner-look-up",
-  "fetchedAt": "2026-10-01T01:04:20Z",
+  "fetchedAt": "2026-10-05T21:57:13Z",
   "currentThrough": "September 27, 2026",
   "refresh": "GitHub Actions runs scripts/sync_petsmart_totals.py every Monday at 15:00 UTC and commits this file when the numbers change. PetSmart Charities says these totals are updated weekly. There is no public JSON API, and the look-up host does not allow browser requests from GitHub Pages.",
   "years": [
     {
       "year": 2026,
       "partnerId": "9426",
-      "adoptionTotal": 314,
+      "adoptionTotal": 321,
       "approximate": true,
       "breakdown": [
         {
