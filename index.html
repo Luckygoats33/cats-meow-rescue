@@ -305,6 +305,11 @@ section[id],#volunteer,#apply{scroll-margin-top:4.75rem}
 .help-action-card p{font-size:.9rem;color:rgba(255,255,255,.9);margin-bottom:1.25rem;line-height:1.6}
 .help-action-card .btn{background:#FFDD44;color:#2A1208;font-weight:700}
 .help-action-card .btn:hover{background:#FFE76B}
+.sponsor-teaser{margin:2rem auto 0;max-width:40rem;background:#fff;color:#2A1208;border:1px solid rgba(42,18,8,.08);border-radius:var(--radius);padding:1.75rem 1.5rem;text-align:center;box-shadow:0 4px 16px rgba(0,0,0,.12)}
+#help .sponsor-teaser .kicker{color:#8B1A1A}
+.sponsor-teaser h3{font-family:var(--serif);font-size:1.45rem;line-height:1.2;margin-bottom:.45rem;color:#2A1208}
+.sponsor-teaser p{font-size:.95rem;line-height:1.6;color:#5A3A20;margin:0 0 1.1rem}
+.sponsor-teaser .btn{max-width:100%;white-space:normal;justify-content:center;text-align:center}
 
 /* Events / Calendar */
 .events-layout{display:grid;grid-template-columns:1fr 1fr;gap:2rem;margin-top:2rem}
@@ -680,6 +685,7 @@ img,video,svg,iframe{max-width:100%;height:auto}
   .help-action-card p{color:var(--stone)}
   .help-action-card .card-icon{width:80px;height:80px;margin:0 auto 1rem}
   .help-action-card .btn{background:var(--pri);color:#fff}
+  .sponsor-teaser{border:2px solid var(--mist);box-shadow:0 2px 8px rgba(0,0,0,.06)}
   .petsmart{background:var(--surface);border:2px solid var(--mist);color:var(--ink)}
   .petsmart .big{color:var(--pri)}
   .petsmart-badge{background:rgba(0,0,0,.04);backdrop-filter:none}
@@ -716,6 +722,8 @@ img,video,svg,iframe{max-width:100%;height:auto}
   .cat-photo{height:140px}
   .help-actions{grid-template-columns:1fr}
   .give-methods{grid-template-columns:1fr}
+  .sponsor-teaser{padding:1.35rem 1rem 1.5rem;margin-top:1.5rem}
+  .sponsor-teaser .btn{width:auto;max-width:calc(100% - 3.75rem)}
   .shop-grid{grid-template-columns:1fr 1fr}
   .product-img{height:180px}
   .hero-stats{gap:1.25rem}
@@ -1048,6 +1056,12 @@ img,video,svg,iframe{max-width:100%;height:auto}
       <div class="help-action-card"><img class="card-photo" src="https://d8j0ntlcm91z4.cloudfront.net/user_3681BqEuWywySamoBS6St7ib1O7/hf_20260725_085334_f9765c90-9a09-467d-9d59-c0ab41799a18_min.webp" alt="Senior gray cat with amber eyes" loading="lazy"><h3>Volunteer</h3><p>Drive cats to clinics, help at adoption events, photograph fosters. Flexible hours, huge impact.</p><a href="#volunteer" data-contact-subject="Volunteering" class="btn btn--pri btn--sm btn--pill">Volunteer</a></div>
     </div>
     <p class="reveal" style="text-align:center;margin-top:1.25rem"><a href="working-cats.html" class="btn btn--outline btn--pill">Working Cats / Barn Cats</a></p>
+    <aside class="sponsor-teaser reveal" aria-labelledby="sponsor-teaser-title">
+      <span class="kicker">Sponsors</span>
+      <h3 id="sponsor-teaser-title">Thank You to Our Sponsors</h3>
+      <p>PrettyLitter donated an entire pallet of cat litter. Read the thank-you, and see how a gift of supplies, food, litter, or funding can be recognized.</p>
+      <a href="sponsors.html" class="btn btn--pri btn--pill">See Our Sponsors</a>
+    </aside>
   </div>
 </section>
 
