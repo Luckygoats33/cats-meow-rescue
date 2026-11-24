@@ -579,7 +579,6 @@ section[id],#volunteer,#apply{scroll-margin-top:4.75rem}
 .cat-ears-divider svg{width:80px;height:40px}
 .hero-cat{position:absolute;right:5%;bottom:0;width:clamp(200px,25vw,380px);opacity:.12;z-index:1}
 .section-cat{position:absolute;opacity:.06;pointer-events:none}
-.paw-trail{position:absolute;opacity:.06;pointer-events:none}
 .wwd-photo{width:100%;height:160px;object-fit:cover;border-radius:calc(var(--radius) - 4px);margin-bottom:.75rem}
 .help-action-card .card-icon{width:80px;height:80px;margin:0 auto 1rem}
 .help-action-card .card-photo{width:100%;height:160px;object-fit:cover;border-radius:var(--radius-sm);margin-bottom:1rem}
@@ -745,12 +744,6 @@ img,video,svg,iframe{max-width:100%;height:auto}
   .heading-xl{font-size:clamp(1.8rem,9vw,2.4rem)}
   .hero-fold p{font-size:.8rem}
 }
-
-/* Paw Print Cursor Trail */
-.paw-trail{position:fixed;pointer-events:none;z-index:9999;width:18px;height:18px;opacity:.5;animation:pawFade 1s ease forwards}
-.paw-trail svg{width:100%;height:100%}
-@keyframes pawFade{0%{opacity:.5;transform:scale(1) rotate(var(--paw-rot,0deg))}100%{opacity:0;transform:scale(.4) rotate(var(--paw-rot,0deg)) translateY(8px)}}
-@media(max-width:960px){.paw-trail{display:none}}
 
 /* Confetti Celebration */
 .confetti-stage{position:fixed;inset:0;z-index:300;pointer-events:none;overflow:hidden}
@@ -1992,26 +1985,6 @@ window.removeFromCart=removeFromCart;
 window.updateQty=updateQty;
 window.openCart=openCart;
 window.closeCart=closeCart;
-
-/* ── Paw Print Cursor Trail ── */
-(function(){
-  if(window.innerWidth<=960)return;
-  var pawSvg='<svg viewBox="0 0 60 56" fill="var(--pri)"><path d="M30 28c-8 0-16 5-16 14 0 6 5 12 16 12s16-6 16-12c0-9-8-14-16-14z"/><ellipse cx="14" cy="16" rx="6" ry="7"/><ellipse cx="26" cy="10" rx="5.5" ry="6.5"/><ellipse cx="34" cy="10" rx="5.5" ry="6.5"/><ellipse cx="46" cy="16" rx="6" ry="7"/></svg>';
-  var lastX=0,lastY=0,step=0;
-  document.addEventListener('mousemove',function(e){
-    var dx=e.clientX-lastX,dy=e.clientY-lastY;
-    if(Math.abs(dx)+Math.abs(dy)<40)return;
-    lastX=e.clientX;lastY=e.clientY;step++;
-    var paw=document.createElement('div');
-    paw.className='paw-trail';
-    paw.innerHTML=pawSvg;
-    paw.style.left=(e.clientX-9)+'px';
-    paw.style.top=(e.clientY-9)+'px';
-    paw.style.setProperty('--paw-rot',(step%2===0?'-15':'15')+'deg');
-    document.body.appendChild(paw);
-    setTimeout(function(){paw.remove()},1000);
-  });
-})();
 
 /* ── Confetti Celebration ── */
 function launchConfetti(){
