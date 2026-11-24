@@ -1,4 +1,4 @@
 [
-  {"name":"PrettyLitter","role":"sponsor","url":"https://www.prettylitter.com","logo":"","blurb":"Thank you, PrettyLitter, for donating an entire pallet of cat litter."},
+  {"name":"PrettyLitter","role":"sponsor","url":"https://www.prettylitter.com","logo":"prettylitter-logo.png","blurb":"Thank you, PrettyLitter, for donating an entire pallet of cat litter."},
   {"name":"PetSmart Charities","role":"partner","url":"https://www.petsmartcharities.org/","logo":"petsmart-logo.png","partnerNumber":"9426","blurb":"PetSmart Charities is our most vital partner, helping fund spay/neuter surgeries, veterinary care, and adoption events. Visit adoptable cats and meet-and-greets at PetSmart in Clackamas and Cascade Station only."}
 ]
